@@ -1,0 +1,37 @@
+project:
+  type: website
+  output-dir: docs
+  # resources:
+  #   - hw-solutions
+  #   - data
+  render:
+  - "*.qmd"
+  - "!/teaching-materials"
+
+website:
+  title: "STA221"
+  search: true
+  navbar:
+    # background: "#2774AE"
+    left:
+      - href: index.qmd
+        text: schedule
+      - href: syllabus.qmd
+        text: syllabus
+      # - href: notes/exam-notes.qmd
+      #   text: distributions
+      # - href: chapterSummaries.qmd
+      #   text: notes
+      - href: links.qmd
+        text: links
+      
+
+format:
+  html:
+    theme: cosmo
+    mainfont: Lato
+    css: styles.css
+    toc: true
+
+
+

@@ -1,0 +1,25 @@
+/* css styles */
+font-family: Lato
+h1 { font-weight: normal; }
+h2 { font-weight: normal; }
+h3 { font-weight: normal; }
+h4 { font-weight: normal; }
+h1.title {
+  font-weight: normal;
+}
+#schedule h1 {
+  font-weight: normal;
+}
+
+#syllabus h1 {
+  font-weight: normal;
+}
+
+
+.reveal h1 {
+  font-weight: normal;
+}
+
+.reveal h2 {
+  font-weight: normal;
+}
