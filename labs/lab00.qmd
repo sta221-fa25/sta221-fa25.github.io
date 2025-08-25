@@ -1,5 +1,5 @@
 ---
-title: "Lab 00: Getting Started"
+title: "Lab 0: Getting Started"
 execute:
   freeze: auto
   echo: true

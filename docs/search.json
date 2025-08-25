@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Regression Analysis: Theory and Applications",
     "section": "",
-    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n\n\n\n\n\nWed Aug 27\nhello git and R\n\n\nlab 0\n\n\n\nThu Aug 28\nsimple linear regression\n\n\n\n\n\n2\nTue Sep 02\nanalysis of variance (ANOVA1)\n\n\n\n\n\n\nWed Sep 03\nlinear algebra review\n\n\nlab 1\n\n\n\nThu Sep 04\ngeometric introduction to multiple regression\n\n\n\n\n\n3\nTue Sep 09\n\n\n\n\n\n\n\nWed Sep 10\n\n\n\n\n\n\n\nThu Sep 11\n\n\n\n\n\n\n4\nTue Sep 16\n\n\n\n\n\n\n\nWed Sep 17\n\n\n\n\n\n\n\nThu Sep 18\n\n\n\n\n\n\n5\nTue Sep 23\n\n\n\n\n\n\n\nWed Sep 24\n\n\n\n\n\n\n\nThu Sep 25\n\n\n\n\n\n\n6\nTue Sep 30\n\n\n\n\n\n\n\nWed Oct 01\n\n\n\n\n\n\n\nThu Oct 02\n\n\n\n\n\n\n7\nTue Oct 07\n\n\n\n\n\n\n\nWed Oct 08\n\n\n\n\n\n\n\nThu Oct 09\n\n\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\nWed Oct 15\n\n\n\n\n\n\n\nThu Oct 16\n\n\n\n\n\n\n9\nTue Oct 21\n\n\n\n\n\n\n\nWed Oct 22\n\n\n\n\n\n\n\nThu Oct 23\n\n\n\n\n\n\n10\nTue Oct 28\n\n\n\n\n\n\n\nWed Oct 29\n\n\n\n\n\n\n\nThu Oct 30\n\n\n\n\n\n\n11\nTue Nov 04\n\n\n\n\n\n\n\nWed Nov 05\n\n\n\n\n\n\n\nThu Nov 06\n\n\n\n\n\n\n12\nTue Nov 11\n\n\n\n\n\n\n\nWed Nov 12\n\n\n\n\n\n\n\nThu Nov 13\n\n\n\n\n\n\n13\nTue Nov 18\n\n\n\n\n\n\n\nWed Nov 19\n\n\n\n\n\n\n\nThu Nov 20\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n15\nTue Dec 02\n\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\nThu Dec 04"
+    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n\n\n\n\n\nWed Aug 27\nhello git and R\n\n\nlab 0\n\n\n\nThu Aug 28\nsimple linear regression\n\n\n\n\n\n2\nTue Sep 02\nanalysis of variance (ANOVA1)\n\n\n\n\n\n\nWed Sep 03\nlab: linear algebra review\n\n\nlab 1\n\n\n\nThu Sep 04\ngeometric introduction to multiple regression\n\n\n\n\n\n3\nTue Sep 09\n\n\n\n\n\n\n\nWed Sep 10\n\n\n\n\n\n\n\nThu Sep 11\n\n\n\n\n\n\n4\nTue Sep 16\n\n\n\n\n\n\n\nWed Sep 17\n\n\n\n\n\n\n\nThu Sep 18\n\n\n\n\n\n\n5\nTue Sep 23\n\n\n\n\n\n\n\nWed Sep 24\n\n\n\n\n\n\n\nThu Sep 25\n\n\n\n\n\n\n6\nTue Sep 30\n\n\n\n\n\n\n\nWed Oct 01\n\n\n\n\n\n\n\nThu Oct 02\n\n\n\n\n\n\n7\nTue Oct 07\n\n\n\n\n\n\n\nWed Oct 08\n\n\n\n\n\n\n\nThu Oct 09\n\n\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\nWed Oct 15\n\n\n\n\n\n\n\nThu Oct 16\n\n\n\n\n\n\n9\nTue Oct 21\n\n\n\n\n\n\n\nWed Oct 22\n\n\n\n\n\n\n\nThu Oct 23\n\n\n\n\n\n\n10\nTue Oct 28\n\n\n\n\n\n\n\nWed Oct 29\n\n\n\n\n\n\n\nThu Oct 30\n\n\n\n\n\n\n11\nTue Nov 04\n\n\n\n\n\n\n\nWed Nov 05\n\n\n\n\n\n\n\nThu Nov 06\n\n\n\n\n\n\n12\nTue Nov 11\n\n\n\n\n\n\n\nWed Nov 12\n\n\n\n\n\n\n\nThu Nov 13\n\n\n\n\n\n\n13\nTue Nov 18\n\n\n\n\n\n\n\nWed Nov 19\n\n\n\n\n\n\n\nThu Nov 20\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n15\nTue Dec 02\n\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\nThu Dec 04"
   },
   {
     "objectID": "about.html",
@@ -163,49 +163,49 @@
   {
     "objectID": "labs/lab00.html",
     "href": "labs/lab00.html",
-    "title": "Lab 00: Getting Started",
+    "title": "Lab 0: Getting Started",
     "section": "",
     "text": "Important\n\n\n\nPlease complete all today’s lab tasks before leaving lab today."
   },
   {
     "objectID": "labs/lab00.html#rstudio",
     "href": "labs/lab00.html#rstudio",
-    "title": "Lab 00: Getting Started",
+    "title": "Lab 0: Getting Started",
     "section": "RStudio",
     "text": "RStudio\n\n\n\n\n\n\nNote\n\n\n\nR is the name of the programming language itself and RStudio is a convenient graphical user interface (GUI).\n\n\n\nReserve RStudio container\n\nGo to https://cmgr.oit.duke.edu/containers. You will log in using your NetID credentials.\nClick “Reserve STA 221” to reserve an RStudio container. Be sure you reserve the container labeled STA 221 to ensure you have the computing set up you need for the class.\n\nYou only need to reserve a container once per semester.\n\n\nOpen RStudio container\n\nGo to https://cmgr.oit.duke.edu/containers and log in with your Duke NetID and Password.\nClick STA221 to log into the Docker container. You should now see the RStudio environment."
   },
   {
     "objectID": "labs/lab00.html#git-and-github",
     "href": "labs/lab00.html#git-and-github",
-    "title": "Lab 00: Getting Started",
+    "title": "Lab 0: Getting Started",
     "section": "Git and GitHub",
     "text": "Git and GitHub\nIn addition to R and RStudio, we will use git and GitHub for version control and collaboration.\n\n\n\n\n\n\nNote\n\n\n\nGit is a version control system (like “Track Changes” features from Microsoft Word but more powerful) and GitHub is the home for your Git-based projects on the internet (like DropBox but much better).\n\n\n\nSign up for GitHub account\nYou will need a GitHub account to access the assignments, project, and in-class exercises for the course.\n\nIf you do not have a GitHub account, go to https://github.com and sign up for an account.\n\n\n\n\n\n\n\nTip\n\n\n\nClick here for advice on choosing a username. tl;dr choose something that you would be proud to show a future employer.\n\n\n\nIf you already have a GitHub account, you can move on to the next step."
   },
   {
     "objectID": "labs/lab00.html#connect-rstudio-and-github",
     "href": "labs/lab00.html#connect-rstudio-and-github",
-    "title": "Lab 00: Getting Started",
+    "title": "Lab 0: Getting Started",
     "section": "Connect RStudio and GitHub",
     "text": "Connect RStudio and GitHub\nNow that you have RStudio and a GitHub account, we will configure git so that RStudio and GitHub communicate with one another.\n\nSet up your SSH Key\nYou will authenticate GitHub using SSH. An outline of the authentication steps is below; you are encouraged to follow along as your TA demonstrates the steps.\n\n\n\n\n\n\nNote\n\n\n\nYou only need to do this authentication process one time on a single system.\n\n\n\nStep 0: Open your STA 221 RStudio container.\nStep 1: Type credentials::ssh_setup_github() into the console on the bottom left of the RStudio environment.\nStep 2: R will ask “No SSH key found. Generate one now?” Click 1 for yes.\nStep 3: You will generate a key. It will begin with “ssh-rsa….” R will then ask “Would you like to open a browser now?” Click 1 for yes.\nStep 4: You may be asked to provide your username and password to log into GitHub. This would be the ones associated with your account that you set up. After entering this information, paste the key in and give it a name. You might name it in a way that indicates where the key will be used, e.g., sta221)\n\n\n\nConfigure git\nThe last thing we need to do is configure your git so that RStudio can communicate with GitHub. This requires two pieces of information: your name and email address.\nTo do so, you will use the use_git_config() function from the usethis package.\nType the following lines of code in the console in RStudio filling in your name and the email address associated with your GitHub account.\n\nusethis::use_git_config(\n  user.name = \"Your name\", \n  user.email = \"Email associated with your GitHub account\")\n\nFor example, mine would be\n\nusethis::use_git_config(\n  user.name = \"Alexander Fisher\",\n  user.email = \"alexander.fisher@duke.edu\")\n\nIt may look like nothing happened but you are now ready interact between GitHub and RStudio!"
   },
   {
     "objectID": "labs/lab00.html#getting-started",
     "href": "labs/lab00.html#getting-started",
-    "title": "Lab 00: Getting Started",
+    "title": "Lab 0: Getting Started",
     "section": "Getting started",
     "text": "Getting started\n\nClick here to create your individual lab-00 repo: https://classroom.github.com/a/PMZfNgLX\nClick to open your lab-00 repo.\nClick on the green CODE button, select Use SSH (this might already be selected by default, and if it is, you’ll see the text Clone with SSH). Click on the clipboard icon to copy the repo URL.\nIn RStudio, go to File → New Project → Version Control → Git.\nCopy and paste the URL of your assignment repo into the dialog box Repository URL. Again, please make sure to have SSH highlighted under Clone when you copy the address.\nClick Create Project, and the files from your GitHub repo will be displayed in the Files pane in RStudio.\nClick lab-00.qmd to open the template Quarto file. This is where you will write up your code and narrative for the lab."
   },
   {
     "objectID": "labs/lab00.html#update-the-quarto-document",
     "href": "labs/lab00.html#update-the-quarto-document",
-    "title": "Lab 00: Getting Started",
+    "title": "Lab 0: Getting Started",
     "section": "Update the Quarto document",
     "text": "Update the Quarto document\n\nTask 1: Change the author name at the top of the document to your name. Render the document. You will see your name at the top of the rendered PDF.\nTask 2: The plot shows the relationship between the daily temperature and number of bike rentals in Washington, D.C.’s Capital Bikeshare in 2012.\n\n\n\n\n\n\n\n\n\n\nWrite 1 - 2 observations from the plot. Render the document. You will see your response in the rendered PDF."
   },
   {
     "objectID": "labs/lab00.html#commit-and-push-changes-to-github",
     "href": "labs/lab00.html#commit-and-push-changes-to-github",
-    "title": "Lab 00: Getting Started",
+    "title": "Lab 0: Getting Started",
     "section": "Commit and push changes to GitHub",
     "text": "Commit and push changes to GitHub\n\nOnce you have made your final updates, go to the Git pane in your RStudio instance. This is a tab in the top right corner of the RStudio window.\nCheck the appropriate boxes on every file in the Git pane. All checked files will be sent to GitHub.\nNext, write a meaningful commit message (for instance, “updated author name”) in the Commit message box.\nClick Commit. Note that every commit needs to have a commit message associated with it.\nNow that you have made an update and committed this change, click Push to send the changes to GitHub.\nGo to your GitHub repo and refresh the page. You should see your commit message next to the updated files. If you see this, all your changes are on GitHub and you’re good to go!"
   }

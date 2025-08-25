@@ -91,7 +91,7 @@ schedule %>%
 | Week | Date       | Topic                  | Prepare | Notes | Assignment |
 |:-----|:-----------|:-----------------------|:--------|:------|:-----------|
 | 1    | Tue Aug 26 | welcome                |         |       |            |
-|      | Wed Aug 27 | hello git and R                  |         |       |   [lab 0]()     |
+|      | Wed Aug 27 | hello git and R                  |         |       |   [lab 0](/labs/lab00.html)     |
 |      | Thu Aug 28 | simple linear regression                       |         |       |            |
 | 2    | Tue Sep 02 | analysis of variance (ANOVA1)                       |         |       |            |
 |      | Wed Sep 03 | lab: linear algebra review                       |         |       |  [lab 1]()          |
