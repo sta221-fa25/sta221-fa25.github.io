@@ -1,0 +1,40 @@
+---
+title: "Welcome to Lab"
+date: "August 27, 2025"
+format: revealjs
+---
+
+## Introductions
+
+```{r}
+#| echo: false
+#| warning: false
+library(countdown)
+```
+
+-   Meet the TA!
+
+-   Introduce yourself (icebreaker)
+
+-   Follow along these slides on the course website (under slides): [sta221-fa25.github.io](https://sta221-fa25.github.io)
+
+-   Bookmark this!
+    It's the course website.
+
+## What to expect in labs
+
+-   Introduce lab assignment (5-10 minutes, longer today)
+-   Work on the lab assignment (you can find it on the course website). You will work with others but your submission must be your own for the first few labs.
+-   Typically you won't finish labs in-class and they will be due 1 week after they are released.
+
+## Tips
+
+-   Read **all** instructions on the lab.
+-   One work strategy is to get through portions that you think will be most challenging (which initially might be the coding component) during lab when we can help you on the spot and leave the narrative writing until later.
+-   Make use of office hours. Before you need help!
+
+## Beginnings
+
+- Find the lab instructions [here](/labs/lab00.html)
+
+- Follow the instructions in the lab as I demo.

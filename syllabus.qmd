@@ -1,7 +1,9 @@
 ---
 title: STA 221 Syllabus
-subtitle: Fall 2025
-format:
+subtitle: "Fall 2025"
+fontsize: 12pt
+format: 
+  html: default
   pdf:
     mainfont: "Times New Roman"
     sansfont: "Times New Roman"
@@ -68,8 +70,8 @@ By the end of the semester, you will be able to...
 
 | Assignment | Description |
 |---------------------------|---------------------------------------------|
-| Homework (30%) | Individual take-home assignments, submitted to Gradescope. |
-| Midterms (40%) | Two exams with an in-class and take-home component. |
+| Homework (25%) | Individual take-home assignments, submitted to Gradescope. |
+| Midterms (45%) | Two exams with an in-class and take-home component. |
 | Final project (15%) | Team-based final project. |
 | Quizzes (5%) | In-class pop-quizzes. |
 | Labs (10%) | Exercises assigned in lab, submitted to Gradescope. |
@@ -78,7 +80,7 @@ A $>= 93$, A- $< 93$, B+ $< 90$, B $< 87$, B- $< 83$, C+ $<80$, C $< 77$, C- $< 
 
 ::: {.callout-note}
 # A note on quizzes
-On random class days, there will be a brief quiz on the previous lectures. If you score  $>60\%$ cumulatively on your final quiz grade, you will receive full participation credit. Your lowest **two** quizzes will also be dropped.
+On pseudo-random class days, there will be a brief quiz on the previous lectures. If you score  $>60\%$ cumulatively on your final quiz grade, you will receive full participation credit. Your lowest **two** quizzes will also be dropped.
 :::
 
 <!-- ::: callout-note -->
@@ -114,6 +116,15 @@ Any violations of academic integrity will automatically result in a 0 for the as
 **Late work**
 
 Late homework may be submitted within 48 hours of the assignment deadline. Late homework submitted within 24 hours (even 1 minute late) will receive a 5% late penalty. Late work submitted between 24 to 48 hours of the deadline will receive a 10% late penalty. Work submitted after 48 hours will not be accepted. Exams cannot be turned in late and can only be excused under exceptional circumstances. The Duke policy for illness requires a short-term illness report or a letter from the Dean; except in emergencies, all other absenteeism must be approved in advance (e.g., an athlete who must miss class may be excused by prior arrangement for specific days). For emergencies, email notification is needed at the first reasonable time.
+
+**Outside resources and generative AI statement**
+
+The use of online resources (including generative AI, as well as static webpages like Stack-Overflow, etc.) is strictly prohibited on in-class assignments. For take home assignments, you may make use of online resources for coding portions on assignments. If you directly use code from a source (or use it as inspiration), you must explicitly cite where you obtained the code. If you used generative AI to create the code, you should include your prompt(s) in your citation as well.
+Any code that is discovered to be recycled or created by AI and is not explicitly cited will be treated as plagiarism.
+ 
+::: callout-warning
+Extensive use of AI on take-home assessments will likely set you up for poor performance on graded in-class assignments.
+:::
 
 **Errors in grading**
 

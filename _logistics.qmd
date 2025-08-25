@@ -2,8 +2,10 @@
 
 |   | Contact | Office hours | Location |
 |------------------|------------------|------------------|------------------|
-| Dr. Alexander Fisher | [aaf29\@duke.edu](aaf29@duke.edu) | TBD | TBD |
-| Teaching assistants | TBD |  |  |
+| Dr. Alexander Fisher | [aaf29\@duke.edu](aaf29@duke.edu) | Tu/Fr: 2-3pm | Old Chem 223B  |
+| Cathy Lee |[pin.chian.lee@duke.edu](pin.chian.lee@duke.edu)  | TBD  | TBD |
+| Xukun Zhu |[xukun.zhu@duke.edu](xukun.zhu@duke.edu)  | TBD | TBD |
+| Krish Bansal | [krish.bansal@duke.edu](krish.bansal@duke.edu) |TBD  |TBD |
 
 <!-- | TA2: TBD            |             |      |          | -->
 

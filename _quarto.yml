@@ -12,7 +12,8 @@ website:
   title: "STA221"
   search: true
   navbar:
-    # background: "#2774AE"
+    background: "#012169"
+    foreground: "#FFFFFF"
     left:
       - href: index.qmd
         text: schedule
@@ -40,6 +41,5 @@ format:
     mainfont: Lato
     css: styles.css
     toc: true
-
 
 
