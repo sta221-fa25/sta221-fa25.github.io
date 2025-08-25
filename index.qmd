@@ -107,8 +107,8 @@ schedule %>%
 |      | Thu Sep 25 |                        |         |       |            |
 | 6    | Tue Sep 30 |                        |         |       |            |
 |      | Wed Oct 01 |                        |         |       |            |
-|      | Thu Oct 02 |                        |         |       |            |
-| 7    | Tue Oct 07 |                        |         |       |            |
+|      | Thu Oct 02 | exam review                       |         |       |            |
+| 7    | Tue Oct 07 | exam 1                       |         |       |            |
 |      | Wed Oct 08 |                        |         |       |            |
 |      | Thu Oct 09 |                        |         |       |            |
 | 8    | Tue Oct 14 | NO CLASS               |         |       |            |
@@ -124,7 +124,7 @@ schedule %>%
 |      | Wed Nov 05 |                        |         |       |            |
 |      | Thu Nov 06 |                        |         |       |            |
 | 12   | Tue Nov 11 |                        |         |       |            |
-|      | Wed Nov 12 |                        |         |       |            |
+|      | Wed Nov 12 | lab: project presentations                        |         |       |            |
 |      | Thu Nov 13 |                        |         |       |            |
 | 13   | Tue Nov 18 |                        |         |       |            |
 |      | Wed Nov 19 |                        |         |       |            |
@@ -132,7 +132,7 @@ schedule %>%
 | 14   | Tue Nov 25 |                        |         |       |            |
 |      | Wed Nov 26 | NO CLASS               |         |       |            |
 |      | Thu Nov 27 | NO CLASS               |         |       |            |
-| 15   | Tue Dec 02 |                        |         |       |            |
+| 15   | Tue Dec 02 | exam review                       |         |       |            |
 |      | Wed Dec 03 |                        |         |       |            |
-|      | Thu Dec 04 |                        |         |       |            |
+|      | Thu Dec 04 | exam 2                       |         |       |            |
 :::

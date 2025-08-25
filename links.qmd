@@ -1,9 +1,19 @@
 ---
-title: "Useful links"
+title: "Links"
 ---
 
-About this site
+Code
 
-```{r}
-1 + 1
-```
+- [RStudio containers](https://cmgr.oit.duke.edu/containers)
+
+Communication 
+
+- [Ed Discussion](https://edstem.org/us/courses/84540)
+
+Collaboration
+
+- [course GitHub organization](https://github.com/sta221-fa25)
+
+Assignment turn-in
+
+- [Gradescope](https://www.gradescope.com/)
