@@ -18,6 +18,14 @@ website:
         text: schedule
       - href: syllabus.qmd
         text: syllabus
+      - text: "homeworks"
+        menu:
+          - href: hw/hw01.qmd
+            text: "HW 01"
+      - text: "labs"
+        menu:
+          - href: labs/lab01.qmd
+            text: "Lab 01"
       # - href: notes/exam-notes.qmd
       #   text: distributions
       # - href: chapterSummaries.qmd

@@ -38,7 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8a24e5b187930173ad92c68a669bea30.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-fc72d39e1c56cdcf3149b99e251f59b2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -93,9 +93,31 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.html"> 
+    <a class="nav-link" href="./syllabus.pdf"> 
 <span class="menu-text">syllabus</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-homeworks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">homeworks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-homeworks">    
+        <li>
+    <a class="dropdown-item" href="./hw/hw01.html">
+ <span class="dropdown-text">HW 01</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">labs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
+        <li>
+    <a class="dropdown-item" href="./labs/lab01.html">
+ <span class="dropdown-text">Lab 01</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./links.html"> 
 <span class="menu-text">links</span></a>
@@ -118,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Regression Analysis: Theory and Applications</h1>
-<p class="subtitle lead">Spring 2025 - Dr.&nbsp;Alexander Fisher</p>
+<p class="subtitle lead">Spring 2025</p>
 </div>
 
 
@@ -135,6 +157,24 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<!-- Course description  -->
+<!-- In depth study of regression modeling with emphasis on applications and theoretical underpinnings. Linear and logistic regression, analysis of variance, model diagnostics, and selection. Maximum likelihood and least squares estimation of regression parameters. Examples from a variety of fields. Prerequisite: Either any STA 100-level course or STA 230, 231, or 240L and MATH 216, 218, or 221. Recommended co-requisite: STA 230, 231, or 240L. Interested students with different backgrounds should seek instructor consent. This course is required for Statistical Science majors and students interested in taking STA 360. Students interested in an applied-only regression course should take STA 210. -->
+<!-- # Tentative outline -->
+<!-- Week 1: Simple linear regression and mathematical notation -->
+<!-- Week 2: Multiple linear regression  -->
+<!-- Week 3: Types of predictors + Model comparison -->
+<!-- Week 4: Inference -->
+<!-- Week 5: Model conditions and diagnostics -->
+<!-- Week 6: Diagnostics and transformations -->
+<!-- Week 7: MLE  -->
+<!-- Week 8: Logistic regression -->
+<!-- Week 9: Logistic regression continued -->
+<!-- Week 10: Weighted least squares -->
+<!-- Week 11: Variable selection -->
+<!-- Week 12: Model selection -->
+<!-- Week 13: special topic / account for exam and review days -->
+<!-- Week 14: no class -->
+<!-- Week 15: special topic / account for exam and review days -->
 <section id="schedule" class="level1">
 <h1>Schedule</h1>
 <style>
@@ -149,19 +189,11 @@ ul.task-list li input[type="checkbox"] {
 <!--     .heatMap tr:nth-of-type(2n+1) { -->
 <!--   background: #FFF; -->
 <!-- } -->
-    .heatMap tr:nth-of-type(3n-1) { background: #D3D3D3; }
+    .heatMap tr:nth-of-type(2n) { background: #D3D3D3; }
 </style>
 <!-- useful icons 💻🗒📝 -->
 <div class="heatMap">
 <table class="caption-top table">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 17%">
-<col style="width: 34%">
-<col style="width: 12%">
-<col style="width: 10%">
-<col style="width: 17%">
-</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Week</th>
@@ -176,7 +208,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">Tue Aug 26</td>
-<td style="text-align: left;">welcome to STA 221!</td>
+<td style="text-align: left;">welcome</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
@@ -184,15 +216,15 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Wed Aug 27</td>
-<td style="text-align: left;">lab 0: getting started</td>
+<td style="text-align: left;">hello git and R</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;"><a href="">lab 0</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Thu Aug 28</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">simple linear regression</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
@@ -200,7 +232,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">Tue Sep 02</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">analysis of variance (ANOVA1)</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
@@ -208,15 +240,15 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Wed Sep 03</td>
+<td style="text-align: left;">linear algebra review</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;"><a href="">lab 1</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Thu Sep 04</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">geometric introduction to multiple regression</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>

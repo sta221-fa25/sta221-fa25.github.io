@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>STA 221 Syllabus – STA221</title>
+<title>Lab 00: Getting Started – STA221</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-fc72d39e1c56cdcf3149b99e251f59b2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-fc72d39e1c56cdcf3149b99e251f59b2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,37 +101,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -107,7 +112,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">STA221</span>
     </a>
   </div>
@@ -118,11 +123,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.pdf"> 
+    <a class="nav-link" href="../syllabus.pdf"> 
 <span class="menu-text">syllabus</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -131,7 +136,7 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-homeworks">    
         <li>
-    <a class="dropdown-item" href="./hw/hw01.html">
+    <a class="dropdown-item" href="../hw/hw01.html">
  <span class="dropdown-text">HW 01</span></a>
   </li>  
     </ul>
@@ -142,13 +147,13 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
         <li>
-    <a class="dropdown-item" href="./labs/lab01.html">
+    <a class="dropdown-item" href="../labs/lab01.html">
  <span class="dropdown-text">Lab 01</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./links.html"> 
+    <a class="nav-link" href="../links.html"> 
 <span class="menu-text">links</span></a>
   </li>  
 </ul>
@@ -167,22 +172,40 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#course-description" id="toc-course-description" class="nav-link active" data-scroll-target="#course-description">Course description</a></li>
-  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
-  <li><a href="#course-material" id="toc-course-material" class="nav-link" data-scroll-target="#course-material">Course material</a></li>
-  <li><a href="#course-learning-objectives" id="toc-course-learning-objectives" class="nav-link" data-scroll-target="#course-learning-objectives">Course learning objectives</a></li>
-  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation">Evaluation</a></li>
-  <li><a href="#policies" id="toc-policies" class="nav-link" data-scroll-target="#policies">Policies</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#computing-setup" id="toc-computing-setup" class="nav-link" data-scroll-target="#computing-setup">Computing setup</a>
+  <ul class="collapse">
+  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">RStudio</a>
+  <ul class="collapse">
+  <li><a href="#reserve-rstudio-container" id="toc-reserve-rstudio-container" class="nav-link" data-scroll-target="#reserve-rstudio-container">Reserve RStudio container</a></li>
+  <li><a href="#open-rstudio-container" id="toc-open-rstudio-container" class="nav-link" data-scroll-target="#open-rstudio-container">Open RStudio container</a></li>
+  </ul></li>
+  <li><a href="#git-and-github" id="toc-git-and-github" class="nav-link" data-scroll-target="#git-and-github">Git and GitHub</a>
+  <ul class="collapse">
+  <li><a href="#sign-up-for-github-account" id="toc-sign-up-for-github-account" class="nav-link" data-scroll-target="#sign-up-for-github-account">Sign up for GitHub account</a></li>
+  </ul></li>
+  <li><a href="#connect-rstudio-and-github" id="toc-connect-rstudio-and-github" class="nav-link" data-scroll-target="#connect-rstudio-and-github">Connect RStudio and GitHub</a>
+  <ul class="collapse">
+  <li><a href="#set-up-your-ssh-key" id="toc-set-up-your-ssh-key" class="nav-link" data-scroll-target="#set-up-your-ssh-key">Set up your SSH Key</a></li>
+  <li><a href="#configure-git" id="toc-configure-git" class="nav-link" data-scroll-target="#configure-git">Configure git</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#update-document-and-push-changes-to-github" id="toc-update-document-and-push-changes-to-github" class="nav-link" data-scroll-target="#update-document-and-push-changes-to-github">Update document and push changes to GitHub</a>
+  <ul class="collapse">
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
+  <li><a href="#update-the-quarto-document" id="toc-update-the-quarto-document" class="nav-link" data-scroll-target="#update-the-quarto-document">Update the Quarto document</a></li>
+  <li><a href="#commit-and-push-changes-to-github" id="toc-commit-and-push-changes-to-github" class="nav-link" data-scroll-target="#commit-and-push-changes-to-github">Commit and push changes to GitHub</a></li>
+  </ul></li>
+  <li><a href="#submit-github-username" id="toc-submit-github-username" class="nav-link" data-scroll-target="#submit-github-username">Submit GitHub username</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="syllabus.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">STA 221 Syllabus</h1>
-<p class="subtitle lead">Fall 2025</p>
+<h1 class="title">Lab 00: Getting Started</h1>
 </div>
 
 
@@ -199,163 +222,191 @@ window.Quarto = {
 </header>
 
 
-<section id="teaching-team-office-hours" class="level4">
-<h4 class="anchored" data-anchor-id="teaching-team-office-hours">Teaching team &amp; office hours</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>Contact</th>
-<th>Office hours</th>
-<th>Location</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Dr.&nbsp;Alexander Fisher</td>
-<td><a href="aaf29@duke.edu">aaf29@duke.edu</a></td>
-<td>TBD</td>
-<td>TBD</td>
-</tr>
-<tr class="even">
-<td>Teaching assistants</td>
-<td>TBD</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<!-- | TA2: TBD            |             |      |          | -->
-<!-- | TA3: TBD             |                 |    |       | -->
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Please complete all today’s lab tasks before leaving lab today.</p>
+</div>
+</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>The goal of today’s lab is to briefly introduce you to the computing tools we’ll use in the course, set up your computing access, and complete the STA 221 student survey. We will talk more about these computing tools in lecture and upcoming labs.</p>
 </section>
-<section id="meetings" class="level4">
-<h4 class="anchored" data-anchor-id="meetings">Meetings</h4>
-<table class="caption-top table">
-<tbody>
-<tr class="odd">
-<td>Lecture</td>
-<td>Tu/Th 11:45am - 1:00pm</td>
-<td>Old Chemistry 116</td>
-</tr>
-<tr class="even">
-<td>Lab 01</td>
-<td>We 1:25pm - 2:40pm</td>
-<td>Perkins LINK 087 (Classroom 3)</td>
-</tr>
-<tr class="odd">
-<td>Lab 02</td>
-<td>We 3:05pm - 4:20pm</td>
-<td>Perkins LINK 087 (Classroom 3)</td>
-</tr>
-</tbody>
-</table>
-<p>Course website: <a href="https://sta221-fa25.github.io/">sta221-fa25.github.io</a></p>
-</section>
-<section id="course-description" class="level3">
-<h3 class="anchored" data-anchor-id="course-description">Course description</h3>
-<p>In STA 221, students will learn how linear and logistic regression models are used to explore multivariable relationships, apply these methods to real data and learn the mathematical underpinnings of the models. Students will develop computing skills to implement a reproducible data analysis workflow and gain experience communicating statistical results. Throughout the semester, students will work on a team project where they will develop a research question, answer it using methods learned in the course, and share results through a written report and presentation.</p>
-<p>Topics include applications of linear and logistic regression, least squares estimation, maximum likelihood estimation, analysis of variance, model diagnostics, and model selection. Students will gain experience using the computing tools R and GitHub to analyze real-world data from a variety of fields.</p>
-</section>
-<section id="prerequisites" class="level3">
-<h3 class="anchored" data-anchor-id="prerequisites">Prerequisites</h3>
-<p>Either any STA 100-level course or STA 230, 231, or 240L and MATH 216, 218, or 221. The recommended co-requisite is STA 230, 231, or 240L.</p>
-<!-- Instructor: Dr. Alexander Fisher   -->
-<!-- TA: TBD   -->
-<!-- TA: TBD -->
-<!-- - Lecture: Monday, Wednesday 3:05-4:20pm in Reuben-Cooke Building 130   -->
-<!-- - Lab 01: Thursday 1:25-2:40pm in LSRC A155   -->
-<!-- - Lab 02: Thursday 3:05-4:20pm in Old Chem 003 -->
-</section>
-<section id="course-material" class="level3">
-<h3 class="anchored" data-anchor-id="course-material">Course material</h3>
-<p>There is no official textbook for the course; readings will be made available as they are assigned. We will use the statistical software package R both in-class, and on take-home assignments in this course. R is freely available at <a href="http://www.r-project.org/" class="uri">http://www.r-project.org/</a>. RStudio, the popular IDE for R, is freely available at <a href="https://posit.co/downloads/" class="uri">https://posit.co/downloads/</a>. Additionally, students may access R and RStudio through Docker containers provided by Duke Office of Information Technology. Containers can be accessed at <a href="https://cmgr.oit.duke.edu/containers" class="uri">https://cmgr.oit.duke.edu/containers</a>.</p>
-</section>
-<section id="course-learning-objectives" class="level3">
-<h3 class="anchored" data-anchor-id="course-learning-objectives">Course learning objectives</h3>
-<p>By the end of the semester, you will be able to…</p>
-<ul>
-<li>analyze data to explore real-world multivariable relationships.</li>
-<li>fit, interpret, and draw conclusions from linear and logistic regression models.</li>
-<li>implement a reproducible analysis workflow using R for analysis, Quarto to write reports and GitHub for version control and collaboration.</li>
-<li>explain the mathematical foundations of linear and logistic regression.</li>
-<li>effectively communicate statistical results to a general audience.</li>
-<li>assess the ethical considerations and implications of analysis decisions.</li>
-</ul>
-</section>
-<section id="evaluation" class="level3">
-<h3 class="anchored" data-anchor-id="evaluation">Evaluation</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 37%">
-<col style="width: 62%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Assignment</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Homework (30%)</td>
-<td>Individual take-home assignments, submitted to Gradescope.</td>
-</tr>
-<tr class="even">
-<td>Midterms (40%)</td>
-<td>Two exams with an in-class and take-home component.</td>
-</tr>
-<tr class="odd">
-<td>Final project (15%)</td>
-<td>Team-based final project.</td>
-</tr>
-<tr class="even">
-<td>Quizzes (5%)</td>
-<td>In-class pop-quizzes.</td>
-</tr>
-<tr class="odd">
-<td>Labs (10%)</td>
-<td>Exercises assigned in lab, submitted to Gradescope.</td>
-</tr>
-</tbody>
-</table>
-<p>A <span class="math inline">\(&gt;= 93\)</span>, A- <span class="math inline">\(&lt; 93\)</span>, B+ <span class="math inline">\(&lt; 90\)</span>, B <span class="math inline">\(&lt; 87\)</span>, B- <span class="math inline">\(&lt; 83\)</span>, C+ <span class="math inline">\(&lt;80\)</span>, C <span class="math inline">\(&lt; 77\)</span>, C- <span class="math inline">\(&lt; 73\)</span>, D+ <span class="math inline">\(&lt; 70\)</span>, D <span class="math inline">\(&lt; 67\)</span>, D- <span class="math inline">\(&lt; 63\)</span>, F <span class="math inline">\(&lt; 60\)</span></p>
+<section id="computing-setup" class="level1">
+<h1>Computing setup</h1>
+<section id="rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio">RStudio</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A note on quizzes
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>On random class days, there will be a brief quiz on the previous lectures. If you score <span class="math inline">\(&gt;60\%\)</span> cumulatively on your final quiz grade, you will receive full participation credit. Your lowest <strong>two</strong> quizzes will also be dropped.</p>
+<p>R is the name of the programming language itself and RStudio is a convenient graphical user interface (GUI).</p>
 </div>
 </div>
-<!-- ::: callout-note -->
-<!-- # A note on exams -->
-<!-- If you miss either midterm 1 or midterm 2, **and have an excused absence**, your missing midterm grade will be replaced by your final exam grade. You must take at least 1 midterm and the final exam to pass the course. -->
-<!-- ::: -->
-<!-- ::: {.callout-important} -->
-<!-- # Late work -->
-<!-- Late homework may be submitted with 48 hours of the assignment deadline. Late homework submitted within 24 hours (even 1 minute late) will receive a 5% late penalty. Late work submitted between 24 to 48 hours of the deadline will receive a 10% late penalty. Work submitted after 48 hours will not be accepted. Exams cannot be turned in late and can only be excused under exceptional circumstances. The Duke policy for illness requires a short-term illness report or a letter from the Dean; except in emergencies, all other absenteeism must be approved in advance (e.g., an athlete who must miss class may be excused by prior arrangement for specific days). For emergencies, email notification is needed at the first reasonable time. -->
-<!-- ::: -->
+<section id="reserve-rstudio-container" class="level3">
+<h3 class="anchored" data-anchor-id="reserve-rstudio-container">Reserve RStudio container</h3>
+<ul>
+<li><p>Go to <a href="https://cmgr.oit.duke.edu/containers" class="uri">https://cmgr.oit.duke.edu/containers</a>. You will log in using your NetID credentials.</p></li>
+<li><p>Click “<strong>Reserve STA 221</strong>” to reserve an RStudio container. Be sure you reserve the container labeled STA 221 to ensure you have the computing set up you need for the class.</p></li>
+</ul>
+<p>You only need to reserve a container once per semester.</p>
 </section>
-<section id="policies" class="level3">
-<h3 class="anchored" data-anchor-id="policies">Policies</h3>
-<p><strong>Academic integrity</strong></p>
-<p>By enrolling in this course, you commit to upholding Duke’s community standard reproduced as follows:</p>
-<blockquote class="blockquote">
-<p>I will not lie, cheat, or steal in my academic endeavors;</p>
-<p>I will conduct myself honorably in all my endeavors; and</p>
-<p>I will act if the Standard is compromised.</p>
-</blockquote>
-<p>Any violations of academic integrity will automatically result in a 0 for the assignment and will be reported to the Office of Student Conduct for further action. For the Exams and Quizzes, students are required to work alone. For the Homework assignments, students may work with a study group but each student must write up and submit their own answers.</p>
-<!-- \newpage -->
-<p><strong>Late work</strong></p>
-<p>Late homework may be submitted within 48 hours of the assignment deadline. Late homework submitted within 24 hours (even 1 minute late) will receive a 5% late penalty. Late work submitted between 24 to 48 hours of the deadline will receive a 10% late penalty. Work submitted after 48 hours will not be accepted. Exams cannot be turned in late and can only be excused under exceptional circumstances. The Duke policy for illness requires a short-term illness report or a letter from the Dean; except in emergencies, all other absenteeism must be approved in advance (e.g., an athlete who must miss class may be excused by prior arrangement for specific days). For emergencies, email notification is needed at the first reasonable time.</p>
-<p><strong>Errors in grading</strong></p>
-<p>Errors in grading must be brought to the attention of the TA or instructor during office hours within 1 week of receiving the grade.</p>
+<section id="open-rstudio-container" class="level3">
+<h3 class="anchored" data-anchor-id="open-rstudio-container">Open RStudio container</h3>
+<ul>
+<li><p>Go to <a href="https://cmgr.oit.duke.edu/containers" class="uri">https://cmgr.oit.duke.edu/containers</a> and log in with your Duke NetID and Password.</p></li>
+<li><p>Click <code>STA221</code> to log into the Docker container. You should now see the RStudio environment.</p></li>
+</ul>
+</section>
+</section>
+<section id="git-and-github" class="level2">
+<h2 class="anchored" data-anchor-id="git-and-github">Git and GitHub</h2>
+<p>In addition to R and RStudio, we will use git and GitHub for version control and collaboration.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Git is a version control system (like “Track Changes” features from Microsoft Word but more powerful) and GitHub is the home for your Git-based projects on the internet (like DropBox but much better).</p>
+</div>
+</div>
+<section id="sign-up-for-github-account" class="level3">
+<h3 class="anchored" data-anchor-id="sign-up-for-github-account">Sign up for GitHub account</h3>
+<p>You will need a GitHub account to access the assignments, project, and in-class exercises for the course.</p>
+<ul>
+<li>If you do not have a GitHub account, go to <a href="https://github.com" class="uri">https://github.com</a> and sign up for an account.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://happygitwithr.com/github-acct#username-advice">Click here</a> for advice on choosing a username. tl;dr choose something that you would be proud to show a future employer.</p>
+</div>
+</div>
+<ul>
+<li>If you already have a GitHub account, you can move on to the next step.</li>
+</ul>
+</section>
+</section>
+<section id="connect-rstudio-and-github" class="level2">
+<h2 class="anchored" data-anchor-id="connect-rstudio-and-github">Connect RStudio and GitHub</h2>
+<p>Now that you have RStudio and a GitHub account, we will configure git so that RStudio and GitHub communicate with one another.</p>
+<section id="set-up-your-ssh-key" class="level3">
+<h3 class="anchored" data-anchor-id="set-up-your-ssh-key">Set up your SSH Key</h3>
+<p>You will authenticate GitHub using SSH. An outline of the authentication steps is below; you are encouraged to follow along as your TA demonstrates the steps.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You only need to do this authentication process one time on a single system.</p>
+</div>
+</div>
+<ul>
+<li><strong>Step 0:</strong> Open your <code>STA 221</code> RStudio container.</li>
+<li><strong>Step 1</strong>: Type <code>credentials::ssh_setup_github()</code> into the <strong>console</strong> on the bottom left of the RStudio environment.</li>
+<li><strong>Step 2</strong>: R will ask “No SSH key found. Generate one now?” Click 1 for yes.</li>
+<li><strong>Step 3</strong>: You will generate a key. It will begin with “ssh-rsa….” R will then ask “Would you like to open a browser now?” Click 1 for yes.</li>
+<li><strong>Step 4</strong>: You may be asked to provide your username and password to log into GitHub. This would be the ones associated with your account that you set up. After entering this information, paste the key in and give it a name. You might name it in a way that indicates where the key will be used, e.g., <code>sta221</code>)</li>
+</ul>
+</section>
+<section id="configure-git" class="level3">
+<h3 class="anchored" data-anchor-id="configure-git">Configure git</h3>
+<p>The last thing we need to do is configure your git so that RStudio can communicate with GitHub. This requires two pieces of information: your name and email address.</p>
+<p>To do so, you will use the <code>use_git_config()</code> function from the <code>usethis</code> package.</p>
+<p>Type the following lines of code in the <strong>console</strong> in RStudio filling in your name and the email address associated with your GitHub account.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_config</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">user.name =</span> <span class="st">"Your name"</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">user.email =</span> <span class="st">"Email associated with your GitHub account"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For example, mine would be</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_config</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">user.name =</span> <span class="st">"Alexander Fisher"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">user.email =</span> <span class="st">"alexander.fisher@duke.edu"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It may look like nothing happened but you are now ready interact between GitHub and RStudio!</p>
+</section>
+</section>
+</section>
+<section id="update-document-and-push-changes-to-github" class="level1">
+<h1>Update document and push changes to GitHub</h1>
+<p>Complete the short exercise to make sure RStudio and GitHub are correctly configured and you are able to send work between the two platforms. You are encouraged to follow along as your TA demonstrates the steps.</p>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
+<ol type="1">
+<li><p>Click here to create your individual <code>lab-00</code> repo: <a href="https://classroom.github.com/a/PMZfNgLX">https://classroom.github.com/a/PMZfNgLX</a></p></li>
+<li><p>Click to open your <code>lab-00</code> repo.</p></li>
+<li><p>Click on the green <strong>CODE</strong> button, select <strong>Use SSH</strong> (this might already be selected by default, and if it is, you’ll see the text <strong>Clone with SSH</strong>). Click on the clipboard icon to copy the repo URL.</p></li>
+<li><p>In RStudio, go to <em>File</em> → <em>New Project</em> → <em>Version Control</em> → <em>Git</em>.</p></li>
+<li><p>Copy and paste the URL of your assignment repo into the dialog box <em>Repository URL</em>. Again, please make sure to have <em>SSH</em> highlighted under <em>Clone</em> when you copy the address.</p></li>
+<li><p>Click <em>Create Project</em>, and the files from your GitHub repo will be displayed in the <em>Files</em> pane in RStudio.</p></li>
+<li><p>Click <code>lab-00.qmd</code> to open the template Quarto file. This is where you will write up your code and narrative for the lab.</p></li>
+</ol>
+</section>
+<section id="update-the-quarto-document" class="level2">
+<h2 class="anchored" data-anchor-id="update-the-quarto-document">Update the Quarto document</h2>
+<ul>
+<li><p><strong>Task 1</strong>: Change the author name at the top of the document to your name. Render the document. You will see your name at the top of the rendered PDF.</p></li>
+<li><p><strong>Task 2</strong>: The plot shows the relationship between the daily temperature and number of bike rentals in Washington, D.C.’s <a href="https://capitalbikeshare.com/">Capital Bikeshare</a> in 2012.</p></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab00_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Write 1 - 2 observations from the plot. Render the document. You will see your response in the rendered PDF.</p>
+</section>
+<section id="commit-and-push-changes-to-github" class="level2">
+<h2 class="anchored" data-anchor-id="commit-and-push-changes-to-github">Commit and push changes to GitHub</h2>
+<ol type="1">
+<li><p>Once you have made your final updates, go to the Git pane in your RStudio instance. This is a tab in the top right corner of the RStudio window.</p></li>
+<li><p>Check the appropriate boxes on every file in the Git pane. All checked files will be sent to GitHub.</p></li>
+<li><p>Next, write a meaningful commit message (for instance, “updated author name”) in the <strong>Commit message</strong> box.</p></li>
+<li><p>Click <strong>Commit</strong>. Note that every commit needs to have a commit message associated with it.</p></li>
+<li><p>Now that you have made an update and committed this change, click <strong>Push</strong> to send the changes to GitHub.</p></li>
+<li><p>Go to your GitHub repo and refresh the page. You should see your commit message next to the updated files. If you see this, all your changes are on GitHub and you’re good to go!</p></li>
+</ol>
+</section>
+</section>
+<section id="submit-github-username" class="level1">
+<h1>Submit GitHub username</h1>
+<p>Use the link below to submit your GitHub username and confirm that you have completed the steps to configure git and send files between RStudio and GitHub.</p>
+<p><a href="https://forms.gle/LZ7AwrviLmYN2c4n7">https://forms.gle/LZ7AwrviLmYN2c4n7</a></p>
 
 
 </section>

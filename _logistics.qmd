@@ -1,0 +1,18 @@
+#### Teaching team & office hours
+
+|   | Contact | Office hours | Location |
+|------------------|------------------|------------------|------------------|
+| Dr. Alexander Fisher | [aaf29\@duke.edu](aaf29@duke.edu) | TBD | TBD |
+| Teaching assistants | TBD |  |  |
+
+<!-- | TA2: TBD            |             |      |          | -->
+
+<!-- | TA3: TBD             |                 |    |       | -->
+
+#### Meetings
+
+|         |                        |                                |
+|---------|------------------------|--------------------------------|
+| Lecture | Tu/Th 11:45am - 1:00pm | Old Chemistry 116              |
+| Lab 01  | We 1:25pm - 2:40pm     | Perkins LINK 087 (Classroom 3) |
+| Lab 02  | We 3:05pm - 4:20pm     | Perkins LINK 087 (Classroom 3) |

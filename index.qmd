@@ -1,11 +1,33 @@
 ---
 title: "Regression Analysis: Theory and Applications"
-subtitle: "Spring 2025 - Dr. Alexander Fisher"
+subtitle: "Spring 2025"
 format:
    html: 
     page-layout: full
     toc: false
 ---
+
+<!-- Course description  -->
+
+<!-- In depth study of regression modeling with emphasis on applications and theoretical underpinnings. Linear and logistic regression, analysis of variance, model diagnostics, and selection. Maximum likelihood and least squares estimation of regression parameters. Examples from a variety of fields. Prerequisite: Either any STA 100-level course or STA 230, 231, or 240L and MATH 216, 218, or 221. Recommended co-requisite: STA 230, 231, or 240L. Interested students with different backgrounds should seek instructor consent. This course is required for Statistical Science majors and students interested in taking STA 360. Students interested in an applied-only regression course should take STA 210. -->
+
+<!-- # Tentative outline -->
+
+<!-- Week 1: Simple linear regression and mathematical notation -->
+<!-- Week 2: Multiple linear regression  -->
+<!-- Week 3: Types of predictors + Model comparison -->
+<!-- Week 4: Inference -->
+<!-- Week 5: Model conditions and diagnostics -->
+<!-- Week 6: Diagnostics and transformations -->
+<!-- Week 7: MLE  -->
+<!-- Week 8: Logistic regression -->
+<!-- Week 9: Logistic regression continued -->
+<!-- Week 10: Weighted least squares -->
+<!-- Week 11: Variable selection -->
+<!-- Week 12: Model selection -->
+<!-- Week 13: special topic / account for exam and review days -->
+<!-- Week 14: no class -->
+<!-- Week 15: special topic / account for exam and review days -->
 
 # Schedule
 
@@ -59,7 +81,7 @@ schedule %>%
 <!--     .heatMap tr:nth-of-type(2n+1) { -->
 <!--   background: #FFF; -->
 <!-- } -->
-    .heatMap tr:nth-of-type(3n-1) { background: #D3D3D3; }
+    .heatMap tr:nth-of-type(2n) { background: #D3D3D3; }
 </style>
 ```
 
@@ -68,12 +90,12 @@ schedule %>%
 ::: heatMap
 | Week | Date       | Topic                  | Prepare | Notes | Assignment |
 |:-----|:-----------|:-----------------------|:--------|:------|:-----------|
-| 1    | Tue Aug 26 | welcome to STA 221!    |         |       |            |
-|      | Wed Aug 27 | lab 0: getting started |         |       |            |
-|      | Thu Aug 28 |                        |         |       |            |
-| 2    | Tue Sep 02 |                        |         |       |            |
-|      | Wed Sep 03 |                        |         |       |            |
-|      | Thu Sep 04 |                        |         |       |            |
+| 1    | Tue Aug 26 | welcome                |         |       |            |
+|      | Wed Aug 27 | hello git and R                  |         |       |   [lab 0]()     |
+|      | Thu Aug 28 | simple linear regression                       |         |       |            |
+| 2    | Tue Sep 02 | analysis of variance (ANOVA1)                       |         |       |            |
+|      | Wed Sep 03 | lab: linear algebra review                       |         |       |  [lab 1]()          |
+|      | Thu Sep 04 | geometric introduction to multiple regression                       |         |       |            |
 | 3    | Tue Sep 09 |                        |         |       |            |
 |      | Wed Sep 10 |                        |         |       |            |
 |      | Thu Sep 11 |                        |         |       |            |
