@@ -199,3 +199,10 @@ When you miss a class:
 
 -   watch the recorded lecture on Canvas
 -   come to office hours / post on Ed Discussion / ask a friend about missed content
+
+## Exercise
+
+```{r}
+#| eval: false
+bikeshare = readr::read_csv("https://raw.githubusercontent.com/sta221-fa25/sta221-fa25.github.io/refs/heads/main/data/bikeshare-2012.csv")
+```

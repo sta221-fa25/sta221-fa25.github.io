@@ -495,5 +495,12 @@
     "title": "Prepare for Lecture 02: Simple linear regression",
     "section": "",
     "text": "📖 Read Simple linear regression, Section 4.1 - 4.6\n📖 Read R for Data Science, Introduction: What you will learn\n📖 Read GitHub for supporting, reusing, contributing, and failing safely\nFor computing introduction / review\n🎥 Watch Meet the Toolkit: R + RStudio\n🎥 Watch Meet the Toolkit: Quarto"
+  },
+  {
+    "objectID": "notes/slides/lec01-welcome.html#exercise",
+    "href": "notes/slides/lec01-welcome.html#exercise",
+    "title": "Welcome to STA 221",
+    "section": "Exercise",
+    "text": "Exercise\n\nbikeshare = readr::read_csv(\"https://raw.githubusercontent.com/sta221-fa25/sta221-fa25.github.io/refs/heads/main/data/bikeshare-2012.csv\")"
   }
 ]
