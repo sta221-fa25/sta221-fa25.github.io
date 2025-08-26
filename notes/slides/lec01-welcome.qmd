@@ -1,0 +1,201 @@
+---
+title: "Welcome to STA 221"
+author: "Dr. Alexander Fisher"
+format: 
+    revealjs:
+      smaller: true
+---
+
+## Logistics
+
+### Contact
+
+-   [alexander.fisher\@duke.edu](alexander.fisher@duke.edu)
+-   Office hours: Mo/Th: 2:00-3:00p in Old Chem 223B
+
+### Course website
+
+-   <https://sta221-fa25.github.io/>
+    -   complete office hours info
+    -   syllabus
+    -   course schedule
+
+## Why linear regression?
+
+-   [Genetics](https://www.nature.com/articles/s41588-021-00870-7)
+    -   Mbatchou et al. (2021)
+    -   Genome wide association studies (GWAS)
+    -   Which single nucleotide polymorphisms in the genome are associated with a specific disease?
+-   [Astrophysics](https://iopscience.iop.org/article/10.1086/312838/pdf)
+    -   Ferrarese and Merritt (2000)
+    -   Is black hole mass related to bulge velocity and/or luminosity of a galaxy?
+-   [Ecology](https://www.science.org/doi/10.1126/science.282.5388.473)
+    -   Estes et al. (1998)
+    -   At what rate is the population of sea otters changing?
+-   [Finance](Jorion,%20P.%20(2006). "Value at Risk: The New Benchmark for Managing Financial Risk.")
+    -   Ruf and Wang (2021)
+    -   Can correlations between price and volatility help us hedge in options trading?
+
+## Learning objectives
+
+By the end of this course you will be able to...
+
+-   analyze data to explore real-world multivariable relationships.
+-   fit, interpret, and draw conclusions from linear and logistic regression models.
+-   implement a reproducible analysis workflow using R for analysis, Quarto to write reports and GitHub for version control and collaboration.
+-   explain the mathematical foundations of linear and logistic regression.
+-   effectively communicate statistical results to a general audience.
+-   assess the ethical considerations and implications of analysis decisions.
+
+# Why reproducible?
+
+## Reproducibility checklist
+
+::: question
+What does it mean for an analysis to be reproducible?
+:::
+
+. . .
+
+**Near term goals**:
+
+✔️ Can the tables and figures be exactly reproduced from the code and data?
+
+✔️ Does the code actually do what you think it does?
+
+✔️ In addition to what was done, is it clear *why* it was done?
+
+. . .
+
+**Long term goals**:
+
+✔️ Can the code be used for other data?
+
+✔️ Can you extend the code to do other things?
+
+## Why is reproducibility important?
+
+-   Results produced are more reliable and trustworthy [@ostblom2022]
+
+-   Facilitates more effective collaboration [@ostblom2022]
+
+-   Contributing to science, which builds and organizes knowledge in terms of testable hypotheses [@alexander2023]
+
+-   Possible to identify and correct errors or biases in the analysis process [@alexander2023]
+
+## Why is reproducibility important?
+
+![](images/clipboard-2176768055.png)
+
+::: small
+-   Originally reported "the intervention, compared with usual care, resulted in a fewer number of mean COPD-related hospitalizations and emergency department visits at 6 months per participant."
+
+-   There were actually **more** COPD-related hospitalizations and emergency department visits in the intervention group compared to the control group
+
+-   Mixed up the intervention vs. control group using "0/1" coding
+:::
+
+:::: aside
+::: small
+<https://jamanetwork.com/journals/jama/fullarticle/2752474>
+:::
+::::
+
+## Toolkit
+
+-   **Scriptability** $\rightarrow$ R
+
+-   **Literate programming** (code, narrative, output in one place) $\rightarrow$ Quarto
+
+-   **Version control** $\rightarrow$ Git / GitHub
+
+## Assessments
+
+| Assignment | Description |
+|---------------------------|---------------------------------------------|
+| Homework (25%) | Individual take-home assignments, submitted to Gradescope. |
+| Midterms (45%) | Two exams with an in-class and take-home component. |
+| Final project (15%) | Team-based final project. |
+| Quizzes (5%) | In-class pop-quizzes. |
+| Labs (10%) | Exercises assigned in lab, submitted to Gradescope. |
+
+# Course Policies
+
+## Community
+
+Uphold the **Duke Community Standard**:
+
+> I will not lie, cheat, or steal in my academic endeavors;
+>
+> I will conduct myself honorably in all my endeavors; and
+>
+> I will act if the Standard is compromised.
+
+Any violations in academic honesty standards as outlined in the Duke Community Standard and those specific to this course will automatically result in a 0 for the assignment and will be reported to the Office of Student Conduct for further action.
+
+## Team work policy
+
+The final project and several labs will be completed in teams. All group members are expected to participate equally. Commit history may be used to give individual team members different grades. Your grade may differ from the rest of your group.
+
+## Sharing / reusing code
+
+-   The use of online resources (including generative AI, as well as static webpages like Stack-Overflow, etc.) is strictly prohibited on in-class quizzes and exams. For take home assignments, you may make use of online resources for coding portions on assignments. If you directly use code from a source (or use it as inspiration), you must explicitly cite where you obtained the code. If you used generative AI to create the code, you should include your prompt(s) in your citation as well.
+
+-   Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism, regardless of source.
+
+-   Narrative (non-code solutions) should always be entirely your own.
+
+::: callout-warning
+Extensive use of AI on take-home assessments will likely set you up for poor performance on graded in-class assignments.
+:::
+
+## Late policy
+
+-   Homeworks and labs can be turned in within 48 hours of the deadline for grade penalty (5% off per day).
+
+-   Exams and the final project cannot be turned in late and can only be excused under exceptional circumstances.
+
+-   The Duke policy for illness requires a short-term illness report or a letter from the Dean; except in emergencies, all other absenteeism must be approved in advance (e.g., an athlete who must miss class may be excused by prior arrangement for specific days). For emergencies, email notification is needed at the first reasonable time.
+
+-   Last minute coding/rendering issues will not be granted extensions.
+
+## Course toolkit
+
+| Resource | Description |
+|-------------------------|-----------------------------------------------|
+| [course website](https://sta221-fa25.github.io/) | course notes, deadlines, assignments, office hours, syllabus |
+| [Canvas](https://go.canvas.duke.edu) | class recordings, solutions, announcements, Ed Discussion |
+| [course organization](https://github.com/sta221-fa25) | assignments, collaboration |
+| [RStudio containers](https://cmgr.oit.duke.edu/containers)\* | online coding platform |
+
+\*You are welcome to install R and RStudio locally on your computer. If working locally you should make sure that your environment meets the following requirements:
+
+-   latest R version
+
+-   latest RStudio
+
+-   working git installation
+
+-   ability to create ssh keys (for GitHub authentication)
+
+-   All R packages updated to their latest version from CRAN
+
+## Communication and missing class
+
+If you have questions about homework/lab exercises, debugging, or any question about course materials
+
+-   come to office hours
+-   ask on Ed Discussion
+
+. . .
+
+::: callout-warning
+The teaching team will not debug via email.
+:::
+
+. . .
+
+When you miss a class:
+
+-   watch the recorded lecture on Canvas
+-   come to office hours / post on Ed Discussion / ask a friend about missed content

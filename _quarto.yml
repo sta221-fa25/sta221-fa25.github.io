@@ -12,7 +12,8 @@ website:
   title: "STA221"
   search: true
   navbar:
-    background: "#012169"
+    background: "#2774AE"
+    # background: "#012169"
     foreground: "#FFFFFF"
     left:
       - href: index.qmd

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 0: Getting Started – STA221</title>
+<title>Prepare for Lecture 02: Simple linear regression – STA221</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -167,45 +133,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#computing-setup" id="toc-computing-setup" class="nav-link" data-scroll-target="#computing-setup">Computing setup</a>
-  <ul class="collapse">
-  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">RStudio</a>
-  <ul class="collapse">
-  <li><a href="#reserve-rstudio-container" id="toc-reserve-rstudio-container" class="nav-link" data-scroll-target="#reserve-rstudio-container">Reserve RStudio container</a></li>
-  <li><a href="#open-rstudio-container" id="toc-open-rstudio-container" class="nav-link" data-scroll-target="#open-rstudio-container">Open RStudio container</a></li>
-  </ul></li>
-  <li><a href="#git-and-github" id="toc-git-and-github" class="nav-link" data-scroll-target="#git-and-github">Git and GitHub</a>
-  <ul class="collapse">
-  <li><a href="#sign-up-for-github-account" id="toc-sign-up-for-github-account" class="nav-link" data-scroll-target="#sign-up-for-github-account">Sign up for GitHub account</a></li>
-  </ul></li>
-  <li><a href="#connect-rstudio-and-github" id="toc-connect-rstudio-and-github" class="nav-link" data-scroll-target="#connect-rstudio-and-github">Connect RStudio and GitHub</a>
-  <ul class="collapse">
-  <li><a href="#set-up-your-ssh-key" id="toc-set-up-your-ssh-key" class="nav-link" data-scroll-target="#set-up-your-ssh-key">Set up your SSH Key</a></li>
-  <li><a href="#configure-git" id="toc-configure-git" class="nav-link" data-scroll-target="#configure-git">Configure git</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#update-document-and-push-changes-to-github" id="toc-update-document-and-push-changes-to-github" class="nav-link" data-scroll-target="#update-document-and-push-changes-to-github">Update document and push changes to GitHub</a>
-  <ul class="collapse">
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
-  <li><a href="#update-the-quarto-document" id="toc-update-the-quarto-document" class="nav-link" data-scroll-target="#update-the-quarto-document">Update the Quarto document</a></li>
-  <li><a href="#commit-and-push-changes-to-github" id="toc-commit-and-push-changes-to-github" class="nav-link" data-scroll-target="#commit-and-push-changes-to-github">Commit and push changes to GitHub</a></li>
-  </ul></li>
-  <li><a href="#submit-github-username" id="toc-submit-github-username" class="nav-link" data-scroll-target="#submit-github-username">Submit GitHub username</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 0: Getting Started</h1>
+<h1 class="title">Prepare for Lecture 02: Simple linear regression</h1>
 </div>
 
 
@@ -222,194 +158,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Please complete all today’s lab tasks before leaving lab today.</p>
-</div>
-</div>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>The goal of today’s lab is to briefly introduce you to the computing tools we’ll use in the course, set up your computing access, and complete the STA 221 student survey. We will talk more about these computing tools in lecture and upcoming labs.</p>
-</section>
-<section id="computing-setup" class="level1">
-<h1>Computing setup</h1>
-<section id="rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="rstudio">RStudio</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>R is the name of the programming language itself and RStudio is a convenient graphical user interface (GUI).</p>
-</div>
-</div>
-<section id="reserve-rstudio-container" class="level3">
-<h3 class="anchored" data-anchor-id="reserve-rstudio-container">Reserve RStudio container</h3>
-<ul>
-<li><p>Go to <a href="https://cmgr.oit.duke.edu/containers" class="uri">https://cmgr.oit.duke.edu/containers</a>. You will log in using your NetID credentials.</p></li>
-<li><p>Click “<strong>Reserve STA 221</strong>” to reserve an RStudio container. Be sure you reserve the container labeled STA 221 to ensure you have the computing set up you need for the class.</p></li>
-</ul>
-<p>You only need to reserve a container once per semester.</p>
-</section>
-<section id="open-rstudio-container" class="level3">
-<h3 class="anchored" data-anchor-id="open-rstudio-container">Open RStudio container</h3>
-<ul>
-<li><p>Go to <a href="https://cmgr.oit.duke.edu/containers" class="uri">https://cmgr.oit.duke.edu/containers</a> and log in with your Duke NetID and Password.</p></li>
-<li><p>Click <code>STA221</code> to log into the Docker container. You should now see the RStudio environment.</p></li>
-</ul>
-</section>
-</section>
-<section id="git-and-github" class="level2">
-<h2 class="anchored" data-anchor-id="git-and-github">Git and GitHub</h2>
-<p>In addition to R and RStudio, we will use git and GitHub for version control and collaboration.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Git is a version control system (like “Track Changes” features from Microsoft Word but more powerful) and GitHub is the home for your Git-based projects on the internet (like DropBox but much better).</p>
-</div>
-</div>
-<section id="sign-up-for-github-account" class="level3">
-<h3 class="anchored" data-anchor-id="sign-up-for-github-account">Sign up for GitHub account</h3>
-<p>You will need a GitHub account to access the assignments, project, and in-class exercises for the course.</p>
-<ul>
-<li>If you do not have a GitHub account, go to <a href="https://github.com" class="uri">https://github.com</a> and sign up for an account.</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><a href="https://happygitwithr.com/github-acct#username-advice">Click here</a> for advice on choosing a username. tl;dr choose something that you would be proud to show a future employer.</p>
-</div>
-</div>
-<ul>
-<li>If you already have a GitHub account, you can move on to the next step.</li>
-</ul>
-</section>
-</section>
-<section id="connect-rstudio-and-github" class="level2">
-<h2 class="anchored" data-anchor-id="connect-rstudio-and-github">Connect RStudio and GitHub</h2>
-<p>Now that you have RStudio and a GitHub account, we will configure git so that RStudio and GitHub communicate with one another.</p>
-<section id="set-up-your-ssh-key" class="level3">
-<h3 class="anchored" data-anchor-id="set-up-your-ssh-key">Set up your SSH Key</h3>
-<p>You will authenticate GitHub using SSH. An outline of the authentication steps is below; you are encouraged to follow along as your TA demonstrates the steps.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You only need to do this authentication process one time on a single system.</p>
-</div>
-</div>
-<ul>
-<li><strong>Step 0:</strong> Open your <code>STA 221</code> RStudio container.</li>
-<li><strong>Step 1</strong>: Type <code>credentials::ssh_setup_github()</code> into the <strong>console</strong> on the bottom left of the RStudio environment.</li>
-<li><strong>Step 2</strong>: R will ask “No SSH key found. Generate one now?” Click 1 for yes.</li>
-<li><strong>Step 3</strong>: You will generate a key. It will begin with “ssh-rsa….” R will then ask “Would you like to open a browser now?” Click 1 for yes.</li>
-<li><strong>Step 4</strong>: You may be asked to provide your username and password to log into GitHub. This would be the ones associated with your account that you set up. After entering this information, paste the key in and give it a name. You might name it in a way that indicates where the key will be used, e.g., <code>sta221</code>)</li>
-</ul>
-</section>
-<section id="configure-git" class="level3">
-<h3 class="anchored" data-anchor-id="configure-git">Configure git</h3>
-<p>The last thing we need to do is configure your git so that RStudio can communicate with GitHub. This requires two pieces of information: your name and email address.</p>
-<p>To do so, you will use the <code>use_git_config()</code> function from the <code>usethis</code> package.</p>
-<p>Type the following lines of code in the <strong>console</strong> in RStudio filling in your name and the email address associated with your GitHub account.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_config</span>(</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">user.name =</span> <span class="st">"Your name"</span>, </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">user.email =</span> <span class="st">"Email associated with your GitHub account"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>For example, mine would be</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_config</span>(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">user.name =</span> <span class="st">"Alexander Fisher"</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">user.email =</span> <span class="st">"alexander.fisher@duke.edu"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>It may look like nothing happened but you are now ready interact between GitHub and RStudio!</p>
-</section>
-</section>
-</section>
-<section id="update-document-and-push-changes-to-github" class="level1">
-<h1>Update document and push changes to GitHub</h1>
-<p>Complete the short exercise to make sure RStudio and GitHub are correctly configured and you are able to send work between the two platforms. You are encouraged to follow along as your TA demonstrates the steps.</p>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
-<ol type="1">
-<li><p>Click here to create your individual <code>lab-00</code> repo: <a href="https://classroom.github.com/a/PMZfNgLX">https://classroom.github.com/a/PMZfNgLX</a></p></li>
-<li><p>Click to open your <code>lab-00</code> repo.</p></li>
-<li><p>Click on the green <strong>CODE</strong> button, select <strong>Use SSH</strong> (this might already be selected by default, and if it is, you’ll see the text <strong>Clone with SSH</strong>). Click on the clipboard icon to copy the repo URL.</p></li>
-<li><p>In RStudio, go to <em>File</em> → <em>New Project</em> → <em>Version Control</em> → <em>Git</em>.</p></li>
-<li><p>Copy and paste the URL of your assignment repo into the dialog box <em>Repository URL</em>. Again, please make sure to have <em>SSH</em> highlighted under <em>Clone</em> when you copy the address.</p></li>
-<li><p>Click <em>Create Project</em>, and the files from your GitHub repo will be displayed in the <em>Files</em> pane in RStudio.</p></li>
-<li><p>Click <code>lab-00.qmd</code> to open the template Quarto file. This is where you will write up your code and narrative for the lab.</p></li>
-</ol>
-</section>
-<section id="update-the-quarto-document" class="level2">
-<h2 class="anchored" data-anchor-id="update-the-quarto-document">Update the Quarto document</h2>
-<ul>
-<li><p><strong>Task 1</strong>: Change the author name at the top of the document to your name. Render the document. You will see your name at the top of the rendered PDF.</p></li>
-<li><p><strong>Task 2</strong>: The plot shows the relationship between the daily temperature and number of bike rentals in Washington, D.C.’s <a href="https://capitalbikeshare.com/">Capital Bikeshare</a> in 2012.</p></li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lab00_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Write 1 - 2 observations from the plot. Render the document. You will see your response in the rendered PDF.</p>
-</section>
-<section id="commit-and-push-changes-to-github" class="level2">
-<h2 class="anchored" data-anchor-id="commit-and-push-changes-to-github">Commit and push changes to GitHub</h2>
-<ol type="1">
-<li><p>Once you have made your final updates, go to the Git pane in your RStudio instance. This is a tab in the top right corner of the RStudio window.</p></li>
-<li><p>Check the appropriate boxes on every file in the Git pane. All checked files will be sent to GitHub.</p></li>
-<li><p>Next, write a meaningful commit message (for instance, “updated author name”) in the <strong>Commit message</strong> box.</p></li>
-<li><p>Click <strong>Commit</strong>. Note that every commit needs to have a commit message associated with it.</p></li>
-<li><p>Now that you have made an update and committed this change, click <strong>Push</strong> to send the changes to GitHub.</p></li>
-<li><p>Go to your GitHub repo and refresh the page. You should see your commit message next to the updated files. If you see this, all your changes are on GitHub and you’re good to go!</p></li>
-</ol>
-</section>
-</section>
-<section id="submit-github-username" class="level1">
-<h1>Submit GitHub username</h1>
-<p>Use the link below to submit your GitHub username and confirm that you have completed the steps to configure git and send files between RStudio and GitHub.</p>
-<p><a href="https://forms.gle/LZ7AwrviLmYN2c4n7">https://forms.gle/LZ7AwrviLmYN2c4n7</a></p>
+<p><br></p>
+<p>📖 Read <a href="https://introregression.netlify.app/04-slr">Simple linear regression, Section 4.1 - 4.6</a></p>
+<p>📖 Read <a href="https://r4ds.hadley.nz/intro#what-you-will-learn"><em>R for Data Science</em>, Introduction: What you will learn</a></p>
+<p>📖 Read <a href="https://openscapes.org/blog/2022-05-27-github-illustrated-series/">GitHub for supporting, reusing, contributing, and failing safely</a></p>
+<p>For computing introduction / review</p>
+<p>🎥 Watch <a href="https://warpwire.duke.edu/w/7WsIAA/">Meet the Toolkit: R + RStudio</a></p>
+<p>🎥 Watch <a href="https://warpwire.duke.edu/w/62sIAA/">Meet the Toolkit: Quarto</a></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

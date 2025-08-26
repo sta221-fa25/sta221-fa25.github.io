@@ -85,14 +85,14 @@ schedule %>%
 </style>
 ```
 
-<!-- useful icons 💻🗒📝 -->
+<!-- useful icons 💻🗒📝📖-->
 
 ::: heatMap
 | Week | Date       | Topic                  | Prepare | Notes | Assignment |
 |:-----|:-----------|:-----------------------|:--------:|:------:|:-----------:|
-| 1    | Tue Aug 26 | welcome                |         |       |            |
+| 1    | Tue Aug 26 | welcome                |         | [💻](/notes/slides/lec01-welcome.html)      |            |
 |      | Wed Aug 27 | lab: hello git and R                  |         |  [💻](/labs/lab0-slides.html)     |   [lab 0](/labs/lab00.html)     |
-|      | Thu Aug 28 | simple linear regression                       |         |       |            |
+|      | Thu Aug 28 | simple linear regression                       | [📖](/prepare/prepare-lec02.html)        |       |            |
 | 2    | Tue Sep 02 | analysis of variance (ANOVA1)                       |         |       |            |
 |      | Wed Sep 03 | lab: linear algebra review                       |         |       |  [lab 1]()          |
 |      | Thu Sep 04 | geometric introduction to multiple regression                       |         |       |            |

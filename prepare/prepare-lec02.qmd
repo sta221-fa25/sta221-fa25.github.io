@@ -1,0 +1,17 @@
+---
+title: "Prepare for Lecture 02: Simple linear regression"
+---
+
+<br>
+
+📖 Read [Simple linear regression, Section 4.1 - 4.6](https://introregression.netlify.app/04-slr)
+
+📖 Read [*R for Data Science*, Introduction: What you will learn](https://r4ds.hadley.nz/intro#what-you-will-learn)
+
+📖 Read [GitHub for supporting, reusing, contributing, and failing safely](https://openscapes.org/blog/2022-05-27-github-illustrated-series/)
+
+For computing introduction / review
+
+🎥 Watch [Meet the Toolkit: R + RStudio](https://warpwire.duke.edu/w/7WsIAA/)
+
+🎥 Watch [Meet the Toolkit: Quarto](https://warpwire.duke.edu/w/62sIAA/)
