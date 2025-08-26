@@ -1,9 +1,9 @@
 project:
   type: website
   output-dir: docs
-  # resources:
+  resources:
   #   - hw-solutions
-  #   - data
+    - data
   render:
   - "*.qmd"
   - "!/teaching-materials"
