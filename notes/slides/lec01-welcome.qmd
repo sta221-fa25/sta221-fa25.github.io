@@ -204,5 +204,5 @@ When you miss a class:
 
 ```{r}
 #| eval: false
-bikeshare = readr::read_csv("https://raw.githubusercontent.com/sta221-fa25/sta221-fa25.github.io/refs/heads/main/data/bikeshare-2012.csv")
+bikeshare = readr::read_csv("https://sta221-fa25.github.io/data/bikeshare-2012.csv")
 ```
