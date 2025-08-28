@@ -1,0 +1,51 @@
+---
+title: "Simple linear regression"
+author: "Dr. Alexander Fisher"
+format: html
+---
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data sets used in these notes"
+#| warning: false
+#| messge: false
+library(tidyverse)
+library(DT)
+ 
+weather = read_csv("~/Downloads/rdu-weather-history.csv")
+weather %>%
+    filter(date >= as.Date("2020-01-01"))
+```
+
+## Learning objectives
+
+By the end of the day you should be able to explain the following concepts:
+
+1.  covariance
+2.  correlation
+3.  location and scale invariance
+4.  ordinary least squares
+
+## Example
+
+The `cars` data set (from base R). The variable `speed` is recorded in miles per hour (mph) while stopping distance `dist` is recorded in feet.
+
+```{r}
+#| echo: false
+datatable(cars, rownames = FALSE, options = list(pageLength = 5),
+          caption = "The speed of cars and the distances taken to stop. Note that the data were recorded in the 1920s.")
+```
+
+We've recorded 50 observations of two measurements. We are interested in the association between these two measurements.
+
+We'll call the speed measurement "x" and the stopping distance "y".
+
+## Vocabulary
+
+| Variable  | Explanation |
+|----|--------------|
+|    $y$       | The outcome variable. Also called "response" or "dependent variable". In prediction tasks, this is the variable we are interested in predicting.    |
+|  $x$         |  The predictor. Also called "covariate", "feature", or "independent variable".    |
+
+
