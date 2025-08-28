@@ -163,7 +163,7 @@ Covariance is **not scale invariant**. That is, covariance does depend on the sc
 ::: callout-note
 ## Definition: correlation
 
-$cor(x, y) = \frac{\sum_{i=1}^n (x_i - \bar{x})^2 (y_i - \bar{y})^2}{\left(\sum (x_i - \bar{x})^2 \sum (y_i - \bar{y})^2\right)^{1/2}}$
+$cor(x, y) = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\left(\sum (x_i - \bar{x})^2 \sum (y_i - \bar{y})^2\right)^{1/2}}$
 
 More concisely, we may write
   
