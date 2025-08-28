@@ -13,9 +13,12 @@ format: html
 library(tidyverse)
 library(DT)
  
-weather = read_csv("~/Downloads/rdu-weather-history.csv")
+weather = read_csv("~/Downloads/rdu-weather-history.csv") %>%
+    filter(date >= as.Date("2021-08-01")) %>%
+    filter(date <= as.Date("2021-08-31"))
+
 weather %>%
-    filter(date >= as.Date("2020-01-01"))
+    
 ```
 
 ## Learning objectives
@@ -47,5 +50,15 @@ We'll call the speed measurement "x" and the stopping distance "y".
 |----|--------------|
 |    $y$       | The outcome variable. Also called "response" or "dependent variable". In prediction tasks, this is the variable we are interested in predicting.    |
 |  $x$         |  The predictor. Also called "covariate", "feature", or "independent variable".    |
+
+
+
+Weather data: 
+
+https://catalog.data.gov/dataset/local-weather-archive/resource/70f03146-c910-4baf-a1e3-9cc92bc7d9bb
+
+This dataset contains Raleigh Durham International Airport weather data pulled from the NOAA web service 
+
+
 
 
