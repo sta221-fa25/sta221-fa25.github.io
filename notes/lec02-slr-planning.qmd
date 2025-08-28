@@ -1,0 +1,29 @@
+---
+title: "Simple linear regression"
+format: html
+---
+
+<!-- ## Nomenclature -->
+
+<!-- $$ -->
+<!-- y = \beta_0 + \beta_1 x + \epsilon -->
+<!-- $$ -->
+
+<!-- | Symbol | Meaning | -->
+<!-- |----|----| -->
+<!-- | y | "response", "outcome", "dependent variable". In prediction tasks, this is what we are interested in predicting. | -->
+<!-- | x | "predictor", "covariate", "feature", "independent variable", when capitalized "X" is sometimes referred to as the "data matrix" | -->
+<!-- | $\beta$ | "population parameter", "constants", "coefficients", $\beta_0$ is often called "the intercept". These are *fixed* numbers. | -->
+<!-- | $\epsilon$ | the "error". This quantity represents observational error, i.e. the difference between our observation and the true population-level expected value | -->
+
+::: panel-tabset
+## Figure
+
+```{r}
+
+```
+
+## Code
+
+:::
+

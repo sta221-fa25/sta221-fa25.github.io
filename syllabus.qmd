@@ -1,6 +1,6 @@
 ---
-title: STA 221 Syllabus
-subtitle: "Fall 2025"
+title: "STA 221: Regression Analysis"
+subtitle: "Syllabus - Fall 2025"
 fontsize: 12pt
 format: 
   html: default
