@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Regression Analysis: Theory and Applications",
     "section": "",
-    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n💻\n\n\n\n\nWed Aug 27\nlab: hello git and R\n\n💻\nlab 0\n\n\n\nThu Aug 28\nsimple linear regression\n📖\n🗒\n\n\n\n2\nTue Sep 02\nanalysis of variance (ANOVA1)\n\n\n\n\n\n\nWed Sep 03\nlab: linear algebra review\n\n\nlab 1\n\n\n\nThu Sep 04\ngeometric introduction to multiple regression\n\n\n\n\n\n3\nTue Sep 09\n\n\n\n\n\n\n\nWed Sep 10\n\n\n\n\n\n\n\nThu Sep 11\n\n\n\n\n\n\n4\nTue Sep 16\n\n\n\n\n\n\n\nWed Sep 17\n\n\n\n\n\n\n\nThu Sep 18\n\n\n\n\n\n\n5\nTue Sep 23\n\n\n\n\n\n\n\nWed Sep 24\n\n\n\n\n\n\n\nThu Sep 25\n\n\n\n\n\n\n6\nTue Sep 30\n\n\n\n\n\n\n\nWed Oct 01\n\n\n\n\n\n\n\nThu Oct 02\nexam review\n\n\n\n\n\n7\nTue Oct 07\nexam 1\n\n\n\n\n\n\nWed Oct 08\n\n\n\n\n\n\n\nThu Oct 09\n\n\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\nWed Oct 15\n\n\n\n\n\n\n\nThu Oct 16\n\n\n\n\n\n\n9\nTue Oct 21\n\n\n\n\n\n\n\nWed Oct 22\n\n\n\n\n\n\n\nThu Oct 23\n\n\n\n\n\n\n10\nTue Oct 28\n\n\n\n\n\n\n\nWed Oct 29\n\n\n\n\n\n\n\nThu Oct 30\n\n\n\n\n\n\n11\nTue Nov 04\n\n\n\n\n\n\n\nWed Nov 05\n\n\n\n\n\n\n\nThu Nov 06\n\n\n\n\n\n\n12\nTue Nov 11\n\n\n\n\n\n\n\nWed Nov 12\nlab: project presentations\n\n\n\n\n\n\nThu Nov 13\n\n\n\n\n\n\n13\nTue Nov 18\n\n\n\n\n\n\n\nWed Nov 19\n\n\n\n\n\n\n\nThu Nov 20\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n15\nTue Dec 02\nexam review\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\nThu Dec 04\nexam 2"
+    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n💻\n\n\n\n\nWed Aug 27\nlab: hello git and R\n\n💻\nlab 0\n\n\n\nThu Aug 28\ncorrelation\n📖\n🗒\n\n\n\n2\nTue Sep 02\nsimple linear regression\n\n\n\n\n\n\nWed Sep 03\nlab: computing and linear algebra review\n\n\nlab 1\n\n\n\nThu Sep 04\ngeometry of regression\n\n\n\n\n\n3\nTue Sep 09\n\n\n\n\n\n\n\nWed Sep 10\n\n\n\n\n\n\n\nThu Sep 11\n\n\n\n\n\n\n4\nTue Sep 16\n\n\n\n\n\n\n\nWed Sep 17\n\n\n\n\n\n\n\nThu Sep 18\n\n\n\n\n\n\n5\nTue Sep 23\n\n\n\n\n\n\n\nWed Sep 24\n\n\n\n\n\n\n\nThu Sep 25\n\n\n\n\n\n\n6\nTue Sep 30\n\n\n\n\n\n\n\nWed Oct 01\n\n\n\n\n\n\n\nThu Oct 02\nexam review\n\n\n\n\n\n7\nTue Oct 07\nexam 1\n\n\n\n\n\n\nWed Oct 08\n\n\n\n\n\n\n\nThu Oct 09\n\n\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\nWed Oct 15\n\n\n\n\n\n\n\nThu Oct 16\n\n\n\n\n\n\n9\nTue Oct 21\n\n\n\n\n\n\n\nWed Oct 22\n\n\n\n\n\n\n\nThu Oct 23\n\n\n\n\n\n\n10\nTue Oct 28\n\n\n\n\n\n\n\nWed Oct 29\n\n\n\n\n\n\n\nThu Oct 30\n\n\n\n\n\n\n11\nTue Nov 04\n\n\n\n\n\n\n\nWed Nov 05\n\n\n\n\n\n\n\nThu Nov 06\n\n\n\n\n\n\n12\nTue Nov 11\n\n\n\n\n\n\n\nWed Nov 12\nlab: project presentations\n\n\n\n\n\n\nThu Nov 13\n\n\n\n\n\n\n13\nTue Nov 18\n\n\n\n\n\n\n\nWed Nov 19\n\n\n\n\n\n\n\nThu Nov 20\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n15\nTue Dec 02\nexam review\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\nThu Dec 04\nexam 2"
   },
   {
     "objectID": "about.html",
@@ -506,7 +506,7 @@
   {
     "objectID": "notes/lec02-slr.html",
     "href": "notes/lec02-slr.html",
-    "title": "Simple linear regression",
+    "title": "Correlation and intro to simple linear regresion",
     "section": "",
     "text": "View libraries and data sets used in these notes\nlibrary(tidyverse)\nlibrary(DT)\n \nweather = \n  read_csv(\"https://sta221-fa25.github.io/data/rdu-weather-history.csv\") %&gt;%\n  arrange(date)"
   },
@@ -520,29 +520,218 @@
   {
     "objectID": "notes/lec02-slr.html#learning-objectives",
     "href": "notes/lec02-slr.html#learning-objectives",
-    "title": "Simple linear regression",
+    "title": "Correlation and intro to simple linear regresion",
     "section": "Learning objectives",
     "text": "Learning objectives\nBy the end of the day you should be able to explain the following concepts:\n\ncovariance\ncorrelation\nlocation and scale invariance\nordinary least squares"
   },
   {
     "objectID": "notes/lec02-slr.html#example",
     "href": "notes/lec02-slr.html#example",
-    "title": "Simple linear regression",
+    "title": "Correlation and intro to simple linear regresion",
     "section": "Example",
     "text": "Example\n\nThis data set contains Raleigh Durham International Airport weather data pulled from the NOAA web service between September 01 and September 30, 2021. The data were sourced from https://catalog.data.gov/ August 28, 2025.\n\n\n\n\n\n\n\n\n\n\n\nWe’ve recorded 30 observations of two measurements. We are interested in the association between these two measurements.\nWe’ll call the minimum daily temperature measurement “x” and the maximum daily temperature “y”."
   },
   {
     "objectID": "notes/lec02-slr.html#vocabulary",
     "href": "notes/lec02-slr.html#vocabulary",
-    "title": "Simple linear regression",
+    "title": "Correlation and intro to simple linear regresion",
     "section": "Vocabulary",
     "text": "Vocabulary\n\n\n\n\n\n\n\nVariable\nExplanation\n\n\n\n\n\\(y\\)\nThe outcome variable. Also called “response” or “dependent variable”. In prediction tasks, this is the variable we are interested in predicting.\n\n\n\\(x\\)\nThe predictor. Also called “covariate”, “feature”, or “independent variable”.\n\n\n\nHow are \\(x\\) and \\(y\\) associated?\n\nScatter plotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweather %&gt;%\n  ggplot(aes(x = tmin, y = tmax)) +\n  geom_point() +\n  labs(title = \"Minimum and maxmimum temperature (F) at RDU in September, 2021\") +\n  theme_bw()\n\n\n\n\nNotice: visualized this way, each of the thirty data points, \\((x_i, y_i)\\), is an element of two-dimensional space.\n\nHow would you describe the association?\n\n\n\n\n\n\n\nDefinition: covariance\n\n\n\n\\(cov(x, y) = \\frac{1}{n-1}\\sum_{i =1}^n (x_i - \\bar{x}) (y_i - \\bar{y})\\) \\(^*\\)\n\\(^*\\) Note that we divide by \\(n-1\\) when computing the sample covariance\n\n\\(\\bar{x} = \\frac{1}{n} \\sum x_i\\) (mean of x)\n\\(\\bar{y} = \\frac{1}{n} \\sum y_i\\) (mean of y)\n\n\n\n\nx = weather %&gt;%\n  select(tmin) %&gt;%\n  pull()\ny = weather %&gt;%\n  select(tmax) %&gt;%\n  pull()\n\ncov(x, y)\n\n[1] 18.68736\n\nsum((x - mean(x)) * (y - mean(y))) / (30 - 1)\n\n[1] 18.68736\n\n\n\nShould the association be the same if the thermometer recording measurements was consistently off by 2 degrees Farenheit?\n\n\n# compute covariance of true temperature measurement\nweather %&gt;%\n  mutate(temp_min_true = tmin + 2,\n         temp_max_true = tmax + 2) %&gt;%\n  summarize(cov(temp_min_true, temp_max_true)) %&gt;%\n  pull()\n\n[1] 18.68736\n\n\nCovariance is location invariant.\n\nWill the association stay the same if we recorded temperature in celsius?\n\n\n# compute the covariance between temperature in celsius\nweather %&gt;%\n  mutate(temp_min_c = (tmin - 32) * 5 / 9,\n         temp_max_c = (tmax - 32) * 5 / 9) %&gt;%\n  summarize(cov(temp_min_c, temp_max_c)) %&gt;%\n  pull()\n\n[1] 5.767703\n\n\nCovariance is not scale invariant. That is, covariance does depend on the scale of the measurements."
   },
   {
     "objectID": "notes/lec02-slr.html#correlation",
     "href": "notes/lec02-slr.html#correlation",
-    "title": "Simple linear regression",
+    "title": "Correlation and intro to simple linear regresion",
     "section": "Correlation",
-    "text": "Correlation\n\n\n\n\n\n\nDefinition: correlation\n\n\n\n\\(cor(x, y) = \\frac{\\sum_{i=1}^n (x_i - \\bar{x}) (y_i - \\bar{y})}{\\left(\\sum (x_i - \\bar{x})^2 \\sum (y_i - \\bar{y})^2\\right)^{1/2}}\\)\nMore concisely, we may write\n\\(cor(x, y) = \\frac{S_{xy}}{S_{xx}^{1/2} S_{yy}^{1/2}}\\)\n\n\n\n# correlation in Farenheit vs Celsi\n# compute the covariance between temperature in celsius\nweather %&gt;%\n  mutate(temp_min_c = (tmin - 32) * 5 / 9,\n         temp_max_c = (tmax - 32) * 5 / 9) %&gt;%\n  summarize(cor_F = cor(tmin, tmax), \n            cor_C = cor(temp_min_c, temp_max_c))\n\n# A tibble: 1 × 2\n  cor_F cor_C\n  &lt;dbl&gt; &lt;dbl&gt;\n1 0.554 0.554\n\n\n\nExercise\n\n\nShow \\(cor(x, y) = cor(ax + b, cy + d)\\).\n\n\n\nCorrelation is location and scale invariant!\nAdditional facts about correlation:\n\nCorrelation is not invariant to monotone transformations of the data\n\n\n\n\n\n\n\nDefinition: monotone\n\n\n\n\\(g\\) is a monotonic function iff \\(x \\leq y\\) implies \\(g(x) \\leq g(y)\\)\n\n\n\nExercise\n\n\nShow by example that correlation is not invariant to monotonic transformations.\n\n\n\n\nCorrelation is not robust to outliers\n\n\nExample 1Example 2\n\n\n\nset.seed(221)\nx = c(1:5)\ny= x + rnorm(5)\nplot(x, y)\n\n\n\n\n\n\n\ncor(x, y)\n\n[1] 0.9042223\n\n\n\n\n\nx2 = c(x, 0)\ny2 = c(y, 20)\nplot(x2, y2)\n\n\n\n\n\n\n\ncor(x2, y2)\n\n[1] -0.5195233\n\n\n\n\n\n\nCorrelation is bounded between -1 and 1.\n\n\nExercise\n\n\nShow that \\(|cor(x, y)| \\leq 1\\)\n\n\n\n\ncorrelation is a measure of linear association\n\n\nExample 1Example 2\n\n\n\nx = -10:10\ny = x^2\nplot(x, y)\n\n\n\n\n\n\n\ncor(x, y) \n\n[1] -4.786989e-17\n\n\n\n\n\nx = -10:10\ny = x\nplot(x, y)\n\n\n\n\n\n\n\ncor(x, y)\n\n[1] 1\n\n\n\n\n\nSince correlation is related to a linear relationship between the data, this implies\n\\[\ny_i = \\beta_0 + \\beta_1 x_i + \\epsilon_i\n\\]\nCheck out the interactive regression web app here:\nhttps://seeing-theory.brown.edu/regression-analysis/index.html#section1"
+    "text": "Correlation\n\n\n\n\n\n\nDefinition: correlation\n\n\n\n\\(cor(x, y) = \\frac{\\sum_{i=1}^n (x_i - \\bar{x}) (y_i - \\bar{y})}{\\left(\\sum (x_i - \\bar{x})^2 \\sum (y_i - \\bar{y})^2\\right)^{1/2}}\\)\nMore concisely, we may write\n\\(cor(x, y) = \\frac{S_{xy}}{S_{xx}^{1/2} S_{yy}^{1/2}}\\)\n\n\n\n# correlation in Farenheit vs Celsi\n# compute the covariance between temperature in celsius\nweather %&gt;%\n  mutate(temp_min_c = (tmin - 32) * 5 / 9,\n         temp_max_c = (tmax - 32) * 5 / 9) %&gt;%\n  summarize(cor_F = cor(tmin, tmax), \n            cor_C = cor(temp_min_c, temp_max_c))\n\n# A tibble: 1 × 2\n  cor_F cor_C\n  &lt;dbl&gt; &lt;dbl&gt;\n1 0.554 0.554\n\n\n\nExerciseSolution\n\n\nShow \\(cor(x, y) = cor(ax + b, cy + d)\\).\n\n\nLet \\[\n\\begin{aligned}\nx^* &= ax_i + b,\\\\\ny^* &= cx_i + d,\n\\end{aligned}\n\\]\nthen we want to prove that \\(cor(x, y) = cor(x^*, y^*)\\).\n\\[\n\\begin{aligned}\ncor(x^*, y^*) &= \\frac{\\sum(ax_i + b - a\\bar{x} - b)(cy_i + d - c\\bar{y} - d)}{\\sqrt{\n\\sum (ax_i + b - a\\bar{x} - b)^2 \\sum (cy_i + d - c\\bar{y} - d)^2\n}\n}\\\\\n&= \\frac{ac \\sum(x_i -\\bar{x})(y_i - \\bar{y})}{\nac \\sqrt{\\sum (ax_i + b - a\\bar{x} - b)^2 \\sum (cy_i + d - c\\bar{y} - d)^2\n}\n}\\\\\n&= \\frac{\nS_{xy}}{\\sqrt{S_{xx} S_{yy}}\n}\n\\end{aligned}\n\\]\n\n\n\nCorrelation is location and scale invariant!\nAdditional facts about correlation:\n\n\n\n\n\n\nFact 1\n\n\n\n\nCorrelation is not invariant to monotone transformations of the data\n\n\n\n\n\n\n\n\n\nDefinition: monotone\n\n\n\n\\(g\\) is a monotonic function iff \\(x \\leq y\\) implies \\(g(x) \\leq g(y)\\)\n\n\n\nExerciseSolution\n\n\nShow by example that correlation is not invariant to monotonic transformations.\n\n\n\nset.seed(221)\nx = c(1:10) \nlogx = log(x)\ny = rnorm(10)\ncor(x, y)\n\n[1] -0.1757986\n\ncor(logx, y)\n\n[1] -0.2686214\n\n\n\n\n\n\n\n\n\n\n\nFact 2\n\n\n\n\nCorrelation is not robust to outliers\n\n\n\n\nExample 1Example 2\n\n\n\nset.seed(221)\nx = c(1:5)\ny= x + rnorm(5)\nplot(x, y)\n\n\n\n\n\n\n\ncor(x, y)\n\n[1] 0.9042223\n\n\n\n\n\nx2 = c(x, 0)\ny2 = c(y, 20)\nplot(x2, y2)\n\n\n\n\n\n\n\ncor(x2, y2)\n\n[1] -0.5195233\n\n\n\n\n\n\n\n\n\n\n\nFact 3\n\n\n\nCorrelation is bounded between -1 and 1.\n\n\n\nExerciseSolution\n\n\nShow that \\(|cor(x, y)| \\leq 1\\)\n\n\nCauchy-Schwarz inequality:\nLet \\(u\\) and \\(v\\) be vectors of dimension \\(n\\), then\n\\[\n|u^T v|^2 \\leq (u^Tu) (v^Tv).\n\\] To prove that \\(\\|cor(x,y)\\| \\leq 1\\), let \\(u = x - \\bar{x}\\) and let \\(v = y - \\bar{y}\\).\n\n\n\n\n\n\nImportant\n\n\n\nNotice that the dimension of a vector inner product, e.g. \\(u^Tv\\) is \\(1 \\times 1\\), in other words, it is a “scalar”, a number.\n\n\n\n\n\n\n\n\n\n\n\nFact 4\n\n\n\n\ncorrelation is a measure of linear association\n\n\n\n\nExample 1Example 2\n\n\n\nx = -10:10\ny = x^2\nplot(x, y)\n\n\n\n\n\n\n\ncor(x, y) \n\n[1] -4.786989e-17\n\n\n\n\n\nx = -10:10\ny = x\nplot(x, y)\n\n\n\n\n\n\n\ncor(x, y)\n\n[1] 1\n\n\n\n\n\nSince correlation is related to a linear relationship between the data, strong correlation implies that\n\\[\ny_i = \\beta_0 + \\beta_1 x_i + \\epsilon_i\n\\]\n\nExercise\n\n\nCheck out the interactive regression web app here:\nhttps://seeing-theory.brown.edu/regression-analysis/index.html#section1"
+  },
+  {
+    "objectID": "labs/lab01.html",
+    "href": "labs/lab01.html",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "",
+    "text": "Due date\n\n\n\nThis lab is due on Tuesday, September 9 at 5:00pm to Gradescope."
+  },
+  {
+    "objectID": "labs/lab01.html#learning-goals",
+    "href": "labs/lab01.html#learning-goals",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab, you will…\n\nRecall some basic matrix operations and linear algebra rules\nBe familiar with the workflow using RStudio and GitHub\nGain practice writing a reproducible report using Quarto\nPractice version control using GitHub\nBe able to produce visualizations and summary statistics to describe distributions"
+  },
+  {
+    "objectID": "labs/lab01.html#clone-the-repo-start-new-rstudio-project",
+    "href": "labs/lab01.html#clone-the-repo-start-new-rstudio-project",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Clone the repo & start new RStudio project",
+    "text": "Clone the repo & start new RStudio project\n\nGo to the course organization at github.com/sta221-fa25 organization on GitHub.\nClick on the repo with the prefix lab-01. It contains the starter documents you need to complete the lab.\nClick on the green CODE button, select Use SSH (this might already be selected by default, and if it is, you’ll see the text Clone with SSH). Click on the clipboard icon to copy the repo URL.\n\nSee the lab 0 instructions if you have not set up the SSH key or configured git.\n\nIn RStudio, go to File \\(\\rightarrow\\) New Project \\(\\rightarrow\\) Version Control \\(\\rightarrow\\) Git.\nCopy and paste the URL of your assignment repo into the dialog box Repository URL. Again, please make sure to have SSH highlighted under Clone when you copy the address.\nClick Create Project, and the files from your GitHub repo will be displayed in the Files pane in RStudio.\nClick lab-01.qmd to open the template Quarto file. This is where you will write up your code and narrative for the lab."
+  },
+  {
+    "objectID": "labs/lab01.html#r-and-r-studio",
+    "href": "labs/lab01.html#r-and-r-studio",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "R and R Studio",
+    "text": "R and R Studio\nBelow are the components of the RStudio IDE.\n\n\n\n\n\nBelow are the components of an Quarto (.qmd) file."
+  },
+  {
+    "objectID": "labs/lab01.html#yaml",
+    "href": "labs/lab01.html#yaml",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "YAML",
+    "text": "YAML\nThe top portion of your Quarto file (between the three dashed lines) is called YAML. It stands for “YAML Ain’t Markup Language”. It is a human friendly data serialization standard for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.\n\n\n\n\n\n\nImportant\n\n\n\nOpen the Quarto (.qmd) file in your project, change the author name to your name, and render the document. Examine the rendered document."
+  },
+  {
+    "objectID": "labs/lab01.html#committing-changes",
+    "href": "labs/lab01.html#committing-changes",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Committing changes",
+    "text": "Committing changes\nNow, go to the Git pane in your RStudio instance. This will be in the top right hand corner in a separate tab.\nIf you have made changes to your Quarto (.qmd) file, you should see it listed here. Click on it to select it in this list and then click on Diff. This shows you the difference between the last committed state of the document and its current state including changes. You should see deletions in red and additions in green.\nIf you’re happy with these changes, we’ll prepare the changes to be pushed to your remote repository. First, stage your changes by checking the appropriate box on the files you want to prepare. Next, write a meaningful commit message (for instance, “updated author name”) in the Commit message box. Finally, click Commit. Note that every commit needs to have a commit message associated with it.\nYou don’t have to commit after every change, as this would get quite tedious. You should commit states that are meaningful to you for inspection, comparison, or restoration.\nIn the first few assignments we will tell you exactly when to commit and in some cases, what commit message to use. As the semester progresses we will let you make these decisions.\nNow let’s make sure all the changes went to GitHub. Go to your GitHub repo and refresh the page. You should see your commit message next to the updated files. If you see this, all your changes are on GitHub and you’re good to go!"
+  },
+  {
+    "objectID": "labs/lab01.html#push-changes",
+    "href": "labs/lab01.html#push-changes",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Push changes",
+    "text": "Push changes\nNow that you have made an update and committed this change, it’s time to push these changes to your repo on GitHub.\nIn order to push your changes to GitHub, you must have staged your commit to be pushed. click on Push."
+  },
+  {
+    "objectID": "labs/lab01.html#instructions",
+    "href": "labs/lab01.html#instructions",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Instructions",
+    "text": "Instructions\nWrite all code and narrative in your Quarto file. Write all narrative in complete sentences. Throughout the assignment, you should periodically render your Quarto document to produce the updated PDF, commit the changes in the Git pane, and push the updated files to GitHub.\n\n\n\n\n\n\nTip\n\n\n\nMake sure we can read all of your code in your PDF document. This means you will need to break up long lines of code. One way to help avoid long lines of code is is start a new line after every pipe (|&gt;) and plus sign (+)."
+  },
+  {
+    "objectID": "labs/lab01.html#exercise-1",
+    "href": "labs/lab01.html#exercise-1",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nViewing a summary of the data is a useful starting point for data analysis, especially if the data set has a large number of observations (rows) or variables (columns). Run the code below to use the glimpse function to see a summary of the ikea data set.\nHow many observations are in the ikea data set? How many variables?\n\nglimpse(ikea)\n\n\n\n\n\n\n\nNote\n\n\n\nIn your `lab-01.qmd` document you’ll see that we already added the code required for the exercise as well as a sentence where you can fill in the blanks to report the answer. Use this format for the remaining exercises.\nAlso note that the code chunk has a label: glimpse-data. Labeling your code chunks is not required, but it is good practice and highly encouraged."
+  },
+  {
+    "objectID": "labs/lab01.html#exercise-2",
+    "href": "labs/lab01.html#exercise-2",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nWe begin each regression analysis with exploratory data analysis (EDA) to help us “get to know” the data and examine the variable distributions and relationships between variables. We do this by visualizing the data and calculating summary statistics to describe the variables in our data set. In this lab, we will focus on data visualizations.\nWhen we make visualizations, we want them to be clear and suitable to present to a professional audience. This means that, at a minimum, each visualization should have an informative title and informative axis labels.\nFill in the code below to visualize the distribution of price_usd, the price in US dollars.\n\nggplot(data = ikea, aes(x = _____)) +\n  geom_histogram() +\n    labs(x = \"_____\",\n       y = \"_____\", \n       title = \"_____\")"
+  },
+  {
+    "objectID": "labs/lab01.html#exercise-3",
+    "href": "labs/lab01.html#exercise-3",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Exercise 3",
+    "text": "Exercise 3\nUse the visualization to describe the distribution of price. In your narrative, include descriptions of the shape, approximate center, approximate spread, and any presence of outliers. Briefly explain why the median is more representative of the center of this distribution than the mean.\nNote: You may compute summary statistics to more precisely describe the center and spread.\n\nThis is a good place to render, commit, and push changes to your lab-01 repo on GitHub. Write an informative commit message (e.g. “Completed exercises 1 - 3”), and push every file to GitHub by clicking the check box next to each file in the Git pane. After you push the changes, the Git pane in RStudio should be empty."
+  },
+  {
+    "objectID": "labs/lab01.html#exercise-4",
+    "href": "labs/lab01.html#exercise-4",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Exercise 4",
+    "text": "Exercise 4\nIn this course, we’ll be most interested in the relationship between two or more variables, so let’s begin by looking at the distribution of price by category. We’ll focus on two categories, Sofas & armchairs and Bookcases & shelving units, since these may be types of furniture most useful to furnish an office.\nFill in the code below to create a new data frame called ikea_sub that only includes the furniture categories of interest. We’re assigning this subsetted data frame to an object with a new name, so we don’t overwrite the original data.\n\nikea_sub &lt;- ikea |&gt;\n  filter(_____ %in% c( \"_____\",\n                       \"_____\"))\n\nNow, run the code below to remove observations that have that have a missing value for at least one of width or price_usd.\n\nikea_sub &lt;- ikea_sub |&gt;\n  drop_na(width, price_usd)\n\nHow many observations are in the ikea_sub data frame? How many variables?\n\n\n\n\n\n\nImportant\n\n\n\nUse the ikea_sub data frame for the remainder of lab."
+  },
+  {
+    "objectID": "labs/lab01.html#exercise-5",
+    "href": "labs/lab01.html#exercise-5",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nCreate a visualization of the relationship between the width and price of your items at Ikea in the two categories of interest. Include informative axis labels and an informative title. Use the visualization to describe the relationship between the two variables.\nThen, recreate your visualization, but now adding color based on furniture category. Comment on your observations from this visualization.\nNote: Show both visualizations in the response.\n\nThis is a good place to render, commit, and push changes to your lab-01 repo on GitHub. Write an informative commit message (e.g. “Completed exercises 4 - 5”), and push every file to GitHub by clicking the check box next to each file in the Git pane. After you push the changes, the Git pane in RStudio should be empty."
+  },
+  {
+    "objectID": "labs/lab01.html#instructions-1",
+    "href": "labs/lab01.html#instructions-1",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Instructions",
+    "text": "Instructions\n\nThe conceptual exercises are focused on explaining concepts and showing results mathematically. Show your work for each question.\n\nPut any relevant R code in the Quarto document. You may write the answers and show any associated work for conceptual exercises by hand or type them in your Quarto document using LaTex.\nLet\n\\[\nA = \\begin{bmatrix}\n1 & 2\\\\\n3 & 4\\\\\n5 & 6\\end{bmatrix},\n\\qquad\nB = \\begin{bmatrix}\n1 & 1 & 1 & 1\\\\\n0 & 1 & 2 & 3\n\\end{bmatrix},\n\\qquad\nC = \\begin{bmatrix}\n1 & 4\\\\\n2 & 5\\\\\n3 & 6\\end{bmatrix}\n\\qquad\n\\]\n\\[\n\\mathbf{X} = \\begin{bmatrix}\nx_{11} & x_{12}& \\dots & x_{1p}\\\\\nx_{21} & x_{22}& \\dots & x_{2p}\\\\\n\\vdots & \\vdots& \\ddots & \\vdots\\\\\nx_{n1} & x_{n2}& \\dots & x_{np}\\\\\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "labs/lab01.html#exercise-6",
+    "href": "labs/lab01.html#exercise-6",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Exercise 6",
+    "text": "Exercise 6\nWrite the dimensions of the following matrices:\n\n\\(A\\)\n\\(B\\)\n\\(A^\\top\\)\n\\(\\mathbf{X}\\)\n\\(\\mathbf{X}^\\top\\)"
+  },
+  {
+    "objectID": "labs/lab01.html#exercise-7",
+    "href": "labs/lab01.html#exercise-7",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Exercise 7",
+    "text": "Exercise 7\ni. Which of the following is a proper matrix multiplication operation? Explain why.\n\n\\(A\\times C\\)\n\\(A\\times B\\)\n\\(A^\\top \\times B\\)\n\\(B \\times A\\)\n\\(B^\\top \\times C\\)\n\\(B\\times B\\)\n\nii. Perform the multiplication you chose in part (i)."
+  },
+  {
+    "objectID": "labs/lab01.html#matrix-operations-in-r",
+    "href": "labs/lab01.html#matrix-operations-in-r",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Matrix operations in R",
+    "text": "Matrix operations in R\nR has built in matrix tools such as addition, multiplication, transpose, etc. We will now practice using these tools to review some matrix properties.\nWe first begin by creating matrices using matrix() function. We provide elements of our matrices as the data argument and specify how many rows our matrices have. byrow = TRUE allows us to fill the matrix by row.\n\nA &lt;- matrix(data = c(1, 2,\n                     3, 4,\n                     5, 6),\n            nrow = 3, \n            byrow = TRUE) \n\nB &lt;- matrix(data = c(1, 1, 1, 1, \n                     0, 1, 2, 3), \n            nrow = 2,\n            byrow = TRUE)\n\nC &lt;-  matrix(data = c(1, 4,\n                      2, 5,\n                      3, 6),\n            nrow = 3, \n            byrow = TRUE) \n\nYou can learn more about matrix() function by typing ?matrix in console."
+  },
+  {
+    "objectID": "labs/lab01.html#exercise-8",
+    "href": "labs/lab01.html#exercise-8",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Exercise 8",
+    "text": "Exercise 8\ni. To perform addition or subtraction, we can simply use a + or - operators.\n\n# Add A and C\nA + C\n\n     [,1] [,2]\n[1,]    2    6\n[2,]    5    9\n[3,]    8   12\n\n\nUsing R, find \\(C + A\\). Is addition commutative (i.e. does \\(A + C = C + A\\))? Show the work to support your response.\nii. In R, we have to use a special matrix multiplication operator, %*% .\n\n# multiply A and B\nA %*% B\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    3    5    7\n[2,]    3    7   11   15\n[3,]    5   11   17   23\n\n\nDoes the output match your answer to Exercise 7 (ii)? What happens if you try to multiply \\(B\\times A\\) in R?\n\n\n\n\n\n\nWarning\n\n\n\nMatrix multiplication is not commutative! Matrix multiplication satisfies left and right distributivity: \\((\\mathbf{A} + \\mathbf{B}) \\mathbf{C} = \\mathbf{A}\\mathbf{C} + \\mathbf{B}\\mathbf{C}\\), and \\(\\mathbf{A}( \\mathbf{B}+ \\mathbf{C}) = \\mathbf{A}\\mathbf{B} + \\mathbf{A}\\mathbf{C}\\), but the order here matters. \\((\\mathbf{A} + \\mathbf{B}) \\mathbf{C} \\neq \\mathbf{C}\\mathbf{A} +\\mathbf{C} \\mathbf{B}\\), and \\(\\mathbf{A}( \\mathbf{B}+ \\mathbf{C}) \\neq \\mathbf{B}\\mathbf{A} + \\mathbf{C}\\mathbf{A}\\). Pay attention to the order and dimensions of matrices.\n\n\niii. In this class, we will work a lot with matrix transposes. You can transpose a matrix in R by applying t() function.\n\n# transpose A\nt(A)\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n\nFind \\(B^\\top \\times A^\\top\\) using R. How is your answer compare to the result of \\(A\\times B\\) you found in previous part?\n\nThis is a good place to render, commit, and push changes to your lab-01 repo on GitHub. Write an informative commit message (e.g., “Completed exercises 6 - 8”), and push every file to GitHub by clicking the check box next to each file in the Git pane. After you push the changes, the Git pane in RStudio should be empty."
+  },
+  {
+    "objectID": "labs/lab01.html#exercise-9",
+    "href": "labs/lab01.html#exercise-9",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Exercise 9",
+    "text": "Exercise 9\nLet \\(\\mathbf a = \\begin{bmatrix}a_1 \\\\ \\vdots \\\\ a_n\\end{bmatrix}\\) and \\(\\mathbf b = \\begin{bmatrix}b_1 \\\\ \\vdots \\\\ b_n\\end{bmatrix}\\). Recall, \\[\\mathbf{a}^\\top \\mathbf{a} = \\sum_{i=1}^n a_i^2.\\]\nWrite \\((\\mathbf{a} - \\mathbf{b})^\\top (\\mathbf{a} - \\mathbf{b})\\) using summation notation."
+  },
+  {
+    "objectID": "labs/lab01.html#more-linear-algebra",
+    "href": "labs/lab01.html#more-linear-algebra",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "More Linear Algebra",
+    "text": "More Linear Algebra\nRecall the definition of linear dependence:\nA sequence of vectors \\(\\mathbf{x_1}, \\mathbf{x_2}, \\dots, \\mathbf{x_p}\\) is said to be linearly dependent if there exists a series of scalars \\(a_1, a_2, \\dots, a_p\\), not all zero, such that\n\\[\na_1 \\mathbf{x_1} + a_2 \\mathbf{x_2} + \\dots + a_p \\mathbf{x_p} = \\mathbf{0}\n\\] Further, matrix \\(\\mathbf{X}\\) has full column rank if all of its columns are linearly independent.\nFor example, the following matrix is not full rank,\n\\[\n\\mathbf{X} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n1 & 1 & 2\n\\end{bmatrix}\n\\] since, letting letting \\(\\mathbf{x_1} = \\begin{bmatrix}1\\\\1 \\end{bmatrix}\\), \\(\\mathbf{x_2} = \\begin{bmatrix}2\\\\1 \\end{bmatrix}\\), \\(\\mathbf{x_3} = \\begin{bmatrix}3\\\\2 \\end{bmatrix}\\), and letting \\(a_1 = 1\\), \\(a_2 = 1\\), and \\(a_3 = -1\\), we have:\n\\[\na_1 \\mathbf{x_1} + a_2\\mathbf{x_2} + a_3\\mathbf{x_3} =  \\begin{bmatrix}1\\\\1 \\end{bmatrix} + \\begin{bmatrix}2\\\\1 \\end{bmatrix} - \\begin{bmatrix}3\\\\2 \\end{bmatrix} = \\mathbf{0}.\n\\]"
+  },
+  {
+    "objectID": "labs/lab01.html#exercise-10",
+    "href": "labs/lab01.html#exercise-10",
+    "title": "Lab 1: Computing and linear algebra review",
+    "section": "Exercise 10",
+    "text": "Exercise 10\nFor each of the following matrices, state whether it is full rank. If not full rank, show why (find corresponding coefficients \\(a\\)’s).\n\n\\[\\begin{bmatrix}\n1 & 0 & 0\\\\\n1 & 1 & 0\\\\\n1 & 1 & 0\\\\\n1 & 0 & 1\n\\end{bmatrix}\\]\n\\[\\begin{bmatrix}\n0 & 0 & 1\\\\\n1 & 0 & 0\\\\\n1 & 0 & 0\\\\\n0 & 1 & 0\n\\end{bmatrix}\\]\n\\[\\begin{bmatrix}\n1 & 0 & 0 & 1\\\\\n1 & 1 & 0 & 0\\\\\n1 & 1 & 0 & 0\\\\\n1 & 0 & 1 & 0\n\\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "notes/lec02-slr.html#fact-1",
+    "href": "notes/lec02-slr.html#fact-1",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Fact 1",
+    "text": "Fact 1\n\nCorrelation is not invariant to monotone transformations of the data"
+  },
+  {
+    "objectID": "notes/lec02-slr.html#fact-2",
+    "href": "notes/lec02-slr.html#fact-2",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Fact 2",
+    "text": "Fact 2\n\nCorrelation is not robust to outliers"
+  },
+  {
+    "objectID": "notes/lec02-slr.html#fact-3",
+    "href": "notes/lec02-slr.html#fact-3",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Fact 3",
+    "text": "Fact 3\nCorrelation is bounded between -1 and 1."
+  },
+  {
+    "objectID": "notes/lec02-slr.html#fact-4",
+    "href": "notes/lec02-slr.html#fact-4",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Fact 4",
+    "text": "Fact 4\n\ncorrelation is a measure of linear association"
+  },
+  {
+    "objectID": "notes/lec02-slr.html#nomenclature-of-regression",
+    "href": "notes/lec02-slr.html#nomenclature-of-regression",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Nomenclature of regression",
+    "text": "Nomenclature of regression\n\n\n\n\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(y\\)\nThe response variable. Also called the “outcome” or “dependent variable”.\n\n\n\\(x\\)\nA covariate. Also called the “predictor”, “feature” or “independent variable”.\n\n\n\\(\\beta_0, \\beta_1\\)\nThese are population parameters, i.e. fixed and unknown constants.\n\n\n\\(\\hat{\\beta}_0, \\hat{\\beta}_1\\)\nEstimates of \\(\\beta_0, \\beta_1\\) based on a sample.\n\n\n\\(\\epsilon\\)\nThe error. Defined by the regression equation: \\(\\epsilon = y - \\beta_0 - \\beta_1 x\\).\n\n\n\\(\\hat{y}\\)\nThe prediction outcome. \\(\\hat{y} = \\hat{\\beta_0} + \\hat{\\beta_1} x\\). May also be referred to as the “fitted regression model”\n\n\n\\(e\\)\nThe residual, i.e. the difference between the outcome and the fitted model. Defined as \\(y - \\hat{y}\\), or equivalently, \\(y - \\hat{\\beta_0} - \\hat{\\beta_1}x\\)"
+  },
+  {
+    "objectID": "notes/lec02-slr.html#nomenclature-of-simple-linear-regression",
+    "href": "notes/lec02-slr.html#nomenclature-of-simple-linear-regression",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Nomenclature of simple linear regression",
+    "text": "Nomenclature of simple linear regression\n\n\n\n\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(y\\)\nThe response variable. Also called the “outcome” or “dependent variable”.\n\n\n\\(x\\)\nA covariate. Also called the “predictor”, “feature” or “independent variable”.\n\n\n\\(\\beta_0, \\beta_1\\)\nThese are population parameters, i.e. fixed and unknown constants.\n\n\n\\(\\hat{\\beta}_0, \\hat{\\beta}_1\\)\nEstimates of \\(\\beta_0, \\beta_1\\) based on a sample.\n\n\n\\(\\hat{y}\\)\nThe prediction outcome. \\(\\hat{y} = \\hat{\\beta_0} + \\hat{\\beta_1} x\\). May also be referred to as the “fitted regression model”.\n\n\n\\(\\epsilon\\)\nThe error. Defined by the regression equation: \\(\\epsilon = y - \\beta_0 - \\beta_1 x\\).\n\n\n\\(e\\)\nThe residual, i.e. the difference between the outcome and the fitted model. Defined as \\(y - \\hat{y}\\), or equivalently, \\(y - \\hat{\\beta_0} - \\hat{\\beta_1}x\\)"
   }
 ]

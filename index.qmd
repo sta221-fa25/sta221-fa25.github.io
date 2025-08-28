@@ -92,10 +92,10 @@ schedule %>%
 |:-----|:-----------|:-----------------------|:--------:|:------:|:-----------:|
 | 1    | Tue Aug 26 | welcome                |         | [💻](/notes/slides/lec01-welcome.html)      |            |
 |      | Wed Aug 27 | lab: hello git and R                  |         |  [💻](/labs/lab0-slides.html)     |   [lab 0](/labs/lab00.html)     |
-|      | Thu Aug 28 | simple linear regression                       | [📖](/prepare/prepare-lec02.html)        | [🗒](/notes/lec02-slr.html)      |            |
-| 2    | Tue Sep 02 | analysis of variance (ANOVA1)                       |         |       |            |
-|      | Wed Sep 03 | lab: linear algebra review                       |         |       |  [lab 1]()          |
-|      | Thu Sep 04 | geometric introduction to multiple regression                       |         |       |            |
+|      | Thu Aug 28 | correlation                       | [📖](/prepare/prepare-lec02.html)        | [🗒](/notes/lec02-slr.html)      |            |
+| 2    | Tue Sep 02 | simple linear regression                      |         |       |            |
+|      | Wed Sep 03 | lab: computing and linear algebra review                     |         |       |  [lab 1]()          |
+|      | Thu Sep 04 | geometry of regression                       |         |       |            |
 | 3    | Tue Sep 09 |                        |         |       |            |
 |      | Wed Sep 10 |                        |         |       |            |
 |      | Thu Sep 11 |                        |         |       |            |

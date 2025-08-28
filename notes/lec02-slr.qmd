@@ -1,5 +1,5 @@
 ---
-title: "Simple linear regression"
+title: "Correlation and intro to simple linear regresion"
 author: "Dr. Alexander Fisher"
 format: html
 ---
@@ -17,7 +17,6 @@ plot(weather$tmin, weather$tmax)
 
 write_csv(weather, "../data/rdu-weather-history.csv")
 ```
-
 
 ```{r}
 #| label: load-packages
@@ -55,11 +54,14 @@ datatable(weather, rownames = FALSE, options = list(pageLength = 5),
            caption = "The min. and max. daily temperature at RDU international airport in Farenheit")
 ```
 
-
 <!-- ```{r} -->
+
 <!-- #| echo: false -->
+
 <!-- datatable(cars, rownames = FALSE, options = list(pageLength = 5), -->
+
 <!--           caption = "The speed of cars and the distances taken to stop. Note that the data were recorded in the 1920s.") -->
+
 <!-- ``` -->
 
 We've recorded 30 observations of two measurements. We are interested in the association between these two measurements.
@@ -68,17 +70,16 @@ We'll call the minimum daily temperature measurement "x" and the maximum daily t
 
 ## Vocabulary
 
-| Variable  | Explanation |
-|----|--------------|
-|    $y$       | The outcome variable. Also called "response" or "dependent variable". In prediction tasks, this is the variable we are interested in predicting.    |
-|  $x$         |  The predictor. Also called "covariate", "feature", or "independent variable".    |
+| Variable | Explanation |
+|------------------|------------------------------------------------------|
+| $y$ | The outcome variable. Also called "response" or "dependent variable". In prediction tasks, this is the variable we are interested in predicting. |
+| $x$ | The predictor. Also called "covariate", "feature", or "independent variable". |
 
+How are $x$ and $y$ associated?
 
-How are $x$ and $y$ associated? 
-
-:::panel-tabset 
-
+::: panel-tabset
 ## Scatter plot
+
 ```{r}
 #| echo: false
 #| warning: false
@@ -91,6 +92,7 @@ weather %>%
 ```
 
 ## Code
+
 ```{r}
 #| eval: false
 
@@ -100,23 +102,21 @@ weather %>%
   labs(title = "Minimum and maxmimum temperature (F) at RDU in September, 2021") +
   theme_bw()
 ```
-
 :::
 
 Notice: visualized this way, each of the thirty data points, $(x_i, y_i)$, is an element of two-dimensional space.
 
-- How would you describe the association?
-
+-   How would you describe the association?
 
 ::: callout-note
 ## Definition: covariance
 
-$cov(x, y) = \frac{1}{n-1}\sum_{i =1}^n (x_i - \bar{x}) (y_i - \bar{y})$ $^*$ 
-  
+$cov(x, y) = \frac{1}{n-1}\sum_{i =1}^n (x_i - \bar{x}) (y_i - \bar{y})$ $^*$
+
 $^*$ Note that we divide by $n-1$ when computing the *sample covariance*
 
-- $\bar{x} = \frac{1}{n} \sum x_i$ (mean of x)
-- $\bar{y} = \frac{1}{n} \sum y_i$ (mean of y)
+-   $\bar{x} = \frac{1}{n} \sum x_i$ (mean of x)
+-   $\bar{y} = \frac{1}{n} \sum y_i$ (mean of y)
 :::
 
 ```{r}
@@ -132,7 +132,7 @@ cov(x, y)
 sum((x - mean(x)) * (y - mean(y))) / (30 - 1)
 ```
 
-- Should the association be the same if the thermometer recording measurements was consistently off by 2 degrees Farenheit?
+-   Should the association be the same if the thermometer recording measurements was consistently off by 2 degrees Farenheit?
 
 ```{r}
 # compute covariance of true temperature measurement
@@ -145,7 +145,7 @@ weather %>%
 
 Covariance is **location invariant**.
 
-- Will the association stay the same if we recorded temperature in celsius?
+-   Will the association stay the same if we recorded temperature in celsius?
 
 ```{r}
 # compute the covariance between temperature in celsius
@@ -166,7 +166,7 @@ Covariance is **not scale invariant**. That is, covariance does depend on the sc
 $cor(x, y) = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\left(\sum (x_i - \bar{x})^2 \sum (y_i - \bar{y})^2\right)^{1/2}}$
 
 More concisely, we may write
-  
+
 $cor(x, y) = \frac{S_{xy}}{S_{xx}^{1/2} S_{yy}^{1/2}}$
 :::
 
@@ -184,31 +184,77 @@ weather %>%
 ## Exercise
 
 Show $cor(x, y) = cor(ax + b, cy + d)$.
+
+## Solution
+
+Let $$
+\begin{aligned}
+x^* &= ax_i + b,\\
+y^* &= cx_i + d,
+\end{aligned}
+$$
+
+then we want to prove that $cor(x, y) = cor(x^*, y^*)$.
+
+$$
+\begin{aligned}
+cor(x^*, y^*) &= \frac{\sum(ax_i + b - a\bar{x} - b)(cy_i + d - c\bar{y} - d)}{\sqrt{
+\sum (ax_i + b - a\bar{x} - b)^2 \sum (cy_i + d - c\bar{y} - d)^2
+}
+}\\
+&= \frac{ac \sum(x_i -\bar{x})(y_i - \bar{y})}{
+ac \sqrt{\sum (ax_i + b - a\bar{x} - b)^2 \sum (cy_i + d - c\bar{y} - d)^2
+}
+}\\
+&= \frac{
+S_{xy}}{\sqrt{S_{xx} S_{yy}}
+}
+\end{aligned}
+$$
 :::
 
 Correlation is **location and scale invariant**!
 
 Additional facts about correlation:
 
-- Correlation is not invariant to monotone transformations of the data
+::: callout-tip
+## Fact 1
+
+-   Correlation is not invariant to **monotone** transformations of the data
+:::
 
 ::: callout-note
 ## Definition: monotone
 
-$g$ is a monotonic function iff $x \leq y$ implies $g(x) \leq g(y)$
+$g$ is a **monotonic function** iff $x \leq y$ implies $g(x) \leq g(y)$
 :::
 
 ::: panel-tabset
 ## Exercise
 
 Show by example that correlation is not invariant to monotonic transformations.
+
+## Solution
+
+```{r}
+set.seed(221)
+x = c(1:10) 
+logx = log(x)
+y = rnorm(10)
+cor(x, y)
+cor(logx, y)
+```
 :::
 
-- Correlation is *not* robust to outliers
+::: callout-tip
+## Fact 2
 
-:::panel-tabset
+-   Correlation is *not* robust to outliers
+:::
 
+::: panel-tabset
 ## Example 1
+
 ```{r}
 set.seed(221)
 x = c(1:5)
@@ -218,6 +264,7 @@ cor(x, y)
 ```
 
 ## Example 2
+
 ```{r}
 x2 = c(x, 0)
 y2 = c(y, 20)
@@ -226,19 +273,41 @@ cor(x2, y2)
 ```
 :::
 
-- Correlation is bounded between -1 and 1.
+::: callout-tip
+## Fact 3
 
-:::panel-tabset
+Correlation is bounded between -1 and 1.
+:::
+
+:::: panel-tabset
 ## Exercise
 
 Show that $|cor(x, y)| \leq 1$
+
+## Solution
+
+Cauchy-Schwarz inequality:
+
+Let $u$ and $v$ be vectors of dimension $n$, then
+
+$$
+|u^T v|^2 \leq (u^Tu) (v^Tv).
+$$ To prove that $\|cor(x,y)\| \leq 1$, let $u = x - \bar{x}$ and let $v = y - \bar{y}$.
+
+::: callout-important
+Notice that the dimension of a vector inner product, e.g. $u^Tv$ is $1 \times 1$, in other words, it is a "scalar", a number.
+:::
+::::
+
+::: callout-tip
+## Fact 4
+
+-   correlation is a measure of *linear* association
 :::
 
-- correlation is a measure of *linear* association
-
 ::: panel-tabset
-
 ## Example 1
+
 ```{r}
 x = -10:10
 y = x^2
@@ -254,15 +323,30 @@ y = x
 plot(x, y)
 cor(x, y)
 ```
-
 :::
 
-Since correlation is related to a linear relationship between the data, this implies 
+Since correlation is related to a linear relationship between the data, strong correlation implies that
 
 $$
 y_i = \beta_0 + \beta_1 x_i + \epsilon_i
 $$
 
+::: panel-tabset
+## Exercise
+
 Check out the interactive regression web app here:
-  
-  [https://seeing-theory.brown.edu/regression-analysis/index.html#section1](https://seeing-theory.brown.edu/regression-analysis/index.html#section1)
+
+<https://seeing-theory.brown.edu/regression-analysis/index.html#section1>
+:::
+
+## Nomenclature of simple linear regression
+
+| Symbol | Description |
+|------------|------------------------------------------------------------|
+| $y$ | The response variable. Also called the "outcome" or "dependent variable". |
+| $x$ | A covariate. Also called the "predictor", "feature" or "independent variable". |
+| $\beta_0, \beta_1$ | These are population parameters, i.e. *fixed* and *unknown* constants. |
+| $\hat{\beta}_0, \hat{\beta}_1$ | Estimates of $\beta_0, \beta_1$ based on a sample. |
+| $\hat{y}$ | The prediction outcome. $\hat{y} = \hat{\beta_0} + \hat{\beta_1} x$. May also be referred to as the "fitted regression model". |
+| $\epsilon$ | The error. Defined by the regression equation: $\epsilon = y - \beta_0 - \beta_1 x$. |
+| $e$ | The residual, i.e. the difference between the outcome and the fitted model. Defined as $y - \hat{y}$, or equivalently, $y - \hat{\beta_0} - \hat{\beta_1}x$ |
