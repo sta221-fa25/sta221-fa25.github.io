@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Regression Analysis: Theory and Applications – STA221</title>
+<title>Prepare for Lecture 04: SLR - Matrix representation – STA221</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8c30556735fa22a8b34c61270d6a5ad2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-8c30556735fa22a8b34c61270d6a5ad2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">STA221</span>
     </a>
   </div>
@@ -89,11 +89,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.html"> 
+    <a class="nav-link" href="../syllabus.html"> 
 <span class="menu-text">syllabus</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -102,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-homeworks">    
         <li>
-    <a class="dropdown-item" href="./hw/hw01.html">
+    <a class="dropdown-item" href="../hw/hw01.html">
  <span class="dropdown-text">HW 01</span></a>
   </li>  
     </ul>
@@ -113,13 +113,13 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
         <li>
-    <a class="dropdown-item" href="./labs/lab00.html">
+    <a class="dropdown-item" href="../labs/lab00.html">
  <span class="dropdown-text">Lab 0</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./links.html"> 
+    <a class="nav-link" href="../links.html"> 
 <span class="menu-text">links</span></a>
   </li>  
 </ul>
@@ -130,22 +130,23 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Regression Analysis: Theory and Applications</h1>
-<p class="subtitle lead">Spring 2025</p>
+<h1 class="title">Prepare for Lecture 04: SLR - Matrix representation</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
     
   
@@ -157,420 +158,28 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!-- Course description  -->
-<!-- In depth study of regression modeling with emphasis on applications and theoretical underpinnings. Linear and logistic regression, analysis of variance, model diagnostics, and selection. Maximum likelihood and least squares estimation of regression parameters. Examples from a variety of fields. Prerequisite: Either any STA 100-level course or STA 230, 231, or 240L and MATH 216, 218, or 221. Recommended co-requisite: STA 230, 231, or 240L. Interested students with different backgrounds should seek instructor consent. This course is required for Statistical Science majors and students interested in taking STA 360. Students interested in an applied-only regression course should take STA 210. -->
-<!-- # Tentative outline -->
-<!-- Week 1: Simple linear regression and mathematical notation -->
-<!-- Week 2: Multiple linear regression  -->
-<!-- Week 3: Types of predictors + Model comparison -->
-<!-- Week 4: Inference -->
-<!-- Week 5: Model conditions and diagnostics -->
-<!-- Week 6: Diagnostics and transformations -->
-<!-- Week 7: MLE  -->
-<!-- Week 8: Logistic regression -->
-<!-- Week 9: Logistic regression continued -->
-<!-- Week 10: Weighted least squares -->
-<!-- Week 11: Variable selection -->
-<!-- Week 12: Model selection -->
-<!-- Week 13: special topic / account for exam and review days -->
-<!-- Week 14: no class -->
-<!-- Week 15: special topic / account for exam and review days -->
-<section id="schedule" class="level1">
-<h1>Schedule</h1>
-<style>
-    .heatMap {
-        width: 100%;
-        text-align: center;
-    }
-    .heatMap th {
-        word-wrap: break-word;
-        text-align: center;
-    }
-<!--     .heatMap tr:nth-of-type(2n+1) { -->
-<!--   background: #FFF; -->
-<!-- } -->
-    .heatMap tr:nth-of-type(2n) { background: #D3D3D3; }
-</style>
-<!-- useful icons 💻🗒📝📖-->
-<div class="heatMap">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Week</th>
-<th style="text-align: left;">Date</th>
-<th style="text-align: left;">Topic</th>
-<th style="text-align: center;">Prepare</th>
-<th style="text-align: center;">Notes</th>
-<th style="text-align: center;">Assignment</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">Tue Aug 26</td>
-<td style="text-align: left;">welcome</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><a href="./notes/slides/lec01-welcome.html">💻</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Wed Aug 27</td>
-<td style="text-align: left;">lab: hello git and R</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><a href="./labs/lab0-slides.html">💻</a></td>
-<td style="text-align: center;"><a href="./labs/lab00.html">lab 0</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Thu Aug 28</td>
-<td style="text-align: left;">correlation</td>
-<td style="text-align: center;"><a href="./prepare/prepare-lec02.html">📖</a></td>
-<td style="text-align: center;"><a href="./notes/lec02-slr.html">🗒</a></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">Tue Sep 02</td>
-<td style="text-align: left;">simple linear regression</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Wed Sep 03</td>
-<td style="text-align: left;">lab: computing and linear algebra review</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><a href="./labs/lab01.html">lab 1</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Thu Sep 04</td>
-<td style="text-align: left;">model assessment</td>
-<td style="text-align: center;"><a href="./prepare/prepare-lec03.html">📖</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">Tue Sep 09</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Wed Sep 10</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Thu Sep 11</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">4</td>
-<td style="text-align: left;">Tue Sep 16</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Wed Sep 17</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Thu Sep 18</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">5</td>
-<td style="text-align: left;">Tue Sep 23</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Wed Sep 24</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Thu Sep 25</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">6</td>
-<td style="text-align: left;">Tue Sep 30</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Wed Oct 01</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Thu Oct 02</td>
-<td style="text-align: left;">exam review</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">7</td>
-<td style="text-align: left;">Tue Oct 07</td>
-<td style="text-align: left;">exam 1</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Wed Oct 08</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Thu Oct 09</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">8</td>
-<td style="text-align: left;">Tue Oct 14</td>
-<td style="text-align: left;">NO CLASS</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Wed Oct 15</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Thu Oct 16</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">9</td>
-<td style="text-align: left;">Tue Oct 21</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Wed Oct 22</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Thu Oct 23</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">10</td>
-<td style="text-align: left;">Tue Oct 28</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Wed Oct 29</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Thu Oct 30</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">11</td>
-<td style="text-align: left;">Tue Nov 04</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Wed Nov 05</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Thu Nov 06</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">12</td>
-<td style="text-align: left;">Tue Nov 11</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Wed Nov 12</td>
-<td style="text-align: left;">lab: project presentations</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Thu Nov 13</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">13</td>
-<td style="text-align: left;">Tue Nov 18</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Wed Nov 19</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Thu Nov 20</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">14</td>
-<td style="text-align: left;">Tue Nov 25</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Wed Nov 26</td>
-<td style="text-align: left;">NO CLASS</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Thu Nov 27</td>
-<td style="text-align: left;">NO CLASS</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">15</td>
-<td style="text-align: left;">Tue Dec 02</td>
-<td style="text-align: left;">exam review</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Wed Dec 03</td>
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Thu Dec 04</td>
-<td style="text-align: left;">exam 2</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
+<p><br></p>
+<p><strong>Review linear algebra concepts</strong> (as needed)</p>
+<ul>
+<li><p>Matrices and vectors: [<a href="https://gitlab.oit.duke.edu/bdf10/218-lessons/-/raw/master/matvec/matvec.pdf">slides</a>][<a href="https://youtu.be/3uNbT8X7zGo">video</a>]</p></li>
+<li><p>Matrix-Vector products: [<a href="https://gitlab.oit.duke.edu/bdf10/218-lessons/-/raw/master/lincomb/lincomb.pdf">slides</a>][<a href="https://youtu.be/-095IM1GU5U">video</a>]</p></li>
+<li><p>Matrix multiplication: [<a href="https://gitlab.oit.duke.edu/bdf10/218-lessons/-/raw/master/matmult/matmult.pdf">slides</a>][<a href="https://youtu.be/4_3z7DE4580">video</a>]</p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All linear algebra review materials from <a href="https://bfitz.xyz/teaching/218su24t2/">Math 218: Matrices and Vectors (Summer 2024)</a> taught by Dr.&nbsp;Brian Fitzpatrick at Duke University</p>
+</div>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

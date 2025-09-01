@@ -1,0 +1,13 @@
+---
+title: "Prepare for Lecture 05: SLR - Matrix representation cont'd"
+---
+
+<br>
+
+**Review linear algebra concepts** (as needed)
+
+-   Vector geometry: \[[slides](https://gitlab.oit.duke.edu/bdf10/218-lessons/-/raw/master/geometry/geometry.pdf)\]\[[video](https://youtu.be/HAgVUqbnBWM)\]
+
+::: callout-note
+All linear algebra review materials from [Math 218: Matrices and Vectors (Summer 2024)](https://bfitz.xyz/teaching/218su24t2/) taught by Dr. Brian Fitzpatrick at Duke University
+:::

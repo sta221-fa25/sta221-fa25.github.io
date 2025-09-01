@@ -1,0 +1,13 @@
+---
+title: "Prepare: model assessment" 
+---
+
+<br>
+
+📖 Read [Model assessment](https://introregression.netlify.app/04-slr#model-assessment)
+
+For computing introduction / review
+
+🎥 Watch [Meet the Toolkit: R + RStudio](https://warpwire.duke.edu/w/7WsIAA/)
+
+🎥 Watch [Meet the Toolkit: Quarto](https://warpwire.duke.edu/w/62sIAA/)
