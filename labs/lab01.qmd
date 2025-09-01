@@ -502,7 +502,7 @@ Instructions to combine PDFs:
 
 To submit your assignment:
 
--   Access Gradescope through the menu on the [STA 221 Canvas site.](https://canvas.duke.edu/courses/51767)
+-   Access Gradescope through the menu on the [STA 221 Canvas site.](https://canvas.duke.edu/courses/63275)
 
 -   Click on the assignment, and you’ll be prompted to submit it.
 
@@ -516,7 +516,18 @@ To submit your assignment:
 
 You will receive feedback on Lab 01, particularly on the computing review exercises, so you know what to expect for grading in future assignments.
 
-Each assignment will have a portion associated with "Workflow & formatting". This grade is to assess the reproducible workflow and document format. This includes having at least 3 informative commit messages, a neatly organized document with readable code and your name and the date updated in the YAML.
+Each assignment will have a portion associated with "Workflow & formatting". This grade is to assess the reproducible workflow and document format. This includes:
+
+
+-   All commas should be followed by a space.
+
+-   All binary operators should be surrounded by space. For example `x + y` is appropriate. `x+y` is not.
+
+-   All pipes `%>%` or `|>` as well as ggplot layers `+` should be followed by a new line.
+
+-   You should be consistent with stylistic choices, e.g. only use 1 of `=` vs `<-` and `%>%` vs `|>`
+
+-   Your name should be at the top (in the YAML) of each document under "author:"
 
 You will receive feedback about "Workflow & formatting" for this lab, so you know what to expect for grading in future assignments. It will not count towards the grade in Lab 01.
 
