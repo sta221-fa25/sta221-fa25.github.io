@@ -349,4 +349,4 @@ Check out the interactive regression web app here:
 | $\hat{\beta}_0, \hat{\beta}_1$ | Estimates of $\beta_0, \beta_1$ based on a sample. |
 | $\hat{y}$ | The prediction outcome. $\hat{y} = \hat{\beta_0} + \hat{\beta_1} x$. May also be referred to as the "fitted regression model". |
 | $\epsilon$ | The error. Defined by the regression equation: $\epsilon = y - \beta_0 - \beta_1 x$. |
-| $e$ | The residual, i.e. the difference between the outcome and the fitted model. Defined as $y - \hat{y}$, or equivalently, $y - \hat{\beta_0} - \hat{\beta_1}x$ |
+| $\hat{\epsilon}$ or $e$ | The residual, i.e. the difference between the outcome and the fitted model. Defined as $y - \hat{y}$, or equivalently, $y - \hat{\beta_0} - \hat{\beta_1}x$ |
