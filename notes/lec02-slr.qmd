@@ -27,7 +27,7 @@ write_csv(weather, "../data/rdu-weather-history.csv")
 library(tidyverse)
 library(DT)
  
-weather = 
+weather <-
   read_csv("https://sta221-fa25.github.io/data/rdu-weather-history.csv") %>%
   arrange(date)
     

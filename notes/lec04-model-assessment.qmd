@@ -1,0 +1,25 @@
+---
+title: "Model assessment"
+author: "Dr. Alexander Fisher"
+format: html
+---
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data sets used in these notes"
+#| warning: false
+#| messge: false
+library(tidyverse)
+library(DT)
+ 
+life_exp <- 
+  read_csv("https://sta221-fa25.github.io/data/life_exp.csv")
+```
+
+## Learning objectives
+
+
+## Example 
+
+Click [here](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0253450) to see the original paper.
