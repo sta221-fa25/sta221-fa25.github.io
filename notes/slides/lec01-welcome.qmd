@@ -4,6 +4,7 @@ author: "Dr. Alexander Fisher"
 format: 
     revealjs:
       smaller: true
+bibliography: ../references.bib
 ---
 
 ## Logistics

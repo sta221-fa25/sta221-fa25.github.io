@@ -2,6 +2,7 @@
 title: "Model assessment"
 author: "Dr. Alexander Fisher"
 format: html
+bibliography: references.bib
 ---
 
 ```{r}
@@ -13,13 +14,32 @@ format: html
 library(tidyverse)
 library(DT)
  
-life_exp <- 
-  read_csv("https://sta221-fa25.github.io/data/life_exp.csv")
+life_exp <- read_csv(
+    "https://sta221-fa25.github.io/data/life-expectancy-data.csv") |> 
+  rename(life_exp = `Life_expectancy_at_birth`, 
+         income_inequality = `Income_inequality_Gini_coefficient`) |>
+  mutate(education = if_else(Education_Index > median(Education_Index), "High", "Low"), 
+         education = factor(education, levels = c("Low", "High")))
 ```
 
 ## Learning objectives
 
 
+
 ## Example 
+
+The data set comes from @zarulli2021 who analyze the effects of a country's healthcare expenditures and other factors on the country's life expectancy. The data are originally from the [Human Development Database](http://hdr.undp.org/en/data) and [World Health Organization](https://apps.who.int/nha/database/).
+
+There are `r nrow(life_exp)` countries (observations) in the data set.
+
+<br>
+
+**Goal: Use the income inequality in a country to understand variability in the life expectancy.**
+
+::: aside
+[Click here](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0253450) for the original research paper.
+:::
+
+
 
 Click [here](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0253450) to see the original paper.
