@@ -24,15 +24,16 @@ life_exp <- read_csv(
 
 ## Learning objectives
 
+By the end of today you will be able to
 
+1. fit simple linear regression models in R
+2. interpret coefficients and model fit in context
 
 ## Example 
 
 The data set comes from @zarulli2021 who analyze the effects of a country's healthcare expenditures and other factors on the country's life expectancy. The data are originally from the [Human Development Database](http://hdr.undp.org/en/data) and [World Health Organization](https://apps.who.int/nha/database/).
 
 There are `r nrow(life_exp)` countries (observations) in the data set.
-
-<br>
 
 **Goal: Use the income inequality in a country to understand variability in the life expectancy.**
 
@@ -41,5 +42,16 @@ There are `r nrow(life_exp)` countries (observations) in the data set.
 :::
 
 
+-   `life_exp`: The average number of years that a newborn could expect to live, if he or she were to pass through life exposed to the sex- and age-specific death rates prevailing at the time of his or her birth, for a specific year, in a given country, territory, or geographic area (from the [World Health Organization](https://www.who.int/data/gho/indicator-metadata-registry/imr-details/65#:~:text=Definition%3A,%2C%20territory%2C%20or%20geographic%20area.)).
 
-Click [here](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0253450) to see the original paper.
+-   `income_inequality`: Measure of the deviation of the distribution of income among individuals or households within a country from a perfectly equal distribution. A value of 0 represents absolute equality, a value of 100 absolute inequality, based on "Gini coefficient" (from @zarulli2021).
+
+-   `health_expend`: Per capita current spending on healthcare goods and services, expressed in respective currency - international Purchasing Power Parity (PPP) dollar ([from the World Health Organization](https://www.who.int/data/gho/indicator-metadata-registry/imr-details/4952))
+
+-   `health_pct_gdp`: Spending on healthcare goods and services, expressed as a percentage of GDP (from @zarulli2021).
+
+
+## Interpretation
+
+- The slope coefficient $\beta_1$ is measured in the units of the
+response variable per unit of the explanatory variable.
