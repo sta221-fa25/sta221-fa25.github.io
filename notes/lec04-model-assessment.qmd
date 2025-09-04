@@ -11,15 +11,19 @@ bibliography: references.bib
 #| code-summary: "View libraries and data sets used in these notes"
 #| warning: false
 #| messge: false
-library(tidyverse)
-library(DT)
+library(tidyverse) # data wrangling and visualization
+library(DT) # shows the data table
+library(patchwork) # arranging plots
+library(tidymodels)  # modeling (includes broom, yardstick, and other packages)
+library(knitr)       # aesthetic tables
  
 life_exp <- read_csv(
     "https://sta221-fa25.github.io/data/life-expectancy-data.csv") |> 
   rename(life_exp = `Life_expectancy_at_birth`, 
          income_inequality = `Income_inequality_Gini_coefficient`) |>
   mutate(education = if_else(Education_Index > median(Education_Index), "High", "Low"), 
-         education = factor(education, levels = c("Low", "High")))
+         education = factor(education, levels = c("Low", "High"))) |>
+  select(Country, life_exp, Health_expenditure, income_inequality)
 ```
 
 ## Learning objectives
@@ -27,7 +31,20 @@ life_exp <- read_csv(
 By the end of today you will be able to
 
 1. fit simple linear regression models in R
-2. interpret coefficients and model fit in context
+2. interpret coefficients in context
+3. analyze the variance
+4. check model fit and interpret in context
+
+<!-- ## Three tasks -->
+
+<!-- Three types of tasks we can accomplish with linear regression: -->
+
+<!-- 1. *Description*: summarize relationship between $y$ and $x$. For each given $x$ value, what is the distribution of $y$ values? -->
+
+<!-- 2. *Prediction*: forecast new outcomes. For a new, given value $x$, what would would we predict the new $y$ value to be? -->
+
+<!-- 3. *Inferential*: learn about population-level relationships. How does the distribution of $y$ change with $x$? -->
+
 
 ## Example 
 
@@ -35,23 +52,456 @@ The data set comes from @zarulli2021 who analyze the effects of a country's heal
 
 There are `r nrow(life_exp)` countries (observations) in the data set.
 
+```{r}
+#| echo: false
+datatable(life_exp, rownames = FALSE, options = list(pageLength = 10),
+           caption = "Life expectancy by country with possible predictors")
+```
+
+
 **Goal: Use the income inequality in a country to understand variability in the life expectancy.**
 
 ::: aside
 [Click here](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0253450) for the original research paper.
 :::
 
-
 -   `life_exp`: The average number of years that a newborn could expect to live, if he or she were to pass through life exposed to the sex- and age-specific death rates prevailing at the time of his or her birth, for a specific year, in a given country, territory, or geographic area (from the [World Health Organization](https://www.who.int/data/gho/indicator-metadata-registry/imr-details/65#:~:text=Definition%3A,%2C%20territory%2C%20or%20geographic%20area.)).
 
 -   `income_inequality`: Measure of the deviation of the distribution of income among individuals or households within a country from a perfectly equal distribution. A value of 0 represents absolute equality, a value of 100 absolute inequality, based on "Gini coefficient" (from @zarulli2021).
 
--   `health_expend`: Per capita current spending on healthcare goods and services, expressed in respective currency - international Purchasing Power Parity (PPP) dollar ([from the World Health Organization](https://www.who.int/data/gho/indicator-metadata-registry/imr-details/4952))
+-   `health_expenditure`: Per capita current spending on healthcare goods and services, expressed in respective currency - international Purchasing Power Parity (PPP) dollar ([from the World Health Organization](https://www.who.int/data/gho/indicator-metadata-registry/imr-details/4952))
 
--   `health_pct_gdp`: Spending on healthcare goods and services, expressed as a percentage of GDP (from @zarulli2021).
+<!-- -   `health_pct_gdp`: Spending on healthcare goods and services, expressed as a percentage of GDP (from @zarulli2021). -->
+
+## Exploratory data analysis (EDA)
+
+## Univariate EDA
+
+::: panel-tabset
+
+## plot
+
+```{r univariate}
+#| echo: false
+p1 <- ggplot(data = life_exp, aes(x = life_exp))  + 
+  geom_histogram(fill = "steelblue", color = "black", binwidth = 2) + 
+  labs(x = "Life expectancy (years)", 
+       y = "Count") +
+  theme_bw()
+
+p2 <- ggplot(data = life_exp, aes(x = income_inequality))  + 
+  geom_histogram(fill = "steelblue", color = "black", binwidth = 2) + 
+  labs(x = "Income inequality", 
+       y = "Count") +
+  theme_bw()
+
+p1 + p2
+```
+
+## code
+
+```{r univariate-code}
+#| eval: false
+p1 <- ggplot(data = life_exp, aes(x = life_exp))  + 
+  geom_histogram(fill = "steelblue", color = "black", binwidth = 2) + 
+  labs(x = "Life expectancy (years)", 
+       y = "Count") +
+  theme_bw()
+
+p2 <- ggplot(data = life_exp, aes(x = income_inequality))  + 
+  geom_histogram(fill = "steelblue", color = "black", binwidth = 2) + 
+  labs(x = "Income inequality", 
+       y = "Count") +
+  theme_bw()
+
+p1 + p2 # uses patchwork package
+```
+:::
 
 
-## Interpretation
+## Bivariate EDA
+::: panel-tabset
 
-- The slope coefficient $\beta_1$ is measured in the units of the
+## plot
+```{r}
+#| echo: false
+#| warning: false
+
+
+# Scatterplot of life expectancy vs income inequality
+p1 <- ggplot(life_exp, aes(x = income_inequality, y = life_exp)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", se = FALSE, color = "steelblue") +
+  labs(
+    x = "Income inequality",
+    y = "Life expectancy (years)"
+  ) +
+  theme_bw()
+
+# Scatterplot of life expectancy vs health expenditure
+p2 <- ggplot(life_exp, aes(x = Health_expenditure, y = life_exp)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", se = FALSE, color = "steelblue") +
+  labs(
+    x = "Health expenditure",
+    y = ""
+  ) +
+  theme_bw()
+
+# Display plots side by side; uses patchwork pacakge
+p1 + p2
+
+```
+
+## code
+
+```{r}
+#| eval: false
+
+# Scatterplot of life expectancy vs income inequality
+p1 <- ggplot(life_exp, aes(x = income_inequality, y = life_exp)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", se = FALSE, color = "steelblue") +
+  labs(
+    x = "Income inequality",
+    y = "Life expectancy (years)"
+  ) +
+  theme_bw()
+
+# Scatterplot of life expectancy vs health expenditure
+p2 <- ggplot(life_exp, aes(x = Health_expenditure, y = life_exp)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", se = FALSE, color = "steelblue") +
+  labs(
+    x = "Health expenditure",
+    y = ""
+  ) +
+  theme_bw()
+
+# Display plots side by side; uses patchwork pacakge
+p1 + p2
+
+```
+
+
+:::
+
+## Ordinary least squares regression in R
+
+### Template
+
+To fit a model by OLS linear regression, we use the `lm` function. The arguments look as follows:
+
+```{r}
+#| eval: false
+lm(y ~ x, data = data_frame)
+```
+
+In words, we "regress y on x" where "y" and "x" are column names in the data frame "data_frame".
+
+### For our data
+
+```{r}
+# income inequality model
+model_ii = lm(life_exp ~ income_inequality, 
+              data = life_exp)
+
+# health expenditure model
+model_he = lm(life_exp ~ Health_expenditure,
+              data = life_exp)
+```
+
+- Q: why is `Health_expenditure` capitalized, but `income_inequality` is not? 
+
+- A: That's how they are named in the data! See the column names: `names(life_exp)`.
+
+### Look at results (income inequality model)
+
+Regular output:
+
+```{r}
+model_ii
+```
+
+
+
+Tidy the output: 
+
+```{r}
+model_ii |>
+  tidy()
+```
+
+Put results in a more aesthetic table using `kable` from the `knitr` package:
+
+```{r}
+model_ii |>
+  tidy() |> 
+  kable(digits = 3)
+```
+
+The fitted regression model:
+
+$$
+\hat{y_i} = 85.420 - 0.697 x_i
+$$
+
+
+### Interpretation
+
+- The intercept estimate $\hat{\beta}_0$ is in units of the response variable. It is the expected value of the response variable when the predictor is set to 0.
+- The estimate of the slope coefficient, $\hat{\beta}_1$ is measured in the units of the
 response variable per unit of the explanatory variable.
+
+::: panel-tabset
+## Exercise
+
+Interpret the coefficients above (for the income inequality model) *in context.*
+:::
+
+### Prediction 
+
+Use the `predict` function to calculate predictions for new observations
+
+
+**Single observation**
+
+
+```{r}
+new_ii <- tibble(income_inequality = 50)
+predict(model_ii, new_ii)
+```
+
+**Multiple observations**
+
+```{r}
+more_new_ii <- tibble(income_inequality = c(25,50, 100))
+predict(model_ii, more_new_ii)
+```
+
+Note the range:
+
+```{r}
+range(life_exp$income_inequality)
+```
+
+
+::: callout-caution
+## Caution
+Using the model to predict for values outside the range of the original data is **extrapolation**. Why do we want to avoid extrapolation?
+:::
+
+## Model assessment
+
+We fit a model but is it any good?
+
+### Two statistics
+
+-   **Root mean square error, RMSE**: A measure of the average error (average difference between observed and predicted values of the outcome)
+
+-   **R-squared**, $R^2$ : Percentage of variability in the outcome explained by the regression model (in the context of SLR, the predictor)
+
+::: question
+What indicates a good model fit? Higher or lower RMSE? Higher or lower $R^2$?
+:::
+
+### RMSE
+
+$$
+RMSE = \sqrt{\frac{\sum_{i=1}^n(y_i - \hat{y}_i)^2}{n}} = \sqrt{\frac{\sum_{i=1}^ne_i^2}{n}}
+$$
+
+
+
+
+# ANOVA and $R^2$
+
+## ANOVA {#analysis-of-variance-anova}
+
+**Analysis of Variance (ANOVA)**: Technique to partition variability in $Y$ by the sources of variability
+
+## Total variability (Response)
+
+```{r}
+#| echo: false
+#| fig-width: 10
+
+ggplot(data = life_exp, aes(x = life_exp)) +
+   geom_histogram(fill = "#407E99", color = "black", binwidth =2) + 
+  labs(x = "Life expectancy (years)") +
+  theme_bw()
+
+```
+
+```{r}
+#| echo: false
+
+life_exp |>
+  summarise(Min = min(life_exp), Median = median(life_exp), Max = max(life_exp), Mean = mean(life_exp), Std.Dev = sd(life_exp)) |>
+  kable(digits =3)
+
+```
+
+## Partition sources of variability in `life_exp`
+
+```{r}
+#| warning: false
+#| echo: false
+mean_y <- mean(life_exp$life_exp)
+
+ggplot(data = life_exp, aes(x = income_inequality, y = life_exp)) +
+  geom_point(alpha = 0.5) + 
+  geom_hline(yintercept = mean_y, color = "#407E99") +
+  labs(x = "Income inequality (Gini coefficient)",
+       y = "Life expectancy (years )") +
+  annotate("text", x = 45, y = 73, label = latex2exp::TeX("$\\bar{y}$"), color = "#407E99", size = 6) +
+  theme_bw()
+```
+
+## Total variability (Response)
+
+```{r}
+#| echo: false
+#| warning: false
+mean_y <- mean(life_exp$life_exp)
+
+ggplot(data = life_exp, aes(x = income_inequality, y = life_exp)) +
+  geom_point(alpha = 0.5) + 
+  geom_hline(yintercept = mean_y, color = "#407E99") +
+  labs(x = "Income inequality (Gini coefficient)",
+       y = "Life expectancy (years )") +
+   geom_segment(aes(x=income_inequality, xend=income_inequality, y=life_exp, yend=mean_y), color = "#407E99", linewidth = 1) +
+  annotate("text", x = 45, y = 73, label = latex2exp::TeX("$\\bar{y}$"), color = "#407E99", size = 6) +
+  theme_bw()
+```
+
+$$\text{Sum of Squares Total (SST)} = S_{yy} = \sum_{i=1}^n(y_i - \bar{y})^2 = (n-1) \cdot var(y)$$
+
+## Explained variability (Model)
+
+```{r}
+#| warning: false
+#| echo: false
+mean_y <- mean(life_exp$life_exp)
+life_exp_fit <- lm(life_exp ~ income_inequality, data = life_exp)
+
+ggplot(data = life_exp, aes(x = income_inequality, y = life_exp)) +
+  geom_point(alpha = 0.5) + 
+  geom_hline(yintercept = mean_y, color = "#407E99") +
+   geom_smooth(method = "lm", se = FALSE, color = "darkred") +
+  geom_segment(aes(x=income_inequality, xend=income_inequality, y=mean_y, yend=predict(life_exp_fit)), color = "darkred", size = 1) +
+  labs(x = "Income inequality (Gini coefficient)",
+       y = "Life expectancy (years )") +
+  annotate("text", x = 45, y = 73, label = latex2exp::TeX("$\\bar{y}$"), color = "#407E99", size = 6)  + 
+  annotate("text", x = 45, y = 53, label = latex2exp::TeX("$\\hat{\\mu}_y$"), color = "darkred", size = 6) +
+  theme_bw()
+
+
+```
+
+$$\text{Sum of Squares Model (SSM)} = \sum_{i = 1}^{n}(\hat{y}_i - \bar{y})^2$$
+
+------------------------------------------------------------------------
+
+## Unexplained variability (Residuals)
+
+```{r}
+#| echo: false
+#| warning: false
+mean_y <- mean(life_exp$life_exp)
+
+ggplot(data = life_exp, aes(x = income_inequality, y = life_exp)) +
+  geom_point(alpha = 0.5) + 
+  geom_hline(yintercept = mean_y, color = "#407E99") +
+   geom_smooth(method = "lm", se = FALSE, color = "darkred") +
+  geom_segment(aes(x=income_inequality, xend=income_inequality, y = life_exp, yend=predict(life_exp_fit)), color = "gray") +
+  labs(x = "Income inequality (Gini coefficient)",
+       y = "Life expectancy (years )") +
+  annotate("text", x = 45, y = 73, label = latex2exp::TeX("$\\bar{y}$"), color = "#407E99", size = 6)  + 
+  annotate("text", x = 45, y = 53, label = latex2exp::TeX("$\\hat{\\mu}_y$"), color = "darkred", size = 6) +
+  theme_bw()
+```
+
+$$\text{Sum of Squares Residuals (SSR)} = \sum_{i = 1}^{n}(y_i - \hat{y}_i)^2$$
+
+## Sum of Squares
+
+
+
+$$
+\begin{aligned}
+\color{#407E99}{SST} \hspace{5mm}&= &\color{darkred}{SSM} &\hspace{5mm} +  &\color{#8BB174}{SSR} \\[10pt]
+\color{#407E99}{\sum_{i=1}^n(y_i - \bar{y})^2} \hspace{5mm}&= &\color{darkred}{\sum_{i = 1}^{n}(\hat{y}_i - \bar{y})^2} &\hspace{5mm}+ &\color{#8BB174}{\sum_{i = 1}^{n}(y_i - \hat{y}_i)^2}
+\end{aligned}
+$$
+
+::: aside
+[Click here](https://introregression.netlify.app/98-appendix#sum-of-squares) to see why this equality holds.
+:::
+
+## $R^2$
+
+The **coefficient of determination** $R^2$ is the proportion of variation in the response, $Y$, that is explained by the regression model
+
+
+
+$$\large{R^2 = \frac{SSM}{SST} = 1 - \frac{SSR}{SST}}$$
+
+
+
+::: question
+What is the range of $R^2$? Does $R^2$ have units?
+:::
+
+## Interpreting $R^2$ {.smaller}
+
+```{r}
+#| echo: false
+
+life_exp_fit_rsq <- round(glance(life_exp_fit)$r.squared, 3) * 100
+
+```
+
+## Using R to look at these quantities
+
+### Augmented data frame
+
+Use the `augment()` function from the **broom** package to add columns for predicted values, residuals, and other observation-level model statistics
+
+. . .
+
+```{r}
+life_exp_aug <- augment(life_exp_fit)
+life_exp_aug
+```
+
+### Finding RMSE in R
+
+Use the `rmse()` function from the **yardstick** package (part of **tidymodels**)
+
+```{r}
+#| echo: true
+rmse(life_exp_aug, truth = life_exp, estimate = .fitted)
+```
+
+### Finding $R^2$ in R
+
+Use the `rsq()` function from the **yardstick** package (part of **tidymodels**)
+
+```{r}
+#| echo: true
+rsq(life_exp_aug, truth = life_exp, estimate = .fitted)
+```
+
+<br>
+
+. . .
+
+Alternatively, use `glance()` to construct a single row summary of the model fit, including $R^2$:
+
+```{r}
+#| echo: true
+
+glance(life_exp_fit)$r.squared
+```
+
