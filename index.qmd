@@ -106,13 +106,13 @@ schedule %>%
 |:-----------|:-----------|:-----------|:----------:|:----------:|:----------:|
 | 1 | Tue Aug 26 | welcome |  | [💻](/notes/slides/lec01-welcome.html) |  |
 |  | Wed Aug 27 | lab: hello git and R |  | [💻](/labs/lab0-slides.html) | [lab 0](/labs/lab00.html) |
-|  | Thu Aug 28 | correlation | [📖](/prepare/prepare-lec02.html) | [🗒](/notes/lec02-slr.html) |  |
+|  | Thu Aug 28 | correlation | [📖](/prepare/prepare-lec02.html) | [🗒](/notes/lec02-correlation.html) |  |
 | 2 | Tue Sep 02 | simple linear regression |  |  |  |
 |  | Wed Sep 03 | lab: computing and linear algebra review |  |  | [lab 1](/labs/lab01.html) |
 |  | Thu Sep 04 | model assessment | [📖](/prepare/prepare-lec03.html) | [🗒](/notes/lec04-model-assessment.html) |  |
-| 3 | Tue Sep 09 |  |  |  |  |
-|  | Wed Sep 10 |  |  |  |  |
-|  | Thu Sep 11 |  |  |  |  |
+| 3 | Tue Sep 09 | matrix representation | [📖](/prepare/prepare-lec04.html) |  |  |
+|  | Wed Sep 10 | lab: linear regression |  |  | [lab 2](/labs/lab02.html) |
+|  | Thu Sep 11 | multiple linear regression |  |  |  |
 | 4 | Tue Sep 16 |  |  |  |  |
 |  | Wed Sep 17 |  |  |  |  |
 |  | Thu Sep 18 |  |  |  |  |

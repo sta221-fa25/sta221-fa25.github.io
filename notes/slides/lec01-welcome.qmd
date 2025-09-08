@@ -12,7 +12,7 @@ bibliography: ../references.bib
 ### Contact
 
 -   [alexander.fisher\@duke.edu](alexander.fisher@duke.edu)
--   Office hours: Mo/Th: 2:00-3:00p in Old Chem 223B
+-   Office hours: Tu/Fr: 2:00-3:00p in Old Chem 223B
 
 ### Course website
 

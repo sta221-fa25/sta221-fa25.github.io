@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Regression Analysis: Theory and Applications",
     "section": "",
-    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n💻\n\n\n\n\nWed Aug 27\nlab: hello git and R\n\n💻\nlab 0\n\n\n\nThu Aug 28\ncorrelation\n📖\n🗒\n\n\n\n2\nTue Sep 02\nsimple linear regression\n\n\n\n\n\n\nWed Sep 03\nlab: computing and linear algebra review\n\n\nlab 1\n\n\n\nThu Sep 04\nmodel assessment\n📖\n🗒\n\n\n\n3\nTue Sep 09\n\n\n\n\n\n\n\nWed Sep 10\n\n\n\n\n\n\n\nThu Sep 11\n\n\n\n\n\n\n4\nTue Sep 16\n\n\n\n\n\n\n\nWed Sep 17\n\n\n\n\n\n\n\nThu Sep 18\n\n\n\n\n\n\n5\nTue Sep 23\n\n\n\n\n\n\n\nWed Sep 24\n\n\n\n\n\n\n\nThu Sep 25\n\n\n\n\n\n\n6\nTue Sep 30\n\n\n\n\n\n\n\nWed Oct 01\n\n\n\n\n\n\n\nThu Oct 02\nexam review\n\n\n\n\n\n7\nTue Oct 07\nexam 1\n\n\n\n\n\n\nWed Oct 08\n\n\n\n\n\n\n\nThu Oct 09\n\n\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\nWed Oct 15\n\n\n\n\n\n\n\nThu Oct 16\n\n\n\n\n\n\n9\nTue Oct 21\n\n\n\n\n\n\n\nWed Oct 22\n\n\n\n\n\n\n\nThu Oct 23\n\n\n\n\n\n\n10\nTue Oct 28\n\n\n\n\n\n\n\nWed Oct 29\n\n\n\n\n\n\n\nThu Oct 30\n\n\n\n\n\n\n11\nTue Nov 04\n\n\n\n\n\n\n\nWed Nov 05\n\n\n\n\n\n\n\nThu Nov 06\n\n\n\n\n\n\n12\nTue Nov 11\n\n\n\n\n\n\n\nWed Nov 12\nlab: project presentations\n\n\n\n\n\n\nThu Nov 13\n\n\n\n\n\n\n13\nTue Nov 18\n\n\n\n\n\n\n\nWed Nov 19\n\n\n\n\n\n\n\nThu Nov 20\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n15\nTue Dec 02\nexam review\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\nThu Dec 04\nexam 2"
+    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n💻\n\n\n\n\nWed Aug 27\nlab: hello git and R\n\n💻\nlab 0\n\n\n\nThu Aug 28\ncorrelation\n📖\n🗒\n\n\n\n2\nTue Sep 02\nsimple linear regression\n\n\n\n\n\n\nWed Sep 03\nlab: computing and linear algebra review\n\n\nlab 1\n\n\n\nThu Sep 04\nmodel assessment\n📖\n🗒\n\n\n\n3\nTue Sep 09\nmatrix representation\n📖\n\n\n\n\n\nWed Sep 10\nlab: linear regression\n\n\nlab 2\n\n\n\nThu Sep 11\nmultiple linear regression\n\n\n\n\n\n4\nTue Sep 16\n\n\n\n\n\n\n\nWed Sep 17\n\n\n\n\n\n\n\nThu Sep 18\n\n\n\n\n\n\n5\nTue Sep 23\n\n\n\n\n\n\n\nWed Sep 24\n\n\n\n\n\n\n\nThu Sep 25\n\n\n\n\n\n\n6\nTue Sep 30\n\n\n\n\n\n\n\nWed Oct 01\n\n\n\n\n\n\n\nThu Oct 02\nexam review\n\n\n\n\n\n7\nTue Oct 07\nexam 1\n\n\n\n\n\n\nWed Oct 08\n\n\n\n\n\n\n\nThu Oct 09\n\n\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\nWed Oct 15\n\n\n\n\n\n\n\nThu Oct 16\n\n\n\n\n\n\n9\nTue Oct 21\n\n\n\n\n\n\n\nWed Oct 22\n\n\n\n\n\n\n\nThu Oct 23\n\n\n\n\n\n\n10\nTue Oct 28\n\n\n\n\n\n\n\nWed Oct 29\n\n\n\n\n\n\n\nThu Oct 30\n\n\n\n\n\n\n11\nTue Nov 04\n\n\n\n\n\n\n\nWed Nov 05\n\n\n\n\n\n\n\nThu Nov 06\n\n\n\n\n\n\n12\nTue Nov 11\n\n\n\n\n\n\n\nWed Nov 12\nlab: project presentations\n\n\n\n\n\n\nThu Nov 13\n\n\n\n\n\n\n13\nTue Nov 18\n\n\n\n\n\n\n\nWed Nov 19\n\n\n\n\n\n\n\nThu Nov 20\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n15\nTue Dec 02\nexam review\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\nThu Dec 04\nexam 2"
   },
   {
     "objectID": "about.html",
@@ -395,8 +395,8 @@
     "objectID": "notes/slides/lec01-welcome.html#logistics",
     "href": "notes/slides/lec01-welcome.html#logistics",
     "title": "Welcome to STA 221",
-    "section": "",
-    "text": "alexander.fisher@duke.edu\nOffice hours: Mo/Th: 2:00-3:00p in Old Chem 223B\n\n\n\n\n\nhttps://sta221-fa25.github.io/\n\ncomplete office hours info\nsyllabus\ncourse schedule"
+    "section": "Logistics",
+    "text": "Logistics\nContact\n\nalexander.fisher@duke.edu\nOffice hours: Tu/Fr: 2:00-3:00p in Old Chem 223B\n\nCourse website\n\nhttps://sta221-fa25.github.io/\n\ncomplete office hours info\nsyllabus\ncourse schedule"
   },
   {
     "objectID": "notes/slides/lec01-welcome.html#why-linear-regression",
@@ -417,7 +417,7 @@
     "href": "notes/slides/lec01-welcome.html#reproducibility-checklist",
     "title": "Welcome to STA 221",
     "section": "Reproducibility checklist",
-    "text": "Reproducibility checklist\n\nWhat does it mean for an analysis to be reproducible?\n\n. . .\nNear term goals:\n✔️ Can the tables and figures be exactly reproduced from the code and data?\n✔️ Does the code actually do what you think it does?\n✔️ In addition to what was done, is it clear why it was done?\n. . .\nLong term goals:\n✔️ Can the code be used for other data?\n✔️ Can you extend the code to do other things?"
+    "text": "Reproducibility checklist\n\nWhat does it mean for an analysis to be reproducible?\n\n\nNear term goals:\n✔️ Can the tables and figures be exactly reproduced from the code and data?\n✔️ Does the code actually do what you think it does?\n✔️ In addition to what was done, is it clear why it was done?\n\n\nLong term goals:\n✔️ Can the code be used for other data?\n✔️ Can you extend the code to do other things?"
   },
   {
     "objectID": "notes/slides/lec01-welcome.html#why-is-reproducibility-important",
@@ -466,7 +466,7 @@
     "href": "notes/slides/lec01-welcome.html#sharing-reusing-code",
     "title": "Welcome to STA 221",
     "section": "Sharing / reusing code",
-    "text": "Sharing / reusing code\n\nThe use of online resources (including generative AI, as well as static webpages like Stack-Overflow, etc.) is strictly prohibited on in-class quizzes and exams. For take home assignments, you may make use of online resources for coding portions on assignments. If you directly use code from a source (or use it as inspiration), you must explicitly cite where you obtained the code. If you used generative AI to create the code, you should include your prompt(s) in your citation as well.\nAny recycled code that is discovered and is not explicitly cited will be treated as plagiarism, regardless of source.\nNarrative (non-code solutions) should always be entirely your own.\n\n\n\n\n\n\n\nWarning\n\n\n\nExtensive use of AI on take-home assessments will likely set you up for poor performance on graded in-class assignments."
+    "text": "Sharing / reusing code\n\nThe use of online resources (including generative AI, as well as static webpages like Stack-Overflow, etc.) is strictly prohibited on in-class quizzes and exams. For take home assignments, you may make use of online resources for coding portions on assignments. If you directly use code from a source (or use it as inspiration), you must explicitly cite where you obtained the code. If you used generative AI to create the code, you should include your prompt(s) in your citation as well.\nAny recycled code that is discovered and is not explicitly cited will be treated as plagiarism, regardless of source.\nNarrative (non-code solutions) should always be entirely your own.\n\n\n\n\n\n\n\nWarning\n\n\nExtensive use of AI on take-home assessments will likely set you up for poor performance on graded in-class assignments."
   },
   {
     "objectID": "notes/slides/lec01-welcome.html#late-policy",
@@ -487,12 +487,12 @@
     "href": "notes/slides/lec01-welcome.html#communication-and-missing-class",
     "title": "Welcome to STA 221",
     "section": "Communication and missing class",
-    "text": "Communication and missing class\nIf you have questions about homework/lab exercises, debugging, or any question about course materials\n\ncome to office hours\nask on Ed Discussion\n\n. . .\n\n\n\n\n\n\nWarning\n\n\n\nThe teaching team will not debug via email.\n\n\n. . .\nWhen you miss a class:\n\nwatch the recorded lecture on Canvas\ncome to office hours / post on Ed Discussion / ask a friend about missed content"
+    "text": "Communication and missing class\nIf you have questions about homework/lab exercises, debugging, or any question about course materials\n\ncome to office hours\nask on Ed Discussion\n\n\n\n\n\n\n\n\nWarning\n\n\nThe teaching team will not debug via email.\n\n\n\n\n\nWhen you miss a class:\n\nwatch the recorded lecture on Canvas\ncome to office hours / post on Ed Discussion / ask a friend about missed content"
   },
   {
     "objectID": "prepare/prepare-lec02.html",
     "href": "prepare/prepare-lec02.html",
-    "title": "Prepare for Lecture 02: Simple linear regression",
+    "title": "Prepare: simple linear regression",
     "section": "",
     "text": "📖 Read Simple linear regression, Section 4.1 - 4.6\n📖 Read R for Data Science, Introduction: What you will learn\n📖 Read GitHub for supporting, reusing, contributing, and failing safely\nFor computing introduction / review\n🎥 Watch Meet the Toolkit: R + RStudio\n🎥 Watch Meet the Toolkit: Quarto"
   },
@@ -501,7 +501,7 @@
     "href": "notes/slides/lec01-welcome.html#exercise",
     "title": "Welcome to STA 221",
     "section": "Exercise",
-    "text": "Exercise\n\nbikeshare = readr::read_csv(\"https://sta221-fa25.github.io/data/bikeshare-2012.csv\")"
+    "text": "Exercise\n\nbikeshare = readr::read_csv(\"https://sta221-fa25.github.io/data/bikeshare-2012.csv\")\n\n\n\n\n\nAlexander, Rohan. 2023. “Telling Stories with Data,” June. https://doi.org/10.1201/9781003229407.\n\n\nOstblom, Joel, and Tiffany Timbers. 2022. “Opinionated Practices for Teaching Reproducibility: Motivation, Guided Instruction and Practice.” Journal of Statistics and Data Science Education 30 (3): 241–50. https://doi.org/10.1080/26939169.2022.2074922."
   },
   {
     "objectID": "notes/lec02-slr.html",
@@ -758,7 +758,7 @@
   {
     "objectID": "prepare/prepare-lec04.html",
     "href": "prepare/prepare-lec04.html",
-    "title": "Prepare for Lecture 04: SLR - Matrix representation",
+    "title": "Prepare: matrix representation",
     "section": "",
     "text": "Review linear algebra concepts (as needed)\n\nMatrices and vectors: [slides][video]\nMatrix-Vector products: [slides][video]\nMatrix multiplication: [slides][video]\n\n\n\n\n\n\n\nNote\n\n\n\nAll linear algebra review materials from Math 218: Matrices and Vectors (Summer 2024) taught by Dr. Brian Fitzpatrick at Duke University"
   },
@@ -935,6 +935,244 @@
     "href": "notes/lec04-model-assessment.html#using-r-to-look-at-these-quantities",
     "title": "Model assessment",
     "section": "Using R to look at these quantities",
-    "text": "Using R to look at these quantities\n\nAugmented data frame\nUse the augment() function from the broom package to add columns for predicted values, residuals, and other observation-level model statistics\n. . .\n\nlife_exp_aug &lt;- augment(life_exp_fit)\nlife_exp_aug\n\n# A tibble: 140 × 8\n   life_exp income_inequality .fitted .resid    .hat .sigma   .cooksd .std.resid\n      &lt;dbl&gt;             &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n 1     63.8              28.2    65.8 -1.96  0.0125    4.45 0.00125       -0.444\n 2     78.2              12.2    76.9  1.29  0.0116    4.45 0.000498       0.292\n 3     59.9              32.4    62.8 -2.93  0.0193    4.44 0.00437       -0.667\n 4     76.2              14      75.7  0.542 0.00972   4.45 0.0000739      0.123\n 5     74.6               8.6    79.4 -4.82  0.0168    4.43 0.0102        -1.10 \n 6     83                 8.3    79.6  3.37  0.0173    4.44 0.00515        0.766\n 7     81.3               7.4    80.3  1.04  0.0189    4.45 0.000540       0.237\n 8     72.5              10.1    78.4 -5.88  0.0144    4.42 0.0130        -1.33 \n 9     71.8              27.6    66.2  5.62  0.0118    4.43 0.00972        1.28 \n10     74                 6.5    80.9 -6.89  0.0207    4.41 0.0260        -1.57 \n# ℹ 130 more rows\n\n\n\n\nFinding RMSE in R\nUse the rmse() function from the yardstick package (part of tidymodels)\n\nrmse(life_exp_aug, truth = life_exp, estimate = .fitted)\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;\n1 rmse    standard        4.40\n\n\n\n\nFinding \\(R^2\\) in R\nUse the rsq() function from the yardstick package (part of tidymodels)\n\nrsq(life_exp_aug, truth = life_exp, estimate = .fitted)\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;\n1 rsq     standard       0.700\n\n\n\n. . .\nAlternatively, use glance() to construct a single row summary of the model fit, including \\(R^2\\):\n\nglance(life_exp_fit)$r.squared\n\n[1] 0.7003831"
+    "text": "Using R to look at these quantities\n\nAugmented data frame\nUse the augment() function from the broom package to add columns for predicted values, residuals, and other observation-level model statistics\n. . .\n\nlife_exp_aug &lt;- augment(model_ii)\nlife_exp_aug\n\n# A tibble: 140 × 8\n   life_exp income_inequality .fitted .resid    .hat .sigma   .cooksd .std.resid\n      &lt;dbl&gt;             &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n 1     63.8              28.2    65.8 -1.96  0.0125    4.45 0.00125       -0.444\n 2     78.2              12.2    76.9  1.29  0.0116    4.45 0.000498       0.292\n 3     59.9              32.4    62.8 -2.93  0.0193    4.44 0.00437       -0.667\n 4     76.2              14      75.7  0.542 0.00972   4.45 0.0000739      0.123\n 5     74.6               8.6    79.4 -4.82  0.0168    4.43 0.0102        -1.10 \n 6     83                 8.3    79.6  3.37  0.0173    4.44 0.00515        0.766\n 7     81.3               7.4    80.3  1.04  0.0189    4.45 0.000540       0.237\n 8     72.5              10.1    78.4 -5.88  0.0144    4.42 0.0130        -1.33 \n 9     71.8              27.6    66.2  5.62  0.0118    4.43 0.00972        1.28 \n10     74                 6.5    80.9 -6.89  0.0207    4.41 0.0260        -1.57 \n# ℹ 130 more rows\n\n\n\n\nFinding RMSE in R\nUse the rmse() function from the yardstick package (part of tidymodels)\n\nrmse(life_exp_aug, truth = life_exp, estimate = .fitted)\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;\n1 rmse    standard        4.40\n\n\n\n\nFinding \\(R^2\\) in R\nUse the rsq() function from the yardstick package (part of tidymodels)\n\nrsq(life_exp_aug, truth = life_exp, estimate = .fitted)\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;\n1 rsq     standard       0.700\n\n\n\n. . .\nAlternatively, use glance() to construct a single row summary of the model fit, including \\(R^2\\):\n\nglance(model_ii)$r.squared\n\n[1] 0.7003831"
+  },
+  {
+    "objectID": "notes/lec02-correlation.html",
+    "href": "notes/lec02-correlation.html",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "",
+    "text": "View libraries and data sets used in these notes\nlibrary(tidyverse)\nlibrary(DT)\n \nweather &lt;-\n  read_csv(\"https://sta221-fa25.github.io/data/rdu-weather-history.csv\") %&gt;%\n  arrange(date)"
+  },
+  {
+    "objectID": "notes/lec02-correlation.html#learning-objectives",
+    "href": "notes/lec02-correlation.html#learning-objectives",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Learning objectives",
+    "text": "Learning objectives\nBy the end of the day you should be able to explain the following concepts:\n\ncovariance\ncorrelation\nlocation and scale invariance\nordinary least squares"
+  },
+  {
+    "objectID": "notes/lec02-correlation.html#example",
+    "href": "notes/lec02-correlation.html#example",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Example",
+    "text": "Example\n\nThis data set contains Raleigh Durham International Airport weather data pulled from the NOAA web service between September 01 and September 30, 2021. The data were sourced from https://catalog.data.gov/ August 28, 2025.\n\n\n\n\n\n\n\n\n\n\n\nWe’ve recorded 30 observations of two measurements. We are interested in the association between these two measurements.\nWe’ll call the minimum daily temperature measurement “x” and the maximum daily temperature “y”."
+  },
+  {
+    "objectID": "notes/lec02-correlation.html#vocabulary",
+    "href": "notes/lec02-correlation.html#vocabulary",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Vocabulary",
+    "text": "Vocabulary\n\n\n\n\n\n\n\nVariable\nExplanation\n\n\n\n\n\\(y\\)\nThe outcome variable. Also called “response” or “dependent variable”. In prediction tasks, this is the variable we are interested in predicting.\n\n\n\\(x\\)\nThe predictor. Also called “covariate”, “feature”, or “independent variable”.\n\n\n\nHow are \\(x\\) and \\(y\\) associated?\n\nScatter plotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweather %&gt;%\n  ggplot(aes(x = tmin, y = tmax)) +\n  geom_point() +\n  labs(title = \"Minimum and maxmimum temperature (F) at RDU in September, 2021\") +\n  theme_bw()\n\n\n\n\nNotice: visualized this way, each of the thirty data points, \\((x_i, y_i)\\), is an element of two-dimensional space.\n\nHow would you describe the association?\n\n\n\n\n\n\n\nDefinition: covariance\n\n\n\n\\(cov(x, y) = \\frac{1}{n-1}\\sum_{i =1}^n (x_i - \\bar{x}) (y_i - \\bar{y})\\) \\(^*\\)\n\\(^*\\) Note that we divide by \\(n-1\\) when computing the sample covariance\n\n\\(\\bar{x} = \\frac{1}{n} \\sum x_i\\) (mean of x)\n\\(\\bar{y} = \\frac{1}{n} \\sum y_i\\) (mean of y)\n\n\n\n\nx = weather %&gt;%\n  select(tmin) %&gt;%\n  pull()\ny = weather %&gt;%\n  select(tmax) %&gt;%\n  pull()\n\ncov(x, y)\n\n[1] 18.68736\n\nsum((x - mean(x)) * (y - mean(y))) / (30 - 1)\n\n[1] 18.68736\n\n\n\nShould the association be the same if the thermometer recording measurements was consistently off by 2 degrees Farenheit?\n\n\n# compute covariance of true temperature measurement\nweather %&gt;%\n  mutate(temp_min_true = tmin + 2,\n         temp_max_true = tmax + 2) %&gt;%\n  summarize(cov(temp_min_true, temp_max_true)) %&gt;%\n  pull()\n\n[1] 18.68736\n\n\nCovariance is location invariant.\n\nWill the association stay the same if we recorded temperature in celsius?\n\n\n# compute the covariance between temperature in celsius\nweather %&gt;%\n  mutate(temp_min_c = (tmin - 32) * 5 / 9,\n         temp_max_c = (tmax - 32) * 5 / 9) %&gt;%\n  summarize(cov(temp_min_c, temp_max_c)) %&gt;%\n  pull()\n\n[1] 5.767703\n\n\nCovariance is not scale invariant. That is, covariance does depend on the scale of the measurements."
+  },
+  {
+    "objectID": "notes/lec02-correlation.html#correlation",
+    "href": "notes/lec02-correlation.html#correlation",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Correlation",
+    "text": "Correlation\n\n\n\n\n\n\nDefinition: correlation\n\n\n\n\\(cor(x, y) = \\frac{\\sum_{i=1}^n (x_i - \\bar{x}) (y_i - \\bar{y})}{\\left(\\sum (x_i - \\bar{x})^2 \\sum (y_i - \\bar{y})^2\\right)^{1/2}}\\)\nMore concisely, we may write\n\\(cor(x, y) = \\frac{S_{xy}}{S_{xx}^{1/2} S_{yy}^{1/2}}\\)\n\n\n\n# correlation in Farenheit vs Celsi\n# compute the covariance between temperature in celsius\nweather %&gt;%\n  mutate(temp_min_c = (tmin - 32) * 5 / 9,\n         temp_max_c = (tmax - 32) * 5 / 9) %&gt;%\n  summarize(cor_F = cor(tmin, tmax), \n            cor_C = cor(temp_min_c, temp_max_c))\n\n# A tibble: 1 × 2\n  cor_F cor_C\n  &lt;dbl&gt; &lt;dbl&gt;\n1 0.554 0.554\n\n\n\nExerciseSolution\n\n\nShow \\(cor(x, y) = cor(ax + b, cy + d)\\).\n\n\nLet \\[\n\\begin{aligned}\nx^* &= ax_i + b,\\\\\ny^* &= cx_i + d,\n\\end{aligned}\n\\]\nthen we want to prove that \\(cor(x, y) = cor(x^*, y^*)\\).\n\\[\n\\begin{aligned}\ncor(x^*, y^*) &= \\frac{\\sum(ax_i + b - a\\bar{x} - b)(cy_i + d - c\\bar{y} - d)}{\\sqrt{\n\\sum (ax_i + b - a\\bar{x} - b)^2 \\sum (cy_i + d - c\\bar{y} - d)^2\n}\n}\\\\\n&= \\frac{ac \\sum(x_i -\\bar{x})(y_i - \\bar{y})}{\nac \\sqrt{\\sum (ax_i + b - a\\bar{x} - b)^2 \\sum (cy_i + d - c\\bar{y} - d)^2\n}\n}\\\\\n&= \\frac{\nS_{xy}}{\\sqrt{S_{xx} S_{yy}}\n}\n\\end{aligned}\n\\]\n\n\n\nCorrelation is location and scale invariant!\nAdditional facts about correlation:\n\n\n\n\n\n\nFact 1\n\n\n\n\nCorrelation is not invariant to monotone transformations of the data\n\n\n\n\n\n\n\n\n\nDefinition: monotone\n\n\n\n\\(g\\) is a monotonic function iff \\(x \\leq y\\) implies \\(g(x) \\leq g(y)\\)\n\n\n\nExerciseSolution\n\n\nShow by example that correlation is not invariant to monotonic transformations.\n\n\n\nset.seed(221)\nx = c(1:10) \nlogx = log(x)\ny = rnorm(10)\ncor(x, y)\n\n[1] -0.1757986\n\ncor(logx, y)\n\n[1] -0.2686214\n\n\n\n\n\n\n\n\n\n\n\nFact 2\n\n\n\n\nCorrelation is not robust to outliers\n\n\n\n\nExample 1Example 2\n\n\n\nset.seed(221)\nx = c(1:5)\ny= x + rnorm(5)\nplot(x, y)\n\n\n\n\n\n\n\ncor(x, y)\n\n[1] 0.9042223\n\n\n\n\n\nx2 = c(x, 0)\ny2 = c(y, 20)\nplot(x2, y2)\n\n\n\n\n\n\n\ncor(x2, y2)\n\n[1] -0.5195233\n\n\n\n\n\n\n\n\n\n\n\nFact 3\n\n\n\nCorrelation is bounded between -1 and 1.\n\n\n\nExerciseSolution\n\n\nShow that \\(|cor(x, y)| \\leq 1\\)\n\n\nCauchy-Schwarz inequality:\nLet \\(u\\) and \\(v\\) be vectors of dimension \\(n\\), then\n\\[\n|u^T v|^2 \\leq (u^Tu) (v^Tv).\n\\] To prove that \\(\\|cor(x,y)\\| \\leq 1\\), let \\(u = x - \\bar{x}\\) and let \\(v = y - \\bar{y}\\).\n\n\n\n\n\n\nImportant\n\n\n\nNotice that the dimension of a vector inner product, e.g. \\(u^Tv\\) is \\(1 \\times 1\\), in other words, it is a “scalar”, a number.\n\n\n\n\n\n\n\n\n\n\n\nFact 4\n\n\n\n\ncorrelation is a measure of linear association\n\n\n\n\nExample 1Example 2\n\n\n\nx = -10:10\ny = x^2\nplot(x, y)\n\n\n\n\n\n\n\ncor(x, y) \n\n[1] -4.786989e-17\n\n\n\n\n\nx = -10:10\ny = x\nplot(x, y)\n\n\n\n\n\n\n\ncor(x, y)\n\n[1] 1\n\n\n\n\n\nSince correlation is related to a linear relationship between the data, strong correlation implies that\n\\[\ny_i = \\beta_0 + \\beta_1 x_i + \\epsilon_i\n\\]\n\nExercise\n\n\nCheck out the interactive regression web app here:\nhttps://seeing-theory.brown.edu/regression-analysis/index.html#section1"
+  },
+  {
+    "objectID": "notes/lec02-correlation.html#nomenclature-of-simple-linear-regression",
+    "href": "notes/lec02-correlation.html#nomenclature-of-simple-linear-regression",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Nomenclature of simple linear regression",
+    "text": "Nomenclature of simple linear regression\n\n\n\n\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(y\\)\nThe response variable. Also called the “outcome” or “dependent variable”.\n\n\n\\(x\\)\nA covariate. Also called the “predictor”, “feature” or “independent variable”.\n\n\n\\(\\beta_0, \\beta_1\\)\nThese are population parameters, i.e. fixed and unknown constants.\n\n\n\\(\\hat{\\beta}_0, \\hat{\\beta}_1\\)\nEstimates of \\(\\beta_0, \\beta_1\\) based on a sample.\n\n\n\\(\\hat{y}\\)\nThe prediction outcome. \\(\\hat{y} = \\hat{\\beta_0} + \\hat{\\beta_1} x\\). May also be referred to as the “fitted regression model”.\n\n\n\\(\\epsilon\\)\nThe error. Defined by the regression equation: \\(\\epsilon = y - \\beta_0 - \\beta_1 x\\).\n\n\n\\(\\hat{\\epsilon}\\) or \\(e\\)\nThe residual, i.e. the difference between the outcome and the fitted model. Defined as \\(y - \\hat{y}\\), or equivalently, \\(y - \\hat{\\beta_0} - \\hat{\\beta_1}x\\)"
+  },
+  {
+    "objectID": "notes/lec03-slr.html",
+    "href": "notes/lec03-slr.html",
+    "title": "Simple linear regression",
+    "section": "",
+    "text": "View libraries and data sets used in these notes\nlibrary(tidyverse)\n \nweather &lt;-\n  read_csv(\"https://sta221-fa25.github.io/data/rdu-weather-history.csv\") %&gt;%\n  arrange(date)"
+  },
+  {
+    "objectID": "notes/lec03-slr.html#learning-objectives",
+    "href": "notes/lec03-slr.html#learning-objectives",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Learning objectives",
+    "text": "Learning objectives\nBy the end of the day you should be able to explain the following concepts:\n\ncovariance\ncorrelation\nlocation and scale invariance\nordinary least squares"
+  },
+  {
+    "objectID": "notes/lec03-slr.html#example",
+    "href": "notes/lec03-slr.html#example",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Example",
+    "text": "Example\n\nThis data set contains Raleigh Durham International Airport weather data pulled from the NOAA web service between September 01 and September 30, 2021. The data were sourced from https://catalog.data.gov/ August 28, 2025.\n\n\n\n\n\n\n\n\n\n\n\nWe’ve recorded 30 observations of two measurements. We are interested in the association between these two measurements.\nWe’ll call the minimum daily temperature measurement “x” and the maximum daily temperature “y”."
+  },
+  {
+    "objectID": "notes/lec03-slr.html#vocabulary",
+    "href": "notes/lec03-slr.html#vocabulary",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Vocabulary",
+    "text": "Vocabulary\n\n\n\n\n\n\n\nVariable\nExplanation\n\n\n\n\n\\(y\\)\nThe outcome variable. Also called “response” or “dependent variable”. In prediction tasks, this is the variable we are interested in predicting.\n\n\n\\(x\\)\nThe predictor. Also called “covariate”, “feature”, or “independent variable”.\n\n\n\nHow are \\(x\\) and \\(y\\) associated?\n\nScatter plotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nweather %&gt;%\n  ggplot(aes(x = tmin, y = tmax)) +\n  geom_point() +\n  labs(title = \"Minimum and maxmimum temperature (F) at RDU in September, 2021\") +\n  theme_bw()\n\n\n\n\nNotice: visualized this way, each of the thirty data points, \\((x_i, y_i)\\), is an element of two-dimensional space.\n\nHow would you describe the association?\n\n\n\n\n\n\n\nDefinition: covariance\n\n\n\n\\(cov(x, y) = \\frac{1}{n-1}\\sum_{i =1}^n (x_i - \\bar{x}) (y_i - \\bar{y})\\) \\(^*\\)\n\\(^*\\) Note that we divide by \\(n-1\\) when computing the sample covariance\n\n\\(\\bar{x} = \\frac{1}{n} \\sum x_i\\) (mean of x)\n\\(\\bar{y} = \\frac{1}{n} \\sum y_i\\) (mean of y)\n\n\n\n\nx = weather %&gt;%\n  select(tmin) %&gt;%\n  pull()\ny = weather %&gt;%\n  select(tmax) %&gt;%\n  pull()\n\ncov(x, y)\n\n[1] 18.68736\n\nsum((x - mean(x)) * (y - mean(y))) / (30 - 1)\n\n[1] 18.68736\n\n\n\nShould the association be the same if the thermometer recording measurements was consistently off by 2 degrees Farenheit?\n\n\n# compute covariance of true temperature measurement\nweather %&gt;%\n  mutate(temp_min_true = tmin + 2,\n         temp_max_true = tmax + 2) %&gt;%\n  summarize(cov(temp_min_true, temp_max_true)) %&gt;%\n  pull()\n\n[1] 18.68736\n\n\nCovariance is location invariant.\n\nWill the association stay the same if we recorded temperature in celsius?\n\n\n# compute the covariance between temperature in celsius\nweather %&gt;%\n  mutate(temp_min_c = (tmin - 32) * 5 / 9,\n         temp_max_c = (tmax - 32) * 5 / 9) %&gt;%\n  summarize(cov(temp_min_c, temp_max_c)) %&gt;%\n  pull()\n\n[1] 5.767703\n\n\nCovariance is not scale invariant. That is, covariance does depend on the scale of the measurements."
+  },
+  {
+    "objectID": "notes/lec03-slr.html#correlation",
+    "href": "notes/lec03-slr.html#correlation",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Correlation",
+    "text": "Correlation\n\n\n\n\n\n\nDefinition: correlation\n\n\n\n\\(cor(x, y) = \\frac{\\sum_{i=1}^n (x_i - \\bar{x}) (y_i - \\bar{y})}{\\left(\\sum (x_i - \\bar{x})^2 \\sum (y_i - \\bar{y})^2\\right)^{1/2}}\\)\nMore concisely, we may write\n\\(cor(x, y) = \\frac{S_{xy}}{S_{xx}^{1/2} S_{yy}^{1/2}}\\)\n\n\n\n# correlation in Farenheit vs Celsi\n# compute the covariance between temperature in celsius\nweather %&gt;%\n  mutate(temp_min_c = (tmin - 32) * 5 / 9,\n         temp_max_c = (tmax - 32) * 5 / 9) %&gt;%\n  summarize(cor_F = cor(tmin, tmax), \n            cor_C = cor(temp_min_c, temp_max_c))\n\n# A tibble: 1 × 2\n  cor_F cor_C\n  &lt;dbl&gt; &lt;dbl&gt;\n1 0.554 0.554\n\n\n\nExerciseSolution\n\n\nShow \\(cor(x, y) = cor(ax + b, cy + d)\\).\n\n\nLet \\[\n\\begin{aligned}\nx^* &= ax_i + b,\\\\\ny^* &= cx_i + d,\n\\end{aligned}\n\\]\nthen we want to prove that \\(cor(x, y) = cor(x^*, y^*)\\).\n\\[\n\\begin{aligned}\ncor(x^*, y^*) &= \\frac{\\sum(ax_i + b - a\\bar{x} - b)(cy_i + d - c\\bar{y} - d)}{\\sqrt{\n\\sum (ax_i + b - a\\bar{x} - b)^2 \\sum (cy_i + d - c\\bar{y} - d)^2\n}\n}\\\\\n&= \\frac{ac \\sum(x_i -\\bar{x})(y_i - \\bar{y})}{\nac \\sqrt{\\sum (ax_i + b - a\\bar{x} - b)^2 \\sum (cy_i + d - c\\bar{y} - d)^2\n}\n}\\\\\n&= \\frac{\nS_{xy}}{\\sqrt{S_{xx} S_{yy}}\n}\n\\end{aligned}\n\\]\n\n\n\nCorrelation is location and scale invariant!\nAdditional facts about correlation:\n\n\n\n\n\n\nFact 1\n\n\n\n\nCorrelation is not invariant to monotone transformations of the data\n\n\n\n\n\n\n\n\n\nDefinition: monotone\n\n\n\n\\(g\\) is a monotonic function iff \\(x \\leq y\\) implies \\(g(x) \\leq g(y)\\)\n\n\n\nExerciseSolution\n\n\nShow by example that correlation is not invariant to monotonic transformations.\n\n\n\nset.seed(221)\nx = c(1:10) \nlogx = log(x)\ny = rnorm(10)\ncor(x, y)\n\n[1] -0.1757986\n\ncor(logx, y)\n\n[1] -0.2686214\n\n\n\n\n\n\n\n\n\n\n\nFact 2\n\n\n\n\nCorrelation is not robust to outliers\n\n\n\n\nExample 1Example 2\n\n\n\nset.seed(221)\nx = c(1:5)\ny= x + rnorm(5)\nplot(x, y)\n\n\n\n\n\n\n\ncor(x, y)\n\n[1] 0.9042223\n\n\n\n\n\nx2 = c(x, 0)\ny2 = c(y, 20)\nplot(x2, y2)\n\n\n\n\n\n\n\ncor(x2, y2)\n\n[1] -0.5195233\n\n\n\n\n\n\n\n\n\n\n\nFact 3\n\n\n\nCorrelation is bounded between -1 and 1.\n\n\n\nExerciseSolution\n\n\nShow that \\(|cor(x, y)| \\leq 1\\)\n\n\nCauchy-Schwarz inequality:\nLet \\(u\\) and \\(v\\) be vectors of dimension \\(n\\), then\n\\[\n|u^T v|^2 \\leq (u^Tu) (v^Tv).\n\\] To prove that \\(\\|cor(x,y)\\| \\leq 1\\), let \\(u = x - \\bar{x}\\) and let \\(v = y - \\bar{y}\\).\n\n\n\n\n\n\nImportant\n\n\n\nNotice that the dimension of a vector inner product, e.g. \\(u^Tv\\) is \\(1 \\times 1\\), in other words, it is a “scalar”, a number.\n\n\n\n\n\n\n\n\n\n\n\nFact 4\n\n\n\n\ncorrelation is a measure of linear association\n\n\n\n\nExample 1Example 2\n\n\n\nx = -10:10\ny = x^2\nplot(x, y)\n\n\n\n\n\n\n\ncor(x, y) \n\n[1] -4.786989e-17\n\n\n\n\n\nx = -10:10\ny = x\nplot(x, y)\n\n\n\n\n\n\n\ncor(x, y)\n\n[1] 1\n\n\n\n\n\nSince correlation is related to a linear relationship between the data, strong correlation implies that\n\\[\ny_i = \\beta_0 + \\beta_1 x_i + \\epsilon_i\n\\]\n\nExercise\n\n\nCheck out the interactive regression web app here:\nhttps://seeing-theory.brown.edu/regression-analysis/index.html#section1"
+  },
+  {
+    "objectID": "notes/lec03-slr.html#nomenclature-of-simple-linear-regression",
+    "href": "notes/lec03-slr.html#nomenclature-of-simple-linear-regression",
+    "title": "Correlation and intro to simple linear regresion",
+    "section": "Nomenclature of simple linear regression",
+    "text": "Nomenclature of simple linear regression\n\n\n\n\n\n\n\nSymbol\nDescription\n\n\n\n\n\\(y\\)\nThe response variable. Also called the “outcome” or “dependent variable”.\n\n\n\\(x\\)\nA covariate. Also called the “predictor”, “feature” or “independent variable”.\n\n\n\\(\\beta_0, \\beta_1\\)\nThese are population parameters, i.e. fixed and unknown constants.\n\n\n\\(\\hat{\\beta}_0, \\hat{\\beta}_1\\)\nEstimates of \\(\\beta_0, \\beta_1\\) based on a sample.\n\n\n\\(\\hat{y}\\)\nThe prediction outcome. \\(\\hat{y} = \\hat{\\beta_0} + \\hat{\\beta_1} x\\). May also be referred to as the “fitted regression model”.\n\n\n\\(\\epsilon\\)\nThe error. Defined by the regression equation: \\(\\epsilon = y - \\beta_0 - \\beta_1 x\\).\n\n\n\\(\\hat{\\epsilon}\\) or \\(e\\)\nThe residual, i.e. the difference between the outcome and the fitted model. Defined as \\(y - \\hat{y}\\), or equivalently, \\(y - \\hat{\\beta_0} - \\hat{\\beta_1}x\\)"
+  },
+  {
+    "objectID": "notes/lec03-slr.html#notation",
+    "href": "notes/lec03-slr.html#notation",
+    "title": "Simple linear regression",
+    "section": "Notation",
+    "text": "Notation\n\\(\\boldsymbol{y}\\): a vector of observations\n\\(\\boldsymbol{y}= [y_1, y_2, \\ldots, y_n]^T = \\begin{bmatrix}\ny_1 \\\\\ny_2 \\\\\n\\vdots \\\\\ny_n\n\\end{bmatrix}\\). We say “y is of dimension n”.\n\\(\\hat{\\boldsymbol{y}}\\): vector of “fitted” outcomes or “predicted” response variable.\n\\(\\boldsymbol{1}= \\begin{bmatrix}\n1 \\\\\n1 \\\\\n\\vdots \\\\\n1\n\\end{bmatrix}\\). \\(\\boldsymbol{1}\\) is of dimension of n.\n\n\n\n\n\n\nNote\n\n\n\nFor the handwritten in-class notes, we use the convention that a line underneath the symbol represents a vector."
+  },
+  {
+    "objectID": "notes/lec03-slr.html#last-time",
+    "href": "notes/lec03-slr.html#last-time",
+    "title": "Simple linear regression",
+    "section": "Last time",
+    "text": "Last time\n\\(|cor(\\boldsymbol{x},\\boldsymbol{y})| = 1 \\iff \\boldsymbol{y}= \\beta_0 \\boldsymbol{1}+ \\beta_1 \\boldsymbol{x}\\) for some \\(\\beta_0\\), \\(\\beta_1\\). See Figure 1.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIt is more typical that \\(|cor(\\boldsymbol{x}, \\boldsymbol{y})| &lt; 1\\), in which case \\(\\boldsymbol{y}= \\beta_0 \\boldsymbol{1}+ \\beta_1 \\boldsymbol{x}+ \\boldsymbol{\\varepsilon}\\), where \\(\\boldsymbol{\\varepsilon}\\) is the error vector. See Figure 2 for an example. The observation by observation representation is given by the equation\n\\[y_i = \\beta_0 + \\beta_1 x_i + \\varepsilon_i.\\]\n\n\n\n\n\n\n\n\n\nQuestion: what line, (i.e. what (\\(\\beta_0, \\beta_1\\))) provides the “best fit”?\nAnswer: the set (\\(\\beta_0, \\beta_1\\)) that satisfy an objective function.\n\n\n\n\n\n\nDefinition: objective function\n\n\n\nAn objective function is some function we want to optimize.\nExample 1: least absolute value (LAV) regression\n\\[\n\\hat{\\beta_0}, \\hat{\\beta_1}\n= \\operatorname*{arg\\,min}_{\\beta_0, \\beta_1}\n\\sum_{i=1}^n |\\varepsilon_i|\n\\]\nExample 2: Ordinary least squares (OLS) regression\n\\[\n\\hat{\\beta_0}, \\hat{\\beta_1}\n= \\operatorname*{arg\\,min}_{\\beta_0, \\beta_1}\n\\sum_{i=1}^n \\varepsilon_i^2\n\\]"
+  },
+  {
+    "objectID": "notes/lec03-slr.html#ordinary-least-squares-ols-regression-line",
+    "href": "notes/lec03-slr.html#ordinary-least-squares-ols-regression-line",
+    "title": "Simple linear regression",
+    "section": "Ordinary least squares (OLS) regression line",
+    "text": "Ordinary least squares (OLS) regression line\n\\(\\sum_{i=1}^n \\varepsilon_i^2\\) is called the “residual sum of squares” or RSS for short.\n\\[\n\\begin{aligned}\nRSS(\\beta_0, \\beta_1) &= \\sum_{i=1}^n \\varepsilon_i^2\\\\\n&= \\sum_{i=1}^n (y_i - (\\beta_0 + \\beta_1 x_i))^2\\\\\n&= (\\boldsymbol{y}- (\\beta_0 \\boldsymbol{1}+ \\beta_1 \\boldsymbol{x}))^T (\\boldsymbol{y}- (\\beta_0 \\boldsymbol{1}+ \\beta_1 \\boldsymbol{x}))\\\\\n&= ||(\\boldsymbol{y}- (\\beta_0 \\boldsymbol{1}+ \\beta_1 \\boldsymbol{x}))||^2\n\\end{aligned}\n\\]\n\n\n\n\n\n\nDefinition: OLS estimates\n\n\n\nThe OLS values of _0, _1 are the values (_0, _1) that minimize \\(RSS(\\beta_0, \\beta_1)\\). Again, in math,\n\\[\n\\hat{\\beta_0}, \\hat{\\beta_1}\n= \\operatorname*{arg\\,min}_{\\beta_0, \\beta_1}\n\\sum_{i=1}^n \\varepsilon_i^2\n\\]\n\n\nQuestion: How can we find the OLS line?\nAnswer: (1) Geometry (we’ll do this later); (2) calculus\n\nComputing the OLS estimates using calculus\n\n\n\n\n\n\n\nlm(tmax ~ tmin, data = weather)\n\n\nCall:\nlm(formula = tmax ~ tmin, data = weather)\n\nCoefficients:\n(Intercept)         tmin  \n    61.1017       0.3729  \n\n\n\nNotice that the RSS is a quadratic (convex) function of \\(\\beta_0, \\beta_1\\).\nThe global minimum occurs where the derivative (gradient) equals zero.\n\n\\[\n\\begin{aligned}\n\\frac{\\partial}{\\partial \\beta_0} RSS &=  -2 \\sum (y_i - (\\beta_0 + \\beta_1 x_i)) = 0\\\\\n\\frac{\\partial}{\\partial \\beta_1} RSS &=  -2 \\sum x_i(y_i - (\\beta_0 + \\beta_1 x_i)) = 0\n\\end{aligned}\n\\]\nTherefore the OLS values \\(\\hat{\\beta_0}, \\hat{\\beta_1}\\) will satisfy the normal equations,\n\\[\n\\begin{align}\n\\sum_{i=1}^n \\big(y_i - (\\hat{\\beta_0} + \\hat{\\beta_1} x_i)\\big) &= 0 \\tag{1}\\\\\n\\sum_{i=1}^n x_i \\big(y_i - (\\hat{\\beta_0} + \\hat{\\beta_1} x_i)\\big) &= 0 \\tag{2}\n\\end{align}\n\\] Question: why are these called the normal equations?\nAnswer: Let \\(\\hat{\\varepsilon}_i = y_i - \\hat{y}_i = y_i - (\\hat{\\beta_0} + \\hat{\\beta_1} x_i)\\) then,\n\\[\n\\begin{aligned}\n(1) &\\implies \\sum \\hat{\\varepsilon}_i  = \\hat{\\boldsymbol{\\varepsilon}}\\cdot \\boldsymbol{1}= 0\\\\\n(2) &\\implies \\sum x_i \\hat{\\varepsilon}_i = \\boldsymbol{x}^T \\hat{\\boldsymbol{\\varepsilon}}= 0.\n\\end{aligned}\n\\]\nIn words, the residual vector \\(\\hat{\\boldsymbol{\\varepsilon}}\\) is normal (orthogonal) to the vectors \\(\\boldsymbol{1}\\) and \\(\\boldsymbol{x}\\).\n\nExerciseSolution\n\n\nShow that the OLS regression line goes through \\(\\bar{x}, \\bar{y}\\). Reminder: \\(\\bar{x} = \\frac{1}{n}\\sum x_i\\) and \\(\\bar{y} = \\frac{1}{n} \\sum y_i\\)\n\n\n\n\n\n\n\n\n\n\n\n\\[\n\\begin{aligned}\n(1) \\implies &\\sum y_i - \\sum(\\hat{\\beta_0} + \\hat{\\beta_1} x_i) = 0\\\\\n&\\sum y_i = \\sum(\\hat{\\beta_0} + \\hat{\\beta_1} x_i)\\\\\n& n\\bar{y} = n \\hat{\\beta_0} + n \\hat{\\beta_1} \\bar{x}\\\\\n&\\bar{y} = \\hat{\\beta_0} + \\hat{\\beta_1} \\bar{x}.\n\\end{aligned}\n\\] Note the commonly used “trick”:\n\\(\\sum y_i = n \\bar{y}\\).\n\n\n\nSolving the normal equations\n\\[\n\\begin{aligned}\n\\text{From (1): } &\\sum_{i=1}^n \\big(y_i - (\\hat{\\beta_0} + \\hat{\\beta_1} x_i)\\big) = 0\\\\\n& \\bar{y}  = \\hat{\\beta}_0 + \\hat{\\beta}_1 \\bar{x}\\\\\n&\\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1 \\bar{x}\n\\end{aligned}\n\\] Plugging this result into (2):"
+  },
+  {
+    "objectID": "labs/lab-02.html",
+    "href": "labs/lab-02.html",
+    "title": "Lab 02: Linear regression",
+    "section": "",
+    "text": "Due date\n\n\n\nThis lab is due Tuesday, September 16 at 5:00pm to Gradescope."
+  },
+  {
+    "objectID": "labs/lab-02.html#learning-goals",
+    "href": "labs/lab-02.html#learning-goals",
+    "title": "Lab 02: Linear regression",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab, you will…\n\nContinue developing a reproducible workflow using RStudio and GitHub\nProduce visualizations and summary statistics to describe distributions\nFit, interpret, and evaluate linear regression models\nUse the matrix representation of the linear regression model to estimate coefficients\nExplore properties of the linear regression model"
+  },
+  {
+    "objectID": "labs/lab-02.html#exercise-1",
+    "href": "labs/lab-02.html#exercise-1",
+    "title": "Lab 02: Linear regression",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nWe begin with univariate exploratory data analysis.\n\nVisualize the distribution of the response variable total_cup_points and calculate summary statistics.\nComment on the features of the distribution of this variable by describing the shape, center, spread, and presence of potential outliers.\nBased on this distribution, do you think the data set is representative of all coffee available to consumers? Briefly explain.\n\n\n\n\n\n\n\nTip\n\n\n\nMake sure your data visualizations have clear and informative titles and axis labels."
+  },
+  {
+    "objectID": "labs/lab-02.html#exercise-2",
+    "href": "labs/lab-02.html#exercise-2",
+    "title": "Lab 02: Linear regression",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nNow let’s consider the relationship between how good a coffee smells and its overall quality.\n\nVisualize the relationship between aroma and total_cup_points.\nDoes there appear to be a relationship between a coffee’s aroma and its overall quality? If so, what is the shape and direction of the relationship?"
+  },
+  {
+    "objectID": "labs/lab-02.html#exercise-3",
+    "href": "labs/lab-02.html#exercise-3",
+    "title": "Lab 02: Linear regression",
+    "section": "Exercise 3",
+    "text": "Exercise 3\nWe have seen the mathematical formulation for simple linear regression in class. In particular, given a response variable \\(Y\\) and predictor variable \\(X\\), the simple linear regression model is \\[Y = \\beta_0 + \\beta_1 X + \\epsilon\\]\nfor some unknown regression coefficients for intercept and slope\\((\\beta_0, \\beta_1)\\) and error terms \\(\\epsilon\\) that are centered at 0 and have variance \\(\\sigma^2_{\\epsilon}\\) . This means that the expected value of each observation lies on the regression line\n\\[ E(Y|X) = \\beta_0 + \\beta_1 X\\]\nAnswer the following questions about simple linear regression. Your response should be in general terms about regression, not be specific to the coffee data.\n\nWhat does \\(E(Y|X) = \\beta_0 + \\beta_1X\\) mean in terms of a given value of \\(X\\)?\nWhat are the interpretations of the coefficients \\(\\beta_0\\) and \\(\\beta_1\\) in terms of the expected value of \\(Y\\)?\n\n\nThis is a good place to render, commit, and push changes to your lab-01 repo on GitHub. Write an informative commit message (e.g., “Completed exercises 1 - 3”), and push every file to GitHub by clicking the check box next to each file in the Git pane. After you push the changes, the Git pane in RStudio should be empty."
+  },
+  {
+    "objectID": "labs/lab-02.html#exercise-4",
+    "href": "labs/lab-02.html#exercise-4",
+    "title": "Lab 02: Linear regression",
+    "section": "Exercise 4",
+    "text": "Exercise 4\n\nFit the model of the relationship between aroma and total_cup_points. Neatly display the output using 3 digits.\nInterpret the slope in the context of the data.\nWhat is the expected total_cup_points for coffees that receive the worst aroma score of 0? Is this a reliable estimate of the total_cup_points for these coffees? Briefly explain why or why not."
+  },
+  {
+    "objectID": "labs/lab-02.html#exercise-5",
+    "href": "labs/lab-02.html#exercise-5",
+    "title": "Lab 02: Linear regression",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nNow let’s add flavor to the model, so we will use both flavor and aroma to understand variability in the overall quality of coffees. Use this model for the remainder of the lab.\nIn class we have seen how vectors and matrices can be used to represent the linear regression model:\n\\[\n\\mathbf{y} = \\mathbf{X}\\boldsymbol{\\beta} + \\mathbf{\\epsilon}\n\\]\n\nState the dimensions of \\(\\mathbf{y}, \\mathbf{X}, \\boldsymbol{\\beta}, \\boldsymbol{\\epsilon}\\) for this model. Your answer should have exact values given the coffee data set.\nCompute the estimated regression coefficients using the matrix form of the model. Show the code used to get the answer.\n\n\n\n\n\n\n\nTip\n\n\n\nYou can use the model.matrix() function to get the design matrix. The code takes the general form:\n\nmodel.matrix(y ~ x, data = my_data)\n\nSee Lab 01 for other matrix operations in R.\n\n\n\nCheck your results from part (b) by using the lm function to fit the model. Neatly display your results using 3 digits.\nWrite the estimated regression equation.\n\n\nThis is a good place to render, commit, and push changes to your lab-01 repo on GitHub. Write an informative commit message (e.g., “Completed exercises 4 - 5”), and push every file to GitHub by clicking the check box next to each file in the Git pane. After you push the changes, the Git pane in RStudio should be empty."
+  },
+  {
+    "objectID": "labs/lab-02.html#exercise-6",
+    "href": "labs/lab-02.html#exercise-6",
+    "title": "Lab 02: Linear regression",
+    "section": "Exercise 6",
+    "text": "Exercise 6\n\nThe coefficient for aroma for the model fit in Exercise 5 is different than the coefficient from the model fit in Exercise 4. Briefly explain why these coefficients are different.\nWould you willingly drink a coffee represented by the intercept of the model in Exercise 5? Briefly explain why or why not."
+  },
+  {
+    "objectID": "labs/lab-02.html#exercise-7",
+    "href": "labs/lab-02.html#exercise-7",
+    "title": "Lab 02: Linear regression",
+    "section": "Exercise 7",
+    "text": "Exercise 7\n\nCompute \\(\\mathbf{H}\\), the hat matrix corresponding to the model from Exercise 5. Then use \\(\\mathbf{H}\\) to compute the residuals for this model. Do not print out \\(\\mathbf{H}\\) or the residuals.\nCompute the mean and standard deviation of the residuals.\nRecall root mean square error RMSE\n\\[\nRMSE = \\sqrt{\\frac{\\sum_{i=1}^n(y_i - \\hat{y}_i)^2}{n}}\n\\]\nSimilar to other statistics we’ve seen thus far, we can write the RMSE in matrix form. Compute RMSE for the model from Exercise 5 using matrix form. Show the code used to get the answer.\nHow do the standard deviation of the residuals and RMSE compare?\n\n\nYou’re done and ready to submit your work! render, commit, and push all remaining changes. You can use the commit message “Done with Lab 02!”, and make sure you have pushed all the files to GitHub (your Git pane in RStudio should be empty) and that all documents are updated in your repo on GitHub. The PDF document you submit to Gradescope should be identical to the one in your GitHub repo."
+  },
+  {
+    "objectID": "notes/lecture-notes-playground.html",
+    "href": "notes/lecture-notes-playground.html",
+    "title": "lecture-notes-playground",
+    "section": "",
+    "text": "library(plotly)\n\nLoading required package: ggplot2\n\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\n# helper to add a vector with a large diamond tip\nadd_vector &lt;- function(fig, x, y, z, color, name=NULL) {\n  fig %&gt;%\n    add_trace(\n      type = \"scatter3d\",\n      mode = \"lines+markers\",\n      x = c(0, x),\n      y = c(0, y),\n      z = c(0, z),\n      line = list(width = 6, color = color),\n      marker = list(\n        size = c(1, 12),  # &lt;-- make diamond much larger\n        color = c(color, color),\n        symbol = c(\"circle\", \"diamond\")\n      ),\n      name = name,\n      showlegend = TRUE\n    )\n}\n\n# build plot with all six vectors\nfig &lt;- plot_ly() %&gt;%\n  add_vector(1, 1, 1, \"blue\", \"(1,1,1)\") %&gt;%\n  add_vector(2, 0, 0, \"green\", \"(2,0,0)\") %&gt;%\n  add_vector(0, 1, 0, \"red\", \"(0,1,0)\") %&gt;%\n  add_vector(1, 0, 0, \"purple\", \"(1,0,0)\") %&gt;%\n  add_vector(0, 2, 0, \"orange\", \"(0,2,0)\") %&gt;%\n  add_vector(0, 0, 2, \"brown\", \"(0,0,2)\") %&gt;%\n  layout(\n    scene = list(\n      xaxis = list(title = \"X\"),\n      yaxis = list(title = \"Y\"),\n      zaxis = list(title = \"Z\"),\n      camera = list(eye = list(x = 1.5, y = 1.5, z = 0.8))\n    )\n  )\n\nfig\n\n\n\n\n\n\n{r} # # install.packages(\"plotly\") # library(plotly) #  # # --- small helpers ----------------------------------------------------------- #  # # cross product (no extra packages) # vcross &lt;- function(a, b) { #   c(a[2]*b[3] - a[3]*b[2], #     a[3]*b[1] - a[1]*b[3], #     a[1]*b[2] - a[2]*b[1]) # } #  # # Rodrigues' rotation matrix to rotate vector a onto b # rot_from_a_to_b &lt;- function(a, b) { #   a &lt;- a / sqrt(sum(a^2)) #   b &lt;- b / sqrt(sum(b^2)) #   v &lt;- vcross(a, b) #   s &lt;- sqrt(sum(v^2)) #   cth &lt;- sum(a * b) #   I3 &lt;- diag(3) #   if (s &lt; 1e-12) { #     # parallel or anti-parallel #     if (cth &gt; 0) return(I3)                 # already aligned #     # 180°: rotate around any axis ⟂ to a; x-axis works since a = (0,0,±1) #     return(matrix(c(1,0,0, 0,-1,0, 0,0,-1), nrow=3, byrow=TRUE)) #   } #   K &lt;- matrix(c(  0,   -v[3],  v[2], #                  v[3],   0,   -v[1], #                 -v[2],  v[1],   0), nrow=3, byrow=TRUE) #   I3 + K + K %*% K * ((1 - cth) / (s^2)) # } #  # # Build a cone mesh at `tip` pointing along `dir`. # # The cone is defined in local coords as: tip at origin, base at z = -length. # cone_mesh &lt;- function(tip, dir, length = 0.15, radius = 0.06, n = 24) { #   u &lt;- as.numeric(dir) #   if (sqrt(sum(u^2)) &lt; 1e-12) stop(\"Direction for cone is zero-length.\") #   u &lt;- u / sqrt(sum(u^2)) #  #   # Local cone vertices: tip + circular base in plane z = -length #   theta &lt;- seq(0, 2*pi, length.out = n + 1)[- (n + 1)]  # n points, exclude duplicate #   tip_local  &lt;- c(0, 0, 0) #   base_local &lt;- rbind(radius * cos(theta), radius * sin(theta), -length) #  #   # Rotate from local +Z axis to u #   R &lt;- rot_from_a_to_b(c(0,0,1), u) #   tip_world  &lt;- R %*% tip_local #   base_world &lt;- R %*% base_local #  #   # Translate to desired tip position #   tip_world  &lt;- tip_world  + tip #   base_world &lt;- sweep(base_world, 2, tip, `+`) #  #   # Assemble vertices: tip first, then base ring #   verts &lt;- cbind(tip_world, base_world)  # 3 x (1+n) #   x &lt;- verts[1,]; y &lt;- verts[2,]; z &lt;- verts[3,] #  #   # Triangles for the side surface: (tip, base_i, base_{i+1}) #   # Indices for plotly mesh3d are 0-based. #   tip_idx  &lt;- 0 #   base_idx &lt;- 1:(n)  # 1-based in R #   i_idx &lt;- rep(tip_idx, n) #   j_idx &lt;- base_idx #   k_idx &lt;- c(base_idx[-1], 1) #  #   list( #     x = x, y = y, z = z, #     i = i_idx, j = j_idx, k = k_idx #   ) # } #  # # Add one vector (line) + cone head to a plotly figure # add_vector_with_cone &lt;- function(fig, x, y, z, color = \"blue\", #                                  shaft_width = 6, #                                  cone_len = 0.15, cone_radius = 0.06, cone_n = 24, #                                  name = NULL) { #   tip &lt;- c(x, y, z) #   dir &lt;- c(x, y, z) #  #   # line (shaft) #   fig &lt;- fig %&gt;% #     add_trace( #       type = \"scatter3d\", mode = \"lines\", #       x = c(0, x), y = c(0, y), z = c(0, z), #       line = list(width = shaft_width, color = color), #       name = name %||% sprintf(\"(%g,%g,%g)\", x, y, z), #       showlegend = TRUE #     ) #  #   # cone head #   m &lt;- cone_mesh(tip = tip, dir = dir, length = cone_len, radius = cone_radius, n = cone_n) #   fig %&gt;% #     add_trace( #       type = \"mesh3d\", #       x = m$x, y = m$y, z = m$z, #       i = m$i, j = m$j, k = m$k, #       color = color, #       opacity = 1, #       showscale = FALSE, #       lighting = list(ambient = 0.5, diffuse = 0.8, specular = 0.2), #       hoverinfo = \"skip\", #       name = name %||% sprintf(\"(%g,%g,%g) head\", x, y, z), #       showlegend = FALSE #     ) # } #  # `%||%` &lt;- function(a, b) if (is.null(a)) b else a #  # # --- demo: your six vectors with true cone heads ----------------------------- #  # fig &lt;- plot_ly() #  # fig &lt;- fig %&gt;% #   add_vector_with_cone(1, 1, 1, color = \"blue\",  name = \"(1,1,1)\") %&gt;% #   add_vector_with_cone(2, 0, 0, color = \"green\", name = \"(2,0,0)\") %&gt;% #   add_vector_with_cone(0, 1, 0, color = \"red\",   name = \"(0,1,0)\") %&gt;% #   add_vector_with_cone(1, 0, 0, color = \"purple\",name = \"(1,0,0)\") %&gt;% #   add_vector_with_cone(0, 2, 0, color = \"orange\",name = \"(0,2,0)\") %&gt;% #   add_vector_with_cone(0, 0, 2, color = \"brown\", name = \"(0,0,2)\") #  # fig &lt;- fig %&gt;% #   layout( #     scene = list( #       xaxis = list(title = \"X\"), #       yaxis = list(title = \"Y\"), #       zaxis = list(title = \"Z\"), #       camera = list(eye = list(x = 1.5, y = 1.5, z = 0.8)) #     ) #   ) #  # fig #  #"
+  },
+  {
+    "objectID": "labs/lab02.html",
+    "href": "labs/lab02.html",
+    "title": "Lab 02: Linear regression",
+    "section": "",
+    "text": "Due date\n\n\n\nThis lab is due Tuesday, September 16 at 5:00pm to Gradescope."
+  },
+  {
+    "objectID": "labs/lab02.html#learning-goals",
+    "href": "labs/lab02.html#learning-goals",
+    "title": "Lab 02: Linear regression",
+    "section": "Learning goals",
+    "text": "Learning goals\nBy the end of the lab, you will…\n\nContinue developing a reproducible workflow using RStudio and GitHub\nProduce visualizations and summary statistics to describe distributions\nFit, interpret, and evaluate linear regression models\nUse the matrix representation of the linear regression model to estimate coefficients\nExplore properties of the linear regression model"
+  },
+  {
+    "objectID": "labs/lab02.html#exercise-1",
+    "href": "labs/lab02.html#exercise-1",
+    "title": "Lab 02: Linear regression",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nWe begin with univariate exploratory data analysis.\n\nVisualize the distribution of the response variable total_cup_points and calculate summary statistics.\nComment on the features of the distribution of this variable by describing the shape, center, spread, and presence of potential outliers.\nBased on this distribution, do you think the data set is representative of all coffee available to consumers? Briefly explain.\n\n\n\n\n\n\n\nTip\n\n\n\nMake sure your data visualizations have clear and informative titles and axis labels."
+  },
+  {
+    "objectID": "labs/lab02.html#exercise-2",
+    "href": "labs/lab02.html#exercise-2",
+    "title": "Lab 02: Linear regression",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nNow let’s consider the relationship between how good a coffee smells and its overall quality.\n\nVisualize the relationship between aroma and total_cup_points.\nDoes there appear to be a relationship between a coffee’s aroma and its overall quality? If so, what is the shape and direction of the relationship?"
+  },
+  {
+    "objectID": "labs/lab02.html#exercise-3",
+    "href": "labs/lab02.html#exercise-3",
+    "title": "Lab 02: Linear regression",
+    "section": "Exercise 3",
+    "text": "Exercise 3\nWe have seen the mathematical formulation for simple linear regression in class. In particular, given a response variable \\(Y\\) and predictor variable \\(X\\), the simple linear regression model is \\[Y = \\beta_0 + \\beta_1 X + \\epsilon\\]\nfor some unknown regression coefficients \\((\\beta_0, \\beta_1)\\) and error terms \\(\\epsilon\\) that are centered at 0 and have variance \\(\\sigma^2_{\\epsilon}\\) . This means that the expected value of each observation lies on the regression line\n\\[ E(Y|X) = \\beta_0 + \\beta_1 X\\]\nAnswer the following questions about simple linear regression. Your response should be in general terms about regression, not be specific to the coffee data.\n\nWhat does \\(E(Y|X) = \\beta_0 + \\beta_1X\\) mean in terms of a given value of \\(X\\)?\nWhat are the interpretations of the coefficients \\(\\beta_0\\) and \\(\\beta_1\\) in terms of the expected value of \\(Y\\)?\n\n\nThis is a good place to render, commit, and push changes to your lab-01 repo on GitHub. Write an informative commit message (e.g., “Completed exercises 1 - 3”), and push every file to GitHub by clicking the check box next to each file in the Git pane. After you push the changes, the Git pane in RStudio should be empty."
+  },
+  {
+    "objectID": "labs/lab02.html#exercise-4",
+    "href": "labs/lab02.html#exercise-4",
+    "title": "Lab 02: Linear regression",
+    "section": "Exercise 4",
+    "text": "Exercise 4\n\nFit the model of the relationship between aroma and total_cup_points. Neatly display the output using 3 digits.\nInterpret the slope in the context of the data.\nWhat is the expected total_cup_points for coffees that receive the worst aroma score of 0? Is this a reliable estimate of the total_cup_points for these coffees? Briefly explain why or why not."
+  },
+  {
+    "objectID": "labs/lab02.html#exercise-5",
+    "href": "labs/lab02.html#exercise-5",
+    "title": "Lab 02: Linear regression",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nNow let’s add flavor to the model, so we will use both flavor and aroma to understand variability in the overall quality of coffees. Use this model for the remainder of the lab.\nIn class we have seen how vectors and matrices can be used to represent the linear regression model:\n\\[\n\\mathbf{y} = \\mathbf{X}\\boldsymbol{\\beta} + \\mathbf{\\epsilon}\n\\]\n\nState the dimensions of \\(\\mathbf{y}, \\mathbf{X}, \\boldsymbol{\\beta}, \\boldsymbol{\\epsilon}\\) for this model. Your answer should have exact values given the coffee data set.\nCompute the estimated regression coefficients using the matrix form of the model. Show the code used to get the answer.\n\n\n\n\n\n\n\nTip\n\n\n\nYou can use the model.matrix() function to get the design matrix. The code takes the general form:\n\nmodel.matrix(y ~ x, data = my_data)\n\nSee Lab 01 for other matrix operations in R.\n\n\n\nCheck your results from part (b) by using the lm function to fit the model. Neatly display your results using 3 digits.\nWrite the estimated regression equation.\n\n\nThis is a good place to render, commit, and push changes to your lab-01 repo on GitHub. Write an informative commit message (e.g., “Completed exercises 4 - 5”), and push every file to GitHub by clicking the check box next to each file in the Git pane. After you push the changes, the Git pane in RStudio should be empty."
+  },
+  {
+    "objectID": "labs/lab02.html#exercise-6",
+    "href": "labs/lab02.html#exercise-6",
+    "title": "Lab 02: Linear regression",
+    "section": "Exercise 6",
+    "text": "Exercise 6\n\nThe coefficient for aroma for the model fit in Exercise 5 is different than the coefficient from the model fit in Exercise 4. Briefly explain why these coefficients are different.\nWould you willingly drink a coffee represented by the intercept of the model in Exercise 5? Briefly explain why or why not."
+  },
+  {
+    "objectID": "labs/lab02.html#exercise-7",
+    "href": "labs/lab02.html#exercise-7",
+    "title": "Lab 02: Linear regression",
+    "section": "Exercise 7",
+    "text": "Exercise 7\n\nCompute \\(\\mathbf{H}\\), the hat matrix corresponding to the model from Exercise 5. Then use \\(\\mathbf{H}\\) to compute the residuals for this model. Do not print out \\(\\mathbf{H}\\) or the residuals.\nCompute the mean and standard deviation of the residuals.\nRecall root mean square error RMSE\n\\[\nRMSE = \\sqrt{\\frac{\\sum_{i=1}^n(y_i - \\hat{y}_i)^2}{n}}\n\\]\nSimilar to other statistics we’ve seen thus far, we can write the RMSE in matrix form. Compute RMSE for the model from Exercise 5 using matrix form. Show the code used to get the answer.\nHow do the standard deviation of the residuals and RMSE compare?\n\n\nYou’re done and ready to submit your work! render, commit, and push all remaining changes. You can use the commit message “Done with Lab 02!”, and make sure you have pushed all the files to GitHub (your Git pane in RStudio should be empty) and that all documents are updated in your repo on GitHub. The PDF document you submit to Gradescope should be identical to the one in your GitHub repo."
   }
 ]

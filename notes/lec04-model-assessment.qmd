@@ -383,13 +383,14 @@ $$\text{Sum of Squares Total (SST)} = S_{yy} = \sum_{i=1}^n(y_i - \bar{y})^2 = (
 #| warning: false
 #| echo: false
 mean_y <- mean(life_exp$life_exp)
-life_exp_fit <- lm(life_exp ~ income_inequality, data = life_exp)
+model_ii <- lm(life_exp ~ income_inequality, data = life_exp)
+
 
 ggplot(data = life_exp, aes(x = income_inequality, y = life_exp)) +
   geom_point(alpha = 0.5) + 
   geom_hline(yintercept = mean_y, color = "#407E99") +
    geom_smooth(method = "lm", se = FALSE, color = "darkred") +
-  geom_segment(aes(x=income_inequality, xend=income_inequality, y=mean_y, yend=predict(life_exp_fit)), color = "darkred", size = 1) +
+  geom_segment(aes(x=income_inequality, xend=income_inequality, y=mean_y, yend=predict(model_ii)), color = "darkred", size = 1) +
   labs(x = "Income inequality (Gini coefficient)",
        y = "Life expectancy (years )") +
   annotate("text", x = 45, y = 73, label = latex2exp::TeX("$\\bar{y}$"), color = "#407E99", size = 6)  + 
@@ -414,7 +415,7 @@ ggplot(data = life_exp, aes(x = income_inequality, y = life_exp)) +
   geom_point(alpha = 0.5) + 
   geom_hline(yintercept = mean_y, color = "#407E99") +
    geom_smooth(method = "lm", se = FALSE, color = "darkred") +
-  geom_segment(aes(x=income_inequality, xend=income_inequality, y = life_exp, yend=predict(life_exp_fit)), color = "gray") +
+  geom_segment(aes(x=income_inequality, xend=income_inequality, y = life_exp, yend=predict(model_ii)), color = "gray") +
   labs(x = "Income inequality (Gini coefficient)",
        y = "Life expectancy (years )") +
   annotate("text", x = 45, y = 73, label = latex2exp::TeX("$\\bar{y}$"), color = "#407E99", size = 6)  + 
@@ -458,7 +459,7 @@ What is the range of $R^2$? Does $R^2$ have units?
 ```{r}
 #| echo: false
 
-life_exp_fit_rsq <- round(glance(life_exp_fit)$r.squared, 3) * 100
+model_ii_rsq <- round(glance(model_ii)$r.squared, 3) * 100
 
 ```
 
@@ -471,7 +472,7 @@ Use the `augment()` function from the **broom** package to add columns for predi
 . . .
 
 ```{r}
-life_exp_aug <- augment(life_exp_fit)
+life_exp_aug <- augment(model_ii)
 life_exp_aug
 ```
 
@@ -502,6 +503,6 @@ Alternatively, use `glance()` to construct a single row summary of the model fit
 ```{r}
 #| echo: true
 
-glance(life_exp_fit)$r.squared
+glance(model_ii)$r.squared
 ```
 

@@ -1,0 +1,186 @@
+---
+title: "lecture-notes-playground"
+format: html
+---
+
+```{r}
+library(plotly)
+
+# helper to add a vector with a large diamond tip
+add_vector <- function(fig, x, y, z, color, name=NULL) {
+  fig %>%
+    add_trace(
+      type = "scatter3d",
+      mode = "lines+markers",
+      x = c(0, x),
+      y = c(0, y),
+      z = c(0, z),
+      line = list(width = 6, color = color),
+      marker = list(
+        size = c(1, 12),  # <-- make diamond much larger
+        color = c(color, color),
+        symbol = c("circle", "diamond")
+      ),
+      name = name,
+      showlegend = TRUE
+    )
+}
+
+# build plot with all six vectors
+fig <- plot_ly() %>%
+  add_vector(1, 1, 1, "blue", "(1,1,1)") %>%
+  add_vector(2, 0, 0, "green", "(2,0,0)") %>%
+  add_vector(0, 1, 0, "red", "(0,1,0)") %>%
+  add_vector(1, 0, 0, "purple", "(1,0,0)") %>%
+  add_vector(0, 2, 0, "orange", "(0,2,0)") %>%
+  add_vector(0, 0, 2, "brown", "(0,0,2)") %>%
+  layout(
+    scene = list(
+      xaxis = list(title = "X"),
+      yaxis = list(title = "Y"),
+      zaxis = list(title = "Z"),
+      camera = list(eye = list(x = 1.5, y = 1.5, z = 0.8))
+    )
+  )
+
+fig
+
+```
+
+
+# ```{r}
+# # install.packages("plotly")
+# library(plotly)
+# 
+# # --- small helpers -----------------------------------------------------------
+# 
+# # cross product (no extra packages)
+# vcross <- function(a, b) {
+#   c(a[2]*b[3] - a[3]*b[2],
+#     a[3]*b[1] - a[1]*b[3],
+#     a[1]*b[2] - a[2]*b[1])
+# }
+# 
+# # Rodrigues' rotation matrix to rotate vector a onto b
+# rot_from_a_to_b <- function(a, b) {
+#   a <- a / sqrt(sum(a^2))
+#   b <- b / sqrt(sum(b^2))
+#   v <- vcross(a, b)
+#   s <- sqrt(sum(v^2))
+#   cth <- sum(a * b)
+#   I3 <- diag(3)
+#   if (s < 1e-12) {
+#     # parallel or anti-parallel
+#     if (cth > 0) return(I3)                 # already aligned
+#     # 180°: rotate around any axis ⟂ to a; x-axis works since a = (0,0,±1)
+#     return(matrix(c(1,0,0, 0,-1,0, 0,0,-1), nrow=3, byrow=TRUE))
+#   }
+#   K <- matrix(c(  0,   -v[3],  v[2],
+#                  v[3],   0,   -v[1],
+#                 -v[2],  v[1],   0), nrow=3, byrow=TRUE)
+#   I3 + K + K %*% K * ((1 - cth) / (s^2))
+# }
+# 
+# # Build a cone mesh at `tip` pointing along `dir`.
+# # The cone is defined in local coords as: tip at origin, base at z = -length.
+# cone_mesh <- function(tip, dir, length = 0.15, radius = 0.06, n = 24) {
+#   u <- as.numeric(dir)
+#   if (sqrt(sum(u^2)) < 1e-12) stop("Direction for cone is zero-length.")
+#   u <- u / sqrt(sum(u^2))
+# 
+#   # Local cone vertices: tip + circular base in plane z = -length
+#   theta <- seq(0, 2*pi, length.out = n + 1)[- (n + 1)]  # n points, exclude duplicate
+#   tip_local  <- c(0, 0, 0)
+#   base_local <- rbind(radius * cos(theta), radius * sin(theta), -length)
+# 
+#   # Rotate from local +Z axis to u
+#   R <- rot_from_a_to_b(c(0,0,1), u)
+#   tip_world  <- R %*% tip_local
+#   base_world <- R %*% base_local
+# 
+#   # Translate to desired tip position
+#   tip_world  <- tip_world  + tip
+#   base_world <- sweep(base_world, 2, tip, `+`)
+# 
+#   # Assemble vertices: tip first, then base ring
+#   verts <- cbind(tip_world, base_world)  # 3 x (1+n)
+#   x <- verts[1,]; y <- verts[2,]; z <- verts[3,]
+# 
+#   # Triangles for the side surface: (tip, base_i, base_{i+1})
+#   # Indices for plotly mesh3d are 0-based.
+#   tip_idx  <- 0
+#   base_idx <- 1:(n)  # 1-based in R
+#   i_idx <- rep(tip_idx, n)
+#   j_idx <- base_idx
+#   k_idx <- c(base_idx[-1], 1)
+# 
+#   list(
+#     x = x, y = y, z = z,
+#     i = i_idx, j = j_idx, k = k_idx
+#   )
+# }
+# 
+# # Add one vector (line) + cone head to a plotly figure
+# add_vector_with_cone <- function(fig, x, y, z, color = "blue",
+#                                  shaft_width = 6,
+#                                  cone_len = 0.15, cone_radius = 0.06, cone_n = 24,
+#                                  name = NULL) {
+#   tip <- c(x, y, z)
+#   dir <- c(x, y, z)
+# 
+#   # line (shaft)
+#   fig <- fig %>%
+#     add_trace(
+#       type = "scatter3d", mode = "lines",
+#       x = c(0, x), y = c(0, y), z = c(0, z),
+#       line = list(width = shaft_width, color = color),
+#       name = name %||% sprintf("(%g,%g,%g)", x, y, z),
+#       showlegend = TRUE
+#     )
+# 
+#   # cone head
+#   m <- cone_mesh(tip = tip, dir = dir, length = cone_len, radius = cone_radius, n = cone_n)
+#   fig %>%
+#     add_trace(
+#       type = "mesh3d",
+#       x = m$x, y = m$y, z = m$z,
+#       i = m$i, j = m$j, k = m$k,
+#       color = color,
+#       opacity = 1,
+#       showscale = FALSE,
+#       lighting = list(ambient = 0.5, diffuse = 0.8, specular = 0.2),
+#       hoverinfo = "skip",
+#       name = name %||% sprintf("(%g,%g,%g) head", x, y, z),
+#       showlegend = FALSE
+#     )
+# }
+# 
+# `%||%` <- function(a, b) if (is.null(a)) b else a
+# 
+# # --- demo: your six vectors with true cone heads -----------------------------
+# 
+# fig <- plot_ly()
+# 
+# fig <- fig %>%
+#   add_vector_with_cone(1, 1, 1, color = "blue",  name = "(1,1,1)") %>%
+#   add_vector_with_cone(2, 0, 0, color = "green", name = "(2,0,0)") %>%
+#   add_vector_with_cone(0, 1, 0, color = "red",   name = "(0,1,0)") %>%
+#   add_vector_with_cone(1, 0, 0, color = "purple",name = "(1,0,0)") %>%
+#   add_vector_with_cone(0, 2, 0, color = "orange",name = "(0,2,0)") %>%
+#   add_vector_with_cone(0, 0, 2, color = "brown", name = "(0,0,2)")
+# 
+# fig <- fig %>%
+#   layout(
+#     scene = list(
+#       xaxis = list(title = "X"),
+#       yaxis = list(title = "Y"),
+#       zaxis = list(title = "Z"),
+#       camera = list(eye = list(x = 1.5, y = 1.5, z = 0.8))
+#     )
+#   )
+# 
+# fig
+# 
+# ```
+
+

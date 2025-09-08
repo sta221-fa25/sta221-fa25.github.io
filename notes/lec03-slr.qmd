@@ -1,0 +1,372 @@
+---
+title: "Simple linear regression"
+author: "Dr. Alexander Fisher"
+format:
+  html:
+    fig-width: 6
+    fig-height: 4
+---
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data sets used in these notes"
+#| warning: false
+#| messge: false
+library(tidyverse)
+ 
+weather <-
+  read_csv("https://sta221-fa25.github.io/data/rdu-weather-history.csv") %>%
+  arrange(date)
+    
+```
+
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+
+## Notation
+
+$\by$: a vector of observations
+
+$\by = [y_1, y_2, \ldots, y_n]^T = \begin{bmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_n
+\end{bmatrix}$. We say "y is of dimension n".
+
+$\hby$: vector of "fitted" outcomes or "predicted" response variable. 
+
+$\bone = \begin{bmatrix}
+1 \\
+1 \\
+\vdots \\
+1
+\end{bmatrix}$. $\bone$ is of dimension of n.
+
+::: callout-note
+For the handwritten in-class notes, we use the convention that a line underneath the symbol represents a vector.
+:::
+
+## Last time
+
+$|cor(\bx,\by)| = 1 \iff \by = \beta_0 \bone + \beta_1 \bx$ for some $\beta_0$, $\beta_1$. See Figure 1.
+
+<!-- ::: panel-tabset -->
+
+<!-- ## Figure 1 {#fig-one} -->
+```{r}
+#| echo: false
+x = 1:10
+y = 1 + (2*x)
+
+df = data.frame(x, y)
+df %>% 
+  ggplot(aes(x = x, y = y)) +
+  geom_point() +
+  geom_abline(intercept = 1, slope = 2) +
+  theme_bw() + 
+  labs(title = "Figure 1", subtitle = "Perfect line")
+```
+
+<!-- ## code -->
+
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- x = 1:10 -->
+<!-- y = 1 + (2*x) -->
+
+<!-- df = data.frame(x, y) -->
+<!-- df %>%  -->
+<!--   ggplot(aes(x = x, y = y)) + -->
+<!--   geom_point() + -->
+<!--   geom_abline(intercept = 1, slope = 2) + -->
+<!--   theme_bw() +  -->
+<!--   labs(title = "Perfect line") -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+It is more typical that $|cor(\bx, \by)| < 1$, in which case $\by = \beta_0 \bone + \beta_1 \bx + \be$, where $\be$ is the error vector. See Figure 2 for an example. The observation by observation representation is given by the equation
+
+$$y_i = \beta_0 + \beta_1 x_i + \varepsilon_i.$$
+
+```{r}
+#| echo: false
+#| warning: false
+#' geom_residuals: draw residual segments to the OLS line
+#'
+#' For each group, fits lm(y ~ x) and draws segments from (x, y) to (x, y_hat).
+#'
+#' Aesthetics (like GeomSegment): x, y, colour, linewidth/size, linetype, alpha
+#'
+#' library(ggplot2)
+#' ggplot(mtcars, aes(wt, mpg)) +
+#'   geom_point() +
+#'   geom_smooth(method = "lm", se = FALSE, linewidth = 0.6) +
+#'   geom_residuals(colour = "firebrick", linewidth = 0.6)
+
+StatResiduals <- ggplot2::ggproto(
+  "StatResiduals", ggplot2::Stat,
+  required_aes = c("x", "y"),
+  compute_group = function(data, scales) {
+    # Fit OLS within the group (NA-safe)
+    fit <- stats::lm(y ~ x, data = data, na.action = stats::na.exclude)
+
+    # Predicted values on the observed x's
+    yhat <- stats::predict(fit, newdata = data.frame(x = data$x))
+
+    # GeomSegment expects x, y, xend, yend
+    data$xend <- data$x
+    data$yend <- yhat
+    data
+  }
+)
+
+geom_residuals <- function(mapping = NULL, data = NULL,
+                           ...,
+                           na.rm = FALSE,
+                           show.legend = NA,
+                           inherit.aes = TRUE) {
+  ggplot2::layer(
+    data = data,
+    mapping = mapping,
+    stat = StatResiduals,
+    geom = ggplot2::GeomSegment,
+    position = "identity",
+    show.legend = show.legend,
+    inherit.aes = inherit.aes,
+    params = list(na.rm = na.rm, ...)
+  )
+}
+
+```
+
+
+
+```{r}
+#| echo: false
+#| warning: false
+weather %>%
+  distinct(tmin, .keep_all = TRUE) %>%
+  ggplot(aes(x = tmin, y = tmax)) +
+  geom_point() +
+  geom_smooth(method = 'lm', se = FALSE, color = "firebrick") +
+  theme_bw() + 
+  labs(title = "Figure 2", y = "Max temperature (F)",
+       x = "Min temperature (F)", 
+       caption = expression("Each blue line is a residual:" ~ hat(epsilon)[i] == y[i] - hat(y)[i])) +
+  geom_residuals(colour = "steelblue", linewidth = 0.6)
+```
+
+**Question**: what line, (i.e. what ($\beta_0, \beta_1$)) provides the "best fit"?
+
+**Answer**: the set ($\beta_0, \beta_1$) that satisfy an **objective function**.
+
+::: callout-note
+## Definition: objective function
+An **objective function** is some function we want to optimize.
+
+Example 1: least absolute value (LAV) regression
+
+$$
+\hat{\beta_0}, \hat{\beta_1}
+= \operatorname*{arg\,min}_{\beta_0, \beta_1}
+\sum_{i=1}^n |\varepsilon_i|
+$$
+
+Example 2: Ordinary least squares (OLS) regression
+
+$$
+\hat{\beta_0}, \hat{\beta_1}
+= \operatorname*{arg\,min}_{\beta_0, \beta_1}
+\sum_{i=1}^n \varepsilon_i^2
+$$
+:::
+
+## Ordinary least squares (OLS) regression line
+
+$\sum_{i=1}^n \varepsilon_i^2$ is called the "residual sum of squares" or RSS for short.
+
+$$
+\begin{aligned}
+RSS(\beta_0, \beta_1) &= \sum_{i=1}^n \varepsilon_i^2\\
+&= \sum_{i=1}^n (y_i - (\beta_0 + \beta_1 x_i))^2\\
+&= (\by - (\beta_0 \bone + \beta_1 \bx))^T (\by - (\beta_0 \bone + \beta_1 \bx))\\
+&= ||(\by - (\beta_0 \bone + \beta_1 \bx))||^2
+\end{aligned}
+$$
+
+::: callout-note
+## Definition: OLS estimates
+
+The OLS values of \beta_0, \beta_1 are the values (\hat{\beta}_0, \hat{\beta}_1) that minimize $RSS(\beta_0, \beta_1)$. Again, in math,
+
+$$
+\hat{\beta_0}, \hat{\beta_1}
+= \operatorname*{arg\,min}_{\beta_0, \beta_1}
+\sum_{i=1}^n \varepsilon_i^2
+$$
+:::
+
+**Question**: How can we find the OLS line?
+
+**Answer**: (1) Geometry (we'll do this later); (2) calculus
+
+### Computing the OLS estimates using calculus
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: "plotly"
+surf_ht <- "β₀=%{x}<br>β₁=%{y}<br>RSS=%{z}<extra></extra>"
+pt_ht   <- "OLS estimate (min of RSS)<br>β₀=%{x}<br>β₁=%{y}<br>RSS=%{z}<extra></extra>"
+
+plot_rss_3d <- function(x, y, n = 100, pad = 0.5) {
+  stopifnot(is.numeric(x), is.numeric(y), length(x) == length(y))
+  fit <- lm(y ~ x)
+  b0_hat <- coef(fit)[1]; b1_hat <- coef(fit)[2]
+
+  # Build a sensible grid around OLS estimates using (padded) CIs
+  ci <- suppressWarnings(confint(fit))
+  if (any(!is.finite(ci))) { # fallback if CI fails
+    ci <- rbind(
+      c(b0_hat - 3*sd(y), b0_hat + 3*sd(y)),
+      c(b1_hat - 3*sd(y)/max(sd(x), .Machine$double.eps), 
+        b1_hat + 3*sd(y)/max(sd(x), .Machine$double.eps))
+    )
+  }
+  
+  b0_seq <- seq(ci[1,1] - pad*diff(ci[1,]), ci[1,2] + pad*diff(ci[1,]), length.out = n)
+  b1_seq <- seq(ci[2,1] - pad*diff(ci[2,]), ci[2,2] + pad*diff(ci[2,]), length.out = n)
+
+  rss_fun <- function(b0, b1) sum((y - b0 - b1*x)^2)
+  Z <- outer(b0_seq, b1_seq, Vectorize(rss_fun))  # rows: b0, cols: b1
+
+  # Interactive surface with the OLS minimum marked
+  library(plotly)
+  plot_ly(x = ~b0_seq, y = ~b1_seq, z = ~Z) %>%
+    add_surface(colorbar = list(title = list(text = "RSS")),
+                hovertemplate = surf_ht,) %>%
+    add_markers(
+      x = b0_hat, y = b1_hat, z = rss_fun(b0_hat, b1_hat),
+      marker = list(size = 5), name = "OLS estimate (minimum of RSS)",
+       hovertemplate = pt_ht
+    ) %>%
+    layout(
+  scene = list(
+    xaxis = list(title = "β₀"),   # "\u03B2\u2080"
+    yaxis = list(title = "β₁"),   # "\u03B2\u2081"
+    zaxis = list(title = "RSS")
+  )
+)
+
+}
+
+## Example
+with(weather, plot_rss_3d(tmin, tmax), )
+
+```
+
+
+```{r}
+lm(tmax ~ tmin, data = weather)
+```
+- Notice that the RSS is a quadratic (convex) function of $\beta_0, \beta_1$.
+
+- The global minimum occurs where the derivative (gradient) equals zero. 
+
+$$
+\begin{aligned}
+\frac{\partial}{\partial \beta_0} RSS &=  -2 \sum (y_i - (\beta_0 + \beta_1 x_i)) = 0\\
+\frac{\partial}{\partial \beta_1} RSS &=  -2 \sum x_i(y_i - (\beta_0 + \beta_1 x_i)) = 0 
+\end{aligned}
+$$
+
+Therefore the OLS values $\hat{\beta_0}, \hat{\beta_1}$ will satisfy the **normal equations**,
+
+$$
+\begin{align}
+\sum_{i=1}^n \big(y_i - (\hat{\beta_0} + \hat{\beta_1} x_i)\big) &= 0 \tag{1}\\
+\sum_{i=1}^n x_i \big(y_i - (\hat{\beta_0} + \hat{\beta_1} x_i)\big) &= 0 \tag{2}
+\end{align}
+$$
+**Question**: why are these called *the normal equations*?
+
+**Answer**: Let $\hat{\varepsilon}_i = y_i - \hat{y}_i = y_i - (\hat{\beta_0} + \hat{\beta_1} x_i)$ then, 
+
+$$
+\begin{aligned}
+(1) &\implies \sum \hat{\varepsilon}_i  = \hbe \cdot \bone = 0\\
+(2) &\implies \sum x_i \hat{\varepsilon}_i = \bx^T \hbe = 0.
+\end{aligned}
+$$
+
+In words, the residual vector $\hbe$ is *normal* (orthogonal) to the vectors $\bone$ and $\bx$.
+
+::: panel-tabset
+## Exercise
+
+Show that the OLS regression line goes through $\bar{x}, \bar{y}$. Reminder: $\bar{x} = \frac{1}{n}\sum x_i$ and $\bar{y} = \frac{1}{n} \sum y_i$
+
+```{r}
+#| echo: false
+#| warning: false
+
+df_mean = weather %>%
+  distinct(tmin, .keep_all = TRUE) %>%
+  summarize(xbar = mean(tmin),
+            ybar = mean(tmax))
+
+weather %>%
+  distinct(tmin, .keep_all = TRUE) %>%
+  ggplot(aes(x = tmin, y = tmax)) +
+  geom_point() +
+  geom_smooth(method = 'lm', se = FALSE, color = "firebrick") +
+  theme_bw() + 
+  labs(title = "Figure 3", y = "y",
+       x = "x",
+       subtitle = "The OLS regression line goes through the sample mean.") +
+  geom_point(data = df_mean, aes(x = xbar, y = ybar),
+             inherit.aes = FALSE, color = "steelblue", size = 3) +
+  annotate("text",
+           x = df_mean$xbar, y = df_mean$ybar,
+           label = "paste('(', bar(x), ', ', bar(y), ')')",
+           parse = TRUE, vjust = -1, color = "steelblue")
+```
+
+
+## Solution
+
+$$
+\begin{aligned}
+(1) \implies &\sum y_i - \sum(\hat{\beta_0} + \hat{\beta_1} x_i) = 0\\
+&\sum y_i = \sum(\hat{\beta_0} + \hat{\beta_1} x_i)\\
+& n\bar{y} = n \hat{\beta_0} + n \hat{\beta_1} \bar{x}\\
+&\bar{y} = \hat{\beta_0} + \hat{\beta_1} \bar{x}.
+\end{aligned}
+$$
+Note the commonly used "trick": 
+
+$\sum y_i = n \bar{y}$. 
+
+:::
+
+**Solving the normal equations**
+
+$$
+\begin{aligned}
+\text{From (1): } &\sum_{i=1}^n \big(y_i - (\hat{\beta_0} + \hat{\beta_1} x_i)\big) = 0\\
+& \bar{y}  = \hat{\beta}_0 + \hat{\beta}_1 \bar{x}\\
+&\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}
+\end{aligned}
+$$
+Plugging this result into (2):
+
+
+

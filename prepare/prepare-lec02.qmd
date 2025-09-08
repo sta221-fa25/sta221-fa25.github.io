@@ -1,5 +1,5 @@
 ---
-title: "Prepare for Lecture 02: Simple linear regression"
+title: "Prepare: simple linear regression"
 ---
 
 <br>

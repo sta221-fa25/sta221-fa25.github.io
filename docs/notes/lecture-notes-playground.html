@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>lecture-notes-playground – STA221</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-8c30556735fa22a8b34c61270d6a5ad2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="../site_libs/plotly-binding-4.11.0/plotly.js"></script>
+<script src="../site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="../site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">STA221</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">syllabus</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-homeworks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">homeworks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-homeworks">    
+        <li>
+    <a class="dropdown-item" href="../hw/hw01.html">
+ <span class="dropdown-text">HW 01</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">labs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
+        <li>
+    <a class="dropdown-item" href="../labs/lab00.html">
+ <span class="dropdown-text">Lab 0</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../links.html"> 
+<span class="menu-text">links</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#r-install.packagesplotly-libraryplotly-----small-helpers-------------------------------------------------------------cross-product-no-extra-packages-vcross---functiona-b-ca2b3---a3b2-a3b1---a1b3-a1b2---a2b1-rodrigues-rotation-matrix-to-rotate-vector-a-onto-b-rot_from_a_to_b---functiona-b-a---a-sqrtsuma2-b---b-sqrtsumb2-v---vcrossa-b-s---sqrtsumv2-cth---suma-b-i3---diag3-if-s-1e-12-parallel-or-anti-parallel-if-cth-0-returni3-already-aligned-180-rotate-around-any-axis-to-a-x-axis-works-since-a-001-returnmatrixc100-0-10-00-1-nrow3-byrowtrue-k---matrixc-0--v3-v2-v3-0--v1--v2-v1-0-nrow3-byrowtrue-i3-k-k-k-1---cth-s2-build-a-cone-mesh-at-tip-pointing-along-dir.-the-cone-is-defined-in-local-coords-as-tip-at-origin-base-at-z--length.-cone_mesh---functiontip-dir-length-0.15-radius-0.06-n-24-u---as.numericdir-if-sqrtsumu2-1e-12-stopdirection-for-cone-is-zero-length.-u---u-sqrtsumu2-local-cone-vertices-tip-circular-base-in-plane-z--length-theta---seq0-2pi-length.out-n-1--n-1-n-points-exclude-duplicate-tip_local---c0-0-0-base_local---rbindradius-costheta-radius-sintheta--length-rotate-from-local-z-axis-to-u-r---rot_from_a_to_bc001-u-tip_world---r-tip_local-base_world---r-base_local-translate-to-desired-tip-position-tip_world---tip_world-tip-base_world---sweepbase_world-2-tip-assemble-vertices-tip-first-then-base-ring-verts---cbindtip_world-base_world-3-x-1n-x---verts1-y---verts2-z---verts3-triangles-for-the-side-surface-tip-base_i-base_i1-indices-for-plotly-mesh3d-are-0-based.-tip_idx---0-base_idx---1n-1-based-in-r-i_idx---reptip_idx-n-j_idx---base_idx-k_idx---cbase_idx-1-1-list-x-x-y-y-z-z-i-i_idx-j-j_idx-k-k_idx-add-one-vector-line-cone-head-to-a-plotly-figure-add_vector_with_cone---functionfig-x-y-z-color-blue-shaft_width-6-cone_len-0.15-cone_radius-0.06-cone_n-24-name-null-tip---cx-y-z-dir---cx-y-z-line-shaft-fig---fig-add_trace-type-scatter3d-mode-lines-x-c0-x-y-c0-y-z-c0-z-line-listwidth-shaft_width-color-color-name-name-sprintfggg-x-y-z-showlegend-true-cone-head-m---cone_meshtip-tip-dir-dir-length-cone_len-radius-cone_radius-n-cone_n-fig-add_trace-type-mesh3d-x-mx-y-my-z-mz-i-mi-j-mj-k-mk-color-color-opacity-1-showscale-false-lighting-listambient-0.5-diffuse-0.8-specular-0.2-hoverinfo-skip-name-name-sprintfggg-head-x-y-z-showlegend-false---functiona-b-if-is.nulla-b-else-a-----demo-your-six-vectors-with-true-cone-heads-------------------------------fig---plot_ly-fig---fig-add_vector_with_cone1-1-1-color-blue-name-111-add_vector_with_cone2-0-0-color-green-name-200-add_vector_with_cone0-1-0-color-red-name-010-add_vector_with_cone1-0-0-color-purplename-100-add_vector_with_cone0-2-0-color-orangename-020-add_vector_with_cone0-0-2-color-brown-name-002-fig---fig-layout-scene-list-xaxis-listtitle-x-yaxis-listtitle-y-zaxis-listtitle-z-camera-listeye-listx-1.5-y-1.5-z-0.8-fig" id="toc-r-install.packagesplotly-libraryplotly-----small-helpers-------------------------------------------------------------cross-product-no-extra-packages-vcross---functiona-b-ca2b3---a3b2-a3b1---a1b3-a1b2---a2b1-rodrigues-rotation-matrix-to-rotate-vector-a-onto-b-rot_from_a_to_b---functiona-b-a---a-sqrtsuma2-b---b-sqrtsumb2-v---vcrossa-b-s---sqrtsumv2-cth---suma-b-i3---diag3-if-s-1e-12-parallel-or-anti-parallel-if-cth-0-returni3-already-aligned-180-rotate-around-any-axis-to-a-x-axis-works-since-a-001-returnmatrixc100-0-10-00-1-nrow3-byrowtrue-k---matrixc-0--v3-v2-v3-0--v1--v2-v1-0-nrow3-byrowtrue-i3-k-k-k-1---cth-s2-build-a-cone-mesh-at-tip-pointing-along-dir.-the-cone-is-defined-in-local-coords-as-tip-at-origin-base-at-z--length.-cone_mesh---functiontip-dir-length-0.15-radius-0.06-n-24-u---as.numericdir-if-sqrtsumu2-1e-12-stopdirection-for-cone-is-zero-length.-u---u-sqrtsumu2-local-cone-vertices-tip-circular-base-in-plane-z--length-theta---seq0-2pi-length.out-n-1--n-1-n-points-exclude-duplicate-tip_local---c0-0-0-base_local---rbindradius-costheta-radius-sintheta--length-rotate-from-local-z-axis-to-u-r---rot_from_a_to_bc001-u-tip_world---r-tip_local-base_world---r-base_local-translate-to-desired-tip-position-tip_world---tip_world-tip-base_world---sweepbase_world-2-tip-assemble-vertices-tip-first-then-base-ring-verts---cbindtip_world-base_world-3-x-1n-x---verts1-y---verts2-z---verts3-triangles-for-the-side-surface-tip-base_i-base_i1-indices-for-plotly-mesh3d-are-0-based.-tip_idx---0-base_idx---1n-1-based-in-r-i_idx---reptip_idx-n-j_idx---base_idx-k_idx---cbase_idx-1-1-list-x-x-y-y-z-z-i-i_idx-j-j_idx-k-k_idx-add-one-vector-line-cone-head-to-a-plotly-figure-add_vector_with_cone---functionfig-x-y-z-color-blue-shaft_width-6-cone_len-0.15-cone_radius-0.06-cone_n-24-name-null-tip---cx-y-z-dir---cx-y-z-line-shaft-fig---fig-add_trace-type-scatter3d-mode-lines-x-c0-x-y-c0-y-z-c0-z-line-listwidth-shaft_width-color-color-name-name-sprintfggg-x-y-z-showlegend-true-cone-head-m---cone_meshtip-tip-dir-dir-length-cone_len-radius-cone_radius-n-cone_n-fig-add_trace-type-mesh3d-x-mx-y-my-z-mz-i-mi-j-mj-k-mk-color-color-opacity-1-showscale-false-lighting-listambient-0.5-diffuse-0.8-specular-0.2-hoverinfo-skip-name-name-sprintfggg-head-x-y-z-showlegend-false---functiona-b-if-is.nulla-b-else-a-----demo-your-six-vectors-with-true-cone-heads-------------------------------fig---plot_ly-fig---fig-add_vector_with_cone1-1-1-color-blue-name-111-add_vector_with_cone2-0-0-color-green-name-200-add_vector_with_cone0-1-0-color-red-name-010-add_vector_with_cone1-0-0-color-purplename-100-add_vector_with_cone0-2-0-color-orangename-020-add_vector_with_cone0-0-2-color-brown-name-002-fig---fig-layout-scene-list-xaxis-listtitle-x-yaxis-listtitle-y-zaxis-listtitle-z-camera-listeye-listx-1.5-y-1.5-z-0.8-fig" class="nav-link active" data-scroll-target="#r-install.packagesplotly-libraryplotly-----small-helpers-------------------------------------------------------------cross-product-no-extra-packages-vcross---functiona-b-ca2b3---a3b2-a3b1---a1b3-a1b2---a2b1-rodrigues-rotation-matrix-to-rotate-vector-a-onto-b-rot_from_a_to_b---functiona-b-a---a-sqrtsuma2-b---b-sqrtsumb2-v---vcrossa-b-s---sqrtsumv2-cth---suma-b-i3---diag3-if-s-1e-12-parallel-or-anti-parallel-if-cth-0-returni3-already-aligned-180-rotate-around-any-axis-to-a-x-axis-works-since-a-001-returnmatrixc100-0-10-00-1-nrow3-byrowtrue-k---matrixc-0--v3-v2-v3-0--v1--v2-v1-0-nrow3-byrowtrue-i3-k-k-k-1---cth-s2-build-a-cone-mesh-at-tip-pointing-along-dir.-the-cone-is-defined-in-local-coords-as-tip-at-origin-base-at-z--length.-cone_mesh---functiontip-dir-length-0.15-radius-0.06-n-24-u---as.numericdir-if-sqrtsumu2-1e-12-stopdirection-for-cone-is-zero-length.-u---u-sqrtsumu2-local-cone-vertices-tip-circular-base-in-plane-z--length-theta---seq0-2pi-length.out-n-1--n-1-n-points-exclude-duplicate-tip_local---c0-0-0-base_local---rbindradius-costheta-radius-sintheta--length-rotate-from-local-z-axis-to-u-r---rot_from_a_to_bc001-u-tip_world---r-tip_local-base_world---r-base_local-translate-to-desired-tip-position-tip_world---tip_world-tip-base_world---sweepbase_world-2-tip-assemble-vertices-tip-first-then-base-ring-verts---cbindtip_world-base_world-3-x-1n-x---verts1-y---verts2-z---verts3-triangles-for-the-side-surface-tip-base_i-base_i1-indices-for-plotly-mesh3d-are-0-based.-tip_idx---0-base_idx---1n-1-based-in-r-i_idx---reptip_idx-n-j_idx---base_idx-k_idx---cbase_idx-1-1-list-x-x-y-y-z-z-i-i_idx-j-j_idx-k-k_idx-add-one-vector-line-cone-head-to-a-plotly-figure-add_vector_with_cone---functionfig-x-y-z-color-blue-shaft_width-6-cone_len-0.15-cone_radius-0.06-cone_n-24-name-null-tip---cx-y-z-dir---cx-y-z-line-shaft-fig---fig-add_trace-type-scatter3d-mode-lines-x-c0-x-y-c0-y-z-c0-z-line-listwidth-shaft_width-color-color-name-name-sprintfggg-x-y-z-showlegend-true-cone-head-m---cone_meshtip-tip-dir-dir-length-cone_len-radius-cone_radius-n-cone_n-fig-add_trace-type-mesh3d-x-mx-y-my-z-mz-i-mi-j-mj-k-mk-color-color-opacity-1-showscale-false-lighting-listambient-0.5-diffuse-0.8-specular-0.2-hoverinfo-skip-name-name-sprintfggg-head-x-y-z-showlegend-false---functiona-b-if-is.nulla-b-else-a-----demo-your-six-vectors-with-true-cone-heads-------------------------------fig---plot_ly-fig---fig-add_vector_with_cone1-1-1-color-blue-name-111-add_vector_with_cone2-0-0-color-green-name-200-add_vector_with_cone0-1-0-color-red-name-010-add_vector_with_cone1-0-0-color-purplename-100-add_vector_with_cone0-2-0-color-orangename-020-add_vector_with_cone0-0-2-color-brown-name-002-fig---fig-layout-scene-list-xaxis-listtitle-x-yaxis-listtitle-y-zaxis-listtitle-z-camera-listeye-listx-1.5-y-1.5-z-0.8-fig"><code>{r} # # install.packages("plotly") # library(plotly) #  # # --- small helpers ----------------------------------------------------------- #  # # cross product (no extra packages) # vcross &lt;- function(a, b) { #   c(a[2]*b[3] - a[3]*b[2], #     a[3]*b[1] - a[1]*b[3], #     a[1]*b[2] - a[2]*b[1]) # } #  # # Rodrigues' rotation matrix to rotate vector a onto b # rot_from_a_to_b &lt;- function(a, b) { #   a &lt;- a / sqrt(sum(a^2)) #   b &lt;- b / sqrt(sum(b^2)) #   v &lt;- vcross(a, b) #   s &lt;- sqrt(sum(v^2)) #   cth &lt;- sum(a * b) #   I3 &lt;- diag(3) #   if (s &lt; 1e-12) { #     # parallel or anti-parallel #     if (cth &gt; 0) return(I3)                 # already aligned #     # 180°: rotate around any axis ⟂ to a; x-axis works since a = (0,0,±1) #     return(matrix(c(1,0,0, 0,-1,0, 0,0,-1), nrow=3, byrow=TRUE)) #   } #   K &lt;- matrix(c(  0,   -v[3],  v[2], #                  v[3],   0,   -v[1], #                 -v[2],  v[1],   0), nrow=3, byrow=TRUE) #   I3 + K + K %*% K * ((1 - cth) / (s^2)) # } #  # # Build a cone mesh at `tip` pointing along `dir`. # # The cone is defined in local coords as: tip at origin, base at z = -length. # cone_mesh &lt;- function(tip, dir, length = 0.15, radius = 0.06, n = 24) { #   u &lt;- as.numeric(dir) #   if (sqrt(sum(u^2)) &lt; 1e-12) stop("Direction for cone is zero-length.") #   u &lt;- u / sqrt(sum(u^2)) #  #   # Local cone vertices: tip + circular base in plane z = -length #   theta &lt;- seq(0, 2*pi, length.out = n + 1)[- (n + 1)]  # n points, exclude duplicate #   tip_local  &lt;- c(0, 0, 0) #   base_local &lt;- rbind(radius * cos(theta), radius * sin(theta), -length) #  #   # Rotate from local +Z axis to u #   R &lt;- rot_from_a_to_b(c(0,0,1), u) #   tip_world  &lt;- R %*% tip_local #   base_world &lt;- R %*% base_local #  #   # Translate to desired tip position #   tip_world  &lt;- tip_world  + tip #   base_world &lt;- sweep(base_world, 2, tip, `+`) #  #   # Assemble vertices: tip first, then base ring #   verts &lt;- cbind(tip_world, base_world)  # 3 x (1+n) #   x &lt;- verts[1,]; y &lt;- verts[2,]; z &lt;- verts[3,] #  #   # Triangles for the side surface: (tip, base_i, base_{i+1}) #   # Indices for plotly mesh3d are 0-based. #   tip_idx  &lt;- 0 #   base_idx &lt;- 1:(n)  # 1-based in R #   i_idx &lt;- rep(tip_idx, n) #   j_idx &lt;- base_idx #   k_idx &lt;- c(base_idx[-1], 1) #  #   list( #     x = x, y = y, z = z, #     i = i_idx, j = j_idx, k = k_idx #   ) # } #  # # Add one vector (line) + cone head to a plotly figure # add_vector_with_cone &lt;- function(fig, x, y, z, color = "blue", #                                  shaft_width = 6, #                                  cone_len = 0.15, cone_radius = 0.06, cone_n = 24, #                                  name = NULL) { #   tip &lt;- c(x, y, z) #   dir &lt;- c(x, y, z) #  #   # line (shaft) #   fig &lt;- fig %&gt;% #     add_trace( #       type = "scatter3d", mode = "lines", #       x = c(0, x), y = c(0, y), z = c(0, z), #       line = list(width = shaft_width, color = color), #       name = name %||% sprintf("(%g,%g,%g)", x, y, z), #       showlegend = TRUE #     ) #  #   # cone head #   m &lt;- cone_mesh(tip = tip, dir = dir, length = cone_len, radius = cone_radius, n = cone_n) #   fig %&gt;% #     add_trace( #       type = "mesh3d", #       x = m$x, y = m$y, z = m$z, #       i = m$i, j = m$j, k = m$k, #       color = color, #       opacity = 1, #       showscale = FALSE, #       lighting = list(ambient = 0.5, diffuse = 0.8, specular = 0.2), #       hoverinfo = "skip", #       name = name %||% sprintf("(%g,%g,%g) head", x, y, z), #       showlegend = FALSE #     ) # } #  # `%||%` &lt;- function(a, b) if (is.null(a)) b else a #  # # --- demo: your six vectors with true cone heads ----------------------------- #  # fig &lt;- plot_ly() #  # fig &lt;- fig %&gt;% #   add_vector_with_cone(1, 1, 1, color = "blue",  name = "(1,1,1)") %&gt;% #   add_vector_with_cone(2, 0, 0, color = "green", name = "(2,0,0)") %&gt;% #   add_vector_with_cone(0, 1, 0, color = "red",   name = "(0,1,0)") %&gt;% #   add_vector_with_cone(1, 0, 0, color = "purple",name = "(1,0,0)") %&gt;% #   add_vector_with_cone(0, 2, 0, color = "orange",name = "(0,2,0)") %&gt;% #   add_vector_with_cone(0, 0, 2, color = "brown", name = "(0,0,2)") #  # fig &lt;- fig %&gt;% #   layout( #     scene = list( #       xaxis = list(title = "X"), #       yaxis = list(title = "Y"), #       zaxis = list(title = "Z"), #       camera = list(eye = list(x = 1.5, y = 1.5, z = 0.8)) #     ) #   ) #  # fig #  #</code></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">lecture-notes-playground</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: ggplot2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'plotly'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:ggplot2':
+
+    last_plot</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    filter</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:graphics':
+
+    layout</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># helper to add a vector with a large diamond tip</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>add_vector <span class="ot">&lt;-</span> <span class="cf">function</span>(fig, x, y, z, color, <span class="at">name=</span><span class="cn">NULL</span>) {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  fig <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_trace</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> <span class="st">"scatter3d"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode =</span> <span class="st">"lines+markers"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, x),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>, y),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">z =</span> <span class="fu">c</span>(<span class="dv">0</span>, z),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">line =</span> <span class="fu">list</span>(<span class="at">width =</span> <span class="dv">6</span>, <span class="at">color =</span> color),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">marker =</span> <span class="fu">list</span>(</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">12</span>),  <span class="co"># &lt;-- make diamond much larger</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="fu">c</span>(color, color),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">symbol =</span> <span class="fu">c</span>(<span class="st">"circle"</span>, <span class="st">"diamond"</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">name =</span> name,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">showlegend =</span> <span class="cn">TRUE</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co"># build plot with all six vectors</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>fig <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_vector</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="st">"blue"</span>, <span class="st">"(1,1,1)"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_vector</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="st">"green"</span>, <span class="st">"(2,0,0)"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_vector</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="st">"red"</span>, <span class="st">"(0,1,0)"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_vector</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="st">"purple"</span>, <span class="st">"(1,0,0)"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_vector</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="st">"orange"</span>, <span class="st">"(0,2,0)"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_vector</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="st">"brown"</span>, <span class="st">"(0,0,2)"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">scene =</span> <span class="fu">list</span>(</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"X"</span>),</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"Y"</span>),</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">zaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"Z"</span>),</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">camera =</span> <span class="fu">list</span>(<span class="at">eye =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="fl">1.5</span>, <span class="at">y =</span> <span class="fl">1.5</span>, <span class="at">z =</span> <span class="fl">0.8</span>))</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-1602894f60f4dfa6eca1" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-1602894f60f4dfa6eca1">{"x":{"visdat":{"16421375ef6fb":["function () ","plotlyVisDat"]},"cur_data":"16421375ef6fb","attrs":{"16421375ef6fb":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"lines+markers","x":[0,1],"y":[0,1],"z":[0,1],"line":{"width":6,"color":"blue"},"marker":{"size":[1,12],"color":["blue","blue"],"symbol":["circle","diamond"]},"name":"(1,1,1)","showlegend":true,"inherit":true},"16421375ef6fb.1":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"lines+markers","x":[0,2],"y":[0,0],"z":[0,0],"line":{"width":6,"color":"green"},"marker":{"size":[1,12],"color":["green","green"],"symbol":["circle","diamond"]},"name":"(2,0,0)","showlegend":true,"inherit":true},"16421375ef6fb.2":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"lines+markers","x":[0,0],"y":[0,1],"z":[0,0],"line":{"width":6,"color":"red"},"marker":{"size":[1,12],"color":["red","red"],"symbol":["circle","diamond"]},"name":"(0,1,0)","showlegend":true,"inherit":true},"16421375ef6fb.3":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"lines+markers","x":[0,1],"y":[0,0],"z":[0,0],"line":{"width":6,"color":"purple"},"marker":{"size":[1,12],"color":["purple","purple"],"symbol":["circle","diamond"]},"name":"(1,0,0)","showlegend":true,"inherit":true},"16421375ef6fb.4":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"lines+markers","x":[0,0],"y":[0,2],"z":[0,0],"line":{"width":6,"color":"orange"},"marker":{"size":[1,12],"color":["orange","orange"],"symbol":["circle","diamond"]},"name":"(0,2,0)","showlegend":true,"inherit":true},"16421375ef6fb.5":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"lines+markers","x":[0,0],"y":[0,0],"z":[0,2],"line":{"width":6,"color":"brown"},"marker":{"size":[1,12],"color":["brown","brown"],"symbol":["circle","diamond"]},"name":"(0,0,2)","showlegend":true,"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"X"},"yaxis":{"title":"Y"},"zaxis":{"title":"Z"},"camera":{"eye":{"x":1.5,"y":1.5,"z":0.80000000000000004}}},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"type":"scatter3d","mode":"lines+markers","x":[0,1],"y":[0,1],"z":[0,1],"line":{"color":"blue","width":6},"marker":{"color":["blue","blue"],"size":[1,12],"symbol":["circle","diamond"],"line":{"color":"rgba(31,119,180,1)"}},"name":"(1,1,1)","showlegend":true,"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"frame":null},{"type":"scatter3d","mode":"lines+markers","x":[0,2],"y":[0,0],"z":[0,0],"line":{"color":"green","width":6},"marker":{"color":["green","green"],"size":[1,12],"symbol":["circle","diamond"],"line":{"color":"rgba(255,127,14,1)"}},"name":"(2,0,0)","showlegend":true,"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"frame":null},{"type":"scatter3d","mode":"lines+markers","x":[0,0],"y":[0,1],"z":[0,0],"line":{"color":"red","width":6},"marker":{"color":["red","red"],"size":[1,12],"symbol":["circle","diamond"],"line":{"color":"rgba(44,160,44,1)"}},"name":"(0,1,0)","showlegend":true,"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"frame":null},{"type":"scatter3d","mode":"lines+markers","x":[0,1],"y":[0,0],"z":[0,0],"line":{"color":"purple","width":6},"marker":{"color":["purple","purple"],"size":[1,12],"symbol":["circle","diamond"],"line":{"color":"rgba(214,39,40,1)"}},"name":"(1,0,0)","showlegend":true,"error_y":{"color":"rgba(214,39,40,1)"},"error_x":{"color":"rgba(214,39,40,1)"},"frame":null},{"type":"scatter3d","mode":"lines+markers","x":[0,0],"y":[0,2],"z":[0,0],"line":{"color":"orange","width":6},"marker":{"color":["orange","orange"],"size":[1,12],"symbol":["circle","diamond"],"line":{"color":"rgba(148,103,189,1)"}},"name":"(0,2,0)","showlegend":true,"error_y":{"color":"rgba(148,103,189,1)"},"error_x":{"color":"rgba(148,103,189,1)"},"frame":null},{"type":"scatter3d","mode":"lines+markers","x":[0,0],"y":[0,0],"z":[0,2],"line":{"color":"brown","width":6},"marker":{"color":["brown","brown"],"size":[1,12],"symbol":["circle","diamond"],"line":{"color":"rgba(140,86,75,1)"}},"name":"(0,0,2)","showlegend":true,"error_y":{"color":"rgba(140,86,75,1)"},"error_x":{"color":"rgba(140,86,75,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<section id="r-install.packagesplotly-libraryplotly-----small-helpers-------------------------------------------------------------cross-product-no-extra-packages-vcross---functiona-b-ca2b3---a3b2-a3b1---a1b3-a1b2---a2b1-rodrigues-rotation-matrix-to-rotate-vector-a-onto-b-rot_from_a_to_b---functiona-b-a---a-sqrtsuma2-b---b-sqrtsumb2-v---vcrossa-b-s---sqrtsumv2-cth---suma-b-i3---diag3-if-s-1e-12-parallel-or-anti-parallel-if-cth-0-returni3-already-aligned-180-rotate-around-any-axis-to-a-x-axis-works-since-a-001-returnmatrixc100-0-10-00-1-nrow3-byrowtrue-k---matrixc-0--v3-v2-v3-0--v1--v2-v1-0-nrow3-byrowtrue-i3-k-k-k-1---cth-s2-build-a-cone-mesh-at-tip-pointing-along-dir.-the-cone-is-defined-in-local-coords-as-tip-at-origin-base-at-z--length.-cone_mesh---functiontip-dir-length-0.15-radius-0.06-n-24-u---as.numericdir-if-sqrtsumu2-1e-12-stopdirection-for-cone-is-zero-length.-u---u-sqrtsumu2-local-cone-vertices-tip-circular-base-in-plane-z--length-theta---seq0-2pi-length.out-n-1--n-1-n-points-exclude-duplicate-tip_local---c0-0-0-base_local---rbindradius-costheta-radius-sintheta--length-rotate-from-local-z-axis-to-u-r---rot_from_a_to_bc001-u-tip_world---r-tip_local-base_world---r-base_local-translate-to-desired-tip-position-tip_world---tip_world-tip-base_world---sweepbase_world-2-tip-assemble-vertices-tip-first-then-base-ring-verts---cbindtip_world-base_world-3-x-1n-x---verts1-y---verts2-z---verts3-triangles-for-the-side-surface-tip-base_i-base_i1-indices-for-plotly-mesh3d-are-0-based.-tip_idx---0-base_idx---1n-1-based-in-r-i_idx---reptip_idx-n-j_idx---base_idx-k_idx---cbase_idx-1-1-list-x-x-y-y-z-z-i-i_idx-j-j_idx-k-k_idx-add-one-vector-line-cone-head-to-a-plotly-figure-add_vector_with_cone---functionfig-x-y-z-color-blue-shaft_width-6-cone_len-0.15-cone_radius-0.06-cone_n-24-name-null-tip---cx-y-z-dir---cx-y-z-line-shaft-fig---fig-add_trace-type-scatter3d-mode-lines-x-c0-x-y-c0-y-z-c0-z-line-listwidth-shaft_width-color-color-name-name-sprintfggg-x-y-z-showlegend-true-cone-head-m---cone_meshtip-tip-dir-dir-length-cone_len-radius-cone_radius-n-cone_n-fig-add_trace-type-mesh3d-x-mx-y-my-z-mz-i-mi-j-mj-k-mk-color-color-opacity-1-showscale-false-lighting-listambient-0.5-diffuse-0.8-specular-0.2-hoverinfo-skip-name-name-sprintfggg-head-x-y-z-showlegend-false---functiona-b-if-is.nulla-b-else-a-----demo-your-six-vectors-with-true-cone-heads-------------------------------fig---plot_ly-fig---fig-add_vector_with_cone1-1-1-color-blue-name-111-add_vector_with_cone2-0-0-color-green-name-200-add_vector_with_cone0-1-0-color-red-name-010-add_vector_with_cone1-0-0-color-purplename-100-add_vector_with_cone0-2-0-color-orangename-020-add_vector_with_cone0-0-2-color-brown-name-002-fig---fig-layout-scene-list-xaxis-listtitle-x-yaxis-listtitle-y-zaxis-listtitle-z-camera-listeye-listx-1.5-y-1.5-z-0.8-fig" class="level1">
+<h1><code>{r} # # install.packages("plotly") # library(plotly) #  # # --- small helpers ----------------------------------------------------------- #  # # cross product (no extra packages) # vcross &lt;- function(a, b) { #   c(a[2]*b[3] - a[3]*b[2], #     a[3]*b[1] - a[1]*b[3], #     a[1]*b[2] - a[2]*b[1]) # } #  # # Rodrigues' rotation matrix to rotate vector a onto b # rot_from_a_to_b &lt;- function(a, b) { #   a &lt;- a / sqrt(sum(a^2)) #   b &lt;- b / sqrt(sum(b^2)) #   v &lt;- vcross(a, b) #   s &lt;- sqrt(sum(v^2)) #   cth &lt;- sum(a * b) #   I3 &lt;- diag(3) #   if (s &lt; 1e-12) { #     # parallel or anti-parallel #     if (cth &gt; 0) return(I3)                 # already aligned #     # 180°: rotate around any axis ⟂ to a; x-axis works since a = (0,0,±1) #     return(matrix(c(1,0,0, 0,-1,0, 0,0,-1), nrow=3, byrow=TRUE)) #   } #   K &lt;- matrix(c(  0,   -v[3],  v[2], #                  v[3],   0,   -v[1], #                 -v[2],  v[1],   0), nrow=3, byrow=TRUE) #   I3 + K + K %*% K * ((1 - cth) / (s^2)) # } #  # # Build a cone mesh at `tip` pointing along `dir`. # # The cone is defined in local coords as: tip at origin, base at z = -length. # cone_mesh &lt;- function(tip, dir, length = 0.15, radius = 0.06, n = 24) { #   u &lt;- as.numeric(dir) #   if (sqrt(sum(u^2)) &lt; 1e-12) stop("Direction for cone is zero-length.") #   u &lt;- u / sqrt(sum(u^2)) #  #   # Local cone vertices: tip + circular base in plane z = -length #   theta &lt;- seq(0, 2*pi, length.out = n + 1)[- (n + 1)]  # n points, exclude duplicate #   tip_local  &lt;- c(0, 0, 0) #   base_local &lt;- rbind(radius * cos(theta), radius * sin(theta), -length) #  #   # Rotate from local +Z axis to u #   R &lt;- rot_from_a_to_b(c(0,0,1), u) #   tip_world  &lt;- R %*% tip_local #   base_world &lt;- R %*% base_local #  #   # Translate to desired tip position #   tip_world  &lt;- tip_world  + tip #   base_world &lt;- sweep(base_world, 2, tip, `+`) #  #   # Assemble vertices: tip first, then base ring #   verts &lt;- cbind(tip_world, base_world)  # 3 x (1+n) #   x &lt;- verts[1,]; y &lt;- verts[2,]; z &lt;- verts[3,] #  #   # Triangles for the side surface: (tip, base_i, base_{i+1}) #   # Indices for plotly mesh3d are 0-based. #   tip_idx  &lt;- 0 #   base_idx &lt;- 1:(n)  # 1-based in R #   i_idx &lt;- rep(tip_idx, n) #   j_idx &lt;- base_idx #   k_idx &lt;- c(base_idx[-1], 1) #  #   list( #     x = x, y = y, z = z, #     i = i_idx, j = j_idx, k = k_idx #   ) # } #  # # Add one vector (line) + cone head to a plotly figure # add_vector_with_cone &lt;- function(fig, x, y, z, color = "blue", #                                  shaft_width = 6, #                                  cone_len = 0.15, cone_radius = 0.06, cone_n = 24, #                                  name = NULL) { #   tip &lt;- c(x, y, z) #   dir &lt;- c(x, y, z) #  #   # line (shaft) #   fig &lt;- fig %&gt;% #     add_trace( #       type = "scatter3d", mode = "lines", #       x = c(0, x), y = c(0, y), z = c(0, z), #       line = list(width = shaft_width, color = color), #       name = name %||% sprintf("(%g,%g,%g)", x, y, z), #       showlegend = TRUE #     ) #  #   # cone head #   m &lt;- cone_mesh(tip = tip, dir = dir, length = cone_len, radius = cone_radius, n = cone_n) #   fig %&gt;% #     add_trace( #       type = "mesh3d", #       x = m$x, y = m$y, z = m$z, #       i = m$i, j = m$j, k = m$k, #       color = color, #       opacity = 1, #       showscale = FALSE, #       lighting = list(ambient = 0.5, diffuse = 0.8, specular = 0.2), #       hoverinfo = "skip", #       name = name %||% sprintf("(%g,%g,%g) head", x, y, z), #       showlegend = FALSE #     ) # } #  # `%||%` &lt;- function(a, b) if (is.null(a)) b else a #  # # --- demo: your six vectors with true cone heads ----------------------------- #  # fig &lt;- plot_ly() #  # fig &lt;- fig %&gt;% #   add_vector_with_cone(1, 1, 1, color = "blue",  name = "(1,1,1)") %&gt;% #   add_vector_with_cone(2, 0, 0, color = "green", name = "(2,0,0)") %&gt;% #   add_vector_with_cone(0, 1, 0, color = "red",   name = "(0,1,0)") %&gt;% #   add_vector_with_cone(1, 0, 0, color = "purple",name = "(1,0,0)") %&gt;% #   add_vector_with_cone(0, 2, 0, color = "orange",name = "(0,2,0)") %&gt;% #   add_vector_with_cone(0, 0, 2, color = "brown", name = "(0,0,2)") #  # fig &lt;- fig %&gt;% #   layout( #     scene = list( #       xaxis = list(title = "X"), #       yaxis = list(title = "Y"), #       zaxis = list(title = "Z"), #       camera = list(eye = list(x = 1.5, y = 1.5, z = 0.8)) #     ) #   ) #  # fig #  #</code></h1>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
