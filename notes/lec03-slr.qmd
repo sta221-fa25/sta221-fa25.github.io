@@ -368,5 +368,83 @@ $$
 $$
 Plugging this result into (2):
 
+$$
+\begin{aligned}
+&\sum x_i (y_i - (\hat{\beta}_0 + \hat{\beta}_1 x_i)) = 0\\
+&\sum x_i (y_i - \bar{y} + \hat{\beta}_1 \bar{x} - \hat{\beta}_1 x_i) = 0\\
+&\sum x_i (y_i - \bar{y}) = \hat{\beta}_1 \sum x_i (x_i - \bar{x}) \text{    }& (*)
+\end{aligned}
+$$
 
+Notice the **trick**: 
 
+$$
+\begin{aligned}
+\sum (x_i - \bar{x}) (y_i - \bar{y}) &= \sum x_i (y_i - \bar{y}) - \sum \bar{x}(y_i - \bar{y})\\
+&= \sum x_i (y_i - \bar{y})  - \bar{x} (0)\\
+&= \sum x_i (y_i - \bar{y}).
+\end{aligned}
+$$
+Similarly, 
+
+$$
+\begin{aligned}
+\sum x_i (x_i - \bar{x}) &= \sum (x_i - \bar{x})(x_i - \bar{x})\\
+&= \sum (x_i - \bar{x})^2.
+\end{aligned}
+$$
+
+Let 
+
+$$
+\begin{aligned}
+S_{xx} &= \sum (x_i - \bar{x})^2\\
+S_{yy} &= \sum (y_i - \bar{y})^2\\
+S_{xy} &= \sum (x_i - \bar{x}) (y_i - \bar{y})
+\end{aligned}
+$$
+Then $(*)$ above says $S_{xy} = \hat{\beta}_1 S_{xx}$, implying that the OLS values are
+
+$$
+\begin{aligned}
+\hat{\beta}_0 &= \bar{y} - \hat{\beta}_1 \bar{x}\\
+\hat{\beta}_1 &= \frac{S_{xy}}{S_{xx}}.
+\end{aligned}
+$$
+
+An important take-away: the slope is closely related to the correlation. Notice 
+
+$$
+\hat{\beta}_1 = \frac{S_{xy}}{S_{xx}} = \frac{\sum (x_i - \bar{x}) (y_i - \bar{y})}{\sum (x_i - \bar{x})^2}
+$$
+
+The numerator looks like covariance, or correlation between $\bx$ and $\by$. The denominator looks like $var(\bx)$. If we multiply by the number "1" in a fancy way, the relationship becomes clear, 
+
+$$
+\begin{aligned}
+\frac{S_{yy}^{1/2}}{S_{yy}^{1/2}} \cdot \frac{S_{xy}}{S_{xx}^{1/2} S_{xx}^{1/2}} 
+&= \left(\frac{S_{yy}}{S_{xx}}\right)^{1/2}  \cdot \frac{S_{xy}}{\left(S_{xx} S_{yy}\right)^{1/2}}\\
+&= \left(\frac{S_{yy}}{S_{xx}}\right)^{1/2}  \cdot cor(\bx,\by)
+\end{aligned}
+$$
+
+**Summary**: what do you need to find $\hat{\beta}_0, \hat{\beta}_1$? 
+
+- $\bar{x}$, $\bar{y}$
+- $S_{xx}, S_{yy}$
+- $cor(\bx, \by)$
+
+We can write the *fitted regression line* in terms of these quantities:
+
+$$
+\begin{aligned}
+\hat{y}_i &= \hat{\beta}_0 + \hat{\beta}_1 x_i\\
+&= \bar{y} -\hat{\beta}_1 \bar{x} + \hat{\beta}_1 x_i\\
+&= \bar{y}  +\hat{\beta}_1 (x_i - \bar{x})\\
+&= \bar{y} + \left(S_{yy}/S_{xx} \right)^{1/2} \cdot cor(\bx, \by) \cdot (x_i - \bar{x})
+\end{aligned}
+$$
+
+<!-- ---  -->
+<!-- ::: {style="font-size: 75%;"} -->
+<!-- ::: -->

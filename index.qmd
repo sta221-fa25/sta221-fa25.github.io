@@ -107,7 +107,7 @@ schedule %>%
 | 1 | Tue Aug 26 | welcome |  | [💻](/notes/slides/lec01-welcome.html) |  |
 |  | Wed Aug 27 | lab: hello git and R |  | [💻](/labs/lab0-slides.html) | [lab 0](/labs/lab00.html) |
 |  | Thu Aug 28 | correlation | [📖](/prepare/prepare-lec02.html) | [🗒](/notes/lec02-correlation.html) |  |
-| 2 | Tue Sep 02 | simple linear regression |  |  |  |
+| 2 | Tue Sep 02 | simple linear regression |  | [🗒](/notes/lec03-slr.html) |  |
 |  | Wed Sep 03 | lab: computing and linear algebra review |  |  | [lab 1](/labs/lab01.html) |
 |  | Thu Sep 04 | model assessment | [📖](/prepare/prepare-lec03.html) | [🗒](/notes/lec04-model-assessment.html) |  |
 | 3 | Tue Sep 09 | matrix representation | [📖](/prepare/prepare-lec04.html) |  |  |
