@@ -1,5 +1,37 @@
 ---
-title: "hw01"
+title: "Homework 01: simple linear regression"
+subtitle: "Due Thursday September 18 at 5:00pm"
 format: html
 ---
 
+# Conceptual exercises
+
+The conceptual exercises are focused on explaining concepts and showing results mathematically. Show your work for each question.
+
+You may write the answers and associated work for conceptual exercises by hand or type them in your Quarto document.
+
+## Exercise 1
+
+## Exercise 2
+
+## Exercise 3
+
+## Exercise 4
+
+## Exercise 5
+
+# Applied exercises
+
+The applied exercises are focused on applying the concepts to analyze data. All work for the applied exercises must be typed in your Quarto document following a reproducible workflow.
+
+Write all narrative using complete sentences and include informative axis labels / titles on visualizations.
+
+## Exercise 6
+
+## Exercise 7
+
+## Exercise 8
+
+## Exercse 9
+
+## Exercise 10
