@@ -469,7 +469,7 @@ model_ii_rsq <- round(glance(model_ii)$r.squared, 3) * 100
 
 Use the `augment()` function from the **broom** package to add columns for predicted values, residuals, and other observation-level model statistics
 
-. . .
+
 
 ```{r}
 life_exp_aug <- augment(model_ii)
@@ -494,9 +494,7 @@ Use the `rsq()` function from the **yardstick** package (part of **tidymodels**)
 rsq(life_exp_aug, truth = life_exp, estimate = .fitted)
 ```
 
-<br>
 
-. . .
 
 Alternatively, use `glance()` to construct a single row summary of the model fit, including $R^2$:
 

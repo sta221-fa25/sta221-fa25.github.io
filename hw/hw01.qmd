@@ -2,7 +2,16 @@
 title: "Homework 01: simple linear regression"
 subtitle: "Due Thursday September 18 at 5:00pm"
 format: html
+bibliography: references.bib
 ---
+
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
 
 # Conceptual exercises
 
@@ -12,13 +21,86 @@ You may write the answers and associated work for conceptual exercises by hand o
 
 ## Exercise 1
 
-## Exercise 2
+We use the sum of square errors $\be^\mathsf{T}\be$ to estimate the regression coefficients, $\hat{\boldsymbol{\beta}} = (\mathbf{X}^\mathsf{T}\mathbf{X})^{-1}\mathbf{X}^\mathsf{T}\by$ . To show this is the least squares estimate, we now need to show that we have, in fact, found the estimate of $\boldsymbol{\beta}$ that minimizes the sum of squared residuals.
+
+If the Hessian matrix $\nabla_{\boldsymbol{\beta}}^2 \be^\mathsf{T}\be$ is positive definite, then we know we have found the $\hat{\boldsymbol{\beta}}$ that minimizes the sum of squared residuals, i.e., the least squares estimator.
+
+Show that $\nabla_{\boldsymbol{\beta}}^2 \be^\mathsf{T}\be \propto \mathbf{X}^\mathsf{T}\mathbf{X}$ is positive definite.
+
+::: callout-note
+Equivalent notation. Note that
+
+$$
+\frac{\partial^2}{\partial \bbeta^2} f(\bbeta)
+$$
+is another way to write
+
+$$
+\nabla_{\bbeta^2} f(\bbeta).
+$$
+:::
+
+## Exercise 2 
+
+Exercise is adapted from @fox2015applied.
+
+Let $Y \in \mathbb{R}^n$ and $X \in \mathbb{R}^n$. 
+
+Suppose that the means and standard deviations of $Y$ and $X$ are the same, i.e. $\bar{Y} = \bar{X}$ and $S_Y = S_X$. 
+
+(a) Show that under these circumstances, the slope and interecept for both the regression of $Y$ on $X$ and $X$ on $Y$ are identical. Mathematically, show that 
+
+$$
+\hat{\beta}_{1Y|X} = \hat{\beta}_{1X|Y} = cor(X, Y)
+$$
+
+where $\hat{\beta}_{1Y|X}$ is the least-squares slope for the simple linear regression of $Y$ on $X$ and $\hat{\beta}_{1X|Y}$ is the least squares slope for the simple regression of $X$ on $Y$. Moreover, show that the intercepts $\hat{\beta}_{0Y|X} = \hat{\beta}_{0X|Y}$.
+
+(b) Since the slopes are equivalent and the intercepts are equivalent, why is the least-squares line for the regression of $Y$ on $X$ different from the line for the regression of $X$ on $Y$ (assuming $r^2 < 1$)?
+
+
+(c) Imagine that $X$ is mother's height and $Y$ is daughter's height for sampled mother-daughter pairs. Again suppose $S_y = S_x$ and $\bar{Y} = \bar{X}$. Further suppose $0 < r_{XY} < 1$, i.e. mother-daughter heights are correlated, but not perfectly so. Show that the expected height of a daughter whose mother is shorter than average is also less than average, but to a smaller
+extent; likewise, show that the expected height of a daughter whose mother is taller than average is also
+greater than average, but to a smaller extent. Does this result imply a contradiction --that the standard deviation of a daughter's height is in fact less than that of a mother's height?
+
+
+(d) What is the expected height for a mother whose daughter is shorter than average? Of a mother
+whose daughter is taller than average?
+
+(e) Regression effects in research design: Imagine that medical researchers want to assess the effectiveness of a new rehabilitation program designed to improve lung function in patients recovering from pneumonia. To test the program, they recruit a group of patients whose lung function is substantially below normal; after a year in the program, the researchers observe that these patients, on average, have improved their lung function.
+
+Question: Why is this a weak research design? How could it be improved?
 
 ## Exercise 3
 
+Let 
+
+$$
+\by = \bone \beta_0 + \bx \beta_1 + \be
+$$
+
+(a) How do the least squares estimates $\hat{\beta_0}, \hat{\beta_1}$ change when we transform the predictor variable $\bx \rightarrow \bx^*$. $\bx^* = a \bx + b \bone$? In other words, compare $\hat{\beta_0}, \hat{\beta_1}$ above to $\hat{\beta_0}^*$ and $\hat{\beta_1}^*$ below.
+
+$$
+\by = \bone \beta_0^* + \left(a\bx +  b \bone \right) \beta_1^* + \be
+$$
+How does $cor(\bx, \by)$ compare to $cor(\bx^*, \by)$?
+
+(b) How do the least squares estimates change when we transform $\by \rightarrow \by^*$ according to the linear transformation: $\by^* = c \by + d \bone$? How does $cor(\bx, \by)$ compare to $cor(\bx, \by^*)$?
+
 ## Exercise 4
 
+Show that the sum of squared residuals (SSR) can be written as the following:
+
+$$
+\by^\mathsf{T}\by - \hat{\boldsymbol{\beta}}^\mathsf{T}\mathbf{X}^\mathsf{T}\by
+$$
+
 ## Exercise 5
+
+Exercise is adapted from @montgomery2021introduction.
+
+Prove that the maximum value of $R^2$ must be less than 1 if the data set contains observations such that there are different observed values of the response for the same value of the predictor (e.g., the data set contains observations $(x_i, y_i)$ and $(x_j, y_j)$ such that $x_i = x_j$ and $y_i \neq y_j$ ).
 
 # Applied exercises
 
@@ -26,12 +108,141 @@ The applied exercises are focused on applying the concepts to analyze data. All 
 
 Write all narrative using complete sentences and include informative axis labels / titles on visualizations.
 
+
+## Data
+
+The datasets `wi-icecover.csv` and `wi-air-temperature.csv` contain information about ice cover and air temperature, respectively, at Lake Monona and Lake Mendota (both in Madison, Wisconsin) for days in 1886 through 2019. The data were obtained from the [`ntl_icecover`](https://lter.github.io/lterdatasampler/reference/ntl_icecover.html) and [`ntl_airtemp`](https://lter.github.io/lterdatasampler/reference/ntl_airtemp.html) data frames in the [lterdatasampler](https://lter.github.io/lterdatasampler/) R package. They were originally collected by the [US Long Term Ecological Research program (LTER) Network](https://lternet.edu/).
+
+```{r}
+#| eval: false
+
+icecover <- read_csv("data/wi-icecover.csv")
+airtemp <- read_csv("data/wi-air-temperature.csv")
+```
+
+The analysis will focus on the following variables:
+
+-   `year`: year of observation
+
+-   `lakeid`: lake name
+
+-   `ice_duration`: number of days between the freeze and ice breakup dates of each lake
+
+-   `air_temp_avg`: yearly average air temperature in Madison, WI (degrees Celsius)
+
+## Analysis goal
+
+The goal of this analysis is to use linear regression explain variability in ice duration for lakes in Madison, WI based on air temperature. Because ice cover is impacted by various environmental factors, researchers are interested in examining the association between these two factors to better understand the changing climate.
+
 ## Exercise 6
+
+Let's start by looking at the response variable `ice_duration`.
+
+a.  Visualize the distribution of ice duration versus year with separate lines for each lake.
+
+b.  There are separate yearly measurements for each lake in the `icecover` data frame. In this analysis, we will combine the data from both lakes and use the average ice duration each year.
+
+    Comment on the analysis choice to use the average per year rather than the individual lake measurements. Some things to consider in your comments: *Does the average accurately reflects the ice duration for these lakes in a given year year? Will there be information lost? How might that impact (or not) the analysis conclusions? Etc.*
+
+::: callout-tip
+See the [ggplot2 reference](https://ggplot2.tidyverse.org/reference/index.html#geoms) for example code and plots.
+:::
 
 ## Exercise 7
 
+Next, let's combine the ice duration and air temperature data into a single analysis data frame.
+
+a.  Fill in the code below to create a new data frame, `icecover_avg`, of the average ice duration by year.
+
+    Then join `icecover_avg` and `airtemp` to create a new data frame. The new data frame should have 134 observations.
+
+    ```{r}
+    #| eval: false
+
+    icecover_avg <- icecover |>
+      group_by(_____) |>
+      summarise(_____) |>
+      ungroup()
+    ```
+
+::: callout-important
+You will use the new data frame with average ice duration and average air temperature for the remainder of the assignment.
+:::
+
+b.  Visualize the relationship between the air temperature and average ice duration. Do you think a linear model is a reasonable choice to model the relationship between the two variables? Briefly explain.
+
+::: render-commit-push
+Now is a good time to render your document again if you haven't done so recently and commit (with a meaningful commit message) and push all updates.
+:::
+
 ## Exercise 8
 
-## Exercse 9
+We will fit a model using the average air temperature to explain variability in ice duration. The model takes the form
+
+$$
+\by = \mathbf{X}\boldsymbol{\beta} + \be
+$$
+
+a.  State the dimensions of $\by$, $\mathbf{X}$, $\boldsymbol{\beta}$, $\be$ for this analysis. Your answer should have exact values given this data set.
+b.  Estimate the regression coefficients $\hat{\boldsymbol{\beta}}$ in R using the matrix representation. Show the code used to get the answer.
+c.  Check your results from part (b) by using the `lm` function to fit the model. Neatly display your results using 3 digits.
+
+## Exercise 9
+
+a.  Calculate $R^2$ for the model in the previous exercise and interpret it in the context of the data.
+
+b.  Calculate $RMSE$ for the model from the previous exercise and interpret it in the context of the data.
+
+c.  Comment on the model fit based on $R^2$ and $RMSE$.
 
 ## Exercise 10
+
+a\. Interpret the slope in the context of the data.
+
+b\. The average air temperature in 2019, the most recent year in the data set, was 7.925 degrees Celsius. What was the predicted ice duration for 2019? What is the residual?
+
+# Submission
+
+::: callout-warning
+Remember -- you must turn in a PDF file to the Gradescope page before the submission deadline for full credit.
+
+If you write your responses to conceptual exercises by hand, you will need to combine your written work to the completed PDF for the applied exercises before submitting on Gradescope.
+
+Instructions to combine PDFs:
+
+-   Preview (Mac): [support.apple.com/guide/preview/combine-pdfs-prvw43696/mac](https://support.apple.com/guide/preview/combine-pdfs-prvw43696/mac)
+
+-   Adobe (Mac or PC): [helpx.adobe.com/acrobat/using/merging-files-single-pdf.html](https://helpx.adobe.com/acrobat/using/merging-files-single-pdf.html)
+
+    -   Get free access to Adobe Acrobat as a Duke student: [oit.duke.edu/help/articles/kb0030141/](https://oit.duke.edu/help/articles/kb0030141/)
+:::
+
+To submit your assignment:
+
+-   Access Gradescope through the menu on the Canvas website.
+
+-   Click on the assignment, and you’ll be prompted to submit it.
+
+-   Mark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be “checked”).
+
+-   Select the first page of your .PDF submission to be associated with the *“Workflow & formatting”* section.
+
+# Grading (50 points)
+
+| Component             | Points |
+|-----------------------|--------|
+| Ex 1                  | 5      |
+| Ex 2                  | 5      |
+| Ex 3                  | 5      |
+| Ex 4                  | 5      |
+| Ex 5                  | 5      |
+| Ex 6                  | 4      |
+| Ex 7                  | 4      |
+| Ex 8                  | 5      |
+| Ex 9                  | 4      |
+| Ex 10                 | 4      |
+| Workflow & formatting | 4      |
+
+The "Workflow & formatting" grade is to assess the reproducible workflow and document format for the applied exercises. This includes a neatly organized document with readable code and your name and the date updated in the YAML.
+
+## References

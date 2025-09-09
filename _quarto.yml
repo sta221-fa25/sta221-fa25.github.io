@@ -23,12 +23,16 @@ website:
       - text: "homeworks"
         menu:
           - href: hw/hw01.qmd
-            text: "HW 01"
+            text: "hw 1"
       - text: "labs"
         menu:
           - href: labs/lab00.qmd
-            text: "Lab 0"
-      # - href: notes/exam-notes.qmd
+            text: "lab 0"
+          - href: labs/lab01.qmd
+            text: "lab 1"
+          - href: labs/lab02.qmd
+            text: "lab 2"
+            # - href: notes/exam-notes.qmd
       #   text: distributions
       # - href: chapterSummaries.qmd
       #   text: notes

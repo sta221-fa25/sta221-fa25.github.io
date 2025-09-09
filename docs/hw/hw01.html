@@ -20,7 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -67,6 +121,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -103,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-homeworks">    
         <li>
     <a class="dropdown-item" href="../hw/hw01.html">
- <span class="dropdown-text">HW 01</span></a>
+ <span class="dropdown-text">hw 1</span></a>
   </li>  
     </ul>
   </li>
@@ -114,7 +197,15 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
         <li>
     <a class="dropdown-item" href="../labs/lab00.html">
- <span class="dropdown-text">Lab 0</span></a>
+ <span class="dropdown-text">lab 0</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab01.html">
+ <span class="dropdown-text">lab 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab02.html">
+ <span class="dropdown-text">lab 2</span></a>
   </li>  
     </ul>
   </li>
@@ -148,11 +239,18 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#applied-exercises" id="toc-applied-exercises" class="nav-link" data-scroll-target="#applied-exercises">Applied exercises</a>
   <ul class="collapse">
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#analysis-goal" id="toc-analysis-goal" class="nav-link" data-scroll-target="#analysis-goal">Analysis goal</a></li>
   <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
   <li><a href="#exercise-7" id="toc-exercise-7" class="nav-link" data-scroll-target="#exercise-7">Exercise 7</a></li>
   <li><a href="#exercise-8" id="toc-exercise-8" class="nav-link" data-scroll-target="#exercise-8">Exercise 8</a></li>
-  <li><a href="#exercse-9" id="toc-exercse-9" class="nav-link" data-scroll-target="#exercse-9">Exercse 9</a></li>
+  <li><a href="#exercise-9" id="toc-exercise-9" class="nav-link" data-scroll-target="#exercise-9">Exercise 9</a></li>
   <li><a href="#exercise-10" id="toc-exercise-10" class="nav-link" data-scroll-target="#exercise-10">Exercise 10</a></li>
+  </ul></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#grading-50-points" id="toc-grading-50-points" class="nav-link" data-scroll-target="#grading-50-points">Grading (50 points)</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -186,44 +284,287 @@ ul.task-list li input[type="checkbox"] {
 <p>You may write the answers and associated work for conceptual exercises by hand or type them in your Quarto document.</p>
 <section id="exercise-1" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
+<p>We use the sum of square errors <span class="math inline">\(\boldsymbol{\varepsilon}^\mathsf{T}\boldsymbol{\varepsilon}\)</span> to estimate the regression coefficients, <span class="math inline">\(\hat{\boldsymbol{\beta}} = (\mathbf{X}^\mathsf{T}\mathbf{X})^{-1}\mathbf{X}^\mathsf{T}\boldsymbol{y}\)</span> . To show this is the least squares estimate, we now need to show that we have, in fact, found the estimate of <span class="math inline">\(\boldsymbol{\beta}\)</span> that minimizes the sum of squared residuals.</p>
+<p>If the Hessian matrix <span class="math inline">\(\nabla_{\boldsymbol{\beta}}^2 \boldsymbol{\varepsilon}^\mathsf{T}\boldsymbol{\varepsilon}\)</span> is positive definite, then we know we have found the <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> that minimizes the sum of squared residuals, i.e., the least squares estimator.</p>
+<p>Show that <span class="math inline">\(\nabla_{\boldsymbol{\beta}}^2 \boldsymbol{\varepsilon}^\mathsf{T}\boldsymbol{\varepsilon}\propto \mathbf{X}^\mathsf{T}\mathbf{X}\)</span> is positive definite.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Equivalent notation. Note that</p>
+<p><span class="math display">\[
+\frac{\partial^2}{\partial \boldsymbol{\beta}^2} f(\boldsymbol{\beta})
+\]</span> is another way to write</p>
+<p><span class="math display">\[
+\nabla_{\boldsymbol{\beta}^2} f(\boldsymbol{\beta}).
+\]</span></p>
+</div>
+</div>
 </section>
 <section id="exercise-2" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
+<p>Exercise is adapted from <span class="citation" data-cites="fox2015applied">Fox (<a href="#ref-fox2015applied" role="doc-biblioref">2015</a>)</span>.</p>
+<p>Let <span class="math inline">\(Y \in \mathbb{R}^n\)</span> and <span class="math inline">\(X \in \mathbb{R}^n\)</span>.</p>
+<p>Suppose that the means and standard deviations of <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are the same, i.e.&nbsp;<span class="math inline">\(\bar{Y} = \bar{X}\)</span> and <span class="math inline">\(S_Y = S_X\)</span>.</p>
+<ol type="a">
+<li>Show that under these circumstances, the slope and interecept for both the regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(X\)</span> and <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span> are identical. Mathematically, show that</li>
+</ol>
+<p><span class="math display">\[
+\hat{\beta}_{1Y|X} = \hat{\beta}_{1X|Y} = cor(X, Y)
+\]</span></p>
+<p>where <span class="math inline">\(\hat{\beta}_{1Y|X}\)</span> is the least-squares slope for the simple linear regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(X\)</span> and <span class="math inline">\(\hat{\beta}_{1X|Y}\)</span> is the least squares slope for the simple regression of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span>. Moreover, show that the intercepts <span class="math inline">\(\hat{\beta}_{0Y|X} = \hat{\beta}_{0X|Y}\)</span>.</p>
+<ol start="2" type="a">
+<li><p>Since the slopes are equivalent and the intercepts are equivalent, why is the least-squares line for the regression of <span class="math inline">\(Y\)</span> on <span class="math inline">\(X\)</span> different from the line for the regression of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span> (assuming <span class="math inline">\(r^2 &lt; 1\)</span>)?</p></li>
+<li><p>Imagine that <span class="math inline">\(X\)</span> is mother’s height and <span class="math inline">\(Y\)</span> is daughter’s height for sampled mother-daughter pairs. Again suppose <span class="math inline">\(S_y = S_x\)</span> and <span class="math inline">\(\bar{Y} = \bar{X}\)</span>. Further suppose <span class="math inline">\(0 &lt; r_{XY} &lt; 1\)</span>, i.e.&nbsp;mother-daughter heights are correlated, but not perfectly so. Show that the expected height of a daughter whose mother is shorter than average is also less than average, but to a smaller extent; likewise, show that the expected height of a daughter whose mother is taller than average is also greater than average, but to a smaller extent. Does this result imply a contradiction –that the standard deviation of a daughter’s height is in fact less than that of a mother’s height?</p></li>
+<li><p>What is the expected height for a mother whose daughter is shorter than average? Of a mother whose daughter is taller than average?</p></li>
+<li><p>Regression effects in research design: Imagine that medical researchers want to assess the effectiveness of a new rehabilitation program designed to improve lung function in patients recovering from pneumonia. To test the program, they recruit a group of patients whose lung function is substantially below normal; after a year in the program, the researchers observe that these patients, on average, have improved their lung function.</p></li>
+</ol>
+<p>Question: Why is this a weak research design? How could it be improved?</p>
 </section>
 <section id="exercise-3" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
+<p>Let</p>
+<p><span class="math display">\[
+\boldsymbol{y}= \boldsymbol{1}\beta_0 + \boldsymbol{x}\beta_1 + \boldsymbol{\varepsilon}
+\]</span></p>
+<ol type="a">
+<li>How do the least squares estimates <span class="math inline">\(\hat{\beta_0}, \hat{\beta_1}\)</span> change when we transform the predictor variable <span class="math inline">\(\boldsymbol{x}\rightarrow \boldsymbol{x}^*\)</span>. <span class="math inline">\(\boldsymbol{x}^* = a \boldsymbol{x}+ b \boldsymbol{1}\)</span>? In other words, compare <span class="math inline">\(\hat{\beta_0}, \hat{\beta_1}\)</span> above to <span class="math inline">\(\hat{\beta_0}^*\)</span> and <span class="math inline">\(\hat{\beta_1}^*\)</span> below.</li>
+</ol>
+<p><span class="math display">\[
+\boldsymbol{y}= \boldsymbol{1}\beta_0^* + \left(a\boldsymbol{x}+  b \boldsymbol{1}\right) \beta_1^* + \boldsymbol{\varepsilon}
+\]</span> How does <span class="math inline">\(cor(\boldsymbol{x}, \boldsymbol{y})\)</span> compare to <span class="math inline">\(cor(\boldsymbol{x}^*, \boldsymbol{y})\)</span>?</p>
+<ol start="2" type="a">
+<li>How do the least squares estimates change when we transform <span class="math inline">\(\boldsymbol{y}\rightarrow \boldsymbol{y}^*\)</span> according to the linear transformation: <span class="math inline">\(\boldsymbol{y}^* = c \boldsymbol{y}+ d \boldsymbol{1}\)</span>? How does <span class="math inline">\(cor(\boldsymbol{x}, \boldsymbol{y})\)</span> compare to <span class="math inline">\(cor(\boldsymbol{x}, \boldsymbol{y}^*)\)</span>?</li>
+</ol>
 </section>
 <section id="exercise-4" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-4">Exercise 4</h2>
+<p>Show that the sum of squared residuals (SSR) can be written as the following:</p>
+<p><span class="math display">\[
+\boldsymbol{y}^\mathsf{T}\boldsymbol{y}- \hat{\boldsymbol{\beta}}^\mathsf{T}\mathbf{X}^\mathsf{T}\boldsymbol{y}
+\]</span></p>
 </section>
 <section id="exercise-5" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-5">Exercise 5</h2>
+<p>Exercise is adapted from <span class="citation" data-cites="montgomery2021introduction">Montgomery, Peck, and Vining (<a href="#ref-montgomery2021introduction" role="doc-biblioref">2021</a>)</span>.</p>
+<p>Prove that the maximum value of <span class="math inline">\(R^2\)</span> must be less than 1 if the data set contains observations such that there are different observed values of the response for the same value of the predictor (e.g., the data set contains observations <span class="math inline">\((x_i, y_i)\)</span> and <span class="math inline">\((x_j, y_j)\)</span> such that <span class="math inline">\(x_i = x_j\)</span> and <span class="math inline">\(y_i \neq y_j\)</span> ).</p>
 </section>
 </section>
 <section id="applied-exercises" class="level1">
 <h1>Applied exercises</h1>
 <p>The applied exercises are focused on applying the concepts to analyze data. All work for the applied exercises must be typed in your Quarto document following a reproducible workflow.</p>
 <p>Write all narrative using complete sentences and include informative axis labels / titles on visualizations.</p>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>The datasets <code>wi-icecover.csv</code> and <code>wi-air-temperature.csv</code> contain information about ice cover and air temperature, respectively, at Lake Monona and Lake Mendota (both in Madison, Wisconsin) for days in 1886 through 2019. The data were obtained from the <a href="https://lter.github.io/lterdatasampler/reference/ntl_icecover.html"><code>ntl_icecover</code></a> and <a href="https://lter.github.io/lterdatasampler/reference/ntl_airtemp.html"><code>ntl_airtemp</code></a> data frames in the <a href="https://lter.github.io/lterdatasampler/">lterdatasampler</a> R package. They were originally collected by the <a href="https://lternet.edu/">US Long Term Ecological Research program (LTER) Network</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>icecover <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/wi-icecover.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>airtemp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/wi-air-temperature.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The analysis will focus on the following variables:</p>
+<ul>
+<li><p><code>year</code>: year of observation</p></li>
+<li><p><code>lakeid</code>: lake name</p></li>
+<li><p><code>ice_duration</code>: number of days between the freeze and ice breakup dates of each lake</p></li>
+<li><p><code>air_temp_avg</code>: yearly average air temperature in Madison, WI (degrees Celsius)</p></li>
+</ul>
+</section>
+<section id="analysis-goal" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-goal">Analysis goal</h2>
+<p>The goal of this analysis is to use linear regression explain variability in ice duration for lakes in Madison, WI based on air temperature. Because ice cover is impacted by various environmental factors, researchers are interested in examining the association between these two factors to better understand the changing climate.</p>
+</section>
 <section id="exercise-6" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-6">Exercise 6</h2>
+<p>Let’s start by looking at the response variable <code>ice_duration</code>.</p>
+<ol type="a">
+<li><p>Visualize the distribution of ice duration versus year with separate lines for each lake.</p></li>
+<li><p>There are separate yearly measurements for each lake in the <code>icecover</code> data frame. In this analysis, we will combine the data from both lakes and use the average ice duration each year.</p>
+<p>Comment on the analysis choice to use the average per year rather than the individual lake measurements. Some things to consider in your comments: <em>Does the average accurately reflects the ice duration for these lakes in a given year year? Will there be information lost? How might that impact (or not) the analysis conclusions? Etc.</em></p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>See the <a href="https://ggplot2.tidyverse.org/reference/index.html#geoms">ggplot2 reference</a> for example code and plots.</p>
+</div>
+</div>
 </section>
 <section id="exercise-7" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-7">Exercise 7</h2>
+<p>Next, let’s combine the ice duration and air temperature data into a single analysis data frame.</p>
+<ol type="a">
+<li><p>Fill in the code below to create a new data frame, <code>icecover_avg</code>, of the average ice duration by year.</p>
+<p>Then join <code>icecover_avg</code> and <code>airtemp</code> to create a new data frame. The new data frame should have 134 observations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>icecover_avg <span class="ot">&lt;-</span> icecover <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(_____) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(_____) <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You will use the new data frame with average ice duration and average air temperature for the remainder of the assignment.</p>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Visualize the relationship between the air temperature and average ice duration. Do you think a linear model is a reasonable choice to model the relationship between the two variables? Briefly explain.</li>
+</ol>
+<div class="render-commit-push">
+<p>Now is a good time to render your document again if you haven’t done so recently and commit (with a meaningful commit message) and push all updates.</p>
+</div>
 </section>
 <section id="exercise-8" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-8">Exercise 8</h2>
+<p>We will fit a model using the average air temperature to explain variability in ice duration. The model takes the form</p>
+<p><span class="math display">\[
+\boldsymbol{y}= \mathbf{X}\boldsymbol{\beta} + \boldsymbol{\varepsilon}
+\]</span></p>
+<ol type="a">
+<li>State the dimensions of <span class="math inline">\(\boldsymbol{y}\)</span>, <span class="math inline">\(\mathbf{X}\)</span>, <span class="math inline">\(\boldsymbol{\beta}\)</span>, <span class="math inline">\(\boldsymbol{\varepsilon}\)</span> for this analysis. Your answer should have exact values given this data set.</li>
+<li>Estimate the regression coefficients <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> in R using the matrix representation. Show the code used to get the answer.</li>
+<li>Check your results from part (b) by using the <code>lm</code> function to fit the model. Neatly display your results using 3 digits.</li>
+</ol>
 </section>
-<section id="exercse-9" class="level2">
-<h2 class="anchored" data-anchor-id="exercse-9">Exercse 9</h2>
+<section id="exercise-9" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-9">Exercise 9</h2>
+<ol type="a">
+<li><p>Calculate <span class="math inline">\(R^2\)</span> for the model in the previous exercise and interpret it in the context of the data.</p></li>
+<li><p>Calculate <span class="math inline">\(RMSE\)</span> for the model from the previous exercise and interpret it in the context of the data.</p></li>
+<li><p>Comment on the model fit based on <span class="math inline">\(R^2\)</span> and <span class="math inline">\(RMSE\)</span>.</p></li>
+</ol>
 </section>
 <section id="exercise-10" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-10">Exercise 10</h2>
+<p>a. Interpret the slope in the context of the data.</p>
+<p>b. The average air temperature in 2019, the most recent year in the data set, was 7.925 degrees Celsius. What was the predicted ice duration for 2019? What is the residual?</p>
+</section>
+</section>
+<section id="submission" class="level1">
+<h1>Submission</h1>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember – you must turn in a PDF file to the Gradescope page before the submission deadline for full credit.</p>
+<p>If you write your responses to conceptual exercises by hand, you will need to combine your written work to the completed PDF for the applied exercises before submitting on Gradescope.</p>
+<p>Instructions to combine PDFs:</p>
+<ul>
+<li><p>Preview (Mac): <a href="https://support.apple.com/guide/preview/combine-pdfs-prvw43696/mac">support.apple.com/guide/preview/combine-pdfs-prvw43696/mac</a></p></li>
+<li><p>Adobe (Mac or PC): <a href="https://helpx.adobe.com/acrobat/using/merging-files-single-pdf.html">helpx.adobe.com/acrobat/using/merging-files-single-pdf.html</a></p>
+<ul>
+<li>Get free access to Adobe Acrobat as a Duke student: <a href="https://oit.duke.edu/help/articles/kb0030141/">oit.duke.edu/help/articles/kb0030141/</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p>To submit your assignment:</p>
+<ul>
+<li><p>Access Gradescope through the menu on the Canvas website.</p></li>
+<li><p>Click on the assignment, and you’ll be prompted to submit it.</p></li>
+<li><p>Mark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be “checked”).</p></li>
+<li><p>Select the first page of your .PDF submission to be associated with the <em>“Workflow &amp; formatting”</em> section.</p></li>
+</ul>
+</section>
+<section id="grading-50-points" class="level1">
+<h1>Grading (50 points)</h1>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ex 1</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>Ex 2</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>Ex 3</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>Ex 4</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>Ex 5</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>Ex 6</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>Ex 7</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>Ex 8</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>Ex 9</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>Ex 10</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>Workflow &amp; formatting</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>The “Workflow &amp; formatting” grade is to assess the reproducible workflow and document format for the applied exercises. This includes a neatly organized document with readable code and your name and the date updated in the YAML.</p>
+<section id="references" class="level2">
+
+
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-fox2015applied" class="csl-entry" role="listitem">
+Fox, John. 2015. <em>Applied Regression Analysis and Generalized Linear Models</em>. Sage publications.
+</div>
+<div id="ref-montgomery2021introduction" class="csl-entry" role="listitem">
+Montgomery, Douglas C, Elizabeth A Peck, and G Geoffrey Vining. 2021. <em>Introduction to Linear Regression Analysis</em>. John Wiley &amp; Sons.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
