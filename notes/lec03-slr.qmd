@@ -12,7 +12,7 @@ format:
 #| code-fold: true
 #| code-summary: "View libraries and data sets used in these notes"
 #| warning: false
-#| messge: false
+#| message: false
 library(tidyverse)
  
 weather <-

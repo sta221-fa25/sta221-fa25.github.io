@@ -1,0 +1,102 @@
+---
+title: "Multiple linear regression"
+author: "Dr. Alexander Fisher"
+format: html
+---
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data sets used in these notes"
+#| warning: false
+#| message: false
+library(tidyverse)
+library(palmerpenguins)
+library(tidymodels)
+library(scatterplot3d)
+library(DT)
+
+```
+
+
+### Illustration of a linear model
+
+#### Example
+
+Imagine we've collected 3 measurements on a number of penguins:
+
+- body mass (g)
+- bill length (mm)
+- flipper length (mm)
+ 
+::: callout-note
+## Data
+ Read more about the data [here](https://allisonhorst.github.io/palmerpenguins/).
+:::
+ 
+The first five entries of our data set are given below:
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+library(palmerpenguins)
+penguins %>%
+  select(body_mass_g, 
+         bill_length_mm,
+         flipper_length_mm) %>%
+  drop_na() %>%
+  head(n = 5)
+```
+
+In all, our data set contains the measurements of 342 penguins. Because we've collected *three* measurements, each individual penguin can be represented as a point in three dimensional space:
+
+```{r multiple-predictors}
+#| message: false
+#| warning: false
+#| echo: false
+scatterplot3d(penguins[,c("bill_length_mm",
+                          "flipper_length_mm",
+                          "body_mass_g")],
+              pch = 19, 
+              color="steelblue",
+              xlab = "Bill length (mm)", ylab = "Flipper length (mm)", zlab = "Body mass (g)") 
+```
+
+Now, imagine it's hard to measure a penguin's bodymass because it's difficult to get them onto a scale. We wish to develop a linear model that uses bill length and flipper length to predict body mass,
+
+$$
+E[Y|X] = X \beta,
+$$
+
+where
+
+- $Y$ is the body mass of the penguins and
+- $X$ contains covariates bill length and flipper length.
+
+What does our linear model look like?
+
+```{r 3d-linear-model}
+#| echo: false
+#| warning: false
+plot3d = scatterplot3d(penguins[,c("bill_length_mm",
+                          "flipper_length_mm",
+                          "body_mass_g")],
+              pch = 19, 
+              color="steelblue",
+              xlab = "Bill length (mm)", ylab = "Flipper length (mm)", zlab = "Body mass (g)") 
+
+model  = lm(penguins$body_mass_g ~ penguins$bill_length_mm + penguins$flipper_length_mm)
+plot3d$plane3d(model, col = "darkred")
+```
+
+In general, for $D$ measurements, a linear model is a $D-1$ dimensional hyperplane!
+
+
+## Full data set
+
+```{r}
+datatable(penguins, rownames = FALSE, options = list(pageLength = 5),
+           caption = "penguins")
+```
+
