@@ -1,0 +1,75 @@
+---
+title: "Matrix algebra of regression"
+author: "Dr. Alexander Fisher"
+format: html
+bibliography: references.bib
+---
+
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+\newcommand{\bzero}{\boldsymbol{0}}
+\newcommand{\identity}{\boldsymbol{I}}
+
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data sets used in these notes"
+#| warning: false
+#| messge: false
+library(tidyverse) # data wrangling and visualization
+library(tidymodels)  # modeling (includes broom, yardstick, and other packages)
+```
+
+## Learning objectives
+
+By the end of today you will be able to
+
+1. write down simple linear regression in matrix form
+2. understand the geometry of OLS regression
+3. be able to explain the following vocabulary: design matrix, Hessian matrix, projection
+
+
+## Simple linear regression (p = 2)
+
+We write down simple linear regression
+
+$$
+\by = \bX \beta + \be,
+$$
+
+where 
+
+- $\by \in \mathbb{R}^n$
+- $\bX \in \mathbb{R}^{n \times p}$
+- $\beta \in \mathbb{R}^p$
+- $\be \in \mathbb{R}^n$
+
+and $p = 2$, i.e. there's an intercept and 1 slope. More explicitly: 
+
+
+
+::: callout-note 
+## Definition: design matrix
+$\bX$ is called the "design matrix", "covariate matrix", "model matrix" or even sometimes the "data matrix". It includes columns each predictors and an intercept (if applicable).
+:::
+
+Note: 
+
+- $E[\be] = \bzero$ and this implies that $E[\by] = E[\bX \beta] + E[\be] = \bX \beta$.
+- $var[\be] = \sigma^2_\varepsilon \identity$
+
+## Linear algebra background
+
+## Matrix calculus
+
+## OLS in Matrix form
+
+### Did we find a minimum? 
+
+## Geometry

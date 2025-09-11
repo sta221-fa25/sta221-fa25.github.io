@@ -112,7 +112,7 @@ schedule %>%
 |  | Thu Sep 04 | model assessment | [📖](/prepare/prepare-lec03.html) | [🗒](/notes/lec04-model-assessment.html) |  |
 | 3 | Tue Sep 09 | matrix representation | [📖](/prepare/prepare-lec04.html) |  | [hw 1](/hw/hw01.html) |
 |  | Wed Sep 10 | lab: linear regression |  |  | [lab 2](/labs/lab02.html) |
-|  | Thu Sep 11 | multiple linear regression |  | [🗒](/notes/lec06-multiple-regression.html) |  |
+|  | Thu Sep 11 | multiple linear regression |  | [🗒](/notes/lec06-multiple-regression.html) [📝](/notes/HatMatrix.pdf) |  |
 | 4 | Tue Sep 16 |  |  |  |  |
 |  | Wed Sep 17 |  |  |  |  |
 |  | Thu Sep 18 |  |  |  |  |

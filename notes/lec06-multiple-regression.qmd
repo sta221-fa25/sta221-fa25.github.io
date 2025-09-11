@@ -4,6 +4,14 @@ author: "Dr. Alexander Fisher"
 format: html
 ---
 
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+
 ```{r}
 #| label: load-packages
 #| code-fold: true
@@ -92,6 +100,9 @@ plot3d$plane3d(model, col = "darkred")
 
 In general, for $D$ measurements, a linear model is a $D-1$ dimensional hyperplane!
 
+## Fitting a regression model
+
+To "fit" a (multiple) linear regression model means finding $\hat{\beta}$ that defines the "best" hyperplane. Here, "best" means that $\hat{\beta}$ is the optimal solution of some **objective function**.
 
 ## Full data set
 
@@ -100,3 +111,124 @@ datatable(penguins, rownames = FALSE, options = list(pageLength = 5),
            caption = "penguins")
 ```
 
+::: panel-tabset
+## Exercise
+Write down the mathematical formula for linear regression where penguin bodymass is the outcome variable and flipper length, bill length, and sex of the penguin are the covariates. Note the dimension of each symbol in your model.
+
+## Solution
+
+$$
+\by = \bX \beta + \be
+$$
+
+As usual,
+
+- $\by, \be \in \mathbb{R}^n$
+- $\bX \in \mathbb{R}^{n \times p}$
+- $\beta \in \mathbb{R}^p$
+
+but here $p = 4$ (3 covariates + intercept).
+
+$$
+\bX = 
+\begin{bmatrix}
+\vdots & \vdots & \vdots & \vdots \\
+\mathbf{1} & \mathbf{x}_1 & \mathbf{x}_2 & \mathbf{x}_3 \\
+\vdots & \vdots & \vdots & \vdots
+\end{bmatrix}
+$$
+:::
+
+**Question**: Why is sex (a categorical predictor) represented as 1 column and not 2?
+
+**Answer**: It would create a linearly dependent column in the matrix $\bX$, then $\bX^T \bX$ would be rank deficient and could not be inverted.
+
+**Question**: Suppose we add the covariate "island", what is the new dimension of $\bX$ and $\beta$ then?
+
+**Answer**: Island is categorical with three states, therefore we would need 2 predictors to represent it. Now $p = 6$ and $\bX \in \mathbb{R}^{n \times 6}$ and $\beta \in \mathbb{R}^6$.
+
+## Fitting multiple regression in R (OLS)
+
+The formula for the least squares estimator $\hat{\beta}_{OLS}$ is the same,
+
+$$
+\hat{\beta}_{OLS} = \left(\bX^T \bX \right)^{-1} \bX ^T \by
+$$
+
+::: panel-tabset
+
+## `lm`
+```{r}
+penguin_fit <- lm(body_mass_g ~ flipper_length_mm + bill_length_mm +  sex + island, data = penguins)
+
+penguin_fit
+```
+
+**Question**: Why didn't I have to specify an intercept?
+
+**Answer**: `lm` includes intercept by default.
+
+**Question**: What if I don't want an intercept?
+
+**Answer**: Use `+ 0`, like this: `lm(y ~ x1 + x2 + ... + x_5 + 0, data = penguin)`. This will tell `lm` not to exclude an intercept term from the model.
+
+
+## manual
+```{r}
+yX <- penguins %>%
+  select(c("body_mass_g", "bill_length_mm", "flipper_length_mm",
+           "sex", "island")) %>%
+  mutate(isMale = ifelse(sex == "male", 1, 0), ## create 1 dummy variable 
+           isDream = ifelse(island == "Dream", 1, 0), ## create other 2 dummy variables
+         isTorgersen = ifelse(island == "Torgersen", 1, 0)) %>%
+  select(-c(island, sex)) %>% ## remove redundant columns 
+  mutate(one = 1) %>% # create vector of ones
+  drop_na() %>% # drop NAs, just like the lm() function does by default
+  as.matrix() # turn into a matrix for matrix algebra in R
+
+y <- yX[,1] # grab first column (which was the outcome variable)
+X <- yX[,-1] # grab all but first column (X matrix)
+
+betaHat <- solve(t(X) %*% X) %*% t(X) %*% y
+betaHat
+```
+## in-between
+
+An alternative, easy way to grab $X$ quickly: 
+
+```{r}
+X = model.matrix( body_mass_g ~ flipper_length_mm + bill_length_mm +  sex + island,
+              data = penguins)
+X %>%
+  head(n = 10) # notice NAs are dropped by default, (see the row number skips)
+```
+:::
+
+
+## Interpretation
+
+We interpret $\hat{\beta}_j$ as the expected change in the mean of $Y$ when $X_j$ increases by one unit, **holding the value of all other predictor variables constant**. 
+
+For example, for each additional mm of flipper length a given penguin has, we expect their body mass to increase by 37.6 grams **holding all other covariates constant**.
+
+## Prediction
+
+We can still make predictions in R; now we require more covariates. For example:
+
+```{r}
+new_penguin <- tibble(
+  flipper_length_mm = 180, 
+  bill_length_mm = 40,
+  sex = "male",
+  island = "Dream"
+)
+
+cat("The predicted body mass of the new penguin is:\n")
+predict(penguin_fit, new_penguin)
+
+```
+
+
+::: callout-warning
+Regression shows *association* **not** causality.
+:::
