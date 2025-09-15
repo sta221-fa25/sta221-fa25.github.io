@@ -1,0 +1,105 @@
+---
+title: "Introduction to inference"
+author: "Dr. Alexander Fisher"
+format: html
+---
+
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data sets used in these notes"
+#| warning: false
+#| message: false
+library(tidyverse)
+library(tidymodels)
+library(DT)
+
+pokemon <- read_csv("~/Downloads/pokemon_data.csv") # complete, population data
+```
+
+## The data 
+
+As of 2025, there are 1025 pokemon in existence.
+
+In all statistical inference tasks, we only have a *sample* from the population. Let's consider a random sample of the pokemon data, given below:
+
+```{r}
+#| echo: false
+#| eval: false
+for(i in 1:1000) {
+  set.seed(i)
+  sample = pokemon %>% 
+  slice_sample(n = 15) %>%
+    filter(name == "Pikachu") %>%
+    nrow()
+  if(sample != 0) {
+    print(i)
+  }
+}
+```
+
+
+```{r}
+set.seed(48) 
+pokemon_sample <- pokemon |>
+  slice_sample(n = 15) |>
+  select(dexnum, name, height_m, weight_kg) |>
+  arrange(dexnum)
+  
+
+datatable(pokemon_sample, rownames = FALSE, options = list(pageLength = 5),
+           caption = "sample of 15 pokemon")
+```
+
+Let's investigate the question: do taller pokemon weigh more? 
+
+::: panel-tabset
+## plot
+
+```{r}
+#| echo: false
+#| warning: false
+pokemon_sample |>
+  ggplot(aes(x = height_m, y = weight_kg)) +
+  geom_point() +
+  geom_smooth(method = 'lm', se = FALSE, color = 'steelblue') +
+  theme_bw() +
+  labs(title = "Pokemon weight vs height", x = "height (m)", y = "weight (kg)")
+```
+
+## linear model
+
+```{r}
+lm(weight_kg ~ height_m, data = pokemon_sample) |>
+  tidy()
+```
+
+## plot code 
+
+```{r}
+#| eval: false
+pokemon_sample |>
+  ggplot(aes(x = height_m, y = weight_kg)) +
+  geom_point() +
+  geom_smooth(method = 'lm', se = FALSE, color = 'steelblue') +
+  theme_bw() +
+  labs(title = "Pokemon weight vs height", x = "height (m)", y = "weight (kg)")
+```
+
+:::
+
+
+
+
+## Question
+
+How can we tell if our estimates $\hat{\beta}$ are any good?
+
