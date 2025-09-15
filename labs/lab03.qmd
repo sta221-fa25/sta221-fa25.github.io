@@ -31,17 +31,15 @@ By the end of the lab you will be able to…
 
 # **Meet your team!**
 
-[**Click here**]() to see the lab team assignments for STA 221. Before you get started on the lab, come up with a team name. You can't use the same name as another team, so I encourage you to be creative! Your TA will get your team name by the end of lab.
+[**Click here**](https://duke.box.com/s/uk3afk2si8n9xnmtwegmn69zwsr5xymm) to see the lab team assignments for STA 221.
 
 -   Have **one person** from the team clone the repo and start a new RStudio project. This person will type the team's responses as you discuss the questions in the agreement. No one else in the team should type at this point but should be contributing to the discussion.
 
--   Be sure to push the completed agreement to GitHub. Each team member can refer to the document in this repo or download the PDF of the agreement for future reference. *You do [not]{.underline} need to submit the agreement on Gradescope.*
-
 # **Getting started**
 
--   Go to the [sta221-sp25](https://www.github.com/sta221-sp25) organization on GitHub. Click on the repo with the prefix **lab-03**. It contains the starter documents you need to complete the lab.
+-   Go to the [sta221-fa25](https://www.github.com/sta221-fa25) organization on GitHub. Click on the repo with the prefix **lab-03**. It contains the starter documents you need to complete the lab.
 
--   Clone the repo and start a new project in RStudio. See the [Lab 00 instructions](https://sta221-sp25.netlify.app/labs/lab-00#getting-started) for details on cloning a repo and starting a new project in R.
+-   Clone the repo and start a new project in RStudio. See the [Lab 00 instructions](/labs/lab00.html) for details on cloning a repo and starting a new project in R.
 
 -   Each person on the team should clone the repository and open a new project in RStudio. Throughout the lab, each person should get a chance to make commits and push to the repo.
 
@@ -50,18 +48,10 @@ By the end of the lab you will be able to…
 # Workflow: Using Git and GitHub as a team
 
 ::: callout-important
-Assign each person on your team a number 1 through 4. For teams of three, Team Member 1 can take on the role of Team Member 4.
+Assign each person on your team a number (e.g. 1 through 3 or 1 through 4).
 
 The following exercises must be done in order. **Only one person should type in the `.qmd` file, commit, and push updates at a time.** When it is not your turn to type, you should still share ideas and contribute to the team's discussion.
 :::
-
-::: {.callout-important appearance="simple"}
-⌨️ **Team Member 1: Hands on the keyboard.**
-
-🙅🏽 All other team members: Hands off the keyboard until otherwise instructed![^1]
-:::
-
-[^1]: Don't trust yourself to keep your hands off the keyboard? Put them in your pocket or cross your arms. No matter how silly it might feel, resist the urge to touch your keyboard until otherwise instructed!
 
 Change the author to your team name and include each team member's name in the `author` field of the YAML in the following format: `Team Name: Member 1, Member 2, Member 3, Member 4`.
 
@@ -313,4 +303,4 @@ To submit your assignment:
 | Ex 10                 | 5      |
 | Workflow & formatting | 5      |
 
-The “Workflow & formatting” grade is to assess the reproducible workflow and collaboration. This includes having at least one meaningful commit from each team member and updating the team name and date in the YAML.
+The "Workflow & formatting" grade is to assess the reproducible workflow and collaboration. This includes having at least one meaningful commit from each team member and updating the team name and date in the YAML.
