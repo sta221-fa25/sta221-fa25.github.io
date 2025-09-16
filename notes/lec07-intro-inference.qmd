@@ -21,6 +21,8 @@ format: html
 library(tidyverse)
 library(tidymodels)
 library(DT)
+library(latex2exp)
+library(patchwork)
 
 pokemon <- read_csv("~/Downloads/pokemon_data.csv") # complete, population data
 ```
@@ -97,9 +99,108 @@ pokemon_sample |>
 :::
 
 
-
-
 ## Question
 
 How can we tell if our estimates $\hat{\beta}$ are any good?
+
+:::panel-tabset
+
+## repeated sampling
+
+```{r}
+pokemon_hw = pokemon |>
+  select(height_m, weight_kg)
+
+BETA_HAT <- NULL
+for(i in 1:1000) {
+  fit <- pokemon_hw |>
+    slice_sample(n = 15) |> 
+    lm(height_m ~ weight_kg, data = _) 
+  BETA_HAT <- rbind(BETA_HAT, fit$coefficients)
+}
+
+BETA_HAT <- data.frame(BETA_HAT)
+colnames(BETA_HAT) <- c("beta0", "beta1")
+
+glimpse(BETA_HAT)
+```
+
+## plots
+
+```{r}
+#| warning: false
+#| echo: false
+set.seed(221)
+
+p1 <- BETA_HAT |>
+  ggplot(aes(x = beta0, y = beta1)) +
+  stat_density_2d(aes(fill = ..level..), geom = "polygon") +
+  xlim(c(0, 2)) +
+  ylim(c(0, 0.025)) +
+  theme_bw() +
+  labs(title = "Joint distribution", x = TeX("$\\hat{\\beta}_0$"),
+       y = TeX("$\\hat{\\beta}_1$"), fill = "density")
+
+p2 <- BETA_HAT |> 
+  ggplot(aes(x = beta0)) +
+  geom_density(aes(y = ..density..)) +
+  theme_bw() +
+  labs(title = "Marginal densities", 
+       x = TeX("$\\hat{\\beta}_0$"))
+
+p3 <- BETA_HAT |> 
+  ggplot(aes(x = beta1)) +
+  geom_density(aes(y = ..density..)) +
+  theme_bw() +
+  labs(x = TeX("$\\hat{\\beta}_1$"))
+
+(p1) / (p2 + p3) + plot_annotation(title = "Sampling variability in OLS estimates")
+```
+## population-level annotation
+
+```{r}
+popn_model <- lm(height_m ~ weight_kg, data = pokemon)
+popn_model$coefficients
+```
+
+
+```{r}
+#| warning: false
+#| echo: false
+set.seed(221)
+
+p1 <- BETA_HAT |>
+  ggplot(aes(x = beta0, y = beta1)) +
+  stat_density_2d(aes(fill = ..level..), geom = "polygon") +
+  xlim(c(0, 2)) +
+  ylim(c(0, 0.025)) +
+  theme_bw() +
+  labs(title = "Joint distribution", x = TeX("$\\hat{\\beta}_0$"),
+       y = TeX("$\\hat{\\beta}_1$"), fill = "density") +
+  annotate(geom = "point", x = popn_model$coefficients[[1]],
+           y = popn_model$coefficients[[2]], color = "darkgoldenrod2") + annotate(geom = "text", x = .65, y = 0.009, 
+           label = TeX("$\\beta_0, \\beta_1$"), size = 5,
+           color = "darkgoldenrod2")
+
+p2 <- BETA_HAT |> 
+  ggplot(aes(x = beta0)) +
+  geom_density(aes(y = ..density..)) +
+  theme_bw() +
+  labs(title = "Marginal densities", 
+       x = TeX("$\\hat{\\beta}_0$")) +
+  geom_vline(xintercept = popn_model$coefficients[[1]],
+             color = "darkgoldenrod2")
+
+p3 <- BETA_HAT |> 
+  ggplot(aes(x = beta1)) +
+  geom_density(aes(y = ..density..)) +
+  theme_bw() +
+  labs(x = TeX("$\\hat{\\beta}_1$")) +
+  geom_vline(xintercept = popn_model$coefficients[[2]], color = "darkgoldenrod2")
+
+(p1) / (p2 + p3) + plot_annotation(title = "Sampling variability in OLS estimates")
+```
+
+:::
+
 
