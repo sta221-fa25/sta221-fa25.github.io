@@ -85,7 +85,7 @@ $$
 $$
 \indent (ii) How does $cor(\bx, \by)$ compare to $cor(\bx^*, \by)$?
 
-b. \(i\) How do the least squares estimates change when we transform $\by \rightarrow \by^*$ according to the linear transformation: $\by^* = c \by + d \bone$? (ii) How does $cor(\bx, \by)$ compare to $cor(\bx, \by^*)$?
+b. \(i\) How do the least squares estimates change when we transform $\by \rightarrow \by^*$ according to the affine transformation: $\by^* = c \by + d \bone$? (ii) How does $cor(\bx, \by)$ compare to $cor(\bx, \by^*)$?
 
 ## Exercise 4
 
