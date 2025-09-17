@@ -91,7 +91,7 @@ childcare_test <- read_csv("data/childcare-costs-2018-test.csv")
 
 **The response variable for this analysis is** `mc_preschool`, defined as weekly, full-time median price charged for center-based care for preschoolers (i.e. aged 36 through 54 months) based on the results reported in the market rate survey report for the county.
 
-The full data dictionary is available in the `README` of the `data` folder in your GitHub repo. You can also find the full data dictionary on the TidyTuesday page.
+The full data dictionary can be found [here on the TidyTuesday page](https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-05-09).
 
 # Exercises
 

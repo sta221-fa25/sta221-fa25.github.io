@@ -204,7 +204,7 @@ $$
 ::: callout-note
 ## Definition: OLS estimates
 
-The OLS values of \beta_0, \beta_1 are the values (\hat{\beta}_0, \hat{\beta}_1) that minimize $RSS(\beta_0, \beta_1)$. Again, in math,
+The OLS values of $\beta_0$, $\beta_1$ are the values $(\hat{\beta}_0, \hat{\beta}_1)$ that minimize $RSS(\beta_0, \beta_1)$. Again, in math,
 
 $$
 \hat{\beta_0}, \hat{\beta_1}
