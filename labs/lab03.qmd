@@ -33,7 +33,7 @@ By the end of the lab you will be able to…
 
 [**Click here**](https://duke.box.com/s/uk3afk2si8n9xnmtwegmn69zwsr5xymm) to see the lab team assignments for STA 221.
 
--   Have **one person** from the team clone the repo and start a new RStudio project. This person will type the team's responses as you discuss the questions in the agreement. No one else in the team should type at this point but should be contributing to the discussion.
+-   Have **one person** from the team clone the repo and start a new RStudio project.
 
 # **Getting started**
 
@@ -250,10 +250,6 @@ childcare_test <- childcare_test |>
 ::: pull
 **All other team members**: **Pull** to get the updated documents from GitHub. Click on the .qmd file, and you should see the team’s completed lab!
 :::
-
-## Exercise 10
-
-If you haven't already, make sure you have completed the team agreement (see the instructions in \[Meet your team!\]).
 
 # Wrapping up
 
