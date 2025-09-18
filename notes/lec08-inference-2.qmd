@@ -1,0 +1,219 @@
+---
+title: "Inference part II"
+author: "Dr. Alexander Fisher"
+format: html
+---
+
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+\newcommand{\bzero}{\boldsymbol{0}}
+\newcommand{\identity}{\boldsymbol{I}}
+
+## Background
+
+This section re-states the definitions of variance and covariance as well as lists a few important properties.
+
+In this section, let $y$ and $z$ be random variables and let $\boldsymbol{y}$ and $\boldsymbol{z}$ be random *vectors*. Let $a$ be a constant and let $\boldsymbol{A}$ be a constant matrix. 
+
+::: callout-note
+## Definition: variance
+$$
+\text{var}(y) = E[(y - E[y])^2] = E[y^2] - \left(E[y]\right)^2
+$$
+
+
+Similarly, 
+
+$$
+\text{var}(\boldsymbol{y}) = E \boldsymbol{y}\boldsymbol{y}^T - E\boldsymbol{y}E\boldsymbol{y}^T
+$$
+
+Notice that the "variance of a vector" is a square matrix where each entry is the covariance between each pair of elements of the random vector. 
+
+::: 
+
+::: callout-note
+## Definition: covariance
+
+$$
+\text{cov}(y, z) = E[(y - E[y])(z - E[z])] = E[yz] - \left(E[y]E[z]\right)
+$$
+
+Similarly, 
+
+$$
+\text{cov}(\boldsymbol{y}, \boldsymbol{z}) = E \boldsymbol{y}\boldsymbol{z}^T - E\boldsymbol{y}E\boldsymbol{z}^T
+$$
+
+Notice that $\text{cov}(\boldsymbol{y}, \boldsymbol{y}) = \text{var}(\boldsymbol{y})$
+
+:::
+
+
+Properties 
+
+1. $\text{var}(ay) = a^2 \text{var}(y)$ and similarly, $\text{var}(\boldsymbol{A} \boldsymbol{y}) = \boldsymbol{A} \text{var}(\boldsymbol{y}) \boldsymbol{A}^T$
+2. Bilinearity: $\text{cov}(\boldsymbol{y}, \boldsymbol{az}) = a \cdot \text{cov}(\boldsymbol{y}, \boldsymbol{z})$
+3. variance of a sum: $\text{var}(y + z) = \text{var}(y) + \text{var}(z) + 2\text{cov}(y, z)$
+
+::: panel-tabset
+## Exercise
+What is $\text{cov}(ay - bz)$? Hint: apply properties 2 and 3 together.
+
+## Solution
+$\text{cov}(ay - bz) = \text{var}(ay) + \text{var}(-bz) + 2 \text{cov}(ay, -bz) = a^2 \text{var}(y) + b^2\text{var}(z) - 2ab\text{cov}(y, z)$
+:::
+
+## Last time
+
+Last time we asked the question: what assumptions are required so that $\hat{\beta}$ is a good representation of $\beta$?
+
+::: callout-important
+## Assumption 1
+
+$E[\be] = \bzero$, or equivalently, $E[\varepsilon_i] = 0$ for all $i$.
+
+:::
+
+::: panel-tabset
+## Exercise
+Show that assumption 1 implies that $E[\hat{\beta}] = \beta$.
+:::
+
+::: callout-important
+## Assumption 2
+
+**Constant Variance**: $\text{var}(\varepsilon_i | \boldsymbol{X}) = \sigma^2$ for all $i$,
+
+and **uncorrelated errors**: $\text{cov}(\varepsilon_{i}, \varepsilon_j) = 0$ for all pairs $i, j$ where $i \neq j$.
+
+Equivalently, the two statements above can be written together concisely in matrix form:
+
+$$
+\text{var}(\be) = \sigma^2 \identity
+$$
+:::
+
+::: panel-tabset
+## Exercise 
+
+Show that assumption 2 implies that $\text{var}(\hat{\beta}|\bX) = \sigma^2 (\bX^T\bX)^{-1}$
+
+:::
+
+## Interpreting variance of $\hat{\beta}$ in simple linear regression
+
+### $\hat{\beta}_1$
+
+Consider simple linear regression, where we have 1 predictor variable $\boldsymbol{x} = x_1, \ldots, x_n$ and $\hat{\beta}_1 = \frac{\sum_{i=1}^n (x_i - \bar{x}) y_i}{\sum_{i=1}^n (x_i - \bar{x})^2}$. 
+
+Let's compute the variance of $\hat{\beta}_1$:
+
+$$
+\begin{aligned}
+\text{var}(\hat{\beta}_1 | \boldsymbol{x}) 
+&= \text{var}
+\left(
+\frac{\sum_{i=1}^n (x_i - \bar{x}) y_i}{\sum_{i=1}^n (x_i - \bar{x})^2} \big| \boldsymbol{x}
+\right)\\
+&=
+\frac{1}{\left(\sum_{i=1}^n (x_i - \bar{x})^2\right)^2} \cdot \sum_{i=1}^n (x_i - \bar{x})^2 \text{var}(y_i)\\
+&= \frac{\sigma^2}{\sum_{i=1}^n (x_i - \bar{x})^2}
+\end{aligned}
+$$
+
+The second equality above follows from the fact that (1) $x_1, \ldots, x_n$ are constant and (2) the $y_i$'s are uncorrelated.
+
+We can multiply by "1" in a fancy way to rearrange slightly:
+
+$$
+\begin{aligned}
+\text{var}(\hat{\beta}_1 | \boldsymbol{x}) &= 
+\frac{\sigma^2}{\sum_{i=1}^n (x_i - \bar{x})^2} \cdot \frac{1/n}{1/n}\\
+&= \frac{\sigma^2}{n} \cdot \frac{1}{\text{var}(\boldsymbol{x})}
+\end{aligned}
+$$
+
+where the last equality follows from the definition of the variance.
+
+::: callout-important
+The important take-away point here is that the variance of $\hat{\beta}_1$ depends on 
+- the variance of the error, $\sigma^2$
+- the number of samples, $n$, and
+- the variance of $x_1, \ldots, x_n$
+:::
+
+### $\hat{\beta}_0$
+
+Recall that $\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}$. Therefore, 
+
+$$
+\begin{aligned}
+\text{var}(\hat{\beta}_0 | \boldsymbol{x}) 
+&=
+\text{var}(\bar{y} - \hat{\beta}_1 \bar{x}| \boldsymbol{x})\\
+&= 
+\text{var}(\bar{y} | \boldsymbol{x}) + \bar{x}^2 \text{var}(\hat{\beta}_1 | \boldsymbol{x}) - 2 \bar{x} \text{cov}(\bar{y}, \hat{\beta}_1 | \boldsymbol{x})
+\\
+&= \text{var}\left(
+\frac{1}{n} \sum y_i \Big|\boldsymbol{x}
+\right) +
+\bar{x}^2 \frac{\sigma^2}{n} \cdot \frac{1}{\text{var}(\boldsymbol{x})} - 0\\
+&= \frac{1}{n} \sigma^2  + \bar{x}^2 \frac{\sigma^2}{n} \cdot \frac{1}{\text{var}(\boldsymbol{x})}\\
+&= \frac{1}{n} \sigma^2 \left(
+1 + \frac{\bar{x}^2}{\text{var}(\boldsymbol{x})}
+\right)
+\end{aligned}
+$$
+
+where the second inequality follows from the first exercise in these notes. The third equality follows from the fact that $\text{cov}(\bar{y}, \hat{\beta}_1 | \boldsymbol{x})$ is 0. To see this, 
+
+::: {.callout-note collapse="true"}
+## click here
+
+For notational convenience, I'll drop the writing of the conditioning on $\boldsymbol{x}$.
+
+$$
+\begin{aligned}
+\text{cov}(\bar{y}, \hat{\beta}_1) 
+&= \text{cov}\left(
+\frac{1}{n}\sum_{j=1}^n y_j,\sum_{i=1}^n w_iy_i
+\right)
+\end{aligned}
+$$
+where
+
+$w_i = \frac{(x_i - \bar{x})}{\sum(x_k - \bar{x})^2}$. Note $\sum_i w_i = 0$.
+
+Continuing the proof,
+
+$$
+\text{cov}\left(
+\frac{1}{n}\sum_{j=1}^n y_j,\sum_{i=1}^n w_iy_i
+\right) = 
+\frac{1}{n} \sum_j \sum_i w_i \text{cov}(y_j, y_i)
+$$
+
+Notice $\text{cov}(y_i, y_j) = 0$ for $i \neq j$. If $i = j$, then $\text{cov}(y_j, y_i) = \text{var}(y_i) = \sigma^2$.
+
+This let's us simplify:
+
+$$
+\frac{1}{n} \sigma^2 \sum_i w_i = 0
+$$
+
+:::
+
+::: callout-important
+The important take-away point here is that 
+$\text{var}(\hat{\beta}_0 | \boldsymbol{x}) \geq \text{var}(\hat{\beta}_1 | \boldsymbol{x})$
+
+**Question**: under what circumstance does $\text{var}(\hat{\beta}_0 | \boldsymbol{x}) = \text{var}(\hat{\beta}_1 | \boldsymbol{x})$?
+:::
+
+<!-- &= \frac{1}{n} \cdot \frac{1}{\sum(x_i - \bar{x})^2} \sum (x_i - \bar{x})\text{cov}(y_i, y_i) -->

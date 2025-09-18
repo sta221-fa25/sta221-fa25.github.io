@@ -1,0 +1,79 @@
+---
+title: "Homework 02: multiple linear regression"
+subtitle: "Due Thursday September 18 at 5:00pm"
+format: html
+bibliography: references.bib
+---
+
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+\newcommand{\bA}{\boldsymbol{A}}
+\newcommand{\bzero}{\boldsymbol{0}}
+\newcommand{\identity}{\boldsymbol{I}}
+
+# Conceptual exercises
+
+The conceptual exercises are focused on explaining concepts and showing results mathematically. Show your work for each question.
+
+You may write the answers and associated work for conceptual exercises by hand or type them in your Quarto document.
+
+## Exercise 1
+
+Derive the expected value and covariance matrix of the residual vector, $\hbe$. In other words, derive the $E[\hbe | \bX]$ and $\text{var}(\hbe | \bX)$.
+
+Hint: consider the hat matrix.
+
+## Exercise 2
+
+Show $E\left[\frac{\text{RSS}}{n-2}\right]$ is an unbiased estimator of $\sigma^2$.
+
+## Exercise 3
+
+Show that if $\bar{x} > 0$, $\text{cov}(\hat{\beta}_0, \hat{\beta}_1) < 0$ in simple linear regression.
+
+## Exercise 4 
+
+Because the least squares estimator $\hat{\beta} = \bA \by$, for some matrix $\bA$, we call $\hat{\beta}$ a *linear* estimator.
+
+If $E[\be] = \bzero$ and $\text{var}(\be) = \sigma^2 \identity$, then show (a) that $E[\hat{\beta}] = \beta$ and (b) that $\hat{\beta}$ has *the smallest* variance among all linear, unbiased estimators.
+
+Hint for part (b): consider an alternative linear estimator $\tilde{\beta} = \boldsymbol{B} \by$ and show that its variance is equal to the variance of $\hat{\beta}$ plus some positive semi-definite matrix.
+
+
+## Exercise 5
+
+
+
+# Submission
+
+::: callout-warning
+Remember -- you must turn in a PDF file to the Gradescope page before the submission deadline for full credit.
+
+If you write your responses to conceptual exercises by hand, you will need to combine your written work to the completed PDF for the applied exercises before submitting on Gradescope.
+
+Instructions to combine PDFs:
+
+-   Preview (Mac): [support.apple.com/guide/preview/combine-pdfs-prvw43696/mac](https://support.apple.com/guide/preview/combine-pdfs-prvw43696/mac)
+
+-   Adobe (Mac or PC): [helpx.adobe.com/acrobat/using/merging-files-single-pdf.html](https://helpx.adobe.com/acrobat/using/merging-files-single-pdf.html)
+
+    -   Get free access to Adobe Acrobat as a Duke student: [oit.duke.edu/help/articles/kb0030141/](https://oit.duke.edu/help/articles/kb0030141/)
+:::
+
+To submit your assignment:
+
+-   Access Gradescope through the menu on the Canvas website.
+
+-   Click on the assignment, and you'll be prompted to submit it.
+
+-   Mark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be “checked”).
+
+-   Select the first page of your .PDF submission to be associated with the *"Workflow & formatting"* section.
+
+The "Workflow & formatting" grade is to assess the reproducible workflow and document format for the applied exercises. This includes a neatly organized document with readable code and your name and the date updated in the YAML.
