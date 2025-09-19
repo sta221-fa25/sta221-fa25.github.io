@@ -1,5 +1,5 @@
 ---
-title: "Homework 02: multiple linear regression"
+title: "Homework 02: properties of linear regression"
 subtitle: "Due Friday September 26 at 5:00pm"
 format: html
 bibliography: references.bib
