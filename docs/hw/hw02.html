@@ -38,7 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8c30556735fa22a8b34c61270d6a5ad2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f0150d33b2af0e0472614782225a2caa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -186,6 +186,8 @@ window.Quarto = {
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
   <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
   <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
+  <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
+  <li><a href="#exercise-7" id="toc-exercise-7" class="nav-link" data-scroll-target="#exercise-7">Exercise 7</a></li>
   </ul></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul>
@@ -197,7 +199,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Homework 02: multiple linear regression</h1>
-<p class="subtitle lead">Due Thursday September 18 at 5:00pm</p>
+<p class="subtitle lead">Due Friday September 26 at 5:00pm</p>
 </div>
 
 
@@ -217,28 +219,44 @@ window.Quarto = {
 <section id="conceptual-exercises" class="level1">
 <h1>Conceptual exercises</h1>
 <p>The conceptual exercises are focused on explaining concepts and showing results mathematically. Show your work for each question.</p>
-<p>You may write the answers and associated work for conceptual exercises by hand or type them in your Quarto document.</p>
+<p>You may write the answers and associated work for conceptual exercises by hand or type them in a Quarto document. Note: there is no GitHub repository for this assignment since there are no coding exercises.</p>
+<p>In all exercises below, you may assume <span class="math inline">\(E[\boldsymbol{\varepsilon}] = \boldsymbol{0}\)</span> and <span class="math inline">\(\text{cov}(\boldsymbol{\varepsilon}) = \sigma^2 \boldsymbol{I}\)</span>.</p>
 <section id="exercise-1" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
-<p>Derive the expected value and covariance matrix of the residual vector, <span class="math inline">\(\hat{\boldsymbol{\varepsilon}}\)</span>. In other words, derive the <span class="math inline">\(E[\hat{\boldsymbol{\varepsilon}}| \boldsymbol{X}]\)</span> and <span class="math inline">\(\text{var}(\hat{\boldsymbol{\varepsilon}}| \boldsymbol{X})\)</span>.</p>
-<p>Hint: consider the hat matrix.</p>
+<p>In lecture, we defined the hat matrix <span class="math inline">\(\boldsymbol{H}\)</span> as a projection matrix that projects <span class="math inline">\(\boldsymbol{y}\)</span> onto <span class="math inline">\(Col(\boldsymbol{X})\)</span> and discussed the properties of a projection matrix. In class we showed that <span class="math inline">\(\boldsymbol{H}\)</span> is symmetric and idempotent. Now we will focus on two other properties.</p>
+<ol type="a">
+<li><p>Show that for any vector <span class="math inline">\(\boldsymbol{v}\)</span> in <span class="math inline">\(Col(\boldsymbol{X})\)</span>. <span class="math inline">\(\boldsymbol{H}\boldsymbol{v} = \boldsymbol{v}\)</span>.</p></li>
+<li><p>Show that any vector <span class="math inline">\(\boldsymbol{v}\)</span> orthogonal to <span class="math inline">\(Col(\boldsymbol{X})\)</span>, <span class="math inline">\(\boldsymbol{H}\boldsymbol{v} = \boldsymbol{0}\)</span></p></li>
+</ol>
 </section>
 <section id="exercise-2" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
-<p>Show <span class="math inline">\(E\left[\frac{\text{RSS}}{n-2}\right]\)</span> is an unbiased estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>Derive the expected value and covariance matrix of the residual vector, <span class="math inline">\(\hat{\boldsymbol{\varepsilon}}\)</span>. In other words, derive the <span class="math inline">\(E[\hat{\boldsymbol{\varepsilon}}| \boldsymbol{X}]\)</span> and <span class="math inline">\(\text{var}(\hat{\boldsymbol{\varepsilon}}| \boldsymbol{X})\)</span>.</p>
+<p>Hint: consider the hat matrix.</p>
 </section>
 <section id="exercise-3" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
-<p>Show that if <span class="math inline">\(\bar{x} &gt; 0\)</span>, <span class="math inline">\(\text{cov}(\hat{\beta}_0, \hat{\beta}_1) &lt; 0\)</span> in simple linear regression.</p>
+<p>Show that all eigenvalues of the hat matrix <span class="math inline">\(\boldsymbol{H}\)</span> are 0 or 1.</p>
 </section>
 <section id="exercise-4" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-4">Exercise 4</h2>
+<p>Let <span class="math inline">\(\boldsymbol{y}= \boldsymbol{X}\beta + \epsilon\)</span> where <span class="math inline">\(\beta \in \mathbb{R}^p\)</span> and <span class="math inline">\(p = 2\)</span>.</p>
+<p>Show <span class="math inline">\(E\left[\frac{\text{RSS}}{n-2}\right]\)</span> is an unbiased estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>Hint: show that <span class="math inline">\((I-\boldsymbol{H})\)</span> is orthogonal to <span class="math inline">\(Col(\boldsymbol{X})\)</span>. Also note the cyclic property of trace: <span class="math inline">\(tr(ABC) = tr(CAB) = tr(BCA)\)</span> and the fact that <span class="math inline">\(a = tr(a)\)</span> for all scalar numbers <span class="math inline">\(a\)</span>.</p>
+</section>
+<section id="exercise-5" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5">Exercise 5</h2>
+<p>Show that if <span class="math inline">\(\bar{x} &gt; 0\)</span>, <span class="math inline">\(\text{cov}(\hat{\beta}_0, \hat{\beta}_1) &lt; 0\)</span> in simple linear regression.</p>
+</section>
+<section id="exercise-6" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-6">Exercise 6</h2>
 <p>Because the least squares estimator <span class="math inline">\(\hat{\beta} = \boldsymbol{A}\boldsymbol{y}\)</span>, for some matrix <span class="math inline">\(\boldsymbol{A}\)</span>, we call <span class="math inline">\(\hat{\beta}\)</span> a <em>linear</em> estimator.</p>
 <p>If <span class="math inline">\(E[\boldsymbol{\varepsilon}] = \boldsymbol{0}\)</span> and <span class="math inline">\(\text{var}(\boldsymbol{\varepsilon}) = \sigma^2 \boldsymbol{I}\)</span>, then show (a) that <span class="math inline">\(E[\hat{\beta}] = \beta\)</span> and (b) that <span class="math inline">\(\hat{\beta}\)</span> has <em>the smallest</em> variance among all linear, unbiased estimators.</p>
 <p>Hint for part (b): consider an alternative linear estimator <span class="math inline">\(\tilde{\beta} = \boldsymbol{B} \boldsymbol{y}\)</span> and show that its variance is equal to the variance of <span class="math inline">\(\hat{\beta}\)</span> plus some positive semi-definite matrix.</p>
 </section>
-<section id="exercise-5" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-5">Exercise 5</h2>
+<section id="exercise-7" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-7">Exercise 7</h2>
+<p>Describe, in your own words, the difference between <span class="math inline">\(\hat{\beta}\)</span> and <span class="math inline">\(\beta\)</span> as well as the difference between <span class="math inline">\(\hat{y}\)</span> and <span class="math inline">\(y\)</span>. In your explanation, specifically identify whether each is <em>random</em> or <em>fixed</em>, <em>known</em> or <em>unknown</em> both before and after collecting the data.</p>
 </section>
 </section>
 <section id="submission" class="level1">
@@ -272,7 +290,6 @@ Warning
 <li><p>Mark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be “checked”).</p></li>
 <li><p>Select the first page of your .PDF submission to be associated with the <em>“Workflow &amp; formatting”</em> section.</p></li>
 </ul>
-<p>The “Workflow &amp; formatting” grade is to assess the reproducible workflow and document format for the applied exercises. This includes a neatly organized document with readable code and your name and the date updated in the YAML.</p>
 
 
 </section>

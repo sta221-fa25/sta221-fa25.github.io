@@ -1,6 +1,6 @@
 ---
 title: "Homework 02: multiple linear regression"
-subtitle: "Due Thursday September 18 at 5:00pm"
+subtitle: "Due Friday September 26 at 5:00pm"
 format: html
 bibliography: references.bib
 ---
@@ -16,28 +16,47 @@ bibliography: references.bib
 \newcommand{\bA}{\boldsymbol{A}}
 \newcommand{\bzero}{\boldsymbol{0}}
 \newcommand{\identity}{\boldsymbol{I}}
+\newcommand{\hatMatrix}{\boldsymbol{H}}
 
 # Conceptual exercises
 
 The conceptual exercises are focused on explaining concepts and showing results mathematically. Show your work for each question.
 
-You may write the answers and associated work for conceptual exercises by hand or type them in your Quarto document.
+You may write the answers and associated work for conceptual exercises by hand or type them in a Quarto document. Note: there is no GitHub repository for this assignment since there are no coding exercises.
+
+In all exercises below, you may assume $E[\be] = \bzero$ and $\text{cov}(\be) = \sigma^2 \identity$.
 
 ## Exercise 1
+
+In lecture, we defined the hat matrix $\hatMatrix$ as a projection matrix that projects $\by$ onto $Col(\bX)$ and discussed the properties of a projection matrix. In class we showed that $\hatMatrix$ is symmetric and idempotent. Now we will focus on two other properties.
+
+(a) Show that for any vector $\boldsymbol{v}$ in $Col(\bX)$. $\hatMatrix \boldsymbol{v} = \boldsymbol{v}$.
+
+(b) Show that any vector $\boldsymbol{v}$ orthogonal to $Col(\bX)$, $\hatMatrix \boldsymbol{v} = \bzero$
+
+## Exercise 2
 
 Derive the expected value and covariance matrix of the residual vector, $\hbe$. In other words, derive the $E[\hbe | \bX]$ and $\text{var}(\hbe | \bX)$.
 
 Hint: consider the hat matrix.
 
-## Exercise 2
+## Exercise 3
+
+Show that all eigenvalues of the hat matrix $\hatMatrix$ are 0 or 1.
+
+## Exercise 4
+
+Let $\by = \bX \beta + \epsilon$ where $\beta \in \mathbb{R}^p$ and $p = 2$.
 
 Show $E\left[\frac{\text{RSS}}{n-2}\right]$ is an unbiased estimator of $\sigma^2$.
 
-## Exercise 3
+Hint: show that $(I-\hatMatrix)$ is orthogonal to $Col(\bX)$. Also note the cyclic property of trace: $tr(ABC) = tr(CAB) = tr(BCA)$ and the fact that $a = tr(a)$ for all scalar numbers $a$.
+
+## Exercise 5
 
 Show that if $\bar{x} > 0$, $\text{cov}(\hat{\beta}_0, \hat{\beta}_1) < 0$ in simple linear regression.
 
-## Exercise 4 
+## Exercise 6
 
 Because the least squares estimator $\hat{\beta} = \bA \by$, for some matrix $\bA$, we call $\hat{\beta}$ a *linear* estimator.
 
@@ -46,7 +65,9 @@ If $E[\be] = \bzero$ and $\text{var}(\be) = \sigma^2 \identity$, then show (a) t
 Hint for part (b): consider an alternative linear estimator $\tilde{\beta} = \boldsymbol{B} \by$ and show that its variance is equal to the variance of $\hat{\beta}$ plus some positive semi-definite matrix.
 
 
-## Exercise 5
+## Exercise 7
+
+Describe, in your own words, the difference between $\hat{\beta}$ and $\beta$ as well as the difference between $\hat{y}$ and $y$. In your explanation, specifically identify whether each is *random* or *fixed*, *known* or *unknown* both before and after collecting the data.
 
 
 
@@ -75,5 +96,3 @@ To submit your assignment:
 -   Mark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be “checked”).
 
 -   Select the first page of your .PDF submission to be associated with the *"Workflow & formatting"* section.
-
-The "Workflow & formatting" grade is to assess the reproducible workflow and document format for the applied exercises. This includes a neatly organized document with readable code and your name and the date updated in the YAML.
