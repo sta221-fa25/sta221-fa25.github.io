@@ -4996,7 +4996,7 @@ font-weight: normal;
 <h1>Conceptual exercises</h1>
 <p>The conceptual exercises are focused on explaining concepts and showing results mathematically. Show your work for each question.</p>
 <p>You may write the answers and associated work for conceptual exercises by hand or type them in a Quarto document. Note: there is no GitHub repository for this assignment since there are no coding exercises.</p>
-<p>In all exercises below, you may assume <span class="math inline">\(E[\boldsymbol{\varepsilon}] = \boldsymbol{0}\)</span> and <span class="math inline">\(\text{cov}(\boldsymbol{\varepsilon}) = \sigma^2 \boldsymbol{I}\)</span>.</p>
+<p>In all exercises below, you may assume <span class="math inline">\(E[\boldsymbol{\varepsilon}| \boldsymbol{X}] = \boldsymbol{0}\)</span> and <span class="math inline">\(\text{cov}(\boldsymbol{\varepsilon}| \boldsymbol{X}) = \sigma^2 \boldsymbol{I}\)</span>.</p>
 <section id="exercise-1" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
 <p>In lecture, we defined the hat matrix <span class="math inline">\(\boldsymbol{H}\)</span> as a projection matrix that projects <span class="math inline">\(\boldsymbol{y}\)</span> onto <span class="math inline">\(Col(\boldsymbol{X})\)</span> and discussed the properties of a projection matrix. In class we showed that <span class="math inline">\(\boldsymbol{H}\)</span> is symmetric and idempotent. Now we will focus on two other properties.</p>
@@ -5017,8 +5017,11 @@ font-weight: normal;
 <section id="exercise-4" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-4">Exercise 4</h2>
 <p>Let <span class="math inline">\(\boldsymbol{y}= \boldsymbol{X}\beta + \epsilon\)</span> where <span class="math inline">\(\beta \in \mathbb{R}^p\)</span> and <span class="math inline">\(p = 2\)</span>.</p>
-<p>Show <span class="math inline">\(E\left[\frac{\text{RSS}}{n-2}\right]\)</span> is an unbiased estimator of <span class="math inline">\(\sigma^2\)</span>.</p>
-<p>Hint: show that <span class="math inline">\((I-\boldsymbol{H})\)</span> is orthogonal to <span class="math inline">\(Col(\boldsymbol{X})\)</span>. Also note the cyclic property of trace: <span class="math inline">\(tr(ABC) = tr(CAB) = tr(BCA)\)</span> and the fact that <span class="math inline">\(a = tr(a)\)</span> for all scalar numbers <span class="math inline">\(a\)</span>.</p>
+<ol type="a">
+<li><p>Show that <span class="math inline">\((I-\boldsymbol{H})\)</span> is orthogonal to <span class="math inline">\(Col(\boldsymbol{X})\)</span>.</p></li>
+<li><p>Show <span class="math inline">\(E\left[\frac{\text{RSS}}{n-2}| \boldsymbol{X}\right]\)</span> is an unbiased estimator of <span class="math inline">\(\sigma^2\)</span>.</p></li>
+</ol>
+<p>Hint: note the fact that <span class="math inline">\(a = tr(a)\)</span> for all scalar numbers <span class="math inline">\(a\)</span>. Also note the cyclic property of trace: <span class="math inline">\(tr(ABC) = tr(CAB) = tr(BCA)\)</span>.</p>
 </section>
 <section id="exercise-5" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-5">Exercise 5</h2>
@@ -5027,7 +5030,7 @@ font-weight: normal;
 <section id="exercise-6" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-6">Exercise 6</h2>
 <p>Because the least squares estimator <span class="math inline">\(\hat{\beta} = \boldsymbol{A}\boldsymbol{y}\)</span>, for some matrix <span class="math inline">\(\boldsymbol{A}\)</span>, we call <span class="math inline">\(\hat{\beta}\)</span> a <em>linear</em> estimator.</p>
-<p>If <span class="math inline">\(E[\boldsymbol{\varepsilon}] = \boldsymbol{0}\)</span> and <span class="math inline">\(\text{var}(\boldsymbol{\varepsilon}) = \sigma^2 \boldsymbol{I}\)</span>, then show (a) that <span class="math inline">\(E[\hat{\beta}] = \beta\)</span> and (b) that <span class="math inline">\(\hat{\beta}\)</span> has <em>the smallest</em> variance among all linear, unbiased estimators.</p>
+<p>If <span class="math inline">\(E[\boldsymbol{\varepsilon}| \boldsymbol{X}] = \boldsymbol{0}\)</span> and <span class="math inline">\(\text{var}(\boldsymbol{\varepsilon}| \boldsymbol{X}) = \sigma^2 \boldsymbol{I}\)</span>, then show (a) that <span class="math inline">\(E[\hat{\beta}] = \beta\)</span> and (b) that <span class="math inline">\(\hat{\beta}\)</span> has <em>the smallest</em> variance among all linear, unbiased estimators.</p>
 <p>Hint for part (b): consider an alternative linear estimator <span class="math inline">\(\tilde{\beta} = \boldsymbol{B} \boldsymbol{y}\)</span> and show that its variance is equal to the variance of <span class="math inline">\(\hat{\beta}\)</span> plus some positive semi-definite matrix.</p>
 </section>
 <section id="exercise-7" class="level2">
