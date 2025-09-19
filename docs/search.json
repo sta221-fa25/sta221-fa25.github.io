@@ -1397,7 +1397,7 @@
     "href": "notes/lec06-multiple-regression.html#interpretation",
     "title": "Multiple linear regression",
     "section": "Interpretation",
-    "text": "Interpretation\nWe interpret \\(\\hat{\\beta}_j\\) as the expected change in the mean of \\(Y\\) when \\(X_j\\) increases by one unit, holding the value of all other predictor variables constant.\nFor example, for each additional mm of flipper length a given penguin has, we expect their body mass to increase by 37.6 grams holding all other covariates constant."
+    "text": "Interpretation\n\nSlopes\nWe interpret slopes \\(\\hat{\\beta}_j\\) as the expected change in the mean of \\(Y\\) when \\(X_j\\) increases by one unit, holding the value of all other predictor variables constant.\nFor example, for each additional mm of flipper length a given penguin has, we expect their body mass to increase by 37.6 grams holding all other covariates constant.\n\n\nIntercept\nThe intercept is the expected value of \\(Y\\) when all predictors are zero. Note: when there is a categorical predictor, this corresponds to some “default” category."
   },
   {
     "objectID": "notes/lec06-multiple-regression.html#prediction",
