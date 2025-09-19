@@ -52,6 +52,37 @@ where
 
 and $p = 2$, i.e. there's an intercept and 1 slope. More explicitly: 
 
+$$
+\mathbf{y} = \mathbf{X}\beta + \boldsymbol{\varepsilon},
+$$
+
+$$
+\begin{bmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_n
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & x_1 \\
+1 & x_2 \\
+\vdots & \vdots \\
+1 & x_n
+\end{bmatrix}
+\begin{bmatrix}
+\beta_0 \\
+\beta_1
+\end{bmatrix}
++
+\begin{bmatrix}
+\varepsilon_1 \\
+\varepsilon_2 \\
+\vdots \\
+\varepsilon_n
+\end{bmatrix}.
+$$
+
 
 
 ::: callout-note 
@@ -59,17 +90,310 @@ and $p = 2$, i.e. there's an intercept and 1 slope. More explicitly:
 $\bX$ is called the "design matrix", "covariate matrix", "model matrix" or even sometimes the "data matrix". It includes columns each predictors and an intercept (if applicable).
 :::
 
-Note: 
+<!-- Note:  -->
 
-- $E[\be] = \bzero$ and this implies that $E[\by] = E[\bX \beta] + E[\be] = \bX \beta$.
-- $var[\be] = \sigma^2_\varepsilon \identity$
+<!-- - $E[\be] = \bzero$ and this implies that $E[\by] = E[\bX \beta] + E[\be] = \bX \beta$. -->
+<!-- - $var[\be] = \sigma^2_\varepsilon \identity$ -->
 
 ## Linear algebra background
 
+### Identity Matrix  
+
+The **identity matrix** of size $n \times n$, denoted $\mathbf{I}_n$, is a square matrix with ones on the diagonal and zeros elsewhere:  
+
+$$
+\mathbf{I}_n =
+\begin{bmatrix}
+1 & 0 & 0 & \cdots & 0 \\
+0 & 1 & 0 & \cdots & 0 \\
+0 & 0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \cdots & 1
+\end{bmatrix}.
+$$  
+
+For any vector $\mathbf{v}$,  
+$$
+\mathbf{I}_n \mathbf{v} = \mathbf{v}.
+$$  
+
+---
+
+### Matrices as Linear Operators  
+
+An $m \times n$ matrix $\mathbf{A}$ represents a **linear operator** that maps vectors to vectors:  
+
+$$
+\mathbf{A} : \mathbb{R}^n \to \mathbb{R}^m, \quad \mathbf{v} \mapsto \mathbf{A}\mathbf{v}.
+$$  
+
+Matrix multiplication distributes over addition:  
+
+$$
+\mathbf{A}(\mathbf{u} + \mathbf{v}) = \mathbf{A}\mathbf{u} + \mathbf{A}\mathbf{v},
+$$  
+
+and scalar multiplication:  
+
+$$
+\mathbf{A}(c \mathbf{v}) = c (\mathbf{A}\mathbf{v}).
+$$  
+
+---
+
+### Matrix Inverses  
+
+A square matrix $\mathbf{A}$ of size $n \times n$ has an **inverse** $\mathbf{A}^{-1}$ if  
+
+$$
+\mathbf{A}\mathbf{A}^{-1} = \mathbf{A}^{-1}\mathbf{A} = \mathbf{I}_n.
+$$  
+
+Only **full-rank matrices** (rank $n$) are invertible.  
+If $\det(\mathbf{A}) = 0$, then $\mathbf{A}$ is singular and has no inverse.  
+
+To invert a matrix in R, use `solve()`, for example:
+
+```{r}
+(A = matrix(c(1,0,3,4), ncol = 2))
+```
+
+```{r}
+solve(A)
+```
+
+Check:
+```{r}
+solve(A) %*% A
+```
+
+
+---
+
+### Symmetric Matrices  
+
+A square matrix $\mathbf{A}$ is **symmetric** if  
+
+$$
+\mathbf{A} = \mathbf{A}^T.
+$$  
+
+That is, $\mathbf{A}_{ij} = \mathbf{A}_{ji}$ for all $i,j$.  
+
+To take a transpose in R, use `t(A)`, for example:
+
+```{r}
+(A = matrix(c(1,2,3,4), ncol = 2))
+```
+
+
+```{r}
+t(A)
+```
+
+
+---
+
+### Positive Definite and Positive Semi-Definite Matrices  
+
+A symmetric matrix $\mathbf{A}$ is  
+
+- **Positive Definite (PD)** if  
+  $$
+  \mathbf{x}^T \mathbf{A} \mathbf{x} > 0 \quad \text{for all } \mathbf{x} \neq \mathbf{0}.
+  $$  
+
+- **Positive Semi-Definite (PSD)** if  
+  $$
+  \mathbf{x}^T \mathbf{A} \mathbf{x} \geq 0 \quad \text{for all } \mathbf{x}.
+  $$  
+
+Equivalently, all eigenvalues of $\mathbf{A}$ are positive (the matrix is PD) or nonnegative (the matrix is PSD).  
+
+
+---
+
+### Vector Orthogonal to a Matrix  
+
+A vector $\mathbf{v} \in \mathbb{R}^n$ is said to be **orthogonal to a matrix** $\mathbf{A} \in \mathbb{R}^{n \times p}$ if it is orthogonal to every column of $\mathbf{A}$.  
+
+That is,  
+
+$$
+\mathbf{v}^T \mathbf{a}_j = 0 \quad \text{for each column } \mathbf{a}_j \text{ of } \mathbf{A}.
+$$  
+
+Equivalently,  
+
+$$
+\mathbf{A}^T \mathbf{v} = \mathbf{0}.
+$$  
+
+In this case, $\mathbf{v}$ lies in the **orthogonal complement** of the column space of $\mathbf{A}$, often written as  
+
+$$
+\mathbf{v} \in \text{Col}(\mathbf{A})^\perp.
+$$  
+
+
+
 ## Matrix calculus
+
+
+Let $\mathbf{x} \in \mathbb{R}^n$ be a column vector and $\mathbf{A} \in \mathbb{R}^{n \times n}$ a matrix.  
+
+Gradients with respect to vectors are written as  
+
+$$
+\frac{\partial f}{\partial \mathbf{x}} = 
+\begin{bmatrix}
+\frac{\partial f}{\partial x_1} \\
+\frac{\partial f}{\partial x_2} \\
+\vdots \\
+\frac{\partial f}{\partial x_n}
+\end{bmatrix}.
+$$  
+---
+
+#### 1. Derivative of an Inner Product  
+
+Consider the scalar function  
+
+$$
+f(\mathbf{x}) = \mathbf{a}^T \mathbf{x},
+$$  
+
+where $\mathbf{a} \in \mathbb{R}^n$.
+
+- Derivative with respect to $\mathbf{x}$:  
+
+$$
+\frac{\partial}{\partial \mathbf{x}} \, (\mathbf{a}^T \mathbf{x}) = \mathbf{a}.
+$$  
+
+Equivalently,  
+
+$$
+\frac{\partial}{\partial \mathbf{x}} \, (\mathbf{x}^T \mathbf{a}) = \mathbf{a}.
+$$  
+
+---
+
+#### 2. Derivative of a Quadratic Form  
+
+Consider the quadratic form  
+
+$$
+f(\mathbf{x}) = \mathbf{x}^T \mathbf{A} \mathbf{x}.
+$$  
+
+- If $\mathbf{A}$ is not assumed symmetric:  
+
+$$
+\frac{\partial}{\partial \mathbf{x}} \, (\mathbf{x}^T \mathbf{A} \mathbf{x}) = (\mathbf{A} + \mathbf{A}^T)\mathbf{x}.
+$$  
+
+- If $\mathbf{A}$ is symmetric ($\mathbf{A} = \mathbf{A}^T$):  
+
+$$
+\frac{\partial}{\partial \mathbf{x}} \, (\mathbf{x}^T \mathbf{A} \mathbf{x}) = 2 \mathbf{A} \mathbf{x}.
+$$  
+
+For all else, see [the matrix cookbook](https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf).
 
 ## OLS in Matrix form
 
+The ordinary least squares (OLS) estimator is defined as  
+
+$$
+\hat{\beta}_{\text{OLS}} 
+= \arg \min_{\beta} \; \boldsymbol{\varepsilon}^T \boldsymbol{\varepsilon},
+$$  
+
+where  
+
+$$
+\boldsymbol{\varepsilon} = \mathbf{y} - \mathbf{X}\beta.
+$$  
+
+Notice this is equivalent to the sum of squares we saw before:
+
+$$
+\boldsymbol{\varepsilon}^T \boldsymbol{\varepsilon} =
+\begin{bmatrix}
+\varepsilon_1 & \varepsilon_2 & \cdots & \varepsilon_n
+\end{bmatrix}
+\begin{bmatrix}
+\varepsilon_1 \\
+\varepsilon_2 \\
+\vdots \\
+\varepsilon_n
+\end{bmatrix}
+= \sum_{i=1}^n \varepsilon_i^2.
+$$  
+
+To optimize, we need to take the derivative with respect to the vector $\beta$ and set it equal to zero. To begin, we differentiate,
+
+$$
+\begin{aligned}
+\frac{\partial}{\partial{\beta}} 
+\boldsymbol{\varepsilon}^T \boldsymbol{\varepsilon} 
+&= 
+\frac{\partial}{\partial{\beta}}
+(\by - \bX \beta)^T(\by - \bX \beta)\\
+&= 
+\frac{\partial}{\partial{\beta}}
+\left(
+\by^T \by - \by^T \bX \beta - \beta^T \bX^T \by + \beta^T \bX^T \bX \beta
+\right)\\
+&= 
+\frac{\partial}{\partial{\beta}}
+\left(
+\by ^T \by
+-2 \beta^T \bX ^T \by + \beta^T \bX^T \bX \beta
+\right)\\
+&= 
+-2 \bX ^T \by + 2 \bX^T \bX \beta.
+\end{aligned}
+$$
+
+When we set the derivative equal to zero and solve,
+
+$$
+\begin{aligned}
+-2 \bX ^T \by + 2 \bX^T \bX \hat{\beta} &= 0 \implies\\
+\hat{\beta} = \left(\bX^T \bX \right)^{-1} \bX^T \by
+\end{aligned}
+$$
+
+
 ### Did we find a minimum? 
 
+**Question**: this may be some optima, but did we find the value that *minimizes the sum of squared residuals*?
+
+**Answer**: check the [**Hessian**](https://en.wikipedia.org/wiki/Hessian_matrix) matrix. The **Hessian** matrix is the square matrix of partial second derivatives.
+
+$$
+\begin{aligned}
+\frac{\partial^2}{\partial{\beta}^2} \boldsymbol{\varepsilon}^T \boldsymbol{\varepsilon} 
+&= 
+\frac{\partial}{\partial{\beta}} \left(
+-2 \bX^T \by
++ 2 \bX^T \bX \beta
+\right)\\
+&= 2 \bX^T \bX 
+\end{aligned}
+$$
+
+ 
+- If the Hessian is positive definite, we have a minimum. 
+
+- If the Hessian is negative definite, we have a maximum.
+
+- If the Hessian is neither, then we have a saddle point.
+
+Exercise on homework 1: show that the Hessian matrix $\bX^T \bX$ is positive definite.
+
 ## Geometry
+
+See handwritten notes.

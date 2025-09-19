@@ -169,6 +169,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../hw/hw01.html">
  <span class="dropdown-text">hw 1</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../hw/hw02.html">
+ <span class="dropdown-text">hw 2</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -216,7 +220,15 @@ window.Quarto = {
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning objectives</a></li>
   <li><a href="#simple-linear-regression-p-2" id="toc-simple-linear-regression-p-2" class="nav-link" data-scroll-target="#simple-linear-regression-p-2">Simple linear regression (p = 2)</a></li>
-  <li><a href="#linear-algebra-background" id="toc-linear-algebra-background" class="nav-link" data-scroll-target="#linear-algebra-background">Linear algebra background</a></li>
+  <li><a href="#linear-algebra-background" id="toc-linear-algebra-background" class="nav-link" data-scroll-target="#linear-algebra-background">Linear algebra background</a>
+  <ul class="collapse">
+  <li><a href="#identity-matrix" id="toc-identity-matrix" class="nav-link" data-scroll-target="#identity-matrix">Identity Matrix</a></li>
+  <li><a href="#matrices-as-linear-operators" id="toc-matrices-as-linear-operators" class="nav-link" data-scroll-target="#matrices-as-linear-operators">Matrices as Linear Operators</a></li>
+  <li><a href="#matrix-inverses" id="toc-matrix-inverses" class="nav-link" data-scroll-target="#matrix-inverses">Matrix Inverses</a></li>
+  <li><a href="#symmetric-matrices" id="toc-symmetric-matrices" class="nav-link" data-scroll-target="#symmetric-matrices">Symmetric Matrices</a></li>
+  <li><a href="#positive-definite-and-positive-semi-definite-matrices" id="toc-positive-definite-and-positive-semi-definite-matrices" class="nav-link" data-scroll-target="#positive-definite-and-positive-semi-definite-matrices">Positive Definite and Positive Semi-Definite Matrices</a></li>
+  <li><a href="#vector-orthogonal-to-a-matrix" id="toc-vector-orthogonal-to-a-matrix" class="nav-link" data-scroll-target="#vector-orthogonal-to-a-matrix">Vector Orthogonal to a Matrix</a></li>
+  </ul></li>
   <li><a href="#matrix-calculus" id="toc-matrix-calculus" class="nav-link" data-scroll-target="#matrix-calculus">Matrix calculus</a></li>
   <li><a href="#ols-in-matrix-form" id="toc-ols-in-matrix-form" class="nav-link" data-scroll-target="#ols-in-matrix-form">OLS in Matrix form</a>
   <ul class="collapse">
@@ -284,6 +296,35 @@ window.Quarto = {
 <li><span class="math inline">\(\boldsymbol{\varepsilon}\in \mathbb{R}^n\)</span></li>
 </ul>
 <p>and <span class="math inline">\(p = 2\)</span>, i.e.&nbsp;there’s an intercept and 1 slope. More explicitly:</p>
+<p><span class="math display">\[
+\mathbf{y} = \mathbf{X}\beta + \boldsymbol{\varepsilon},
+\]</span></p>
+<p><span class="math display">\[
+\begin{bmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_n
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 &amp; x_1 \\
+1 &amp; x_2 \\
+\vdots &amp; \vdots \\
+1 &amp; x_n
+\end{bmatrix}
+\begin{bmatrix}
+\beta_0 \\
+\beta_1
+\end{bmatrix}
++
+\begin{bmatrix}
+\varepsilon_1 \\
+\varepsilon_2 \\
+\vdots \\
+\varepsilon_n
+\end{bmatrix}.
+\]</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -297,26 +338,277 @@ Definition: design matrix
 <p><span class="math inline">\(\boldsymbol{X}\)</span> is called the “design matrix”, “covariate matrix”, “model matrix” or even sometimes the “data matrix”. It includes columns each predictors and an intercept (if applicable).</p>
 </div>
 </div>
-<p>Note:</p>
-<ul>
-<li><span class="math inline">\(E[\boldsymbol{\varepsilon}] = \boldsymbol{0}\)</span> and this implies that <span class="math inline">\(E[\boldsymbol{y}] = E[\boldsymbol{X}\beta] + E[\boldsymbol{\varepsilon}] = \boldsymbol{X}\beta\)</span>.</li>
-<li><span class="math inline">\(var[\boldsymbol{\varepsilon}] = \sigma^2_\varepsilon \boldsymbol{I}\)</span></li>
-</ul>
+<!-- Note:  -->
+<!-- - $E[\be] = \bzero$ and this implies that $E[\by] = E[\bX \beta] + E[\be] = \bX \beta$. -->
+<!-- - $var[\be] = \sigma^2_\varepsilon \identity$ -->
 </section>
 <section id="linear-algebra-background" class="level2">
 <h2 class="anchored" data-anchor-id="linear-algebra-background">Linear algebra background</h2>
+<section id="identity-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="identity-matrix">Identity Matrix</h3>
+<p>The <strong>identity matrix</strong> of size <span class="math inline">\(n \times n\)</span>, denoted <span class="math inline">\(\mathbf{I}_n\)</span>, is a square matrix with ones on the diagonal and zeros elsewhere:</p>
+<p><span class="math display">\[
+\mathbf{I}_n =
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1
+\end{bmatrix}.
+\]</span></p>
+<p>For any vector <span class="math inline">\(\mathbf{v}\)</span>,<br>
+<span class="math display">\[
+\mathbf{I}_n \mathbf{v} = \mathbf{v}.
+\]</span></p>
+<hr>
+</section>
+<section id="matrices-as-linear-operators" class="level3">
+<h3 class="anchored" data-anchor-id="matrices-as-linear-operators">Matrices as Linear Operators</h3>
+<p>An <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> represents a <strong>linear operator</strong> that maps vectors to vectors:</p>
+<p><span class="math display">\[
+\mathbf{A} : \mathbb{R}^n \to \mathbb{R}^m, \quad \mathbf{v} \mapsto \mathbf{A}\mathbf{v}.
+\]</span></p>
+<p>Matrix multiplication distributes over addition:</p>
+<p><span class="math display">\[
+\mathbf{A}(\mathbf{u} + \mathbf{v}) = \mathbf{A}\mathbf{u} + \mathbf{A}\mathbf{v},
+\]</span></p>
+<p>and scalar multiplication:</p>
+<p><span class="math display">\[
+\mathbf{A}(c \mathbf{v}) = c (\mathbf{A}\mathbf{v}).
+\]</span></p>
+<hr>
+</section>
+<section id="matrix-inverses" class="level3">
+<h3 class="anchored" data-anchor-id="matrix-inverses">Matrix Inverses</h3>
+<p>A square matrix <span class="math inline">\(\mathbf{A}\)</span> of size <span class="math inline">\(n \times n\)</span> has an <strong>inverse</strong> <span class="math inline">\(\mathbf{A}^{-1}\)</span> if</p>
+<p><span class="math display">\[
+\mathbf{A}\mathbf{A}^{-1} = \mathbf{A}^{-1}\mathbf{A} = \mathbf{I}_n.
+\]</span></p>
+<p>Only <strong>full-rank matrices</strong> (rank <span class="math inline">\(n\)</span>) are invertible.<br>
+If <span class="math inline">\(\det(\mathbf{A}) = 0\)</span>, then <span class="math inline">\(\mathbf{A}\)</span> is singular and has no inverse.</p>
+<p>To invert a matrix in R, use <code>solve()</code>, for example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">ncol =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    3
+[2,]    0    4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]  [,2]
+[1,]    1 -0.75
+[2,]    0  0.25</code></pre>
+</div>
+</div>
+<p>Check:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(A) <span class="sc">%*%</span> A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    0
+[2,]    0    1</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="symmetric-matrices" class="level3">
+<h3 class="anchored" data-anchor-id="symmetric-matrices">Symmetric Matrices</h3>
+<p>A square matrix <span class="math inline">\(\mathbf{A}\)</span> is <strong>symmetric</strong> if</p>
+<p><span class="math display">\[
+\mathbf{A} = \mathbf{A}^T.
+\]</span></p>
+<p>That is, <span class="math inline">\(\mathbf{A}_{ij} = \mathbf{A}_{ji}\)</span> for all <span class="math inline">\(i,j\)</span>.</p>
+<p>To take a transpose in R, use <code>t(A)</code>, for example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">A =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">ncol =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    3
+[2,]    2    4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    2
+[2,]    3    4</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="positive-definite-and-positive-semi-definite-matrices" class="level3">
+<h3 class="anchored" data-anchor-id="positive-definite-and-positive-semi-definite-matrices">Positive Definite and Positive Semi-Definite Matrices</h3>
+<p>A symmetric matrix <span class="math inline">\(\mathbf{A}\)</span> is</p>
+<ul>
+<li><p><strong>Positive Definite (PD)</strong> if<br>
+<span class="math display">\[
+\mathbf{x}^T \mathbf{A} \mathbf{x} &gt; 0 \quad \text{for all } \mathbf{x} \neq \mathbf{0}.
+\]</span></p></li>
+<li><p><strong>Positive Semi-Definite (PSD)</strong> if<br>
+<span class="math display">\[
+\mathbf{x}^T \mathbf{A} \mathbf{x} \geq 0 \quad \text{for all } \mathbf{x}.
+\]</span></p></li>
+</ul>
+<p>Equivalently, all eigenvalues of <span class="math inline">\(\mathbf{A}\)</span> are positive (the matrix is PD) or nonnegative (the matrix is PSD).</p>
+<hr>
+</section>
+<section id="vector-orthogonal-to-a-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="vector-orthogonal-to-a-matrix">Vector Orthogonal to a Matrix</h3>
+<p>A vector <span class="math inline">\(\mathbf{v} \in \mathbb{R}^n\)</span> is said to be <strong>orthogonal to a matrix</strong> <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n \times p}\)</span> if it is orthogonal to every column of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p>That is,</p>
+<p><span class="math display">\[
+\mathbf{v}^T \mathbf{a}_j = 0 \quad \text{for each column } \mathbf{a}_j \text{ of } \mathbf{A}.
+\]</span></p>
+<p>Equivalently,</p>
+<p><span class="math display">\[
+\mathbf{A}^T \mathbf{v} = \mathbf{0}.
+\]</span></p>
+<p>In this case, <span class="math inline">\(\mathbf{v}\)</span> lies in the <strong>orthogonal complement</strong> of the column space of <span class="math inline">\(\mathbf{A}\)</span>, often written as</p>
+<p><span class="math display">\[
+\mathbf{v} \in \text{Col}(\mathbf{A})^\perp.
+\]</span></p>
+</section>
 </section>
 <section id="matrix-calculus" class="level2">
 <h2 class="anchored" data-anchor-id="matrix-calculus">Matrix calculus</h2>
+<p>Let <span class="math inline">\(\mathbf{x} \in \mathbb{R}^n\)</span> be a column vector and <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n \times n}\)</span> a matrix.</p>
+<p>Gradients with respect to vectors are written as</p>
+<p><span class="math display">\[
+\frac{\partial f}{\partial \mathbf{x}} =
+\begin{bmatrix}
+\frac{\partial f}{\partial x_1} \\
+\frac{\partial f}{\partial x_2} \\
+\vdots \\
+\frac{\partial f}{\partial x_n}
+\end{bmatrix}.
+\]</span></p>
+<hr>
+<section id="derivative-of-an-inner-product" class="level4">
+<h4 class="anchored" data-anchor-id="derivative-of-an-inner-product">1. Derivative of an Inner Product</h4>
+<p>Consider the scalar function</p>
+<p><span class="math display">\[
+f(\mathbf{x}) = \mathbf{a}^T \mathbf{x},
+\]</span></p>
+<p>where <span class="math inline">\(\mathbf{a} \in \mathbb{R}^n\)</span>.</p>
+<ul>
+<li>Derivative with respect to <span class="math inline">\(\mathbf{x}\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+\frac{\partial}{\partial \mathbf{x}} \, (\mathbf{a}^T \mathbf{x}) = \mathbf{a}.
+\]</span></p>
+<p>Equivalently,</p>
+<p><span class="math display">\[
+\frac{\partial}{\partial \mathbf{x}} \, (\mathbf{x}^T \mathbf{a}) = \mathbf{a}.
+\]</span></p>
+<hr>
+</section>
+<section id="derivative-of-a-quadratic-form" class="level4">
+<h4 class="anchored" data-anchor-id="derivative-of-a-quadratic-form">2. Derivative of a Quadratic Form</h4>
+<p>Consider the quadratic form</p>
+<p><span class="math display">\[
+f(\mathbf{x}) = \mathbf{x}^T \mathbf{A} \mathbf{x}.
+\]</span></p>
+<ul>
+<li>If <span class="math inline">\(\mathbf{A}\)</span> is not assumed symmetric:</li>
+</ul>
+<p><span class="math display">\[
+\frac{\partial}{\partial \mathbf{x}} \, (\mathbf{x}^T \mathbf{A} \mathbf{x}) = (\mathbf{A} + \mathbf{A}^T)\mathbf{x}.
+\]</span></p>
+<ul>
+<li>If <span class="math inline">\(\mathbf{A}\)</span> is symmetric (<span class="math inline">\(\mathbf{A} = \mathbf{A}^T\)</span>):</li>
+</ul>
+<p><span class="math display">\[
+\frac{\partial}{\partial \mathbf{x}} \, (\mathbf{x}^T \mathbf{A} \mathbf{x}) = 2 \mathbf{A} \mathbf{x}.
+\]</span></p>
+<p>For all else, see <a href="https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf">the matrix cookbook</a>.</p>
+</section>
 </section>
 <section id="ols-in-matrix-form" class="level2">
 <h2 class="anchored" data-anchor-id="ols-in-matrix-form">OLS in Matrix form</h2>
+<p>The ordinary least squares (OLS) estimator is defined as</p>
+<p><span class="math display">\[
+\hat{\beta}_{\text{OLS}}
+= \arg \min_{\beta} \; \boldsymbol{\varepsilon}^T \boldsymbol{\varepsilon},
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\boldsymbol{\varepsilon} = \mathbf{y} - \mathbf{X}\beta.
+\]</span></p>
+<p>Notice this is equivalent to the sum of squares we saw before:</p>
+<p><span class="math display">\[
+\boldsymbol{\varepsilon}^T \boldsymbol{\varepsilon} =
+\begin{bmatrix}
+\varepsilon_1 &amp; \varepsilon_2 &amp; \cdots &amp; \varepsilon_n
+\end{bmatrix}
+\begin{bmatrix}
+\varepsilon_1 \\
+\varepsilon_2 \\
+\vdots \\
+\varepsilon_n
+\end{bmatrix}
+= \sum_{i=1}^n \varepsilon_i^2.
+\]</span></p>
+<p>To optimize, we need to take the derivative with respect to the vector <span class="math inline">\(\beta\)</span> and set it equal to zero. To begin, we differentiate,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial}{\partial{\beta}}
+\boldsymbol{\varepsilon}^T \boldsymbol{\varepsilon}
+&amp;=
+\frac{\partial}{\partial{\beta}}
+(\boldsymbol{y}- \boldsymbol{X}\beta)^T(\boldsymbol{y}- \boldsymbol{X}\beta)\\
+&amp;=
+\frac{\partial}{\partial{\beta}}
+\left(
+\boldsymbol{y}^T \boldsymbol{y}- \boldsymbol{y}^T \boldsymbol{X}\beta - \beta^T \boldsymbol{X}^T \boldsymbol{y}+ \beta^T \boldsymbol{X}^T \boldsymbol{X}\beta
+\right)\\
+&amp;=
+\frac{\partial}{\partial{\beta}}
+\left(
+\boldsymbol{y}^T \boldsymbol{y}
+-2 \beta^T \boldsymbol{X}^T \boldsymbol{y}+ \beta^T \boldsymbol{X}^T \boldsymbol{X}\beta
+\right)\\
+&amp;=
+-2 \boldsymbol{X}^T \boldsymbol{y}+ 2 \boldsymbol{X}^T \boldsymbol{X}\beta.
+\end{aligned}
+\]</span></p>
+<p>When we set the derivative equal to zero and solve,</p>
+<p><span class="math display">\[
+\begin{aligned}
+-2 \boldsymbol{X}^T \boldsymbol{y}+ 2 \boldsymbol{X}^T \boldsymbol{X}\hat{\beta} &amp;= 0 \implies\\
+\hat{\beta} = \left(\boldsymbol{X}^T \boldsymbol{X}\right)^{-1} \boldsymbol{X}^T \boldsymbol{y}
+\end{aligned}
+\]</span></p>
 <section id="did-we-find-a-minimum" class="level3">
 <h3 class="anchored" data-anchor-id="did-we-find-a-minimum">Did we find a minimum?</h3>
+<p><strong>Question</strong>: this may be some optima, but did we find the value that <em>minimizes the sum of squared residuals</em>?</p>
+<p><strong>Answer</strong>: check the <a href="https://en.wikipedia.org/wiki/Hessian_matrix"><strong>Hessian</strong></a> matrix. The <strong>Hessian</strong> matrix is the square matrix of partial second derivatives.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial^2}{\partial{\beta}^2} \boldsymbol{\varepsilon}^T \boldsymbol{\varepsilon}
+&amp;=
+\frac{\partial}{\partial{\beta}} \left(
+-2 \boldsymbol{X}^T \boldsymbol{y}
++ 2 \boldsymbol{X}^T \boldsymbol{X}\beta
+\right)\\
+&amp;= 2 \boldsymbol{X}^T \boldsymbol{X}
+\end{aligned}
+\]</span></p>
+<ul>
+<li><p>If the Hessian is positive definite, we have a minimum.</p></li>
+<li><p>If the Hessian is negative definite, we have a maximum.</p></li>
+<li><p>If the Hessian is neither, then we have a saddle point.</p></li>
+</ul>
+<p>Exercise on homework 1: show that the Hessian matrix <span class="math inline">\(\boldsymbol{X}^T \boldsymbol{X}\)</span> is positive definite.</p>
 </section>
 </section>
 <section id="geometry" class="level2">
 <h2 class="anchored" data-anchor-id="geometry">Geometry</h2>
+<p>See handwritten notes.</p>
 
 
 </section>

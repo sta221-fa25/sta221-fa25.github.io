@@ -103,14 +103,14 @@ schedule %>%
 
 ::: heatMap
 | Week | Date | Topic | Prepare | Notes | Assignment |
-|:----------|:-----------|:-----------|:----------:|:----------:|:----------:|
+|:-----------|:-----------|:-----------|:----------:|:----------:|:----------:|
 | 1 | Tue Aug 26 | welcome |  | [💻](/notes/slides/lec01-welcome.html) |  |
 |  | Wed Aug 27 | lab: hello git and R |  | [💻](/labs/lab0-slides.html) | [lab 0](/labs/lab00.html) |
 |  | Thu Aug 28 | correlation | [📖](/prepare/prepare-lec02.html) | [🗒](/notes/lec02-correlation.html) |  |
 | 2 | Tue Sep 02 | simple linear regression |  | [🗒](/notes/lec03-slr.html) |  |
 |  | Wed Sep 03 | lab: computing and linear algebra review |  |  | [lab 1](/labs/lab01.html) |
 |  | Thu Sep 04 | model assessment | [📖](/prepare/prepare-lec03.html) | [🗒](/notes/lec04-model-assessment.html) |  |
-| 3 | Tue Sep 09 | matrix representation | [📖](/prepare/prepare-lec04.html) |  | [hw 1](/hw/hw01.html) |
+| 3 | Tue Sep 09 | matrix representation | [📖](/prepare/prepare-lec04.html) | [🗒](/notes/lec05-matrix-form-regression.html) [📝](/notes/geometry_slr.pdf) | [hw 1](/hw/hw01.html) |
 |  | Wed Sep 10 | lab: linear regression |  |  | [lab 2](/labs/lab02.html) |
 |  | Thu Sep 11 | multiple linear regression |  | [🗒](/notes/lec06-multiple-regression.html) [📝](/notes/HatMatrix.pdf) |  |
 | 4 | Tue Sep 16 | intro to inference | [📖](/prepare/prepare-lec05.html) | [🗒](/notes/lec07-intro-inference.html) |  |
