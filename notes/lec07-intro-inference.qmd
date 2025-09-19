@@ -24,7 +24,7 @@ library(DT)
 library(latex2exp)
 library(patchwork)
 
-pokemon <- read_csv("~/Downloads/pokemon_data.csv") # complete, population data
+pokemon <- read_csv("https://sta221-fa25.github.io/data/pokemon_data.csv") # complete, population data
 ```
 
 ## The data 

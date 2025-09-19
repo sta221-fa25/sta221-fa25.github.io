@@ -24,6 +24,8 @@ website:
         menu:
           - href: hw/hw01.qmd
             text: "hw 1"
+          - href: hw/hw02.qmd
+            text: "hw 2"
       - text: "labs"
         menu:
           - href: labs/lab00.qmd
