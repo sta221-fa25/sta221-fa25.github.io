@@ -76,13 +76,24 @@ Last time we asked the question: what assumptions are required so that $\hat{\be
 ::: callout-important
 ## Assumption 1
 
-$E[\be] = \bzero$, or equivalently, $E[\varepsilon_i] = 0$ for all $i$.
+$E[\be|\bx] = \bzero$, or equivalently, $E[\varepsilon_i|\bx] = 0$ for all $i$.
 
 :::
 
 ::: panel-tabset
 ## Exercise
-Show that assumption 1 implies that $E[\hat{\beta}] = \beta$.
+Show that assumption 1 implies that $E[\hat{\beta}|\bx] = \beta$.
+
+## Solution
+
+$$
+\begin{aligned}
+E[\hat{\beta}|\bX] &= E[(\bX^T\bX)^{-1}\bX^T\by | \bX]\\
+&= (\bX^T\bX)^{-1}\bX^T E[\by | \bX]\\
+&= (\bX^T\bX)^{-1}\bX^T \bX \beta\\
+&= \beta
+\end{aligned}
+$$
 :::
 
 ::: callout-important

@@ -11,6 +11,7 @@ format: html
 \newcommand{\bX}{\boldsymbol{X}}
 \newcommand{\be}{\boldsymbol{\varepsilon}}
 \newcommand{\hbe}{\hat{\be}}
+\newcommand{\bzero}{\boldsymbol{0}}
 
 ```{r}
 #| label: load-packages
@@ -61,7 +62,7 @@ datatable(pokemon_sample, rownames = FALSE, options = list(pageLength = 5),
            caption = "sample of 15 pokemon")
 ```
 
-Let's investigate the question: do taller pokemon weigh more? 
+Let's investigate the question: are heavier pokemon taller?
 
 ::: panel-tabset
 ## plot
@@ -70,17 +71,17 @@ Let's investigate the question: do taller pokemon weigh more?
 #| echo: false
 #| warning: false
 pokemon_sample |>
-  ggplot(aes(x = height_m, y = weight_kg)) +
+  ggplot(aes(x = weight_kg, y = height_m)) +
   geom_point() +
   geom_smooth(method = 'lm', se = FALSE, color = 'steelblue') +
   theme_bw() +
-  labs(title = "Pokemon weight vs height", x = "height (m)", y = "weight (kg)")
+  labs(title = "Pokemon weight vs height", y = "height (m)", x = "weight (kg)")
 ```
 
 ## linear model
 
 ```{r}
-lm(weight_kg ~ height_m, data = pokemon_sample) |>
+lm(height_m ~ weight_kg, data = pokemon_sample) |>
   tidy()
 ```
 
@@ -89,11 +90,11 @@ lm(weight_kg ~ height_m, data = pokemon_sample) |>
 ```{r}
 #| eval: false
 pokemon_sample |>
-  ggplot(aes(x = height_m, y = weight_kg)) +
+  ggplot(aes(x = weight_kg, y = height_m)) +
   geom_point() +
   geom_smooth(method = 'lm', se = FALSE, color = 'steelblue') +
   theme_bw() +
-  labs(title = "Pokemon weight vs height", x = "height (m)", y = "weight (kg)")
+  labs(title = "Pokemon weight vs height", y = "height (m)", x = "weight (kg)")
 ```
 
 :::
@@ -203,4 +204,90 @@ p3 <- BETA_HAT |>
 
 :::
 
+## Framework
+
+Our **objective** is to infer properties about a *population* using data from an experiment or survey (in this case, a survey/sample of pokemon).
+
+**Post-experiment**: after collecting the data, $\hat{\beta}_0, \hat{\beta}_1$ are fixed and known.
+
+**Pre-experiment**: before collecting the data, the data are unknown and random. $\hat{\beta}_0, \hat{\beta}_1$, which are functions of the data, are also unknown and random. 
+
+In all cases, the true population parameters, $\beta_0, \beta_1$ are *fixed* but *unknown*.
+
+**Pre-experimental question**: is the probability distribution of $\hat{\beta}_0, \hat{\beta}_1$ a meaningful representation of the population?
+
+**Answer**: this depends on certain assumptions we make about population.
+
+::: callout-important
+## Assumption 1
+
+$E[\be|\bx] = \bzero$, or equivalently, $E[\varepsilon_i|\bx] = 0$ for all $i$.
+
+:::
+
+**Implications**: in simple linear regression, assumption 1 implies that $E[y_i|\bx] = E[\beta_0 + \beta_1 x_i + \epsilon_i|\bx] = E[\beta_0 |\bx] + E[\beta_1 x_i|\bx] + E[\epsilon_i|\bx] = \beta_0 + \beta_1 x_i$. 
+
+
+::: panel-tabset
+## Exercise
+Show that assumption 1 implies that $E[\hat{\beta}|\bX] = \beta$.
+
+## Solution
+
+$$
+\begin{aligned}
+E[\hat{\beta}|\bX] &= E[(\bX^T\bX)^{-1}\bX^T\by | \bX]\\
+&= (\bX^T\bX)^{-1}\bX^T E[\by | \bX]\\
+&= (\bX^T\bX)^{-1}\bX^T \bX \beta\\
+&= \beta
+\end{aligned}
+$$
+
+:::
+
+Since $E[\hat{\beta}|\bX] = \beta$, we say $\hat{\beta}$ is an **unbiased** estimator of $\beta$.
+
+Notice that this result (unbiasedness) does **not** depend *independence* of errors, *normality*, or *constant variance*.
+
+However, the result doesn't tell us anything about *how close* $\hat{\beta}$ will be to $\beta$. The estimator may be unbiased, but by itself, this doesn't tell us much. See examples of "unbiased" distributions of an estimator  below.
+
+```{r}
+#| echo: false
+
+set.seed(221)
+
+beta1 = 2
+df = data.frame(x = -3:8)
+lims = c(-3, 8)
+
+p1 = df %>%
+ggplot(aes(x = x)) +
+  stat_function(fun = dnorm, args = list(mean = 2, sd = 2)) +
+  geom_vline(xintercept = beta1, color = "firebrick") +
+  theme_bw() + 
+  labs(x = TeX("$\\hat{\\beta}_1$"), y = TeX("$p(\\hat{\\beta}_1)$")) +
+ scale_x_continuous(breaks = c(seq(floor(lims[1]), ceiling(lims[2]), by = 2), beta1),
+                       labels = function(b) ifelse(b == beta1, expression(beta[1]), b))
+
+p2 = df %>%
+ggplot(aes(x = x)) +
+  stat_function(fun = dnorm, args = list(mean = 2, sd = .2)) +
+  geom_vline(xintercept = beta1, color = "firebrick") +
+  theme_bw() + 
+  labs(x = TeX("$\\hat{\\beta}_1$"), y = TeX("$p(\\hat{\\beta}_1)$")) +
+scale_x_continuous(breaks = c(seq(floor(lims[1]), ceiling(lims[2]), by = 2), beta1),
+                       labels = function(b) ifelse(b == beta1, expression(beta[1]), b))
+
+p3 = df %>%
+ggplot(aes(x = x)) +
+  stat_function(fun = dgamma, args = list(1.5, .75)) +
+  geom_vline(xintercept = beta1, color = "firebrick") +
+  theme_bw() + 
+  labs(x = TeX("$\\hat{\\beta}_1$"), y = TeX("$p(\\hat{\\beta}_1)$")) +
+scale_x_continuous(breaks = c(seq(floor(lims[1]), ceiling(lims[2]), by = 2), beta1),
+                       labels = function(b) ifelse(b == beta1, expression(beta[1]), b))
+
+p1 / p2 / p3 +
+  plot_annotation(title = "Various densities with the same mean", tag_levels = c("A"))
+```
 

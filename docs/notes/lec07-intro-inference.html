@@ -230,6 +230,7 @@ window.Quarto = {
   <ul>
   <li><a href="#the-data" id="toc-the-data" class="nav-link active" data-scroll-target="#the-data">The data</a></li>
   <li><a href="#question" id="toc-question" class="nav-link" data-scroll-target="#question">Question</a></li>
+  <li><a href="#framework" id="toc-framework" class="nav-link" data-scroll-target="#framework">Framework</a></li>
   </ul>
 </nav>
     </div>
@@ -292,7 +293,7 @@ window.Quarto = {
 <script type="application/json" data-for="htmlwidget-ff8c7ce64e41d6a20e3b">{"x":{"filter":"none","vertical":false,"caption":"<caption>sample of 15 pokemon<\/caption>","data":[[25,64,107,153,170,179,266,463,585,623,684,725,805,941,948],["Pikachu","Kadabra","Hitmonchan","Bayleef","Chinchou","Mareep","Silcoon","Lickilicky","Deerling","Golurk","Swirlix","Litten","Stakataka","Kilowattrel","Toedscool"],[0.4,1.3,1.4,1.2,0.5,0.6,0.6,1.7,0.6,2.8,0.4,0.4,5.5,1.4,0.9],[6,56.5,50.2,15.8,12,7.8,10,140,19.5,330,3.5,4.3,820,38.6,33]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>dexnum<\/th>\n      <th>name<\/th>\n      <th>height_m<\/th>\n      <th>weight_kg<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":[0,2,3]},{"name":"dexnum","targets":0},{"name":"name","targets":1},{"name":"height_m","targets":2},{"name":"weight_kg","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<p>Let’s investigate the question: do taller pokemon weigh more?</p>
+<p>Let’s investigate the question: are heavier pokemon taller?</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">linear model</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">plot code</a></li></ul>
 <div class="tab-content">
@@ -309,25 +310,25 @@ window.Quarto = {
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(weight_kg <span class="sc">~</span> height_m, <span class="at">data =</span> pokemon_sample) <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(height_m <span class="sc">~</span> weight_kg, <span class="at">data =</span> pokemon_sample) <span class="sc">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   term        estimate std.error statistic  p.value
   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)    -105.     17.8      -5.87 5.50e- 5
-2 height_m        158.      9.70     16.3  4.90e-10</code></pre>
+1 (Intercept)  0.692    0.0859        8.06 2.07e- 6
+2 weight_kg    0.00603  0.000369     16.3  4.90e-10</code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pokemon_sample <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> height_m, <span class="at">y =</span> weight_kg)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> weight_kg, <span class="at">y =</span> height_m)) <span class="sc">+</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">'lm'</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">'steelblue'</span>) <span class="sc">+</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Pokemon weight vs height"</span>, <span class="at">x =</span> <span class="st">"height (m)"</span>, <span class="at">y =</span> <span class="st">"weight (kg)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Pokemon weight vs height"</span>, <span class="at">y =</span> <span class="st">"height (m)"</span>, <span class="at">x =</span> <span class="st">"weight (kg)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -393,6 +394,59 @@ $ beta1 &lt;dbl&gt; 0.004823824, 0.010159875, 0.008377374, 0.012071556, 0.016425
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+</section>
+<section id="framework" class="level2">
+<h2 class="anchored" data-anchor-id="framework">Framework</h2>
+<p>Our <strong>objective</strong> is to infer properties about a <em>population</em> using data from an experiment or survey (in this case, a survey/sample of pokemon).</p>
+<p><strong>Post-experiment</strong>: after collecting the data, <span class="math inline">\(\hat{\beta}_0, \hat{\beta}_1\)</span> are fixed and known.</p>
+<p><strong>Pre-experiment</strong>: before collecting the data, the data are unknown and random. <span class="math inline">\(\hat{\beta}_0, \hat{\beta}_1\)</span>, which are functions of the data, are also unknown and random.</p>
+<p>In all cases, the true population parameters, <span class="math inline">\(\beta_0, \beta_1\)</span> are <em>fixed</em> but <em>unknown</em>.</p>
+<p><strong>Pre-experimental question</strong>: is the probability distribution of <span class="math inline">\(\hat{\beta}_0, \hat{\beta}_1\)</span> a meaningful representation of the population?</p>
+<p><strong>Answer</strong>: this depends on certain assumptions we make about population.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Assumption 1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(E[\boldsymbol{\varepsilon}|\boldsymbol{x}] = \boldsymbol{0}\)</span>, or equivalently, <span class="math inline">\(E[\varepsilon_i|\boldsymbol{x}] = 0\)</span> for all <span class="math inline">\(i\)</span>.</p>
+</div>
+</div>
+<p><strong>Implications</strong>: in simple linear regression, assumption 1 implies that <span class="math inline">\(E[y_i|\boldsymbol{x}] = E[\beta_0 + \beta_1 x_i + \epsilon_i|\boldsymbol{x}] = E[\beta_0 |\boldsymbol{x}] + E[\beta_1 x_i|\boldsymbol{x}] + E[\epsilon_i|\boldsymbol{x}] = \beta_0 + \beta_1 x_i\)</span>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Solution</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p>Show that assumption 1 implies that <span class="math inline">\(E[\hat{\beta}|\boldsymbol{X}] = \beta\)</span>.</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p><span class="math display">\[
+\begin{aligned}
+E[\hat{\beta}|\boldsymbol{X}] &amp;= E[(\boldsymbol{X}^T\boldsymbol{X})^{-1}\boldsymbol{X}^T\boldsymbol{y}| \boldsymbol{X}]\\
+&amp;= (\boldsymbol{X}^T\boldsymbol{X})^{-1}\boldsymbol{X}^T E[\boldsymbol{y}| \boldsymbol{X}]\\
+&amp;= (\boldsymbol{X}^T\boldsymbol{X})^{-1}\boldsymbol{X}^T \boldsymbol{X}\beta\\
+&amp;= \beta
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Since <span class="math inline">\(E[\hat{\beta}|\boldsymbol{X}] = \beta\)</span>, we say <span class="math inline">\(\hat{\beta}\)</span> is an <strong>unbiased</strong> estimator of <span class="math inline">\(\beta\)</span>.</p>
+<p>Notice that this result (unbiasedness) does <strong>not</strong> depend <em>independence</em> of errors, <em>normality</em>, or <em>constant variance</em>.</p>
+<p>However, the result doesn’t tell us anything about <em>how close</em> <span class="math inline">\(\hat{\beta}\)</span> will be to <span class="math inline">\(\beta\)</span>. The estimator may be unbiased, but by itself, this doesn’t tell us much. See examples of “unbiased” distributions of an estimator below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lec07-intro-inference_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
 </div>
