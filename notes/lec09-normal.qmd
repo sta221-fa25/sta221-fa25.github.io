@@ -80,7 +80,7 @@ We can see this in an example.
 
 Let $X \sim N(5, 9)$ and let $Y \sim N(-5, 1)$
 
-According to our rules above $X + Y \sim N(0, \sqrt{10})$. Let's check ourselves with code:
+According to our rules above $X + Y \sim N(0, 10)$. Let's check ourselves with code:
 
 ```{r}
 #| warning: false
@@ -196,6 +196,14 @@ $$
 <!-- $$ -->
 
 
+Note: if you'd like to simulate from a multivariate normal, you can use the function `rmvnorm()` from the `mvtnorm` package.
+
+```{r}
+mvtnorm::rmvnorm(n = 3, mean = c(0, 10), sigma = 
+                   matrix(c(2, .5, .5, 1), ncol = 2))
+```
+
+
 ## Computing probabilities
 
 `pnorm` "probability normal" takes three arguments:
@@ -208,12 +216,12 @@ If $X \sim N(\mu, \sigma)$, what is $p(X < q)$?
 
 For example, imagine that the resting heart rates in the classroom are normally distributed with mean 70 beats per minute (bpm) and standard deviation 5 bpm. What's the probability a randomly selected individual has a heart rate less than 63 bpm?
 
-In math: let $X$ be the bpm of an individual in this class. Assume $X \sim N(70, 5)$. What is $p(X < 63)$? Given heartbeats are normally distributed, randomly selecting an individual from the classroom is called "drawing from a normal distribution".
+In math: let $X$ be the bpm of an individual in this class. Assume $X \sim N(70, 25)$. What is $p(X < 63)$? Given heartbeats are normally distributed, randomly selecting an individual from the classroom is called "drawing from a normal distribution".
 
 We can compute this easily:
 
 ```{r}
-pnorm(63, 70, 5)
+pnorm(63, mean = 70, sd = 5)
 ```
 
 0.08 or about 8% chance. In picture, the probability is the proportion of area under the curve shaded:
@@ -233,9 +241,77 @@ pnorm(63, 70, 5)
 
 ## Regression assumption of normality
 
+Recall the main question we had before: what assumptions make $\hat{\beta}_{OLS}$ representative of $\beta$?
+
+- Assumption 1: $E[\be] = \bzero$
+- Assumption 2: $\text{var}[\be] = \sigma^2 \identity$
+- Assumption 3 (new today): $\be \sim$ multivariate normal
+
+Taken all together, we can write assumptions 1, 2, and 3 concisely:
+
+$$
+\be \sim MVN(\bzero, \sigma^2 \identity)
+$$
+or equivalently,
+
+$$
+\varepsilon_i  \stackrel{\text{i.i.d.}}{\sim} \; N(0, \sigma^2) \text{ for each i}
+$$
+
+The implications of this assumption are:
+
+$$
+\by \sim MVN_n(\bX \beta, \sigma^2 \identity)
+$$
+
+or equivalently,
+
+$$
+y_i \sim N(x_i^T \beta, \sigma^2).
+$$
+
+
+
 ![Image source: *Introduction to the Practice of Statistics (5th ed)*](images/regression.png){fig-align="center"}
 
+Moreover, 
 
+$$
+\hat{\beta} \sim MVN(\beta, \sigma^2 (\bX^T\bX)^{-1})
+$$
+which implies that the marginal distribution of a single element of the $\hat{\beta}$,
+
+$$
+\hat{\beta}_j \sim N(\beta_j, \sigma^2 C_{jj})
+$$
+where the matrix $C = (\bX^T\bX)^{-1}$ and $C_{jj}$ is the $j$th diagonal element.
+
+Based on the properties of a normal described above,
+
+$$
+\frac{\hat{\beta}_j - \beta_j}{\sqrt{\sigma^2 C_{jj}}} \sim N(0, 1)
+$$
+
+Where this is going: *checking our assumptions are valid*,  constructing *confidence intervals*, and performing *hypothesis tests*.
+
+## Data generative model
+
+An important view of the equation above, 
+
+$$
+y_i \sim N(x_i^T \beta, \sigma^2),
+$$
+is that it can be used to *generate data*. For this reason, the statistical model is often called a "data generative model".
+
+It looks like this:
+
+(1) create length `n` vector $x$. For example, `x <- runif(n, 0, 10)`
+
+(2) specify the true $\beta$, e.g. `beta0 <- 1; beta1 <- 2`
+
+(3) choose some error $\sigma^2$ and generate $y_i$ according to the data generative model: `rnorm(n, mean = (beta0 + beta1 * x, sd = 2))`.
+
+From here you can fit the data with `lm(y ~ x)` and examine the results. 
 
 ```{r}
 #| eval: false
@@ -272,5 +348,4 @@ yhat = fitted(model1)
 plot(yhat, ehat)
 
 ```
-
 

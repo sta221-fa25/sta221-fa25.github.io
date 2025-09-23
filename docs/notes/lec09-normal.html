@@ -225,6 +225,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#computing-probabilities" id="toc-computing-probabilities" class="nav-link" data-scroll-target="#computing-probabilities">Computing probabilities</a></li>
   <li><a href="#regression-assumption-of-normality" id="toc-regression-assumption-of-normality" class="nav-link" data-scroll-target="#regression-assumption-of-normality">Regression assumption of normality</a></li>
+  <li><a href="#data-generative-model" id="toc-data-generative-model" class="nav-link" data-scroll-target="#data-generative-model">Data generative model</a></li>
   </ul>
 </nav>
     </div>
@@ -319,7 +320,7 @@ X \sim N(\mu, \sigma^2)
 </ul>
 <p>We can see this in an example.</p>
 <p>Let <span class="math inline">\(X \sim N(5, 9)\)</span> and let <span class="math inline">\(Y \sim N(-5, 1)\)</span></p>
-<p>According to our rules above <span class="math inline">\(X + Y \sim N(0, \sqrt{10})\)</span>. Let’s check ourselves with code:</p>
+<p>According to our rules above <span class="math inline">\(X + Y \sim N(0, 10)\)</span>. Let’s check ourselves with code:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>normal_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">X =</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">3</span>),</span>
@@ -431,6 +432,17 @@ Y \sim N(\mu_Y, \sigma_Y^2).
 <!-- $$ -->
 <!-- Y \sim N(\mu_Y, \sigma_Y^2). -->
 <!-- $$ -->
+<p>Note: if you’d like to simulate from a multivariate normal, you can use the function <code>rmvnorm()</code> from the <code>mvtnorm</code> package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mvtnorm<span class="sc">::</span><span class="fu">rmvnorm</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">sigma =</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, .<span class="dv">5</span>, .<span class="dv">5</span>, <span class="dv">1</span>), <span class="at">ncol =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            [,1]      [,2]
+[1,] -1.64375527  7.934314
+[2,]  2.37437357 10.848478
+[3,]  0.06844319 10.669071</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="computing-probabilities" class="level2">
@@ -442,10 +454,10 @@ Y \sim N(\mu_Y, \sigma_Y^2).
 <p>and <code>pnorm(q = q, mean = mu, sd = sigma)</code> answers the question:</p>
 <p>If <span class="math inline">\(X \sim N(\mu, \sigma)\)</span>, what is <span class="math inline">\(p(X &lt; q)\)</span>?</p>
 <p>For example, imagine that the resting heart rates in the classroom are normally distributed with mean 70 beats per minute (bpm) and standard deviation 5 bpm. What’s the probability a randomly selected individual has a heart rate less than 63 bpm?</p>
-<p>In math: let <span class="math inline">\(X\)</span> be the bpm of an individual in this class. Assume <span class="math inline">\(X \sim N(70, 5)\)</span>. What is <span class="math inline">\(p(X &lt; 63)\)</span>? Given heartbeats are normally distributed, randomly selecting an individual from the classroom is called “drawing from a normal distribution”.</p>
+<p>In math: let <span class="math inline">\(X\)</span> be the bpm of an individual in this class. Assume <span class="math inline">\(X \sim N(70, 25)\)</span>. What is <span class="math inline">\(p(X &lt; 63)\)</span>? Given heartbeats are normally distributed, randomly selecting an individual from the classroom is called “drawing from a normal distribution”.</p>
 <p>We can compute this easily:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">63</span>, <span class="dv">70</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">63</span>, <span class="at">mean =</span> <span class="dv">70</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.08075666</code></pre>
 </div>
@@ -463,12 +475,59 @@ Y \sim N(\mu_Y, \sigma_Y^2).
 </section>
 <section id="regression-assumption-of-normality" class="level2">
 <h2 class="anchored" data-anchor-id="regression-assumption-of-normality">Regression assumption of normality</h2>
+<p>Recall the main question we had before: what assumptions make <span class="math inline">\(\hat{\beta}_{OLS}\)</span> representative of <span class="math inline">\(\beta\)</span>?</p>
+<ul>
+<li>Assumption 1: <span class="math inline">\(E[\boldsymbol{\varepsilon}] = \boldsymbol{0}\)</span></li>
+<li>Assumption 2: <span class="math inline">\(\text{var}[\boldsymbol{\varepsilon}] = \sigma^2 \boldsymbol{I}\)</span></li>
+<li>Assumption 3 (new today): <span class="math inline">\(\boldsymbol{\varepsilon}\sim\)</span> multivariate normal</li>
+</ul>
+<p>Taken all together, we can write assumptions 1, 2, and 3 concisely:</p>
+<p><span class="math display">\[
+\boldsymbol{\varepsilon}\sim MVN(\boldsymbol{0}, \sigma^2 \boldsymbol{I})
+\]</span> or equivalently,</p>
+<p><span class="math display">\[
+\varepsilon_i  \stackrel{\text{i.i.d.}}{\sim} \; N(0, \sigma^2) \text{ for each i}
+\]</span></p>
+<p>The implications of this assumption are:</p>
+<p><span class="math display">\[
+\boldsymbol{y}\sim MVN_n(\boldsymbol{X}\beta, \sigma^2 \boldsymbol{I})
+\]</span></p>
+<p>or equivalently,</p>
+<p><span class="math display">\[
+y_i \sim N(x_i^T \beta, \sigma^2).
+\]</span></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/regression.png" class="img-fluid figure-img"></p>
 <figcaption>Image source: <em>Introduction to the Practice of Statistics (5th ed)</em></figcaption>
 </figure>
 </div>
+<p>Moreover,</p>
+<p><span class="math display">\[
+\hat{\beta} \sim MVN(\beta, \sigma^2 (\boldsymbol{X}^T\boldsymbol{X})^{-1})
+\]</span> which implies that the marginal distribution of a single element of the <span class="math inline">\(\hat{\beta}\)</span>,</p>
+<p><span class="math display">\[
+\hat{\beta}_j \sim N(\beta_j, \sigma^2 C_{jj})
+\]</span> where the matrix <span class="math inline">\(C = (\boldsymbol{X}^T\boldsymbol{X})^{-1}\)</span> and <span class="math inline">\(C_{jj}\)</span> is the <span class="math inline">\(j\)</span>th diagonal element.</p>
+<p>Based on the properties of a normal described above,</p>
+<p><span class="math display">\[
+\frac{\hat{\beta}_j - \beta_j}{\sqrt{\sigma^2 C_{jj}}} \sim N(0, 1)
+\]</span></p>
+<p>Where this is going: <em>checking our assumptions are valid</em>, constructing <em>confidence intervals</em>, and performing <em>hypothesis tests</em>.</p>
+</section>
+<section id="data-generative-model" class="level2">
+<h2 class="anchored" data-anchor-id="data-generative-model">Data generative model</h2>
+<p>An important view of the equation above,</p>
+<p><span class="math display">\[
+y_i \sim N(x_i^T \beta, \sigma^2),
+\]</span> is that it can be used to <em>generate data</em>. For this reason, the statistical model is often called a “data generative model”.</p>
+<p>It looks like this:</p>
+<ol type="1">
+<li><p>create length <code>n</code> vector <span class="math inline">\(x\)</span>. For example, <code>x &lt;- runif(n, 0, 10)</code></p></li>
+<li><p>specify the true <span class="math inline">\(\beta\)</span>, e.g.&nbsp;<code>beta0 &lt;- 1; beta1 &lt;- 2</code></p></li>
+<li><p>choose some error <span class="math inline">\(\sigma^2\)</span> and generate <span class="math inline">\(y_i\)</span> according to the data generative model: <code>rnorm(n, mean = (beta0 + beta1 * x, sd = 2))</code>.</p></li>
+</ol>
+<p>From here you can fit the data with <code>lm(y ~ x)</code> and examine the results.</p>
 
 
 </section>
