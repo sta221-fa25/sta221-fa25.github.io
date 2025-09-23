@@ -116,7 +116,7 @@ schedule %>%
 | 4 | Tue Sep 16 | intro to inference | [📖](/prepare/prepare-lec05.html) | [🗒](/notes/lec07-intro-inference.html) |  |
 |  | Wed Sep 17 | lab: multiple linear regression |  |  | [lab 3](/labs/lab03.html) |
 |  | Thu Sep 18 | inference continued |  | [🗒](/notes/lec08-inference-2.html) | [hw 2](/hw/hw02.html) |
-| 5 | Tue Sep 23 |  |  |  |  |
+| 5 | Tue Sep 23 | the normal assumption |  | [🗒](/notes/lec09-normal.html) |  |
 |  | Wed Sep 24 |  |  |  |  |
 |  | Thu Sep 25 |  |  |  |  |
 | 6 | Tue Sep 30 |  |  |  |  |

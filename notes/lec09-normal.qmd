@@ -1,0 +1,276 @@
+---
+title: "The normal assumption"
+author: "Dr. Alexander Fisher"
+format: html
+---
+
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+\newcommand{\bzero}{\boldsymbol{0}}
+\newcommand{\identity}{\boldsymbol{I}}
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data sets used in these notes"
+#| warning: false
+#| message: false
+library(tidyverse)
+library(tidymodels)
+```
+
+## Background: the normal distribution
+
+$$
+X \sim N(\mu, \sigma^2)
+$$
+
+We read the above mathematical statement: "the random variable X is normally distributed with mean mu and variance sigma-squared."
+
+::: panel-tabset
+## Example
+```{r}
+#| echo: false
+ 
+data.frame(x = -8:12) |>
+  ggplot(aes(x = x)) + 
+  stat_function(fun = dnorm, args = list(mean = 3, sd = 2)) +
+  theme_bw() +
+  labs(title = "X ~ N(3, 4)", y = "density")
+```
+
+
+## Code
+```{r}
+#| eval: false
+data.frame(x = -8:12) |>
+  ggplot(aes(x = x)) + 
+  stat_function(fun = dnorm, args = list(mean = 3, sd = 2)) +
+  theme_bw() +
+  labs(title = "X ~ N(3, 4)", y = "density")
+```
+
+:::
+
+
+### Sampling from a normal in R
+
+The **normal distribution**, also known as "Gaussian distribution" is a distribution of a continuous random variable. The sample space of a normal random variable is $\{- \infty, + \infty \}$ and is defined by two parameters: a mean $\mu$ and a standard deviation $\sigma$. The mean is known as the **location** parameter while the standard deviation is the **scale**.
+
+We can sample `N` times from a normal with mean `mu` and standard deviation `sigma` using `rnorm(n = N, mean = mu, sd = sigma)`.
+
+```{r}
+rnorm(n = 1000, mean = 10, sd = 1) |>
+  hist()
+```
+
+### Properties 
+
+A very useful property of Normal distribution is that it is **stable**. What this means is that linear combinations of normal random variables are themselves normal. In other words, if $X$ and $Y$ are normal random variables then $aX + bY$ is normal for all $a$ and $b$. The two properties to remember when adding Gaussian random variables are:
+
+- mean(X + Y) = mean(X) + mean(Y)
+- variance(X + Y) = variance(X) + variance(Y) when X and Y are independent
+
+We can see this in an example.
+
+Let $X \sim N(5, 9)$ and let $Y \sim N(-5, 1)$
+
+According to our rules above $X + Y \sim N(0, \sqrt{10})$. Let's check ourselves with code:
+
+```{r}
+#| warning: false
+set.seed(1)
+normal_df = data.frame(X = rnorm(1000, mean = 5, sd = 3),
+                 Y = rnorm(1000, mean = -5, sd = 1))
+
+
+
+normal_df = normal_df %>%
+  mutate(Z = X + Y)
+
+normal_df %>%
+  ggplot(aes(x = Z)) +
+  geom_histogram(aes(y = ..density..), fill = 'gold3', alpha = 0.5) +
+  theme_bw() +
+  labs(y = "Density", title = "Matching densities") +
+  stat_function(fun = dnorm, args = list(mean = 0, sd = sqrt(10)),
+                color = "darkblue")
+```
+
+::: panel-tabset
+## Exercise
+
+Let $Z \sim N(0, 1)$ and $X \sim N(10, 16)$. $aZ + b \stackrel{d}{=} X$ for some $a$ and $b$. What are $a$ and $b$? Fill them in for the `?` in the code below and the uncomment the code. Here, $\stackrel{d}{=}$ means "equal in distribution".
+
+```{r, eval = F}
+set.seed(221)
+normal_df = data.frame(z = rnorm(1000, mean = 0, sd = 1),
+                 x = rnorm(1000, mean = 10, sd = 4))
+
+sample_mean = normal_df %>%
+  summarize(sample_mean = mean(x)) %>%
+  pull()
+
+normal_df %>%
+  ggplot(aes(x = x)) +
+  geom_histogram(aes(y = ..density..), fill = 'gold3', alpha = 0.5) +
+  geom_histogram(aes(x = z, y = ..density..), fill = 'steelblue', alpha = 0.7) +
+  #geom_density(aes(x = z*? + ?), color = 'red') + 
+  theme_bw() +
+  labs(x = "", y = "", title = "Sampling from two normals")
+```
+
+:::
+
+Another useful property is that the marginal distribution of a multivariate normal itself normal.
+
+Let
+$$
+\begin{bmatrix}
+X \\
+Y
+\end{bmatrix}
+\sim
+MVN\left(
+\begin{bmatrix}
+\mu_X \\
+\mu_Y
+\end{bmatrix},
+\;
+\begin{bmatrix}
+\sigma_X^2 & \sigma_{XY} \\
+\sigma_{XY} & \sigma_Y^2
+\end{bmatrix}
+\right).
+$$
+
+Then the marginal distributions are
+$$
+X \sim N(\mu_X, \sigma_X^2),
+\qquad
+Y \sim N(\mu_Y, \sigma_Y^2).
+$$
+
+<!-- --- -->
+
+<!-- **Proof (sketch).**   -->
+<!-- A linear transformation of a multivariate normal vector is again normal.   -->
+<!-- Let -->
+<!-- $$ -->
+<!-- E_X = -->
+<!-- \begin{bmatrix} -->
+<!-- 1 & 0 -->
+<!-- \end{bmatrix}, -->
+<!-- \qquad -->
+<!-- E_Y = -->
+<!-- \begin{bmatrix} -->
+<!-- 0 & 1 -->
+<!-- \end{bmatrix}. -->
+<!-- $$ -->
+<!-- Then -->
+<!-- $$ -->
+<!-- X = E_X -->
+<!-- \begin{bmatrix} -->
+<!-- X \\ -->
+<!-- Y -->
+<!-- \end{bmatrix}, \quad -->
+<!-- Y = E_Y -->
+<!-- \begin{bmatrix} -->
+<!-- X \\ -->
+<!-- Y -->
+<!-- \end{bmatrix}. -->
+<!-- $$ -->
+<!-- Therefore -->
+<!-- $$ -->
+<!-- X \sim N(E_X \mu,\, E_X \Sigma E_X^\top) -->
+<!-- = N(\mu_X, \sigma_X^2), -->
+<!-- $$ -->
+<!-- and similarly -->
+<!-- $$ -->
+<!-- Y \sim N(\mu_Y, \sigma_Y^2). -->
+<!-- $$ -->
+
+
+## Computing probabilities
+
+`pnorm` "probability normal" takes three arguments:
+
+- `q`, `mean` and `sd`
+
+and `pnorm(q = q, mean = mu, sd = sigma)` answers the question:
+
+If $X \sim N(\mu, \sigma)$, what is $p(X < q)$?
+
+For example, imagine that the resting heart rates in the classroom are normally distributed with mean 70 beats per minute (bpm) and standard deviation 5 bpm. What's the probability a randomly selected individual has a heart rate less than 63 bpm?
+
+In math: let $X$ be the bpm of an individual in this class. Assume $X \sim N(70, 5)$. What is $p(X < 63)$? Given heartbeats are normally distributed, randomly selecting an individual from the classroom is called "drawing from a normal distribution".
+
+We can compute this easily:
+
+```{r}
+pnorm(63, 70, 5)
+```
+
+0.08 or about 8% chance. In picture, the probability is the proportion of area under the curve shaded:
+
+```{r proportion-shaded, echo=F, message = F}
+ ggplot(NULL, aes(c(50,90))) +
+  geom_area(stat = "function", fun = dnorm,
+            args = list(mean = 70, sd = 5),
+            fill = "darkblue", xlim = c(50, 63)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 70, sd = 5),
+            fill = "grey80", xlim = c(63, 90)) +
+  labs(x = "x", y = "") +
+  theme_bw() + 
+  scale_y_continuous(breaks = NULL) +
+  scale_x_continuous(breaks = c(63, 70))
+```
+
+## Regression assumption of normality
+
+![Image source: *Introduction to the Practice of Statistics (5th ed)*](images/regression.png){fig-align="center"}
+
+
+
+```{r}
+#| eval: false
+#| echo: false
+
+set.seed(221)
+
+BETA = NULL
+for(i in 1:1000) {
+n = 20
+oneVector = rep(1, n)
+x = runif(n, min = 0, max = 10)
+beta0 = 1
+beta1 = 2
+error = rnorm(n, mean = 0, sd = sqrt(3))
+y = (oneVector * beta0) + (x * beta1) + error
+
+BETA = rbind(BETA, lm(y ~ x)$coefficients)
+}
+BETA = BETA %>%
+  as.data.frame()
+
+names(BETA) = c("beta0", "beta1")
+BETA %>%
+  ggplot(aes(x = beta0, y = beta1)) +
+  geom_density_2d_filled()
+
+## level curves of normal ^^
+
+model1 <- lm(y ~ x)
+ehat = model1$residuals
+yhat = fitted(model1)
+
+plot(yhat, ehat)
+
+```
+
+
