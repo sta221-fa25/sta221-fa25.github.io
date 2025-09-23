@@ -1,0 +1,86 @@
+---
+title: "Final project"
+format: html
+---
+
+## Timeline
+
+Research topics due **Tuesday September 30 at 5:00pm**
+
+Project proposal due **Thursday October 9 at 5:00pm**
+
+Exploratory data analysis due **Tuesday November 4**
+
+Project presentations (in lab) **Wednesday November 12**
+
+Draft report due **Tuesday November 18 at 5:00pm**
+
+Peer review **Wednesday November 19, in lab**
+
+Final written report + reproducible GitHub repository due **December 12 at 5:00pm**.
+
+## Description
+
+The goal of the final project is for you to use regression analysis to analyze a data set of your own choosing. The data set may already exist or you may collect your own data by scraping the web.
+
+Choose the data based on your group's interests or work you all have done in other courses or research projects. The goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class (and beyond, if you like!) and apply them to a data set to analyze it in a meaningful way.
+
+**All analyses must be done in RStudio using Quarto and GitHub, and your analysis and written report must be reproducible.**
+
+## Deliverables
+
+You will work on the project with your lab groups. The primary deliverables for the project are
+
+1. an in-person presentation about the exploratory data analysis and initial modeling
+
+2. a written, reproducible final report detailing your analysis
+
+3. a summary of your project highlights to share with the class
+
+4. a GitHub repository containing all work from the project
+
+There are intermediate milestones and peer review assignments throughout the semester to help you work towards the primary deliverables.
+
+There are intermediate milestones and peer review assignments throughout the semester to help you work towards the primary deliverables.
+
+# Step 1 
+
+## Research topics
+
+The goal of this milestone is to discuss topics and develop potential research questions your team is interested in investigating for the project. You are only developing ideas at this point; you do not need to have a data set identified right now.
+
+Develop three potential research topics. Include the following for each topic:
+
+1. A brief description of the topic
+2. A statement about your motivation for investigating this topic
+3. The potential audience(s), i.e., who might be most interested in this research? 
+4. Two or three potential research questions you could analyze about this topic. (Note: These are draft questions at this point. You will finalize the questions in the next stage of the project.)
+5. Ideas about the type of data you might use to answer this question or potential data sets you're interested in using. (Note: The goal is to generate ideas at this point, so it is fine if you have not identified any particular data sets at this point.)
+
+Write your responses in `research-topics.qmd` in your team’s project GitHub repo. Push the `qmd` and rendered `pdf` documents to GitHub by the deadline, **Tuesday, September 30 at 5:00pm**. There is no Gradescope submission.
+
+## Project proposal
+
+The purpose of the project proposal is for your team to identify the data set you’re interested in analyzing to investigate one of your potential research topics. You will also do some preliminary exploration of the response variable and begin thinking about the modeling strategy. If you’re unsure where to find data, you can use the list of potential data sources [here](/project-data.html) as a starting point.
+
+::: callout-important
+You must use the data set(s) in the proposal for the final project, unless instructed otherwise when given feedback.
+:::
+
+The data set must meet the following criteria:
+
+-   At least 500 observations
+
+-   At least 10 columns, such that at least 6 of the columns are useful and unique predictor variables.
+
+    -   e.g., identifier variables such as "name", "ID number", etc. are <u>not</u> useful predictor variables.
+
+    -   e.g., if you have multiple columns with the same information (e.g. "state abbreviation" and "state name"), then they are not unique predictors.
+
+-   At least one variable that can be identified as a reasonable response variable.
+
+    -   The response variable can be quantitative or categorical.
+
+-   A mix of quantitative and categorical variables that can be used as predictors.
+
+-   May not be data that has previously been used in any course materials, or any derivation of data that has been used in course materials.

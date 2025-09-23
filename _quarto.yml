@@ -20,6 +20,8 @@ website:
         text: schedule
       - href: syllabus.qmd
         text: syllabus
+      - href: project.qmd
+        text: project
       - text: "homeworks"
         menu:
           - href: hw/hw01.qmd

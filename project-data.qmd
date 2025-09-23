@@ -1,0 +1,27 @@
+---
+title: "Data resources"
+format: html
+---
+
+Credit: list compiled by Prof. Maria Tackett
+
+-   [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
+-   [FiveThirtyEight data](https://data.fivethirtyeight.com/)
+-   [Data Is Plural](https://www.data-is-plural.com/archive/)
+-   [R Data Sources for Regression Analysis](https://rfun.library.duke.edu/blog/data-sources-for-regression-analysis/)
+-   [World Health Organization](https://www.who.int/gho/database/en/)
+-   [The National Bureau of Economic Research](https://data.nber.org/data/)
+-   [International Monetary Fund](https://data.imf.org/?sk=388DFA60-1D26-4ADE-B505-A05A558D9A42&sId=1479329328660)
+-   [General Social Survey](http://gss.norc.org/)
+-   [United Nations Data](http://data.un.org/)
+-   [United Nations Statistics Division](https://unstats.un.org/home/)
+-   [U.K. Data](https://data.gov.uk/)
+-   [U.S. Data](https://www.data.gov/)
+-   [U.S. Census Data](https://www.census.gov/data.html)
+-   [European Statistics](https://ec.europa.eu/eurostat/)
+-   [Statistics Canada](https://www.statcan.gc.ca/eng/start)
+-   [Pew Research](https://www.pewresearch.org/download-datasets/)
+-   [UNICEF](https://data.unicef.org/)
+-   [CDC](https://www.cdc.gov/datastatistics/index.html)
+-   [World Bank](https://datacatalog.worldbank.org/)
+-   [Election Studies](https://electionstudies.org//)

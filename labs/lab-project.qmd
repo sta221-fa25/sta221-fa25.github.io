@@ -1,0 +1,26 @@
+---
+title: "Lab: project planning"
+execute:
+  freeze: auto
+  echo: true
+  eval: false
+  warning: false
+  message: false
+format: html
+---
+
+## Today's lab
+
+The goal of today's lab is to begin your project proposal.
+
+1. read the entire project description [here](/project.html) or by clicking the tab "project" at the top of the website.
+
+2. navigate to your GitHub repo `project-team_name` in the course organization and clone the repo. 
+
+3. edit `research-topics.qmd`. Push the `qmd` and rendered `pdf` documents to GitHub by the deadline: **Tuesday, September 30 at 5:00pm**. There is no Gradescope submission. This exercise will be graded according to the following rubric:
+
+- 0pts: missing or severely incomplete `research-topics`
+- 1pt: somewhat incomplete `research-topics` 
+- 2pts: each itemized point is thoroughly addressed for each topic
+
+4. After you complete this write-up, begin to plan your project proposal.

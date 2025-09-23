@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Simple linear regression – STA221</title>
+<title>Final project – STA221</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8c30556735fa22a8b34c61270d6a5ad2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-8c30556735fa22a8b34c61270d6a5ad2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">STA221</span>
     </a>
   </div>
@@ -89,12 +89,16 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
+    <a class="nav-link" href="./syllabus.html"> 
 <span class="menu-text">syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./project.html" aria-current="page"> 
+<span class="menu-text">project</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-homeworks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
@@ -102,8 +106,12 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-homeworks">    
         <li>
-    <a class="dropdown-item" href="../hw/hw01.html">
- <span class="dropdown-text">HW 01</span></a>
+    <a class="dropdown-item" href="./hw/hw01.html">
+ <span class="dropdown-text">hw 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./hw/hw02.html">
+ <span class="dropdown-text">hw 2</span></a>
   </li>  
     </ul>
   </li>
@@ -113,13 +121,25 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
         <li>
-    <a class="dropdown-item" href="../labs/lab00.html">
- <span class="dropdown-text">Lab 0</span></a>
+    <a class="dropdown-item" href="./labs/lab00.html">
+ <span class="dropdown-text">lab 0</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./labs/lab01.html">
+ <span class="dropdown-text">lab 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./labs/lab02.html">
+ <span class="dropdown-text">lab 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./labs/lab03.html">
+ <span class="dropdown-text">lab 3</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../links.html"> 
+    <a class="nav-link" href="./links.html"> 
 <span class="menu-text">links</span></a>
   </li>  
 </ul>
@@ -133,15 +153,28 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#timeline" id="toc-timeline" class="nav-link active" data-scroll-target="#timeline">Timeline</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
+  <li><a href="#deliverables" id="toc-deliverables" class="nav-link" data-scroll-target="#deliverables">Deliverables</a></li>
+  <li><a href="#step-1" id="toc-step-1" class="nav-link" data-scroll-target="#step-1">Step 1</a>
+  <ul class="collapse">
+  <li><a href="#research-topics" id="toc-research-topics" class="nav-link" data-scroll-target="#research-topics">Research topics</a></li>
+  <li><a href="#project-proposal" id="toc-project-proposal" class="nav-link" data-scroll-target="#project-proposal">Project proposal</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Simple linear regression</h1>
+<h1 class="title">Final project</h1>
 </div>
 
 
@@ -158,29 +191,84 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!-- ## Nomenclature -->
-<!-- $$ -->
-<!-- y = \beta_0 + \beta_1 x + \epsilon -->
-<!-- $$ -->
-<!-- | Symbol | Meaning | -->
-<!-- |----|----| -->
-<!-- | y | "response", "outcome", "dependent variable". In prediction tasks, this is what we are interested in predicting. | -->
-<!-- | x | "predictor", "covariate", "feature", "independent variable", when capitalized "X" is sometimes referred to as the "data matrix" | -->
-<!-- | $\beta$ | "population parameter", "constants", "coefficients", $\beta_0$ is often called "the intercept". These are *fixed* numbers. | -->
-<!-- | $\epsilon$ | the "error". This quantity represents observational error, i.e. the difference between our observation and the true population-level expected value | -->
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Figure</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Code</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-
+<section id="timeline" class="level2">
+<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
+<p>Research topics due <strong>Tuesday September 30 at 5:00pm</strong></p>
+<p>Project proposal due <strong>Thursday October 9 at 5:00pm</strong></p>
+<p>Exploratory data analysis due <strong>Tuesday November 4</strong></p>
+<p>Project presentations (in lab) <strong>Wednesday November 12</strong></p>
+<p>Draft report due <strong>Tuesday November 18 at 5:00pm</strong></p>
+<p>Peer review <strong>Wednesday November 19, in lab</strong></p>
+<p>Final written report + reproducible GitHub repository due <strong>December 12 at 5:00pm</strong>.</p>
+</section>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<p>The goal of the final project is for you to use regression analysis to analyze a data set of your own choosing. The data set may already exist or you may collect your own data by scraping the web.</p>
+<p>Choose the data based on your group’s interests or work you all have done in other courses or research projects. The goal of this project is for you to demonstrate proficiency in the techniques we have covered in this class (and beyond, if you like!) and apply them to a data set to analyze it in a meaningful way.</p>
+<p><strong>All analyses must be done in RStudio using Quarto and GitHub, and your analysis and written report must be reproducible.</strong></p>
+</section>
+<section id="deliverables" class="level2">
+<h2 class="anchored" data-anchor-id="deliverables">Deliverables</h2>
+<p>You will work on the project with your lab groups. The primary deliverables for the project are</p>
+<ol type="1">
+<li><p>an in-person presentation about the exploratory data analysis and initial modeling</p></li>
+<li><p>a written, reproducible final report detailing your analysis</p></li>
+<li><p>a summary of your project highlights to share with the class</p></li>
+<li><p>a GitHub repository containing all work from the project</p></li>
+</ol>
+<p>There are intermediate milestones and peer review assignments throughout the semester to help you work towards the primary deliverables.</p>
+<p>There are intermediate milestones and peer review assignments throughout the semester to help you work towards the primary deliverables.</p>
+</section>
+<section id="step-1" class="level1">
+<h1>Step 1</h1>
+<section id="research-topics" class="level2">
+<h2 class="anchored" data-anchor-id="research-topics">Research topics</h2>
+<p>The goal of this milestone is to discuss topics and develop potential research questions your team is interested in investigating for the project. You are only developing ideas at this point; you do not need to have a data set identified right now.</p>
+<p>Develop three potential research topics. Include the following for each topic:</p>
+<ol type="1">
+<li>A brief description of the topic</li>
+<li>A statement about your motivation for investigating this topic</li>
+<li>The potential audience(s), i.e., who might be most interested in this research?</li>
+<li>Two or three potential research questions you could analyze about this topic. (Note: These are draft questions at this point. You will finalize the questions in the next stage of the project.)</li>
+<li>Ideas about the type of data you might use to answer this question or potential data sets you’re interested in using. (Note: The goal is to generate ideas at this point, so it is fine if you have not identified any particular data sets at this point.)</li>
+</ol>
+<p>Write your responses in <code>research-topics.qmd</code> in your team’s project GitHub repo. Push the <code>qmd</code> and rendered <code>pdf</code> documents to GitHub by the deadline, <strong>Tuesday, September 30 at 5:00pm</strong>. There is no Gradescope submission.</p>
+</section>
+<section id="project-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="project-proposal">Project proposal</h2>
+<p>The purpose of the project proposal is for your team to identify the data set you’re interested in analyzing to investigate one of your potential research topics. You will also do some preliminary exploration of the response variable and begin thinking about the modeling strategy. If you’re unsure where to find data, you can use the list of potential data sources <a href="./project-data.html">here</a> as a starting point.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-
+<div class="callout-title-container flex-fill">
+Important
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>You must use the data set(s) in the proposal for the final project, unless instructed otherwise when given feedback.</p>
 </div>
+</div>
+<p>The data set must meet the following criteria:</p>
+<ul>
+<li><p>At least 500 observations</p></li>
+<li><p>At least 10 columns, such that at least 6 of the columns are useful and unique predictor variables.</p>
+<ul>
+<li><p>e.g., identifier variables such as “name”, “ID number”, etc. are <u>not</u> useful predictor variables.</p></li>
+<li><p>e.g., if you have multiple columns with the same information (e.g.&nbsp;“state abbreviation” and “state name”), then they are not unique predictors.</p></li>
+</ul></li>
+<li><p>At least one variable that can be identified as a reasonable response variable.</p>
+<ul>
+<li>The response variable can be quantitative or categorical.</li>
+</ul></li>
+<li><p>A mix of quantitative and categorical variables that can be used as predictors.</p></li>
+<li><p>May not be data that has previously been used in any course materials, or any derivation of data that has been used in course materials.</p></li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
