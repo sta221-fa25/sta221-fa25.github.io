@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr.&nbsp;Alexander Fisher">
+
+<title>Hypothesis testing – STA221</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-8c30556735fa22a8b34c61270d6a5ad2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="../site_libs/datatables-binding-0.33/datatables.js"></script>
+<script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">STA221</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../project.html"> 
+<span class="menu-text">project</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-homeworks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">homeworks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-homeworks">    
+        <li>
+    <a class="dropdown-item" href="../hw/hw01.html">
+ <span class="dropdown-text">hw 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../hw/hw02.html">
+ <span class="dropdown-text">hw 2</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">labs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
+        <li>
+    <a class="dropdown-item" href="../labs/lab00.html">
+ <span class="dropdown-text">lab 0</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab01.html">
+ <span class="dropdown-text">lab 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab02.html">
+ <span class="dropdown-text">lab 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab03.html">
+ <span class="dropdown-text">lab 3</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../links.html"> 
+<span class="menu-text">links</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-ncaa-football-expenditures" id="toc-data-ncaa-football-expenditures" class="nav-link active" data-scroll-target="#data-ncaa-football-expenditures">Data: NCAA Football expenditures</a></li>
+  <li><a href="#univariate-eda" id="toc-univariate-eda" class="nav-link" data-scroll-target="#univariate-eda">Univariate EDA</a></li>
+  <li><a href="#bivariate-eda" id="toc-bivariate-eda" class="nav-link" data-scroll-target="#bivariate-eda">Bivariate EDA</a></li>
+  <li><a href="#regression-model" id="toc-regression-model" class="nav-link" data-scroll-target="#regression-model">Regression model</a></li>
+  <li><a href="#from-sample-to-population" id="toc-from-sample-to-population" class="nav-link" data-scroll-target="#from-sample-to-population">From sample to population</a></li>
+  <li><a href="#varhatboldsymbolbeta-for-ncaa-data" id="toc-varhatboldsymbolbeta-for-ncaa-data" class="nav-link" data-scroll-target="#varhatboldsymbolbeta-for-ncaa-data"><span class="math inline">\(Var(\hat{\boldsymbol{\beta}})\)</span> for NCAA data</a></li>
+  <li><a href="#sehatboldsymbolbeta-for-ncaa-data" id="toc-sehatboldsymbolbeta-for-ncaa-data" class="nav-link" data-scroll-target="#sehatboldsymbolbeta-for-ncaa-data"><span class="math inline">\(SE(\hat{\boldsymbol{\beta}})\)</span> for NCAA data</a></li>
+  <li><a href="#compute-p-value" id="toc-compute-p-value" class="nav-link" data-scroll-target="#compute-p-value">Compute p-value</a></li>
+  <li><a href="#t-vs.-n01" id="toc-t-vs.-n01" class="nav-link" data-scroll-target="#t-vs.-n01"><em>t</em> vs.&nbsp;N(0,1)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Hypothesis testing</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Alexander Fisher </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<details class="code-fold">
+<summary>View libraries and data sets used in these notes</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT) <span class="co"># datatable viewing</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.width =</span> <span class="dv">8</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.asp =</span> <span class="fl">0.618</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.retina =</span> <span class="dv">3</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">300</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">out.width =</span> <span class="st">"80%"</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.align =</span> <span class="st">"center"</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">221</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>football <span class="ot">&lt;-</span> </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"https://sta221-fa25.github.io/data/ncaa-football-exp.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nonsense =</span> <span class="fu">runif</span>(<span class="fu">n</span>(), <span class="dv">0</span>, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="data-ncaa-football-expenditures" class="level2 midi">
+<h2 class="midi anchored" data-anchor-id="data-ncaa-football-expenditures">Data: NCAA Football expenditures</h2>
+<p>Today’s data come from <a href="https://ope.ed.gov/athletics/#/datafile/list">Equity in Athletics Data Analysis</a> and includes information about sports expenditures and revenues for colleges and universities in the United States. This data set was featured in a <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-29/readme.md">March 2022 Tidy Tuesday</a>.</p>
+<p>We will focus on the 2019 (2019 - 2020 season) expenditures on football for institutions in the NCAA - Division 1 FBS (Football Bowl Subdivision). The variables are :</p>
+<ul>
+<li><p><code>total_exp_m</code>: Total expenditures on football in the 2019 - 2020 academic year (in millions USD)</p></li>
+<li><p><code>enrollment_th</code>: Total student enrollment in the 2019 - 2020 academic year (in thousands)</p></li>
+<li><p><code>type</code>: institution type (Public or Private)</p></li>
+<li><p><code>nonsense</code>: a created variable (see above) which has nothing to do with expenditure</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-71f49fb81eb90e4e607a" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-71f49fb81eb90e4e607a">{"x":{"filter":"none","vertical":false,"data":[["University of Alabama at Birmingham","The University of Alabama","Auburn University","University of South Alabama","Troy University","Arizona State University-Tempe","University of Arizona","University of Arkansas","Arkansas State University-Main Campus","California State University-Fresno","University of California-Berkeley","University of California-Los Angeles","San Diego State University","San Jose State University","University of Southern California","University of Colorado Boulder","Colorado State University-Fort Collins","University of Connecticut","University of Central Florida","Florida Atlantic University","Florida International University","Florida State University","University of Florida","University of Miami","University of South Florida-Main Campus","Georgia Institute of Technology-Main Campus","Georgia Southern University","Georgia State University","University of Georgia","University of Hawaii at Manoa","Boise State University","University of Illinois at Urbana-Champaign","Northern Illinois University","Northwestern University","Ball State University","Indiana University-Bloomington","University of Notre Dame","Iowa State University","University of Iowa","University of Kansas","Kansas State University","University of Kentucky","University of Louisville","Western Kentucky University","Louisiana State University and Agricultural &amp; Mechanical College","Louisiana Tech University","University of Louisiana at Monroe","University of Louisiana at Lafayette","Tulane University of Louisiana","University of Maryland-College Park","Boston College","University of Massachusetts-Amherst","Central Michigan University","Eastern Michigan University","University of Michigan-Ann Arbor","Michigan State University","Western Michigan University","University of Minnesota-Twin Cities","University of Mississippi","Mississippi State University","University of Southern Mississippi","University of Missouri-Columbia","University of Nebraska-Lincoln","University of Nevada-Las Vegas","University of Nevada-Reno","Rutgers University-New Brunswick","University of New Mexico-Main Campus","New Mexico State University-Main Campus","University at Buffalo","Syracuse University","Appalachian State University","Duke University","East Carolina University","University of North Carolina at Chapel Hill","University of North Carolina at Charlotte","North Carolina State University at Raleigh","Wake Forest University","University of Akron Main Campus","Bowling Green State University-Main Campus","University of Cincinnati-Main Campus","Kent State University at Kent","Miami University-Oxford","Ohio State University-Main Campus","Ohio University-Main Campus","University of Toledo","Oklahoma State University-Main Campus","University of Oklahoma-Norman Campus","University of Tulsa","Oregon State University","University of Oregon","Pennsylvania State University-Main Campus","University of Pittsburgh-Pittsburgh Campus","Temple University","Clemson University","University of South Carolina-Columbia","Coastal Carolina University","University of Memphis","Middle Tennessee State University","The University of Tennessee-Knoxville","Vanderbilt University","Baylor University","University of Houston","University of North Texas","Rice University","Southern Methodist University","Texas State University","Texas A &amp; M University-College Station","The University of Texas at Austin","The University of Texas at El Paso","Texas Christian University","The University of Texas at San Antonio","Texas Tech University","Brigham Young University-Provo","Utah State University","University of Utah","Liberty University","Old Dominion University","Virginia Polytechnic Institute and State University","University of Virginia-Main Campus","Washington State University","University of Washington-Seattle Campus","Marshall University","West Virginia University","University of Wisconsin-Madison","University of Wyoming","Stanford University","Purdue University-Main Campus"],[12.179203,58.508853,45.953519,8.979034,8.129799,32.000572,21.694477,43.55259,7.208166,13.361612,31.223684,32.311479,16.899563,10.287259,36.363652,22.703444,26.626422,16.678989,20.42606,12.20288,12.243022,67.752719,37.611096,48.945543,19.74813,27.200382,8.966676,8.688302999999999,48.501193,13.027756,14.605795,26.687666,7.438508,33.092234,7.323546,29.373452,51.387021,29.422443,41.688056,21.961196,22.758496,30.625733,26.694575,9.956826,41.403966,8.046417999999999,5.806764,11.90778,11.899611,21.391499,26.709656,10.196067,8.261430000000001,8.456325,44.684585,43.987682,9.275641,34.18725,40.408247,30.506617,7.761592,28.644935,31.601463,12.223081,10.59322,32.874357,9.600486999999999,9.228332999999999,8.923004000000001,27.710505,9.188013,25.177567,11.992339,30.541821,10.614336,23.330277,24.698755,7.209428,7.183946,15.782967,7.026033,9.29111,52.61623,8.798541,10.35575,24.398875,41.455783,13.268287,21.931124,32.73404,50.608202,32.490589,24.282137,55.912162,34.170807,10.012266,20.831438,10.195755,38.115086,29.215452,35.428721,18.177111,10.748868,13.729316,21.199002,8.578422,40.626375,39.503076,9.383703000000001,41.053901,10.15072,21.593943,18.85135,13.542393,31.759405,15.298764,12.27987,35.625481,27.576886,23.049902,38.441025,10.175813,22.221317,29.316118,12.391721,27.738893,23.815344],[10.272,29.014,22.364,8.057,8.686999999999999,40.958,28.902,20.483,6.385,18.878,29.988,30.963,27.369,23.516,19.449,28.791,21.93,18.151,42.184,16.221,27.652,29.768,31.725,10.624,25.15,14.132,18.994,21.815,28.091,10.384,13.035,32.408,10.565,8.244,14.748,31.878,8.664999999999999,26.627,21.092,17.157,15.475,20.537,11.499,11.604,22.585,7.701,4.734,11.901,7.26,28.228,9.515000000000001,22.417,12.72,10.431,30.057,35.575,14.515,29.236,15.743,16.817,9.65,20.637,19.13,19.427,14.751,34.233,12.56,9.708,20.374,14.437,16.557,6.526,19.17,18.516,20.802,22.622,5.239,11.197,12.863,23.577,18.276,16.545,42.586,16.138,12.432,17.238,18.82,3.151,18.188,17.413,66.279,18.31,26.162,19.441,26.119,8.784000000000001,12.032,15.689,21.972,6.824,13.757,28.038,26.055,3.931,6.516,27.923,47.537,37.362,13.84,9.207000000000001,22.285,28.037,28.288,16.935,18.534,28.434,14.68,28.539,16.174,22.999,29.077,7.029,19.366,29.75,8.327999999999999,6.994,32.603],["Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Private","Public","Public","Public","Public","Public","Public","Public","Public","Private","Public","Public","Public","Public","Public","Public","Public","Public","Public","Private","Public","Public","Private","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Private","Public","Private","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Private","Public","Private","Public","Public","Public","Public","Private","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Private","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Public","Private","Private","Public","Public","Private","Private","Public","Public","Public","Public","Private","Public","Public","Private","Public","Public","Private","Public","Public","Public","Public","Public","Public","Public","Public","Public","Private","Public"],[6.054910372477025,0.04749775631353259,6.04413946159184,6.002536783926189,2.759180997963995,2.252278297673911,1.062661409378052,3.88549801427871,5.708571563009173,2.221470545046031,5.399533796589822,7.930689372587949,2.052780247759074,5.021602790802717,5.797251963522285,7.816220342647284,1.147562458645552,1.57774910563603,5.651492052711546,6.74323100829497,2.445356368552893,8.217701567336917,2.340699704363942,8.265372053720057,8.899269187822938,8.312556089367718,5.270208800211549,6.86422941274941,7.664321383927017,5.821130552794784,4.698082704562694,9.533945494331419,2.651982146780938,1.122256147209555,2.386306198313832,5.037032184191048,2.04720214009285,8.566079898737371,4.148849432822317,1.5944804251194,9.552777425851673,5.377981460187584,7.592215724289417,7.997236608061939,9.279121516738087,9.015664167236537,4.839535965584219,6.390003268606961,2.607773875351995,3.249648765195161,8.70484838495031,6.314615230076015,8.053370455745608,1.789849121123552,4.774366528727114,2.067114505916834,5.06365415873006,0.4660444776527584,6.000194465741515,2.848089814651757,0.6450132769532502,1.934519598726183,7.636542138643563,6.93537222687155,3.597667450085282,3.069318039342761,2.599325377959758,1.027205905411392,1.243265827652067,4.72914743470028,6.716182867530733,0.7321917964145541,7.269223926123232,3.366248025558889,5.823599109426141,6.916950156446546,2.224664788227528,4.912533171009272,2.945754905231297,0.6400673114694655,6.868139365687966,9.58969300147146,0.9206234849989414,6.531105292961001,5.044680912978947,0.8683315687812865,7.997932566795498,4.386034540366381,0.691190215293318,2.767594172619283,0.2584187802858651,8.999491324648261,7.688941161613911,6.033860824536532,7.587130682077259,8.347787798848003,4.250509750563651,0.8500840817578137,7.862411043606699,7.619897874537855,4.29418173385784,1.023272497113794,5.698608513921499,2.926047542132437,8.478695389349014,6.676358703989536,0.8458618354052305,0.8757081138901412,8.985992490779608,2.392644542269409,5.471020594704896,0.4261325090192258,9.620317395310849,7.295677061192691,6.107993226032704,0.7177662663161755,9.535504225641489,9.871040068101138,3.241784032434225,2.58258284535259,7.084825467318296,1.84018169529736,5.275128737557679,4.636471983976662,8.609830858185887,3.364275540225208,2.056513582356274]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>institution_name<\/th>\n      <th>total_exp_m<\/th>\n      <th>enrollment_th<\/th>\n      <th>type<\/th>\n      <th>nonsense<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":[1,2,4]},{"name":"institution_name","targets":0},{"name":"total_exp_m","targets":1},{"name":"enrollment_th","targets":2},{"name":"type","targets":3},{"name":"nonsense","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="univariate-eda" class="level2">
+<h2 class="anchored" data-anchor-id="univariate-eda">Univariate EDA</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lec10-hypothesis_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="bivariate-eda" class="level2">
+<h2 class="anchored" data-anchor-id="bivariate-eda">Bivariate EDA</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lec10-hypothesis_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="regression-model" class="level2">
+<h2 class="anchored" data-anchor-id="regression-model">Regression model</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>exp_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(total_exp_m <span class="sc">~</span> enrollment_th <span class="sc">+</span> type <span class="sc">+</span> nonsense, <span class="at">data =</span> football)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(exp_fit) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">17.833</td>
+<td style="text-align: right;">3.523</td>
+<td style="text-align: right;">5.061</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">enrollment_th</td>
+<td style="text-align: right;">0.796</td>
+<td style="text-align: right;">0.112</td>
+<td style="text-align: right;">7.095</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">typePublic</td>
+<td style="text-align: right;">-13.520</td>
+<td style="text-align: right;">3.178</td>
+<td style="text-align: right;">-4.254</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nonsense</td>
+<td style="text-align: right;">0.298</td>
+<td style="text-align: right;">0.371</td>
+<td style="text-align: right;">0.803</td>
+<td style="text-align: right;">0.423</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="from-sample-to-population" class="level2 midi">
+<h2 class="midi anchored" data-anchor-id="from-sample-to-population">From sample to population</h2>
+<p>For every additional 1,000 students, we expect an institution’s total expenditures on football to increase by $780,000, on average, holding institution type constant.</p>
+<ul>
+<li>This estimate is valid for the single sample of 127 higher education institutions in the 2019 - 2020 academic year.</li>
+<li>But what if we’re not interested quantifying the relationship between student enrollment, institution type, and football expenditures for this single sample?</li>
+<li>What if we want to say something about the relationship between these variables for all colleges and universities with football programs and across different years?</li>
+</ul>
+</section>
+<section id="varhatboldsymbolbeta-for-ncaa-data" class="level2">
+<h2 class="anchored" data-anchor-id="varhatboldsymbolbeta-for-ncaa-data"><span class="math inline">\(Var(\hat{\boldsymbol{\beta}})\)</span> for NCAA data</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(total_exp_m <span class="sc">~</span> enrollment_th <span class="sc">+</span> type <span class="sc">+</span> nonsense, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> football)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>sigma_sq <span class="ot">&lt;-</span> <span class="fu">glance</span>(exp_fit)<span class="sc">$</span>sigma<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>var_beta <span class="ot">&lt;-</span> sigma_sq <span class="sc">*</span> <span class="fu">solve</span>(<span class="fu">t</span>(X) <span class="sc">%*%</span> X)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>var_beta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              (Intercept) enrollment_th typePublic     nonsense
+(Intercept)    12.4139465  -0.170593886 -5.4231006 -0.692309267
+enrollment_th  -0.1705939   0.012597357 -0.1315619  0.007350219
+typePublic     -5.4231006  -0.131561941 10.1018139 -0.136025423
+nonsense       -0.6923093   0.007350219 -0.1360254  0.137611482</code></pre>
+</div>
+</div>
+</section>
+<section id="sehatboldsymbolbeta-for-ncaa-data" class="level2">
+<h2 class="anchored" data-anchor-id="sehatboldsymbolbeta-for-ncaa-data"><span class="math inline">\(SE(\hat{\boldsymbol{\beta}})\)</span> for NCAA data</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">17.833</td>
+<td style="text-align: right;">3.523</td>
+<td style="text-align: right;">5.061</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">enrollment_th</td>
+<td style="text-align: right;">0.796</td>
+<td style="text-align: right;">0.112</td>
+<td style="text-align: right;">7.095</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">typePublic</td>
+<td style="text-align: right;">-13.520</td>
+<td style="text-align: right;">3.178</td>
+<td style="text-align: right;">-4.254</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nonsense</td>
+<td style="text-align: right;">0.298</td>
+<td style="text-align: right;">0.371</td>
+<td style="text-align: right;">0.803</td>
+<td style="text-align: right;">0.423</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">diag</span>(var_beta))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  (Intercept) enrollment_th    typePublic      nonsense 
+    3.5233431     0.1122379     3.1783351     0.3709602 </code></pre>
+</div>
+</div>
+</section>
+<section id="compute-p-value" class="level2">
+<h2 class="anchored" data-anchor-id="compute-p-value">Compute p-value</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(football)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(<span class="fl">0.803</span>), n <span class="sc">-</span> p))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4235237</code></pre>
+</div>
+</div>
+<p>Visually,</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lec10-hypothesis_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="t-vs.-n01" class="level2">
+<h2 class="anchored" data-anchor-id="t-vs.-n01"><em>t</em> vs.&nbsp;N(0,1)</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-normal-t-curves" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normal-t-curves-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lec10-hypothesis_files/figure-html/fig-normal-t-curves-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-t-curves-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Standard normal vs.&nbsp;t distributions
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

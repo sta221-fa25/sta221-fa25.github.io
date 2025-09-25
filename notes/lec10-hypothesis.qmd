@@ -1,0 +1,225 @@
+---
+title: "Hypothesis testing"
+author: "Dr. Alexander Fisher"
+format: html
+---
+
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+\newcommand{\bzero}{\boldsymbol{0}}
+\newcommand{\identity}{\boldsymbol{I}}
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data sets used in these notes"
+#| warning: false
+#| message: false
+library(tidyverse)
+library(tidymodels)
+library(DT) # datatable viewing
+library(patchwork)
+library(knitr)
+
+knitr::opts_chunk$set(
+  fig.width = 8,
+  fig.asp = 0.618,
+  fig.retina = 3,
+  dpi = 300,
+  out.width = "80%",
+  fig.align = "center"
+)
+
+set.seed(221)
+
+football <- 
+  read_csv("https://sta221-fa25.github.io/data/ncaa-football-exp.csv") |>
+  mutate(nonsense = runif(n(), 0, 10))
+```
+
+## Data: NCAA Football expenditures {.midi}
+
+Today's data come from [Equity in Athletics Data Analysis](https://ope.ed.gov/athletics/#/datafile/list) and includes information about sports expenditures and revenues for colleges and universities in the United States. This data set was featured in a [March 2022 Tidy Tuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-29/readme.md).
+
+We will focus on the 2019 (2019 - 2020 season) expenditures on football for institutions in the NCAA - Division 1 FBS (Football Bowl Subdivision). The variables are :
+
+-   `total_exp_m`: Total expenditures on football in the 2019 - 2020 academic year (in millions USD)
+
+-   `enrollment_th`: Total student enrollment in the 2019 - 2020 academic year (in thousands)
+
+-   `type`: institution type (Public or Private)
+
+- `nonsense`: a created variable (see above) which has nothing to do with expenditure
+
+```{r}
+#| echo: false
+#| message: false
+football |>
+  select(institution_name, total_exp_m, enrollment_th, type, nonsense) |>
+datatable(rownames = FALSE, options = list(pageLength = 10))
+```
+
+## Univariate EDA
+
+```{r}
+#| echo: false
+
+p1 <- ggplot(data = football, aes(x = total_exp_m)) + 
+  geom_histogram(fill = "steelblue", color = "black", binwidth = 3) + 
+  labs( x= "Total Football Expenditures (in $Millions)") +
+  theme_bw()
+
+p2 <- ggplot(data = football, aes(x = enrollment_th)) + 
+  geom_histogram(binwidth = 3, fill = "steelblue", color = "black") +
+  labs(x = "Total Student Enrollment (in Thousands)") + 
+  theme_bw()
+
+p3 <- ggplot(data = football, aes(x = type)) + 
+  geom_bar(fill = "steelblue", color = "black") + 
+  labs(x = "Institution Type") + 
+  theme_bw()
+
+p1 + (p2 / p3)
+```
+
+## Bivariate EDA
+
+```{r}
+#| echo: false
+#| 
+p4 <- ggplot(data = football, aes(x = enrollment_th, y = total_exp_m)) +
+  geom_point() +
+  labs(x = "Total Student Enrollment (in Thousands)", 
+       y = "Total Football Expenditures (in $Millions)", 
+       title = "Football Expenditures vs. Enrollment") +
+  theme_bw()
+
+p5 <- ggplot(data = football, aes(x = type, y = total_exp_m, fill = type)) + 
+  geom_boxplot() +
+  labs(x = "Institution Type", 
+       y = "",
+       title = "Football Expenditures vs. Type") + 
+  theme(legend.position = "none") +
+  theme_bw()
+
+p4 + p5
+```
+
+## Regression model
+
+```{r}
+#| echo: true
+exp_fit <- lm(total_exp_m ~ enrollment_th + type + nonsense, data = football)
+tidy(exp_fit) |>
+  kable(digits = 3)
+```
+
+
+## From sample to population {.midi}
+
+For every additional 1,000 students, we expect an institution's total expenditures on football to increase by \$780,000, on average, holding institution type constant.
+
+
+-   This estimate is valid for the single sample of `r nrow(football)` higher education institutions in the 2019 - 2020 academic year.
+-   But what if we're not interested quantifying the relationship between student enrollment, institution type, and football expenditures for this single sample?
+-   What if we want to say something about the relationship between these variables for all colleges and universities with football programs and across different years?
+
+## $Var(\hat{\boldsymbol{\beta}})$ for NCAA data
+
+```{r}
+X <- model.matrix(total_exp_m ~ enrollment_th + type + nonsense, 
+                  data = football)
+sigma_sq <- glance(exp_fit)$sigma^2
+
+var_beta <- sigma_sq * solve(t(X) %*% X)
+var_beta
+```
+
+## $SE(\hat{\boldsymbol{\beta}})$ for NCAA data
+
+```{r}
+#| echo: false
+tidy(exp_fit) |> kable(digits = 3)
+```
+
+```{r}
+sqrt(diag(var_beta))
+```
+
+## Compute p-value
+
+```{r}
+n <- nrow(football)
+p <- 4
+2 * (1 - pt(abs(0.803), n - p))
+```
+
+Visually,
+
+```{r}
+#| echo: false
+#| warning: false
+library(ggplot2)
+
+# Parameters
+df <- n - p  # degrees of freedom
+alpha <- 0.05
+t_crit <- qt(1 - alpha/2, df)
+
+# Data for density curve
+x <- seq(-4, 4, length.out = 500)
+dens <- dt(x, df)
+df_curve <- data.frame(x, dens)
+
+# Data for shaded tails
+df_lower <- subset(df_curve, x <= -t_crit)
+df_upper <- subset(df_curve, x >= t_crit)
+
+# Plot
+ggplot(df_curve, aes(x, dens)) +
+  geom_line(color = "black", size = 1) +
+  geom_area(data = df_lower, aes(x, y = dens), fill = "steelblue", alpha = 0.5) +
+  geom_area(data = df_upper, aes(x, y = dens), fill = "steelblue", alpha = 0.5) +
+  geom_vline(xintercept = c(-t_crit, t_crit), linetype = "dashed", color = "darkred") +
+  labs(
+    title = paste0("t Distribution with ", df, " df"),
+    x = "t value",
+    y = "Density"
+  ) +
+  theme_minimal(base_size = 14)
+```
+
+
+## *t* vs. N(0,1)
+
+```{r}
+#| label: fig-normal-t-curves
+#| fig-cap: Standard normal vs. t distributions
+#| echo: false
+
+library(ggplot2)
+
+colors <- c("N(0,1)"   = "black", 
+            "t, df = 2"  = "firebrick", 
+            "t, df = 5"  = "cadetblue",
+            "t, df = 30" = "gold")
+
+ggplot() + 
+  xlim(-5, 5) + 
+  geom_function(fun = dnorm, aes(color = "N(0,1)")) + 
+  geom_function(fun = dt, args = list(df = 2),  aes(color = "t, df = 2")) +
+  geom_function(fun = dt, args = list(df = 5),  aes(color = "t, df = 5")) + 
+  geom_function(fun = dt, args = list(df = 30), aes(color = "t, df = 30")) + 
+  scale_color_manual(
+    values = colors,
+    breaks = c("N(0,1)", "t, df = 2", "t, df = 5", "t, df = 30") # ordering here
+  ) +
+  labs(x = "", y = "", color = "") + 
+  theme_bw()
+
+```

@@ -4,7 +4,7 @@ library(ghclass)
 
 ## Make teams (once)
 
-all_team <- readxl::read_xlsx("~/Downloads/teams_221.xlsx")
+all_team <- readxl::read_xlsx("~/Downloads/teams_221_project.xlsx")
 
 team_names <- all_team %>%
   select(team) %>%
@@ -38,8 +38,8 @@ roster = all_team
 org_create_assignment(
   org = "sta221-fa25",
   user = roster$github,
-  repo = paste0("lab-03-", roster$team), ## edit this
+  repo = paste0("project-", roster$team), ## edit this
   team = roster$team,
-  source_repo = "sta221-fa25/lab-03", ## edit this
+  source_repo = "sta221-fa25/project", ## edit this
   private = TRUE
 )

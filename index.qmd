@@ -118,8 +118,8 @@ schedule %>%
 |  | Thu Sep 18 | inference continued |  | [🗒](/notes/lec08-inference-2.html) | [hw 2](/hw/hw02.html) |  |
 | 5 | Tue Sep 23 | the normal assumption |  | [🗒](/notes/lec09-normal.html) |  |  |
 |  | Wed Sep 24 | lab: project workday |  |  | [project 1](/labs/lab-project.html) |  |
-|  | Thu Sep 25 | hypothesis tests and CIs |  |  |  |  |
-| 6 | Tue Sep 30 |  |  |  |  | research topics due |
+|  | Thu Sep 25 | hypothesis tests |  | [🗒](/notes/lec10-hypothesis.html) |  |  |
+| 6 | Tue Sep 30 | confidence intervals |  |  |  | research topics due |
 |  | Wed Oct 01 |  |  |  |  |  |
 |  | Thu Oct 02 | exam review |  |  |  |  |
 | 7 | Tue Oct 07 | exam 1 |  |  |  |  |
