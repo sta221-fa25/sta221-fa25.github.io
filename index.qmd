@@ -119,14 +119,14 @@ schedule %>%
 | 5 | Tue Sep 23 | the normal assumption |  | [🗒](/notes/lec09-normal.html) |  |  |
 |  | Wed Sep 24 | lab: project workday |  |  | [project 1](/labs/lab-project.html) |  |
 |  | Thu Sep 25 | hypothesis tests |  | [🗒](/notes/lec10-hypothesis.html) |  |  |
-| 6 | Tue Sep 30 | confidence intervals |  |  |  | research topics due |
-|  | Wed Oct 01 |  |  |  |  |  |
+| 6 | Tue Sep 30 | confidence intervals |  | [🗒](/notes/lec11-ci.html) |  | research topics due |
+|  | Wed Oct 01 | lab: interaction effects and exam practice |  | [💻](/labs/lab-interactions.html) | [lab 4](/labs/lab04.html) |  |
 |  | Thu Oct 02 | exam review |  |  |  |  |
 | 7 | Tue Oct 07 | exam 1 |  |  |  |  |
-|  | Wed Oct 08 |  |  |  |  |  |
-|  | Thu Oct 09 |  |  |  |  | project proposal due |
+|  | Wed Oct 08 | NO LAB (exam) |  |  |  |  |
+|  | Thu Oct 09 |  |  |  |  |  |
 | 8 | Tue Oct 14 | NO CLASS |  |  |  |  |
-|  | Wed Oct 15 |  |  |  |  |  |
+|  | Wed Oct 15 |  |  |  |  | project proposal due |
 |  | Thu Oct 16 |  |  |  |  |  |
 | 9 | Tue Oct 21 |  |  |  |  |  |
 |  | Wed Oct 22 |  |  |  |  |  |

@@ -1,0 +1,132 @@
+---
+title: "Confidence intervals"
+author: "Dr. Alexander Fisher"
+format: html
+---
+
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+\newcommand{\bzero}{\boldsymbol{0}}
+\newcommand{\identity}{\boldsymbol{I}}
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data sets used in these notes"
+#| warning: false
+#| message: false
+library(tidyverse)
+library(tidymodels)
+library(DT) # datatable viewing
+library(patchwork)
+library(knitr)
+
+knitr::opts_chunk$set(
+  fig.width = 8,
+  fig.asp = 0.618,
+  fig.retina = 3,
+  dpi = 300,
+  out.width = "80%",
+  fig.align = "center"
+)
+
+set.seed(221)
+
+football <- 
+  read_csv("https://sta221-fa25.github.io/data/ncaa-football-exp.csv") |>
+  mutate(nonsense = runif(n(), 0, 10))
+```
+
+## Data: NCAA Football expenditures {.midi}
+
+Same data as before (reminder):
+
+Today's data come from [Equity in Athletics Data Analysis](https://ope.ed.gov/athletics/#/datafile/list) and includes information about sports expenditures and revenues for colleges and universities in the United States. This data set was featured in a [March 2022 Tidy Tuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-29/readme.md).
+
+We will focus on the 2019 (2019 - 2020 season) expenditures on football for institutions in the NCAA - Division 1 FBS (Football Bowl Subdivision). The variables are :
+
+-   `total_exp_m`: Total expenditures on football in the 2019 - 2020 academic year (in millions USD)
+
+-   `enrollment_th`: Total student enrollment in the 2019 - 2020 academic year (in thousands)
+
+-   `type`: institution type (Public or Private)
+
+- `nonsense`: a created variable (see above) which has nothing to do with expenditure
+
+```{r}
+#| echo: false
+#| message: false
+football |>
+  select(institution_name, total_exp_m, enrollment_th, type, nonsense) |>
+datatable(rownames = FALSE, options = list(pageLength = 10))
+```
+
+## Regression model
+
+```{r}
+#| echo: true
+exp_fit <- lm(total_exp_m ~ enrollment_th + type + nonsense, data = football)
+tidy(exp_fit) |>
+  kable(digits = 3)
+```
+## Confidence interval in R
+
+We can compute the confidence intervals in R easily:
+
+```{r}
+# alpha = 0.05; CI = 95%
+tidy(exp_fit, conf.int = TRUE, conf.level = 0.95) |> 
+  kable(digits = 3)
+```
+
+We can verify manually. For example, for the intercept:
+
+```{r}
+n = nrow(football)
+p = 4 # 4 entries in beta (dimension p)
+17.833 - (3.523 * qt(0.975, df = n - p))
+17.833 + (3.523 * qt(0.975, df = n - p))
+```
+
+Notice that 
+
+```{r}
+qt(0.975, df = n - p)
+```
+is close to the number 2. 
+
+We could approximate the 95% CI:
+
+```{r}
+17.833 - (3.523 * 2)
+17.833 + (3.523 * 2)
+```
+
+**Question**: when is this approximation valid?
+
+```{r}
+#| echo: false
+#| eval: false
+qnorm(0.975, mean = 0, sd = 1)
+qt(0.975, df = 50) 
+```
+
+## Prediction interval
+
+For a public college with an enrollment of 5,000 and a nonsense variable of 5, what is the predicted 95% expenditure interval?
+
+```{r}
+sigma_hat <- glance(exp_fit)$sigma
+t <- qt(0.975, df = n - p)
+X <- model.matrix(total_exp_m ~ enrollment_th + type + nonsense, 
+                  data = football)
+xstar = matrix(c(1, 5, 1, 5), ncol = 1)
+sigma_hat * sqrt((1 + t(xstar) %*% solve(t(X) %*% X)) %*% xstar)
+
+```
+

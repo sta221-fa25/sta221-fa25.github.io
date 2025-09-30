@@ -1,0 +1,117 @@
+---
+title: "Interaction effects"
+date: "October 1, 2025"
+format: revealjs
+---
+
+## Packages in these notes
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+library(knitr)
+library(kableExtra)
+library(tidymodels)
+```
+
+
+## Interaction terms
+
+-   Sometimes the relationship between a predictor variable and the response depends on the value of another predictor variable.
+-   This is an **interaction effect**.
+-   To account for this, we can include **interaction terms** in the model.
+
+## Example: penguins
+
+The relationship between penguin bill length and body mass depends on the penguin's island.
+
+::: panel-tabset
+
+## plot
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| fig-width: 12
+#| fig-height: 4
+penguins |>
+  ggplot(aes(x = bill_length_mm, y = body_mass_g, color = island)) +
+  geom_point() +
+  theme_bw() +
+  geom_smooth(method = 'lm', se = F) +
+  labs(x = "Bill length (mm)", y = "Body mass (g)", title = "Island interaction effect")
+```
+
+## code
+
+```{r}
+#| eval: false
+penguins |>
+  ggplot(aes(x = bill_length_mm, 
+             y = body_mass_g, color = island)) +
+  geom_point() +
+  theme_bw() +
+  geom_smooth(method = 'lm', se = F) +
+  labs(x = "Bill length (mm)", 
+       y = "Body mass (g)", 
+       title = "Island interaction effect")
+```
+
+## discuss
+
+The lines are not parallel indicating there is a potential **interaction effect**. The slope for bill length differs based on the penguin's island.
+
+:::
+
+
+## Interaction term in model {.smaller}
+
+```{r}
+#| echo: true
+penguin_fit <- lm(body_mass_g ~ bill_length_mm * island,
+      data = penguins)
+```
+
+```{r}
+#| echo: false
+tidy(penguin_fit) |>
+  kable(digits = 2) |>
+  row_spec(c(5,6), background = "#dce5b2")
+```
+
+## Interaction term in model {.midi}
+
+:::panel-tabset
+## Exercise
+::: question
+- Write the regression equation for penguins from island `Torgersen`
+
+- Write the regression equation for penguins from island `Dream`
+
+- Write the regression equation for penguins from island `Biscoe`
+:::
+## Solution
+
+Penguins equations for each island:
+
+$$
+\begin{aligned}
+\hat{y}_{\text{torgersen}} &= (-1726.02 + 2870.56)	+ (142.34 - 76.57)x_1\\
+&= 1144.54 + 65.77x_1\\
+\hat{y}_{\text{dream}} &= (-1726.02 + 4478.69	)	+ (142.34 - 120.60)x_1\\
+&= 2752.67 + 21.74x_1\\
+\hat{y}_{\text{biscoe}} &= -1726.02	+ 142.34 x_1
+\end{aligned}
+$$
+
+where $\hat{y}$ is the predicted body mass for a given bill length $x_1$.
+:::
+
+## Interpreting interaction terms
+
+What the interaction means: 
+
+- The effect of bill length on body mass differs by -76.5 when the penguin comes from island Torgersen instead of Biscoe. 
+
+- The effect of bill length on body mass differs by -120 when the penguin comes from island Dream instead of Biscoe. 
+

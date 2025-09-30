@@ -7,7 +7,7 @@ format: html
 
 Research topics due **Tuesday September 30 at 5:00pm**
 
-Project proposal due **Thursday October 9 at 5:00pm**
+Project proposal due **Wednesday October 15 at 5:00pm**
 
 Exploratory data analysis due **Tuesday November 4**
 
