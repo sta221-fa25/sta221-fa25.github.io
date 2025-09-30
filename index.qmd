@@ -105,7 +105,7 @@ schedule %>%
 | Week | Date | Topic | Prepare | Notes | Assignment | Project |
 |:----------|:----------|:----------|:---------:|:---------:|:---------:|:---------:|
 | 1 | Tue Aug 26 | welcome |  | [💻](/notes/slides/lec01-welcome.html) |  |  |
-|  | Wed Aug 27 | lab: hello git and R |  | [💻](/labs/lab0-slides.html) | [lab 0](/labs/lab00.html) |  |
+|  | Wed Aug 27 | lab: hello git and R |  | [💻](/labs/slides/lab0-slides.html) | [lab 0](/labs/lab00.html) |  |
 |  | Thu Aug 28 | correlation | [📖](/prepare/prepare-lec02.html) | [🗒](/notes/lec02-correlation.html) |  |  |
 | 2 | Tue Sep 02 | simple linear regression |  | [🗒](/notes/lec03-slr.html) |  |  |
 |  | Wed Sep 03 | lab: computing and linear algebra review |  |  | [lab 1](/labs/lab01.html) |  |
@@ -120,7 +120,7 @@ schedule %>%
 |  | Wed Sep 24 | lab: project workday |  |  | [project 1](/labs/lab-project.html) |  |
 |  | Thu Sep 25 | hypothesis tests |  | [🗒](/notes/lec10-hypothesis.html) |  |  |
 | 6 | Tue Sep 30 | confidence intervals |  | [🗒](/notes/lec11-ci.html) |  | research topics due |
-|  | Wed Oct 01 | lab: interaction effects and exam practice |  | [💻](/labs/lab-interactions.html) | [lab 4](/labs/lab04.html) |  |
+|  | Wed Oct 01 | lab: interaction effects and exam practice |  | [💻](/labs/slides/lab-interactions.html) | [lab 4](/labs/lab04.html) |  |
 |  | Thu Oct 02 | exam review |  |  |  |  |
 | 7 | Tue Oct 07 | exam 1 |  |  |  |  |
 |  | Wed Oct 08 | NO LAB (exam) |  |  |  |  |
