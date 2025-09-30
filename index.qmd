@@ -119,7 +119,7 @@ schedule %>%
 | 5 | Tue Sep 23 | the normal assumption |  | [🗒](/notes/lec09-normal.html) |  |  |
 |  | Wed Sep 24 | lab: project workday |  |  | [project 1](/labs/lab-project.html) |  |
 |  | Thu Sep 25 | hypothesis tests |  | [🗒](/notes/lec10-hypothesis.html) |  |  |
-| 6 | Tue Sep 30 | confidence intervals |  | [🗒](/notes/lec11-ci.html) |  | research topics due |
+| 6 | Tue Sep 30 | confidence intervals |  | [🗒](/notes/lec11-ci.html)[📝](/notes/CI-notes.pdf) |  | research topics due |
 |  | Wed Oct 01 | lab: interaction effects and exam practice |  | [💻](/labs/slides/lab-interactions.html) | [lab 4](/labs/lab04.html) |  |
 |  | Thu Oct 02 | exam review |  |  |  |  |
 | 7 | Tue Oct 07 | exam 1 |  |  |  |  |

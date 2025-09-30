@@ -118,15 +118,53 @@ qt(0.975, df = 50)
 
 ## Prediction interval
 
-For a public college with an enrollment of 5,000 and a nonsense variable of 5, what is the predicted 95% expenditure interval?
+For a public college with an enrollment of 50,000 and a nonsense variable of 9, what is the predicted 95% expenditure interval?
+
+Prediction:
+```{r}
+xstar_df <- tibble(
+  enrollment_th = 50,
+  nonsense = 9,
+  type = "Public"
+)
+predict(exp_fit, newdata = xstar_df, interval = "prediction",
+        level = 0.95)
+```
+
+
+::: panel-tabset
+## Exercise
+
+Compute the CI manually.
+
+## Solution
+
+$\hat{y}_*$:
+
+```{r}
+X <- model.matrix(total_exp_m ~ enrollment_th + type + nonsense, 
+                  data = football)
+
+y = football$total_exp_m
+
+betaHat = solve(t(X) %*% X) %*% t(X) %*% y
+
+xstar = matrix(c(1, 50, 1, 9), ncol = 1)
+prediction = t(xstar) %*% betaHat
+prediction
+```
+
+Confidence interval: 
 
 ```{r}
 sigma_hat <- glance(exp_fit)$sigma
 t <- qt(0.975, df = n - p)
-X <- model.matrix(total_exp_m ~ enrollment_th + type + nonsense, 
-                  data = football)
-xstar = matrix(c(1, 5, 1, 5), ncol = 1)
-sigma_hat * sqrt((1 + t(xstar) %*% solve(t(X) %*% X)) %*% xstar)
+se = sigma_hat * sqrt(1 + t(xstar) %*% solve(t(X) %*% X) %*% xstar)
 
+prediction - (se*t)
+prediction + (se*t)
 ```
+
+
+:::
 
