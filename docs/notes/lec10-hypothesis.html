@@ -237,10 +237,20 @@ window.Quarto = {
   <li><a href="#bivariate-eda" id="toc-bivariate-eda" class="nav-link" data-scroll-target="#bivariate-eda">Bivariate EDA</a></li>
   <li><a href="#regression-model" id="toc-regression-model" class="nav-link" data-scroll-target="#regression-model">Regression model</a></li>
   <li><a href="#from-sample-to-population" id="toc-from-sample-to-population" class="nav-link" data-scroll-target="#from-sample-to-population">From sample to population</a></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis testing</a>
+  <ul class="collapse">
+  <li><a href="#p-value" id="toc-p-value" class="nav-link" data-scroll-target="#p-value">p-value</a></li>
+  </ul></li>
+  <li><a href="#hypothesis-testing-in-r" id="toc-hypothesis-testing-in-r" class="nav-link" data-scroll-target="#hypothesis-testing-in-r">Hypothesis testing in R</a>
+  <ul class="collapse">
+  <li><a href="#manually-computing-the-standard-error" id="toc-manually-computing-the-standard-error" class="nav-link" data-scroll-target="#manually-computing-the-standard-error">Manually computing the standard error</a>
+  <ul class="collapse">
   <li><a href="#varhatboldsymbolbeta-for-ncaa-data" id="toc-varhatboldsymbolbeta-for-ncaa-data" class="nav-link" data-scroll-target="#varhatboldsymbolbeta-for-ncaa-data"><span class="math inline">\(Var(\hat{\boldsymbol{\beta}})\)</span> for NCAA data</a></li>
   <li><a href="#sehatboldsymbolbeta-for-ncaa-data" id="toc-sehatboldsymbolbeta-for-ncaa-data" class="nav-link" data-scroll-target="#sehatboldsymbolbeta-for-ncaa-data"><span class="math inline">\(SE(\hat{\boldsymbol{\beta}})\)</span> for NCAA data</a></li>
+  </ul></li>
   <li><a href="#compute-p-value" id="toc-compute-p-value" class="nav-link" data-scroll-target="#compute-p-value">Compute p-value</a></li>
   <li><a href="#t-vs.-n01" id="toc-t-vs.-n01" class="nav-link" data-scroll-target="#t-vs.-n01"><em>t</em> vs.&nbsp;N(0,1)</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -398,8 +408,58 @@ window.Quarto = {
 <li>What if we want to say something about the relationship between these variables for all colleges and universities with football programs and across different years?</li>
 </ul>
 </section>
-<section id="varhatboldsymbolbeta-for-ncaa-data" class="level2">
-<h2 class="anchored" data-anchor-id="varhatboldsymbolbeta-for-ncaa-data"><span class="math inline">\(Var(\hat{\boldsymbol{\beta}})\)</span> for NCAA data</h2>
+<section id="hypothesis-testing" class="level1">
+<h1>Hypothesis testing</h1>
+<p><strong>Goal</strong>: evaluate the evidence that <span class="math inline">\(\beta_j \neq 0\)</span>.</p>
+<p>Recall that our assumptions imply</p>
+<p><span class="math display">\[
+\hat{\beta} \sim \text{MVN}(\beta, \sigma^2 (\boldsymbol{X}^T \boldsymbol{X})^{-1})
+\]</span> which further implies</p>
+<p><span class="math display">\[
+\hat{\beta_j} \sim N(\beta_j, \sigma^2 C_{jj}),
+\]</span> where <span class="math inline">\(C = \left(\boldsymbol{X}^T \boldsymbol{X}\right)^{-1}\)</span>.</p>
+<p>If <span class="math inline">\(\beta_j = 0\)</span>, then <span class="math inline">\(\hat{\beta}_j \sim N(0, \sigma^2 C_{jj})\)</span>.</p>
+<p>Testing question: is the observed value of <span class="math inline">\(\hat{\beta}_j\)</span> “consistent” with the hypothesis <span class="math inline">\(H_0: \beta_j = 0\)</span>? In other words, is <span class="math inline">\(\hat{\beta_j} \sim N(0, \sigma^2 C_{jj})\)</span> a reasonable conclusion?</p>
+<p>Idea: <span class="math inline">\(Z_{\beta_j} = \frac{\hat{\beta_j} - 0}{\sqrt{\sigma^2 C_{jj}}} \sim N(0, 1)\)</span>.</p>
+<p>If <span class="math inline">\(|Z_{\beta_j}|\)</span> is large, we will reject the null. If it is small, we will ‘fail to reject’ the null.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We can’t compute <span class="math inline">\(Z_{\beta_j}\)</span> directly because we don’t know <span class="math inline">\(\sigma^2\)</span>. What we’ll do is plug in the unbiased estimator <span class="math inline">\(\hat{\sigma}^2 = \frac{\text{RSS}}{n-p}\)</span> for <span class="math inline">\(\sigma^2\)</span>.</p>
+</div>
+</div>
+<p><span class="math display">\[
+t_{\beta_j} = \frac{\hat{\beta}_j}{\sqrt{\hat{\sigma}^2 C_{jj}}} \sim t_{n-p}
+\]</span></p>
+<p><span class="math inline">\(t_{\beta_j}\)</span> is called a <strong>test statistic</strong> because it is the <em>statistic</em> (function of the data) that summarizes our evidence against the null.</p>
+<p>Let <span class="math inline">\(t_{1-\frac{\alpha}{2}, n- p}\)</span> be defined as <code>qt(1 - (alpha/2), n - p)</code>, i.e.&nbsp;the (1-<span class="math inline">\(\alpha/2\)</span>) quantile of a t-distribution with <span class="math inline">\(n-p\)</span> degrees of freedom. Then</p>
+<p><span class="math display">\[
+\begin{aligned}
+Pr(\text{reject } H_0 | \beta_j = 0) &amp;= Pr(|t_{\beta_j}| &gt; t_{1-\frac{\alpha}{2}}|\beta_j = 0)\\
+&amp;= Pr(|t| &gt; t_{1-\frac{\alpha}{2}})\\
+&amp;= \frac{\alpha}{2} + \frac{\alpha}{2}\\
+&amp;= \alpha
+\end{aligned}
+\]</span></p>
+<section id="p-value" class="level2">
+<h2 class="anchored" data-anchor-id="p-value">p-value</h2>
+<p>A <strong>p-value</strong> is: (1) a tail probability of a statistic under the null hypothesis, (2) the lowest value of <span class="math inline">\(\alpha\)</span> such that <span class="math inline">\(H_0\)</span> is rejected, (3) <span class="math inline">\(Pr(|t| &gt; t_{\beta_j (obs)})\)</span>.</p>
+<p>In <code>R</code> we can compute it: <span class="math inline">\(2 \times\)</span> (1 - <code>pt(abs(t), n - p)</code>).</p>
+</section>
+</section>
+<section id="hypothesis-testing-in-r" class="level1">
+<h1>Hypothesis testing in R</h1>
+<section id="manually-computing-the-standard-error" class="level2">
+<h2 class="anchored" data-anchor-id="manually-computing-the-standard-error">Manually computing the standard error</h2>
+<section id="varhatboldsymbolbeta-for-ncaa-data" class="level3">
+<h3 class="anchored" data-anchor-id="varhatboldsymbolbeta-for-ncaa-data"><span class="math inline">\(Var(\hat{\boldsymbol{\beta}})\)</span> for NCAA data</h3>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(total_exp_m <span class="sc">~</span> enrollment_th <span class="sc">+</span> type <span class="sc">+</span> nonsense, </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> football)</span>
@@ -416,8 +476,8 @@ nonsense       -0.6923093   0.007350219 -0.1360254  0.137611482</code></pre>
 </div>
 </div>
 </section>
-<section id="sehatboldsymbolbeta-for-ncaa-data" class="level2">
-<h2 class="anchored" data-anchor-id="sehatboldsymbolbeta-for-ncaa-data"><span class="math inline">\(SE(\hat{\boldsymbol{\beta}})\)</span> for NCAA data</h2>
+<section id="sehatboldsymbolbeta-for-ncaa-data" class="level3">
+<h3 class="anchored" data-anchor-id="sehatboldsymbolbeta-for-ncaa-data"><span class="math inline">\(SE(\hat{\boldsymbol{\beta}})\)</span> for NCAA data</h3>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -471,6 +531,7 @@ nonsense       -0.6923093   0.007350219 -0.1360254  0.137611482</code></pre>
 </div>
 </div>
 </section>
+</section>
 <section id="compute-p-value" class="level2">
 <h2 class="anchored" data-anchor-id="compute-p-value">Compute p-value</h2>
 <div class="cell" data-layout-align="center">
@@ -510,6 +571,7 @@ Figure&nbsp;1: Standard normal vs.&nbsp;t distributions
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

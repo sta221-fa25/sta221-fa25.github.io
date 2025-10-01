@@ -1377,5 +1377,19 @@
     "title": "Interaction effects",
     "section": "Interpreting interaction terms",
     "text": "Interpreting interaction terms\nWhat the interaction means:\n\nThe effect of bill length on body mass differs by -76.5 when the penguin comes from island Torgersen instead of Biscoe.\nThe effect of bill length on body mass differs by -120 when the penguin comes from island Dream instead of Biscoe."
+  },
+  {
+    "objectID": "notes/lec10-hypothesis.html#manually-computing-the-standard-error",
+    "href": "notes/lec10-hypothesis.html#manually-computing-the-standard-error",
+    "title": "Hypothesis testing",
+    "section": "Manually computing the standard error",
+    "text": "Manually computing the standard error\n\n\\(Var(\\hat{\\boldsymbol{\\beta}})\\) for NCAA data\n\nX &lt;- model.matrix(total_exp_m ~ enrollment_th + type + nonsense, \n                  data = football)\nsigma_sq &lt;- glance(exp_fit)$sigma^2\n\nvar_beta &lt;- sigma_sq * solve(t(X) %*% X)\nvar_beta\n\n              (Intercept) enrollment_th typePublic     nonsense\n(Intercept)    12.4139465  -0.170593886 -5.4231006 -0.692309267\nenrollment_th  -0.1705939   0.012597357 -0.1315619  0.007350219\ntypePublic     -5.4231006  -0.131561941 10.1018139 -0.136025423\nnonsense       -0.6923093   0.007350219 -0.1360254  0.137611482\n\n\n\n\n\\(SE(\\hat{\\boldsymbol{\\beta}})\\) for NCAA data\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n17.833\n3.523\n5.061\n0.000\n\n\nenrollment_th\n0.796\n0.112\n7.095\n0.000\n\n\ntypePublic\n-13.520\n3.178\n-4.254\n0.000\n\n\nnonsense\n0.298\n0.371\n0.803\n0.423\n\n\n\n\n\n\nsqrt(diag(var_beta))\n\n  (Intercept) enrollment_th    typePublic      nonsense \n    3.5233431     0.1122379     3.1783351     0.3709602"
+  },
+  {
+    "objectID": "notes/lec10-hypothesis.html#p-value",
+    "href": "notes/lec10-hypothesis.html#p-value",
+    "title": "Hypothesis testing",
+    "section": "p-value",
+    "text": "p-value\nA p-value is: (1) a tail probability of a statistic under the null hypothesis, (2) the lowest value of \\(\\alpha\\) such that \\(H_0\\) is rejected, (3) \\(Pr(|t| &gt; t_{\\beta_j (obs)})\\).\nIn R we can compute it: \\(2 \\times\\) (1 - pt(abs(t), n - p))."
   }
 ]

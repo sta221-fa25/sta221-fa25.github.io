@@ -129,7 +129,63 @@ For every additional 1,000 students, we expect an institution's total expenditur
 -   But what if we're not interested quantifying the relationship between student enrollment, institution type, and football expenditures for this single sample?
 -   What if we want to say something about the relationship between these variables for all colleges and universities with football programs and across different years?
 
-## $Var(\hat{\boldsymbol{\beta}})$ for NCAA data
+
+# Hypothesis testing 
+
+**Goal**: evaluate the evidence that $\beta_j \neq 0$.
+
+Recall that our assumptions imply
+
+$$
+\hat{\beta} \sim \text{MVN}(\beta, \sigma^2 (\bX^T \bX)^{-1})
+$$
+which further implies 
+
+$$
+\hat{\beta_j} \sim N(\beta_j, \sigma^2 C_{jj}),
+$$
+where $C = \left(\bX^T \bX\right)^{-1}$.
+
+If $\beta_j = 0$, then $\hat{\beta}_j \sim N(0, \sigma^2 C_{jj})$.
+
+Testing question: is the observed value of $\hat{\beta}_j$ "consistent" with the hypothesis $H_0: \beta_j = 0$? In other words, is $\hat{\beta_j} \sim N(0, \sigma^2 C_{jj})$ a reasonable conclusion?
+
+Idea: $Z_{\beta_j} = \frac{\hat{\beta_j} - 0}{\sqrt{\sigma^2 C_{jj}}} \sim N(0, 1)$.
+
+If $|Z_{\beta_j}|$ is large, we will reject the null. If it is small, we will 'fail to reject' the null.
+
+::: callout-note
+We can't compute $Z_{\beta_j}$ directly because we don't know $\sigma^2$. What we'll do is plug in the unbiased estimator $\hat{\sigma}^2 = \frac{\text{RSS}}{n-p}$ for $\sigma^2$.
+:::
+
+$$
+t_{\beta_j} = \frac{\hat{\beta}_j}{\sqrt{\hat{\sigma}^2 C_{jj}}} \sim t_{n-p}
+$$
+
+$t_{\beta_j}$ is called a **test statistic** because it is the *statistic* (function of the data) that summarizes our evidence against the null.
+
+Let $t_{1-\frac{\alpha}{2}, n- p}$ be defined as `qt(1 - (alpha/2), n - p)`, i.e. the (1-$\alpha/2$) quantile of a t-distribution with $n-p$ degrees of freedom. Then 
+
+$$
+\begin{aligned}
+Pr(\text{reject } H_0 | \beta_j = 0) &= Pr(|t_{\beta_j}| > t_{1-\frac{\alpha}{2}}|\beta_j = 0)\\
+&= Pr(|t| > t_{1-\frac{\alpha}{2}})\\
+&= \frac{\alpha}{2} + \frac{\alpha}{2}\\
+&= \alpha
+\end{aligned}
+$$
+
+## p-value
+
+A **p-value** is: (1) a tail probability of a statistic under the null hypothesis, (2) the lowest value of $\alpha$ such that $H_0$ is rejected, (3) $Pr(|t| > t_{\beta_j (obs)})$. 
+
+In `R` we can compute it: $2 \times$ (1 - `pt(abs(t), n - p)`).
+
+# Hypothesis testing in R
+
+## Manually computing the standard error
+
+### $Var(\hat{\boldsymbol{\beta}})$ for NCAA data
 
 ```{r}
 X <- model.matrix(total_exp_m ~ enrollment_th + type + nonsense, 
@@ -140,7 +196,7 @@ var_beta <- sigma_sq * solve(t(X) %*% X)
 var_beta
 ```
 
-## $SE(\hat{\boldsymbol{\beta}})$ for NCAA data
+### $SE(\hat{\boldsymbol{\beta}})$ for NCAA data
 
 ```{r}
 #| echo: false
