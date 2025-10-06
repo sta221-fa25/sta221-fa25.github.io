@@ -63,10 +63,10 @@ Properties
 
 ::: panel-tabset
 ## Exercise
-What is $\text{cov}(ay, - bz)$? Hint: apply properties 2 and 3 together.
+What is $\text{var}(ay - bz)$? Hint: apply properties 2 and 3 together.
 
 ## Solution
-$\text{cov}(ay, - bz) = \text{var}(ay) + \text{var}(-bz) + 2 \text{cov}(ay, -bz) = a^2 \text{var}(y) + b^2\text{var}(z) - 2ab\text{cov}(y, z)$
+$\text{var}(ay - bz) = \text{var}(ay) + \text{var}(-bz) + 2 \text{cov}(ay, -bz) = a^2 \text{var}(y) + b^2\text{var}(z) - 2ab\text{cov}(y, z)$
 :::
 
 ## Last time
