@@ -124,7 +124,7 @@ schedule %>%
 |  | Thu Oct 02 | exam review |  |  |  |  |
 | 7 | Tue Oct 07 | exam 1 |  |  |  |  |
 |  | Wed Oct 08 | NO LAB (exam) |  |  |  |  |
-|  | Thu Oct 09 | checking assumptions |  |  |  |  |
+|  | Thu Oct 09 | checking assumptions |  | [🗒](/notes/lec12-check-assumptions.html) |  |  |
 | 8 | Tue Oct 14 | NO CLASS |  |  |  |  |
 |  | Wed Oct 15 | lab: project workday |  |  |  | project proposal due |
 |  | Thu Oct 16 | multicollinearity |  |  |  |  |

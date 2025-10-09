@@ -1,0 +1,674 @@
+---
+title: "Checking assumptions"
+format: html
+---
+
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+\newcommand{\bzero}{\boldsymbol{0}}
+\newcommand{\identity}{\boldsymbol{I}}
+
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data sets used in these notes"
+#| echo: true
+#| message: false
+
+# load packages
+library(tidyverse)  
+library(tidymodels)  
+library(knitr)       
+library(patchwork)   
+library(viridis)
+
+lemurs <- 
+  read_csv("https://sta221-fa25.github.io/data/lemurs-pcoq.csv") |>
+  filter(age_at_wt_mo < 34)
+
+# set default theme in ggplot2
+ggplot2::theme_set(ggplot2::theme_bw(base_size = 16))
+```
+
+## Topics
+
+-   Model conditions
+
+-   Influential points
+
+-   Model diagnostics
+
+    -   Leverage
+
+    -   Studentized residuals
+
+    -   Cook's Distance
+
+## Data: Duke lemurs {.midi}
+
+Today's data contains a subset of the original Duke Lemur data set available in the [TidyTuesday GitHub repo](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-08-24/readme.md). This data includes information on “young adult” lemurs from the [Coquerel’s sifaka species](https://lemur.duke.edu/discover/meet-the-lemurs/coquerels-sifaka/) (PCOQ), the largest species at the Duke Lemur Center. The analysis will focus on the following variables:
+
+-   `age_at_wt_mo`: Age in months: Age of the animal when the weight was taken, in months (((Weight_Date-DOB)/365)\*12)
+
+-   `weight_g`: Weight: Animal weight, in grams. Weights under 500g generally to nearest 0.1-1g; Weights \>500g generally to the nearest 1-20g.
+
+**The goal of the analysis is to use the age of the lemurs to understand variability in the weight.**
+
+## EDA
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+p1 <- ggplot(data = lemurs, aes(x = weight_g)) + 
+  geom_histogram(fill = "steelblue", color = "black") + 
+  labs(x = "",
+       title = "Weight in grams")
+
+p2 <- ggplot(data = lemurs, aes(x = age_at_wt_mo)) + 
+  geom_histogram(fill = "steelblue", color = "black") + 
+  labs(x = "",
+       title = "Age in months")
+
+p3 <- ggplot(data = lemurs, aes(x = age_at_wt_mo, y = weight_g)) + 
+  geom_point() + 
+  labs(x = "Age in months",
+       y = "Weight in grams", 
+       title = "Weight vs. Age of PCOQ lemurs")
+
+(p1  + p2)
+
+```
+
+## EDA
+
+```{r}
+#| echo: false
+#| fig-align: center
+p3
+```
+
+## Fit model
+
+```{r}
+lemurs_fit <- lm(weight_g ~ age_at_wt_mo, data = lemurs)
+
+tidy(lemurs_fit) |> 
+  kable(digits = 3)
+```
+
+# Model conditions
+
+## Assumptions for regression {.midi}
+
+$$
+\mathbf{y}|\mathbf{X} \sim N(\mathbf{X}\boldsymbol{\beta}, \sigma_\epsilon^2\mathbf{I})
+$$
+
+1.  **Linearity:** $E[\varepsilon|X] = 0$, i.e. $E[Y|X] = X\beta$. There is a linear relationship between the response and predictor variables.
+2.  **Constant variance and independence**: $Var[\varepsilon] = I\sigma^2$. The variability about the least squares line is generally constant and the residuals are independent. 
+3.  **Normality:** $\varepsilon_i \sim Normal$. The distribution of the errors (residuals) is approximately normal.
+
+::: question
+How do we know if these assumptions hold in our data?
+:::
+
+## Linearity {.midi}
+
+-   Look at plot of residuals versus fitted (predicted) values.
+-   Linearity is satisfied if there is no discernible pattern in the plot (i.e., points randomly scattered around $residuals = 0$
+
+
+
+```{r}
+#| echo: false
+#| out-width: 65%
+#| fig-align: center
+lemurs_aug <- augment(lemurs_fit)
+
+ggplot(data = lemurs_aug, aes(x = .fitted, y = .resid)) +
+  geom_point() + 
+  geom_hline(yintercept = 0, linetype = 2, color = "red") + 
+  labs(x = "Fitted values", 
+       y = "Residuals", 
+       title = "Residuals vs. Fitted Values")
+```
+
+ 
+
+<center>**Linearity is** **satisfied**</center>
+
+## Example: Linearity not satisfied
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| 
+# code produced by chatgpt
+# https://chatgpt.com/c/67bd1e0e-7650-8002-b467-1bcab2e3e172
+
+# Simulate data where linearity is violated
+set.seed(123)
+n <- 100
+x <- runif(n, -2, 2)
+y <- x^2 + rnorm(n, sd = 0.8)  # Increased noise to obscure quadratic relationship
+
+data <- tibble(x, y)
+
+# Fit a linear model
+model <- lm(y ~ x, data = data)
+
+# Get residuals and fitted values
+data <- data %>% 
+  mutate(fitted = fitted(model), residuals = resid(model))
+
+# Plot residuals vs fitted values
+ggplot(data, aes(x = fitted, y = residuals)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  labs(subtitle = "Residuals vs Fitted Values",
+       title = "Linearity not satisfied",
+       x = "Fitted Values", y = "Residuals") +
+  theme_bw()
+
+
+
+```
+
+ 
+
+-   If linearity is not satisfied, examine the plots of residuals versus each predictor.
+-   Add higher order term(s), as needed.
+
+## Constant variance {.midi}
+
+-   Look at plot of residuals versus fitted (predicted) values.
+-   Constant variance is satisfied if the vertical spread of the points is approximately equal for all fitted values
+
+ 
+
+```{r}
+#| echo: false
+#| out-width: 65%
+#| fig-align: center
+lemurs_aug <- augment(lemurs_fit)
+
+ggplot(data = lemurs_aug, aes(x = .fitted, y = .resid)) +
+  geom_point() + 
+  geom_hline(yintercept = 0, linetype = 2, color = "red") + 
+  labs(x = "Fitted values", 
+       y = "Residuals", 
+       title = "Residuals vs. Fitted Values")
+```
+
+ 
+
+<center>**Constant variance is** **satisfied**</center>
+
+## Example: Constant variance not satisfied
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| 
+
+# code from chatgpt
+# https://chatgpt.com/c/67bd1e0e-7650-8002-b467-1bcab2e3e172
+
+# Simulate data where constant variance is violated, creating a fan shape with large variance on one side
+set.seed(123)
+n <- 100
+x <- runif(n, -2, 2)
+y <- rnorm(n, mean = 2 * x, sd = ifelse(x > 0, (x + 0.5)^2, 1))  # Increased noise for all x
+
+data <- tibble(x, y)
+
+# Fit a linear model
+model <- lm(y ~ x, data = data)
+
+# Get residuals and fitted values
+data <- data %>% 
+  mutate(fitted = fitted(model), residuals = resid(model))
+
+# Plot residuals vs fitted values
+ggplot(data, aes(x = fitted, y = residuals)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  labs(title = "Constant variance not satisfied",
+  subtitle = "Residuals vs Fitted Values", x = "Fitted Values", y = "Residuals") +
+  theme_minimal()
+
+
+
+
+```
+
+ 
+
+-   Constant variance is critical for reliable inference
+
+-   Address violations by applying transformation on the response
+
+## Normality {.midi}
+
+-   Look at the distribution of the residuals
+-   Normality is satisfied if the distribution is approximately unimodal and symmetric. Inference robust to violations if $n > 30$
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| out.width: 65%
+
+ggplot(data = lemurs_aug, aes(x = .resid)) +
+  geom_histogram(fill = "steelblue", color = "black") + 
+  labs(x = "Residuals", 
+       title = "Distribution of residuals")
+```
+
+ 
+
+<center>Distribution approximately unimodal and symmetric, aside from the outlier. There are `r nrow(lemurs)` observations, so inference robust to departures.</center>
+
+## Independence
+
+-   We can often check the independence condition based on the context of the data and how the observations were collected.
+
+-   If the data were collected in a particular order, examine a scatterplot of the residuals versus order in which the data were collected.
+
+-   If data has spatial element, plot residuals on a map to examine potential spatial correlation.
+
+ 
+
+<center>**The independence condition is** **satisfied**. The lemurs could reasonably be treated as independent.</center>
+
+# Model diagnostics
+
+## Model diagnostics
+
+```{r}
+lemurs_aug <- augment(lemurs_fit)
+
+lemurs_aug |> slice(1:10)
+```
+
+## Model diagnostics in R {.midi}
+
+Use the `augment()` function in the broom package to output the model diagnostics (along with the predicted values and residuals)
+
+-   response and predictor variables in the model
+-   `.fitted`: predicted values
+-   `.se.fit`: standard errors of predicted values
+-   `.resid`: residuals
+-   `.hat`: leverage
+-   `.sigma`: estimate of residual standard deviation when the corresponding observation is dropped from model
+-   `.cooksd`: Cook's distance
+-   `.std.resid`: standardized residuals
+
+## Influential Point
+
+An observation is **influential** if removing has a noticeable impact on the regression coefficients
+
+```{r,echo=F}
+#| warning: false
+#| message: false
+set.seed(12)
+n <- 20
+x <- c(runif(n,0,1))
+y <- 3*x + rnorm(n,0,.5)
+new.pt <- data.frame(x=2,y=0)
+x.new <- c(x,2)
+y.new <- c(y,0)
+data <- bind_cols(x=x.new,y=y.new)
+p1<- ggplot(data=data,aes(x=x,y=y))+geom_point(alpha =0.5)  + 
+              geom_point(data=new.pt,color="red",size=3) + 
+  geom_smooth(method="lm",se=FALSE, color = "steelblue") + 
+  labs(title = "With Influential Point")+ theme_light()+
+  theme(title=element_text(hjust=0.5,size=14)) + 
+  scale_x_continuous(limits = c(0,2)) 
+
+data2 <- bind_cols(x=x,y=y)
+p2 <- ggplot(data=data2,aes(x=x,y=y))+geom_point(alpha=0.5) + geom_smooth(method="lm",se=FALSE, color = "steelblue") + 
+  labs(title="Without Influential Point") + 
+  scale_x_continuous(limits = c(0, 2)) + theme_light() + theme(title=element_text(hjust=0.5,size=14))  
+p1 + p2
+```
+
+## Influential points
+
+::: incremental
+-   Influential points have a noticeable impact on the coefficients and standard errors used for inference
+-   These points can sometimes be identified in a scatterplot if there is only one predictor variable
+    -   This is often not the case when there are multiple predictors
+-   We will use measures to quantify an individual observation's influence on the regression model
+    -   **leverage**, **standardized & studentized residuals**, and **Cook's distance**
+:::
+
+# Cook's Distance
+
+## Motivating Cook's Distance
+
+-   An observation's influence on the regression line depends on
+
+    -   How close it lies to the general trend of the data
+
+    -   Its leverage
+
+-   **Cook's Distance** is a statistic that includes both of these components to measure an observation's overall impact on the model
+
+## Cook's Distance
+
+Cook's distance for the $i^{th}$ observation is
+
+$$
+D_i = \frac{r^2_i}{p}\Big(\frac{h_{ii}}{1 - h_{ii}}\Big)
+$$
+
+
+where $r_i$ is the studentized residual and $h_{ii}$ is the leverage for the $i^{th}$ observation
+
+ 
+
+This measure is a combination of
+
+-   How well the model fits the $i^{th}$ observation (magnitude of residuals)
+
+-   How far the $i^{th}$ observation is from the rest of the data (where the point is in the $x$ space)
+
+## Using Cook's Distance
+
+-   An observation with large value of $D_i$ is said to have a strong influence on the predicted values
+
+-   General thresholds .An observation with
+
+    -   $D_i > 0.5$ is **moderately influential**
+
+    -   $D_i > 1$ is **very influential**
+
+## Cook's Distance
+
+Cook's Distance is in the column `.cooksd` in the output from the `augment()` function
+
+```{r}
+#| echo: false
+
+lemurs_aug |>
+  mutate(obs_num = row_number()) |>
+  ggplot(aes(x = obs_num, y = .cooksd)) + 
+  geom_point() + 
+  geom_hline(yintercept = 1,color = "red") +
+  labs(x = "Observation number",
+       y = "Cook's Distance")
+```
+
+## Comparing models {.midi}
+
+**With influential point**
+
+```{r}
+#| echo: false
+tidy(lemurs_fit) |> 
+  kable(digits = 3)
+```
+
+<br>
+
+**Without influential point**
+
+```{r}
+#| echo: false
+lemurs_aug |> 
+  filter(.cooksd < 1) |>
+lm(weight_g ~ age_at_wt_mo, data = _) |>
+  tidy() |>
+  kable(digits = 3)
+```
+
+ 
+
+::: question
+Let's better understand the influential point.
+:::
+
+# Leverage
+
+## Leverage {.midi}
+
+::: incremental
+-   Recall the **hat matrix** $\mathbf{H} = \mathbf{X}(\mathbf{X}^\mathsf{T}\mathbf{X})^{-1}\mathbf{X}^\mathsf{T}$
+
+-   We focus on the diagonal elements
+
+    $$
+    h_{ii} = \mathbf{x}_i^\mathsf{T}(\mathbf{X}^\mathsf{T}\mathbf{X})^{-1}\mathbf{x}_i
+    $$such that $\mathbf{x}^\mathsf{T}_i$ is the $i^{th}$ row of $\mathbf{X}$
+
+-   $h_{ii}$ is the **leverage**: a measure of the distance of the $i^{th}$ observation from the center (or centroid) of the $x$ space
+
+-   Observations with large values of $h_{ii}$ are far away from the typical value (or combination of values) of the <u>predictors</u> in the data
+:::
+
+## Large leverage
+
+::: incremental
+-   The sum of the leverages for all points is $p$, where $p$ is the number of predictors (+ intercept) in the model . More specifically
+
+    $$
+    \sum_{i=1}^n h_{ii} = \text{rank}(\mathbf{H}) = \text{rank}(\mathbf{X}) = p
+    $$
+
+-   The average value of leverage, $h_{ii}$, is $\bar{h} =  \frac{(p)}{n}$
+
+-   An observation has **large leverage** if $$h_{ii} > \frac{2(p)}{n}$$
+:::
+
+## Lemurs: Leverage
+
+```{r}
+h_threshold <- 2 * 2 / nrow(lemurs)
+h_threshold
+```
+
+ 
+
+```{r}
+lemurs_aug |>
+  filter(.hat > h_threshold)
+```
+
+<br>
+
+ 
+
+::: question
+Why do you think these points have large leverage?
+:::
+
+## Let's look at the data
+
+```{r}
+#| echo: false
+
+lemurs_aug %>%
+  mutate(large_h = if_else(.hat > h_threshold, "Yes", "No"),
+         large_h = factor(large_h, levels = c("Yes", "No")),
+         obs_num = row_number()) |>
+  ggplot(aes(x = obs_num, y = age_at_wt_mo)) +
+  geom_point(aes(color = large_h), size = 2) + 
+  labs(x = "Observation number",
+    y = "Age at weight (in months)", title = "Age of PCOQ lemurs versus observation number", 
+    color = "Large h") +
+  #theme(legend.position = "none") + 
+  scale_color_viridis(discrete = T, end = 0.9)
+```
+
+## Large leverage
+
+If there is point with high leverage, ask
+
+-  Is there a data entry error?
+
+-  Is this observation within the scope of individuals for which you want to make predictions and draw conclusions?
+
+- Is this observation impacting the estimates of the model coefficients? (Need more information!)
+
+ 
+
+Just because a point has high leverage does not necessarily mean it will have a substantial impact on the regression. Therefore we need to check other measures.
+
+# Scaled residuals
+
+## Scaled residuals
+
+::: incremental
+-   What is the best way to identify outlier points that don't fit the pattern from the regression line?
+
+    -   Look for points that have large residuals
+
+-   We can rescale residuals and put them on a common scale to more easily identify "large" residuals
+
+-   We will consider two types of scaled residuals: standardized residuals and studentized residuals
+:::
+
+## Standardized residuals
+
+::: incremental
+-   The variance of the residuals can be estimated by the mean squared residuals (MSR) $= \frac{SSR}{n - p} = \hat{\sigma}^2_{\varepsilon}$
+
+-   We can use MSR to compute **standardized residuals**
+
+    $$
+    std.res_i = \frac{\hat{\varepsilon}_i}{\sqrt{MSR}}
+    $$
+
+-   Standardized residuals are produced by `augment()` in the column `.std.resid`
+:::
+
+------------------------------------------------------------------------
+
+## Using standardized residuals
+
+We can examine the standardized residuals directly from the output from the `augment()` function
+
+```{r}
+#| echo: false
+#| label: std residuals vs fitted
+#| fig-align: center
+
+
+ggplot(data = lemurs_aug, aes(x = .fitted, y = .std.resid)) + 
+  geom_point() +
+  geom_hline(yintercept = 3, color = "red", linetype =2)+
+  geom_hline(yintercept = -3, color = "red", linetype = 2) +
+  labs(x  = "Fitted values",
+       y = "Std. Residuals",
+       title = "Standardized residuals vs. fitted")
+```
+
+-   An observation is a *potential outlier* if its standardized residual is beyond $\pm 3$
+
+## Digging in to the data
+
+Let's look at the value of the response variable to better understand potential outliers
+
+```{r}
+#| echo: false
+lemurs_aug %>%
+  mutate(large_resid = if_else(abs(.std.resid) > 3, "Yes", "No"),
+         large_resid = factor(large_resid, levels = c("Yes", "No")),
+         obs_num = row_number()) |>
+  ggplot(aes(x = obs_num, y = weight_g)) +
+  geom_point(aes(color = large_resid), size = 2) + 
+  labs(x = "Observation number",
+    y = "Weight (in grams)", title = "Weight of PCOQ lemurs", 
+    color = "Large std. residual") +
+  #theme(legend.position = "none") + 
+  scale_color_viridis(discrete = T, end = 0.9)
+```
+
+## Studentized residuals {.midi}
+
+::: incremental
+-   MSR is an approximation of the variance of the residuals.
+
+-   The variance of the residuals is $Var(\mathbf{e}) = \sigma^2_{\varepsilon}(\mathbf{I} - \mathbf{H})$
+
+    -   The variance of the $i^{th}$ residual is $Var(e_i) = \sigma^2_{\varepsilon}(1 - h_{ii})$
+
+-   The **studentized residual** is the residual rescaled by the more exact calculation for variance
+:::
+
+$$
+r_i = \frac{\hat{\varepsilon}_{i}}{\sqrt{\hat{\sigma}^2_{\varepsilon}(1 - h_{ii})}}
+$$
+
+-   Standardized and studentized residuals provide similar information about which points are outliers in the response.
+    -   Studentized residuals are used to compute Cook's Distance.
+
+## Using these measures
+
+-   Standardized residuals, leverage, and Cook's Distance should all be examined together
+
+-   Examine plots of the measures to identify observations that are outliers, high leverage, and may potentially impact the model.
+
+## Back to the influential point
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+lemurs_aug |>
+  mutate(influential = factor(if_else(.cooksd > 1, 0,1))) |>
+ggplot(aes(x = age_at_wt_mo, y = weight_g, color = influential)) + 
+  geom_point(size = 2) +
+  labs(x = "Age in months",
+       y = "Weight in grams", 
+       title = "Weight vs. Age of PCOQ lemurs") + 
+   scale_color_viridis(discrete = T, end = 0.8) +
+  theme(legend.position = "none")
+```
+
+## What to do with outliers/influential points?
+
+::: incremental
+-   First consider if the outlier is a result of a data entry error.
+
+-   If not, you may consider dropping an observation if it's an outlier in the <u>predictor</u> variables if...
+
+    -   It is meaningful to drop the observation given the context of the problem
+
+    -   You intended to build a model on a smaller range of the predictor variables. Mention this in the write up of the results and be careful to avoid extrapolation when making predictions
+:::
+
+## What to do with outliers/influential points?
+
+::: incremental
+-   It is generally **not** good practice to drop observations that are outliers in the value of the <u>response</u> variable
+
+    -   These are legitimate observations and should be in the model
+
+    -   You can try transformations or increasing the sample size by collecting more data
+
+-   A general strategy when there are influential points is to fit the model with and without the influential points and compare the outcomes
+:::
+
+
+## Recap
+
+-   Model conditions
+
+-   Influential points
+
+-   Model diagnostics
+
+    -   Leverage
+
+    -   Studentized residuals
+
+    - Cook's Distance

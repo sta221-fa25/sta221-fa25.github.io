@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr.&nbsp;Alexander Fisher">
+
+<title>Checking assumptions – STA221</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-8c30556735fa22a8b34c61270d6a5ad2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">STA221</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../project.html"> 
+<span class="menu-text">project</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-homeworks" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">homeworks</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-homeworks">    
+        <li>
+    <a class="dropdown-item" href="../hw/hw01.html">
+ <span class="dropdown-text">hw 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../hw/hw02.html">
+ <span class="dropdown-text">hw 2</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-labs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">labs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
+        <li>
+    <a class="dropdown-item" href="../labs/lab00.html">
+ <span class="dropdown-text">lab 0</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab01.html">
+ <span class="dropdown-text">lab 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab02.html">
+ <span class="dropdown-text">lab 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab03.html">
+ <span class="dropdown-text">lab 3</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../links.html"> 
+<span class="menu-text">links</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#computing-set-up" id="toc-computing-set-up" class="nav-link active" data-scroll-target="#computing-set-up">Computing set up</a></li>
+  <li><a href="#topics" id="toc-topics" class="nav-link" data-scroll-target="#topics">Topics</a></li>
+  <li><a href="#data-duke-lemurs" id="toc-data-duke-lemurs" class="nav-link" data-scroll-target="#data-duke-lemurs">Data: Duke lemurs</a></li>
+  <li><a href="#eda" id="toc-eda" class="nav-link" data-scroll-target="#eda">EDA</a></li>
+  <li><a href="#eda-1" id="toc-eda-1" class="nav-link" data-scroll-target="#eda-1">EDA</a></li>
+  <li><a href="#fit-model" id="toc-fit-model" class="nav-link" data-scroll-target="#fit-model">Fit model</a></li>
+  <li><a href="#model-conditions" id="toc-model-conditions" class="nav-link" data-scroll-target="#model-conditions">Model conditions</a>
+  <ul class="collapse">
+  <li><a href="#assumptions-for-regression" id="toc-assumptions-for-regression" class="nav-link" data-scroll-target="#assumptions-for-regression">Assumptions for regression</a></li>
+  <li><a href="#linearity" id="toc-linearity" class="nav-link" data-scroll-target="#linearity">Linearity</a></li>
+  <li><a href="#example-linearity-not-satisfied" id="toc-example-linearity-not-satisfied" class="nav-link" data-scroll-target="#example-linearity-not-satisfied">Example: Linearity not satisfied</a></li>
+  <li><a href="#constant-variance" id="toc-constant-variance" class="nav-link" data-scroll-target="#constant-variance">Constant variance</a></li>
+  <li><a href="#example-constant-variance-not-satisfied" id="toc-example-constant-variance-not-satisfied" class="nav-link" data-scroll-target="#example-constant-variance-not-satisfied">Example: Constant variance not satisfied</a></li>
+  <li><a href="#normality" id="toc-normality" class="nav-link" data-scroll-target="#normality">Normality</a></li>
+  <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence">Independence</a></li>
+  </ul></li>
+  <li><a href="#model-diagnostics" id="toc-model-diagnostics" class="nav-link" data-scroll-target="#model-diagnostics">Model diagnostics</a>
+  <ul class="collapse">
+  <li><a href="#model-diagnostics-1" id="toc-model-diagnostics-1" class="nav-link" data-scroll-target="#model-diagnostics-1">Model diagnostics</a></li>
+  <li><a href="#model-diagnostics-in-r" id="toc-model-diagnostics-in-r" class="nav-link" data-scroll-target="#model-diagnostics-in-r">Model diagnostics in R</a></li>
+  <li><a href="#influential-point" id="toc-influential-point" class="nav-link" data-scroll-target="#influential-point">Influential Point</a></li>
+  <li><a href="#influential-points" id="toc-influential-points" class="nav-link" data-scroll-target="#influential-points">Influential points</a></li>
+  </ul></li>
+  <li><a href="#cooks-distance" id="toc-cooks-distance" class="nav-link" data-scroll-target="#cooks-distance">Cook’s Distance</a>
+  <ul class="collapse">
+  <li><a href="#motivating-cooks-distance" id="toc-motivating-cooks-distance" class="nav-link" data-scroll-target="#motivating-cooks-distance">Motivating Cook’s Distance</a></li>
+  <li><a href="#cooks-distance-1" id="toc-cooks-distance-1" class="nav-link" data-scroll-target="#cooks-distance-1">Cook’s Distance</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Checking assumptions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Alexander Fisher </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="computing-set-up" class="level2">
+<h2 class="anchored" data-anchor-id="computing-set-up">Computing set up</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)  </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)       </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)   </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># set default theme in ggplot2</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="topics" class="level2">
+<h2 class="anchored" data-anchor-id="topics">Topics</h2>
+<ul>
+<li><p>Model conditions</p></li>
+<li><p>Influential points</p></li>
+<li><p>Model diagnostics</p>
+<ul>
+<li><p>Leverage</p></li>
+<li><p>Studentized residuals</p></li>
+<li><p>Cook’s Distance</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="data-duke-lemurs" class="level2 midi">
+<h2 class="midi anchored" data-anchor-id="data-duke-lemurs">Data: Duke lemurs</h2>
+<p>Today’s data contains a subset of the original Duke Lemur data set available in the <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-08-24/readme.md">TidyTuesday GitHub repo</a>. This data includes information on “young adult” lemurs from the <a href="https://lemur.duke.edu/discover/meet-the-lemurs/coquerels-sifaka/">Coquerel’s sifaka species</a> (PCOQ), the largest species at the Duke Lemur Center. The analysis will focus on the following variables:</p>
+<ul>
+<li><p><code>age_at_wt_mo</code>: Age in months: Age of the animal when the weight was taken, in months (((Weight_Date-DOB)/365)*12)</p></li>
+<li><p><code>weight_g</code>: Weight: Animal weight, in grams. Weights under 500g generally to nearest 0.1-1g; Weights &gt;500g generally to the nearest 1-20g.</p></li>
+</ul>
+<p><strong>The goal of the analysis is to use the age of the lemurs to understand variability in the weight.</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 76 Columns: 54
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (17): taxon, hybrid, sex, name, current_resident, estimated_dob, birth_...
+dbl  (28): dlc_id, stud_book, birth_month, litter_size, expected_gestation, ...
+lgl   (1): age_last_verified_y
+date  (8): dob, estimated_concep, dam_dob, sire_dob, dod, weight_date, conce...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+</section>
+<section id="eda" class="level2">
+<h2 class="anchored" data-anchor-id="eda">EDA</h2>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lec12_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="eda-1" class="level2">
+<h2 class="anchored" data-anchor-id="eda-1">EDA</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lec12_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="fit-model" class="level2">
+<h2 class="anchored" data-anchor-id="fit-model">Fit model</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lemurs_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight_g <span class="sc">~</span> age_at_wt_mo, <span class="at">data =</span> lemurs)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lemurs_fit) <span class="sc">|&gt;</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-12314.360</td>
+<td style="text-align: right;">4252.696</td>
+<td style="text-align: right;">-2.896</td>
+<td style="text-align: right;">0.005</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">age_at_wt_mo</td>
+<td style="text-align: right;">496.591</td>
+<td style="text-align: right;">131.225</td>
+<td style="text-align: right;">3.784</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="model-conditions" class="level1">
+<h1>Model conditions</h1>
+<section id="assumptions-for-regression" class="level2 midi">
+<h2 class="midi anchored" data-anchor-id="assumptions-for-regression">Assumptions for regression</h2>
+<p><span class="math display">\[
+\mathbf{y}|\mathbf{X} \sim N(\mathbf{X}\boldsymbol{\beta}, \sigma_\epsilon^2\mathbf{I})
+\]</span></p>
+<ol type="1">
+<li><strong>Linearity:</strong> There is a linear relationship between the response and predictor variables.</li>
+<li><strong>Constant Variance:</strong> The variability about the least squares line is generally constant.</li>
+<li><strong>Normality:</strong> The distribution of the errors (residuals) is approximately normal.</li>
+<li><strong>Independence:</strong> The errors (residuals) are independent from one another.</li>
+</ol>
+<p>. . .</p>
+<div class="question">
+<p>How do we know if these assumptions hold in our data?</p>
+</div>
+</section>
+<section id="linearity" class="level2 midi">
+<h2 class="midi anchored" data-anchor-id="linearity">Linearity</h2>
+<ul>
+<li>Look at plot of residuals versus fitted (predicted) values.</li>
+<li>Linearity is satisfied if there is no discernible pattern in the plot (i.e., points randomly scattered around <span class="math inline">\(residuals = 0\)</span></li>
+</ul>
+<p>. . .</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lec12_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>. . .</p>
+<center>
+<strong>Linearity is</strong> <strong>satisfied</strong>
+</center>
+</section>
+<section id="example-linearity-not-satisfied" class="level2">
+<h2 class="anchored" data-anchor-id="example-linearity-not-satisfied">Example: Linearity not satisfied</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lec12_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>. . .</p>
+<ul>
+<li>If linearity is not satisfied, examine the plots of residuals versus each predictor.</li>
+<li>Add higher order term(s), as needed.</li>
+</ul>
+</section>
+<section id="constant-variance" class="level2 midi">
+<h2 class="midi anchored" data-anchor-id="constant-variance">Constant variance</h2>
+<ul>
+<li>Look at plot of residuals versus fitted (predicted) values.</li>
+<li>Constant variance is satisfied if the vertical spread of the points is approximately equal for all fitted values</li>
+</ul>
+<p>. . .</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lec12_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>. . .</p>
+<center>
+<strong>Constant variance is</strong> <strong>satisfied</strong>
+</center>
+</section>
+<section id="example-constant-variance-not-satisfied" class="level2">
+<h2 class="anchored" data-anchor-id="example-constant-variance-not-satisfied">Example: Constant variance not satisfied</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lec12_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>. . .</p>
+<ul>
+<li><p>Constant variance is critical for reliable inference</p></li>
+<li><p>Address violations by applying transformation on the response</p></li>
+</ul>
+</section>
+<section id="normality" class="level2 midi">
+<h2 class="midi anchored" data-anchor-id="normality">Normality</h2>
+<ul>
+<li>Look at the distribution of the residuals</li>
+<li>Normality is satisfied if the distribution is approximately unimodal and symmetric. Inference robust to violations if <span class="math inline">\(n &gt; 30\)</span></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lec12_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>. . .</p>
+<center>
+Distribution approximately unimodal and symmetric, aside from the outlier. There are 62 observations, so inference robust to departures.
+</center>
+</section>
+<section id="independence" class="level2">
+<h2 class="anchored" data-anchor-id="independence">Independence</h2>
+<ul>
+<li><p>We can often check the independence condition based on the context of the data and how the observations were collected.</p></li>
+<li><p>If the data were collected in a particular order, examine a scatterplot of the residuals versus order in which the data were collected.</p></li>
+<li><p>If data has spatial element, plot residuals on a map to examine potential spatial correlation.</p></li>
+</ul>
+<p>. . .</p>
+<center>
+<strong>The independence condition is</strong> <strong>satisfied</strong>. The lemurs could reasonably be treated as independent.
+</center>
+</section>
+</section>
+<section id="model-diagnostics" class="level1">
+<h1>Model diagnostics</h1>
+<section id="model-diagnostics-1" class="level2">
+<h2 class="anchored" data-anchor-id="model-diagnostics-1">Model diagnostics</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lemurs_aug <span class="ot">&lt;-</span> <span class="fu">augment</span>(lemurs_fit)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>lemurs_aug <span class="sc">|&gt;</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 8
+   weight_g age_at_wt_mo .fitted .resid   .hat .sigma  .cooksd .std.resid
+      &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;
+ 1     3400         32.0   3557. -157.  0.0302   494. 0.00164      -0.324
+ 2     3620         33.0   4063. -443.  0.0399   491. 0.0176       -0.922
+ 3     3720         32.4   3800.  -80.0 0.0163   495. 0.000224     -0.164
+ 4     4440         32.6   3850.  590.  0.0177   489. 0.0132        1.21 
+ 5     3770         31.8   3457.  313.  0.0458   493. 0.0102        0.652
+ 6     3920         31.9   3522.  398.  0.0350   492. 0.0124        0.826
+ 7     4520         32.8   3979.  541.  0.0279   490. 0.0180        1.12 
+ 8     3700         33.2   4177. -477.  0.0626   491. 0.0337       -1.01 
+ 9     3690         31.9   3537.  153.  0.0329   494. 0.00172       0.318
+10     3790         32.8   3949. -159.  0.0247   494. 0.00136      -0.328</code></pre>
+</div>
+</div>
+</section>
+<section id="model-diagnostics-in-r" class="level2 midi">
+<h2 class="midi anchored" data-anchor-id="model-diagnostics-in-r">Model diagnostics in R</h2>
+<p>Use the <code>augment()</code> function in the broom package to output the model diagnostics (along with the predicted values and residuals)</p>
+<ul>
+<li>response and predictor variables in the model</li>
+<li><code>.fitted</code>: predicted values</li>
+<li><code>.se.fit</code>: standard errors of predicted values</li>
+<li><code>.resid</code>: residuals</li>
+<li><code>.hat</code>: leverage</li>
+<li><code>.sigma</code>: estimate of residual standard deviation when the corresponding observation is dropped from model</li>
+<li><code>.cooksd</code>: Cook’s distance</li>
+<li><code>.std.resid</code>: standardized residuals</li>
+</ul>
+</section>
+<section id="influential-point" class="level2">
+<h2 class="anchored" data-anchor-id="influential-point">Influential Point</h2>
+<p>An observation is <strong>influential</strong> if removing has a noticeable impact on the regression coefficients</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lec12_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="influential-points" class="level2">
+<h2 class="anchored" data-anchor-id="influential-points">Influential points</h2>
+<div class="incremental">
+<ul class="incremental">
+<li>Influential points have a noticeable impact on the coefficients and standard errors used for inference</li>
+<li>These points can sometimes be identified in a scatterplot if there is only one predictor variable
+<ul class="incremental">
+<li>This is often not the case when there are multiple predictors</li>
+</ul></li>
+<li>We will use measures to quantify an individual observation’s influence on the regression model
+<ul class="incremental">
+<li><strong>leverage</strong>, <strong>standardized &amp; studentized residuals</strong>, and <strong>Cook’s distance</strong></li>
+</ul></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="cooks-distance" class="level1">
+<h1>Cook’s Distance</h1>
+<section id="motivating-cooks-distance" class="level2">
+<h2 class="anchored" data-anchor-id="motivating-cooks-distance">Motivating Cook’s Distance</h2>
+<ul>
+<li><p>An observation’s influence on the regression line depends on</p>
+<ul>
+<li><p>How close it lies to the general trend of the data</p></li>
+<li><p>Its leverage</p></li>
+</ul></li>
+<li><p><strong>Cook’s Distance</strong> is a statistic that includes both of these components to measure an observation’s overall impact on the model</p></li>
+</ul>
+</section>
+<section id="cooks-distance-1" class="level2">
+<h2 class="anchored" data-anchor-id="cooks-distance-1">Cook’s Distance</h2>
+<p>Cook’s distance for the <span class="math inline">\(i^{th}\)</span> observation is</p>
+<p><span class="math display">\[
+D_i = \frac{r^2_i}{p + 1}\Big(\frac{h_{ii}}{1 - h_{ii}}\Big)
+\]</span></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
