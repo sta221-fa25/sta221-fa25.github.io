@@ -61,7 +61,7 @@ Write your responses in `research-topics.qmd` in your team’s project GitHub re
 
 ## Project proposal
 
-The purpose of the project proposal is for your team to identify the data set you’re interested in analyzing to investigate one of your potential research topics. You will also do some preliminary exploration of the response variable and begin thinking about the modeling strategy. If you’re unsure where to find data, you can use the list of potential data sources [here](/project-data.html) as a starting point.
+The purpose of the project proposal is for your team to identify the data set you're interested in analyzing to investigate one of your potential research topics. You will also do some preliminary exploration of the response variable and begin thinking about the modeling strategy. If you’re unsure where to find data, you can use the list of potential data sources [here](/project-data.html) as a starting point.
 
 ::: callout-important
 You must use the data set(s) in the proposal for the final project, unless instructed otherwise when given feedback.
@@ -84,3 +84,13 @@ The data set must meet the following criteria:
 -   A mix of quantitative and categorical variables that can be used as predictors.
 
 -   May not be data that has previously been used in any course materials, or any derivation of data that has been used in course materials.
+
+
+The project proposal should include the following:
+
+1. A statement of a research question. 
+2. Why your research question is important.
+3. A description of your data 
+4. A description of how your data will be used to answer your research question
+5. A description of your planned analysis (what is the outcome variable, relevant predictors, regression technique, e.g. multiple linear regression for continuous outcome vs logistic regression for a binary outcome). We will cover logistic regression in the coming weeks but you can read ahead about it [here](https://en.wikipedia.org/wiki/Logistic_regression).
+
