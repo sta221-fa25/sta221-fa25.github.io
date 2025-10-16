@@ -127,7 +127,7 @@ schedule %>%
 |  | Thu Oct 09 | checking assumptions |  | [🗒](/notes/lec12-check-assumptions.html) |  |  |
 | 8 | Tue Oct 14 | NO CLASS |  |  |  |  |
 |  | Wed Oct 15 | lab: project workday |  |  |  | project proposal due |
-|  | Thu Oct 16 | multicollinearity |  |  |  |  |
+|  | Thu Oct 16 | multicollinearity |  | [🗒](/notes/lec13.html) |  |  |
 | 9 | Tue Oct 21 | likelihoods |  |  |  |  |
 |  | Wed Oct 22 |  |  |  |  |  |
 |  | Thu Oct 23 | model selection (AIC) |  |  |  |  |

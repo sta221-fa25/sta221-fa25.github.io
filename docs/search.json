@@ -445,7 +445,7 @@
     "href": "index.html",
     "title": "Regression Analysis: Theory and Applications",
     "section": "",
-    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\nProject\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n💻\n\n\n\n\n\nWed Aug 27\nlab: hello git and R\n\n💻\nlab 0\n\n\n\n\nThu Aug 28\ncorrelation\n📖\n🗒\n\n\n\n\n2\nTue Sep 02\nsimple linear regression\n\n🗒\n\n\n\n\n\nWed Sep 03\nlab: computing and linear algebra review\n\n\nlab 1\n\n\n\n\nThu Sep 04\nmodel assessment\n📖\n🗒\n\n\n\n\n3\nTue Sep 09\nmatrix representation\n📖\n🗒 📝\nhw 1\n\n\n\n\nWed Sep 10\nlab: linear regression\n\n\nlab 2\n\n\n\n\nThu Sep 11\nmultiple linear regression\n\n🗒 📝\n\n\n\n\n4\nTue Sep 16\nintro to inference\n📖\n🗒\n\n\n\n\n\nWed Sep 17\nlab: multiple linear regression\n\n\nlab 3\n\n\n\n\nThu Sep 18\ninference continued\n\n🗒\nhw 2\n\n\n\n5\nTue Sep 23\nthe normal assumption\n\n🗒\n\n\n\n\n\nWed Sep 24\nlab: project workday\n\n\nproject 1\n\n\n\n\nThu Sep 25\nhypothesis tests\n\n🗒\n\n\n\n\n6\nTue Sep 30\nconfidence intervals\n\n🗒📝\n\nresearch topics due\n\n\n\nWed Oct 01\nlab: interaction effects and exam practice\n\n💻\nlab 4\n\n\n\n\nThu Oct 02\nexam review\n\n\n\n\n\n\n7\nTue Oct 07\nexam 1\n\n\n\n\n\n\n\nWed Oct 08\nNO LAB (exam)\n\n\n\n\n\n\n\nThu Oct 09\nchecking assumptions\n\n🗒\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\n\nWed Oct 15\nlab: project workday\n\n\n\nproject proposal due\n\n\n\nThu Oct 16\nmulticollinearity\n\n\n\n\n\n\n9\nTue Oct 21\nlikelihoods\n\n\n\n\n\n\n\nWed Oct 22\n\n\n\n\n\n\n\n\nThu Oct 23\nmodel selection (AIC)\n\n\n\n\n\n\n10\nTue Oct 28\n\n\n\n\n\n\n\n\nWed Oct 29\n\n\n\n\n\n\n\n\nThu Oct 30\n\n\n\n\n\n\n\n11\nTue Nov 04\n\n\n\n\nEDA due\n\n\n\nWed Nov 05\n\n\n\n\n\n\n\n\nThu Nov 06\n\n\n\n\n\n\n\n12\nTue Nov 11\n\n\n\n\n\n\n\n\nWed Nov 12\nlab: project presentations\n\n\n\npresentation\n\n\n\nThu Nov 13\n\n\n\n\n\n\n\n13\nTue Nov 18\n\n\n\n\ndraft report due\n\n\n\nWed Nov 19\nlab: peer review\n\n\n\npeer review\n\n\n\nThu Nov 20\n\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n\n15\nTue Dec 02\nexam review\n\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\n\nThu Dec 04\nexam 2\n\n\n\n\n\n\nFinal day\nFri Dec 12\nproject due\n\n\n\nfinal report & repo due"
+    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\nProject\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n💻\n\n\n\n\n\nWed Aug 27\nlab: hello git and R\n\n💻\nlab 0\n\n\n\n\nThu Aug 28\ncorrelation\n📖\n🗒\n\n\n\n\n2\nTue Sep 02\nsimple linear regression\n\n🗒\n\n\n\n\n\nWed Sep 03\nlab: computing and linear algebra review\n\n\nlab 1\n\n\n\n\nThu Sep 04\nmodel assessment\n📖\n🗒\n\n\n\n\n3\nTue Sep 09\nmatrix representation\n📖\n🗒 📝\nhw 1\n\n\n\n\nWed Sep 10\nlab: linear regression\n\n\nlab 2\n\n\n\n\nThu Sep 11\nmultiple linear regression\n\n🗒 📝\n\n\n\n\n4\nTue Sep 16\nintro to inference\n📖\n🗒\n\n\n\n\n\nWed Sep 17\nlab: multiple linear regression\n\n\nlab 3\n\n\n\n\nThu Sep 18\ninference continued\n\n🗒\nhw 2\n\n\n\n5\nTue Sep 23\nthe normal assumption\n\n🗒\n\n\n\n\n\nWed Sep 24\nlab: project workday\n\n\nproject 1\n\n\n\n\nThu Sep 25\nhypothesis tests\n\n🗒\n\n\n\n\n6\nTue Sep 30\nconfidence intervals\n\n🗒📝\n\nresearch topics due\n\n\n\nWed Oct 01\nlab: interaction effects and exam practice\n\n💻\nlab 4\n\n\n\n\nThu Oct 02\nexam review\n\n\n\n\n\n\n7\nTue Oct 07\nexam 1\n\n\n\n\n\n\n\nWed Oct 08\nNO LAB (exam)\n\n\n\n\n\n\n\nThu Oct 09\nchecking assumptions\n\n🗒\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\n\nWed Oct 15\nlab: project workday\n\n\n\nproject proposal due\n\n\n\nThu Oct 16\nmulticollinearity\n\n🗒\n\n\n\n\n9\nTue Oct 21\nlikelihoods\n\n\n\n\n\n\n\nWed Oct 22\n\n\n\n\n\n\n\n\nThu Oct 23\nmodel selection (AIC)\n\n\n\n\n\n\n10\nTue Oct 28\n\n\n\n\n\n\n\n\nWed Oct 29\n\n\n\n\n\n\n\n\nThu Oct 30\n\n\n\n\n\n\n\n11\nTue Nov 04\n\n\n\n\nEDA due\n\n\n\nWed Nov 05\n\n\n\n\n\n\n\n\nThu Nov 06\n\n\n\n\n\n\n\n12\nTue Nov 11\n\n\n\n\n\n\n\n\nWed Nov 12\nlab: project presentations\n\n\n\npresentation\n\n\n\nThu Nov 13\n\n\n\n\n\n\n\n13\nTue Nov 18\n\n\n\n\ndraft report due\n\n\n\nWed Nov 19\nlab: peer review\n\n\n\npeer review\n\n\n\nThu Nov 20\n\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n\n15\nTue Dec 02\nexam review\n\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\n\nThu Dec 04\nexam 2\n\n\n\n\n\n\nFinal day\nFri Dec 12\nproject due\n\n\n\nfinal report & repo due"
   },
   {
     "objectID": "hw/hw01.html",
@@ -1797,5 +1797,124 @@
     "title": "Checking assumptions",
     "section": "Recap",
     "text": "Recap\n\nModel conditions\nInfluential points\nModel diagnostics\n\nLeverage\nStudentized residuals\nCook’s Distance"
+  },
+  {
+    "objectID": "notes/lec13.html",
+    "href": "notes/lec13.html",
+    "title": "Multicollinearity",
+    "section": "",
+    "text": "View libraries and data sets used in these notes\n# load packages\nlibrary(tidyverse)  \nlibrary(tidymodels)  \nlibrary(knitr)       \nlibrary(patchwork)\nlibrary(GGally)   # for pairwise plot matrix\nlibrary(corrplot) # for correlation matrix\n\n# load data\nrail_trail &lt;- read_csv(\"https://sta221-fa25.github.io/data/rail_trail.csv\")\n\n# set default theme in ggplot2\nggplot2::theme_set(ggplot2::theme_bw())"
+  },
+  {
+    "objectID": "notes/lec13.html#topics",
+    "href": "notes/lec13.html#topics",
+    "title": "Multicollinearity",
+    "section": "Topics",
+    "text": "Topics\n\nMulticollinearity\n\nDefinition\nHow it impacts the model\nHow to detect it\nWhat to do about it"
+  },
+  {
+    "objectID": "notes/lec13.html#data-trail-users",
+    "href": "notes/lec13.html#data-trail-users",
+    "title": "Multicollinearity",
+    "section": "Data: Trail users",
+    "text": "Data: Trail users\n\nThe Pioneer Valley Planning Commission (PVPC) collected data at the beginning a trail in Florence, MA for ninety days from April 5, 2005 to November 15, 2005 to\nData collectors set up a laser sensor, with breaks in the laser beam recording when a rail-trail user passed the data collection station.\n\nSource: Pioneer Valley Planning Commission via the mosaicData package."
+  },
+  {
+    "objectID": "notes/lec13.html#variables",
+    "href": "notes/lec13.html#variables",
+    "title": "Multicollinearity",
+    "section": "Variables",
+    "text": "Variables\nOutcome:\n\nvolume estimated number of trail users that day (number of breaks recorded)\n\nPredictors\n\nhightemp daily high temperature (in degrees Fahrenheit)\navgtemp average of daily low and daily high temperature (in degrees Fahrenheit)\nseason one of “Fall”, “Spring”, or “Summer”\nprecip measure of precipitation (in inches)"
+  },
+  {
+    "objectID": "notes/lec13.html#eda-relationship-between-predictors",
+    "href": "notes/lec13.html#eda-relationship-between-predictors",
+    "title": "Multicollinearity",
+    "section": "EDA: Relationship between predictors",
+    "text": "EDA: Relationship between predictors\nWe can create a pairwise plot matrix using the ggpairs function from the GGally R package\n\nrail_trail |&gt;\n  select(hightemp, avgtemp, season, precip) |&gt;\n  ggpairs()"
+  },
+  {
+    "objectID": "notes/lec13.html#eda-relationship-between-predictors-1",
+    "href": "notes/lec13.html#eda-relationship-between-predictors-1",
+    "title": "Multicollinearity",
+    "section": "EDA: Relationship between predictors",
+    "text": "EDA: Relationship between predictors"
+  },
+  {
+    "objectID": "notes/lec13.html#eda-correlation-matrix",
+    "href": "notes/lec13.html#eda-correlation-matrix",
+    "title": "Multicollinearity",
+    "section": "EDA: Correlation matrix",
+    "text": "EDA: Correlation matrix\nWe can. use corrplot() in the corrplot R package to make a matrix of pairwise correlations between quantitative predictors\n\ncorrelations &lt;- rail_trail |&gt;\n  select(hightemp, avgtemp, precip) |&gt;\n  cor()\n\ncorrplot(correlations, method = \"number\")"
+  },
+  {
+    "objectID": "notes/lec13.html#eda-correlation-matrix-1",
+    "href": "notes/lec13.html#eda-correlation-matrix-1",
+    "title": "Multicollinearity",
+    "section": "EDA: Correlation matrix",
+    "text": "EDA: Correlation matrix\n\n\n\n\n\n\n\n\n\n\nWhat might be a potential concern with a model that uses high temperature, average temperature, season, and precipitation to predict volume?"
+  },
+  {
+    "objectID": "notes/lec13.html#multicollinearity-1",
+    "href": "notes/lec13.html#multicollinearity-1",
+    "title": "Multicollinearity",
+    "section": "Multicollinearity",
+    "text": "Multicollinearity\n\n\nIdeally the predictors are orthogonal, meaning they are completely independent of one another\nIn practice, there is typically some dependence between predictors but it is often not a major issue in the model\nIf there is linear dependence among (a subset of) the predictors, we cannot find estimate \\(\\hat{\\boldsymbol{\\beta}}\\)\nIf there are near-linear dependencies, we can find \\(\\hat{\\boldsymbol{\\beta}}\\) but there may be other issues with the model\nMulticollinearity: near-linear dependence among predictors"
+  },
+  {
+    "objectID": "notes/lec13.html#sources-of-multicollinearity",
+    "href": "notes/lec13.html#sources-of-multicollinearity",
+    "title": "Multicollinearity",
+    "section": "Sources of multicollinearity",
+    "text": "Sources of multicollinearity\n\n\nData collection method - only sample from a subspace of the region of predictors\nConstraints in the population - e.g., predictors family income and size of house\nChoice of model - e.g., adding high order terms to the model\nOverdefined model - have more predictors than observations"
+  },
+  {
+    "objectID": "notes/lec13.html#detecting-multicollinearity",
+    "href": "notes/lec13.html#detecting-multicollinearity",
+    "title": "Multicollinearity",
+    "section": "Detecting multicollinearity",
+    "text": "Detecting multicollinearity\n\nExercise\n\n\nHow could you detect multicollinearity?"
+  },
+  {
+    "objectID": "notes/lec13.html#variance-inflation-factor",
+    "href": "notes/lec13.html#variance-inflation-factor",
+    "title": "Multicollinearity",
+    "section": "Variance inflation factor",
+    "text": "Variance inflation factor\n\nThe variance inflation factor (VIF) measures how much the linear dependencies impact the variance of the predictors\n\n\\[\nVIF_{j} = \\frac{1}{1 - R^2_j}\n\\]\nwhere \\(R^2_j\\) is the proportion of variation in \\(x_j\\) that is explained by a linear combination of all the other predictors\n\nWhen the response and predictors are scaled in a particular way, \\(C_{jj} = VIF_{j}\\)."
+  },
+  {
+    "objectID": "notes/lec13.html#detecting-multicollinearity-1",
+    "href": "notes/lec13.html#detecting-multicollinearity-1",
+    "title": "Multicollinearity",
+    "section": "Detecting multicollinearity",
+    "text": "Detecting multicollinearity\n\nCommon practice uses threshold \\(VIF &gt; 10\\) as indication of concerning multicollinearity (some say VIF &gt; 5 is worth investigation)\nVariables with similar values of VIF are typically the ones correlated with each other\nUse the vif() function in the rms R package to calculate VIF\n\n\nlibrary(rms)\n\ntrail_fit &lt;- lm(volume ~ hightemp + avgtemp + precip, data = rail_trail)\n\nvif(trail_fit)\n\nhightemp  avgtemp   precip \n7.161882 7.597154 1.193431 \n\n\n\nExercise\n\n\nLoad the data using the code below:\n\nrail_trail &lt;- read_csv(\"https://sta221-fa25.github.io/data/rail_trail.csv\")\n\nand compute VIF manually (without using the function vif())."
+  },
+  {
+    "objectID": "notes/lec13.html#how-multicollinearity-impacts-model",
+    "href": "notes/lec13.html#how-multicollinearity-impacts-model",
+    "title": "Multicollinearity",
+    "section": "How multicollinearity impacts model",
+    "text": "How multicollinearity impacts model\n\n\nLarge variance for the model coefficients that are collinear\n\nDifferent combinations of coefficient estimates produce equally good model fits\n\nUnreliable statistical inference results\n\nMay conclude coefficients are not statistically significant when there is, in fact, a relationship between the predictors and response\n\nInterpretation of coefficient is no longer “holding all other variables constant”, since this would be impossible for correlated predictors"
+  },
+  {
+    "objectID": "notes/lec13.html#dealing-with-multicollinearity",
+    "href": "notes/lec13.html#dealing-with-multicollinearity",
+    "title": "Multicollinearity",
+    "section": "Dealing with multicollinearity",
+    "text": "Dealing with multicollinearity\n\n\nCollect more data (often not feasible given practical constraints)\nRedefine the correlated predictors to keep the information from predictors but eliminate collinearity\n\ne.g., if \\(x_1, x_2, x_3\\) are correlated, use a new variable \\((x_1 + x_2) / x_3\\) in the model\n\nFor categorical predictors, avoid using levels with very few observations as the baseline\nRemove one of the correlated variables\n\nBe careful about substantially reducing predictive power of the model"
+  },
+  {
+    "objectID": "notes/lec13.html#recap",
+    "href": "notes/lec13.html#recap",
+    "title": "Multicollinearity",
+    "section": "Recap",
+    "text": "Recap\n\nIntroduced multicollinearity\n\nDefinition\nHow it impacts the model\nHow to detect it\nWhat to do about it"
+  },
+  {
+    "objectID": "notes/lec13.html#relationship-with-variance",
+    "href": "notes/lec13.html#relationship-with-variance",
+    "title": "Multicollinearity",
+    "section": "Relationship with variance",
+    "text": "Relationship with variance\nRecall that \\(Var(\\hat{\\beta}) = \\sigma^2 (X^TX)^{-1}\\). If we call the matrix \\((X^TX)^{-1}\\) “C” then the variance of \\(\\hat{\\beta}_j\\) is \\(\\sigma^2 C_{jj}\\). Specifically,\n\\[\nC_{jj} = VIF \\times \\frac{1}{\\sum (X_{ij} - \\bar{X_j})^2}\n\\]"
   }
 ]
