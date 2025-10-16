@@ -57,7 +57,7 @@ Develop three potential research topics. Include the following for each topic:
 4. Two or three potential research questions you could analyze about this topic. (Note: These are draft questions at this point. You will finalize the questions in the next stage of the project.)
 5. Ideas about the type of data you might use to answer this question or potential data sets you're interested in using. (Note: The goal is to generate ideas at this point, so it is fine if you have not identified any particular data sets at this point.)
 
-Write your responses in `research-topics.qmd` in your team’s project GitHub repo. Push the `qmd` and rendered `pdf` documents to GitHub by the deadline, **Tuesday, September 30 at 5:00pm**. There is no Gradescope submission.
+**Turn-in:** Write your responses in `research-topics.qmd` in your team’s project GitHub repo. Push the `qmd` and rendered `pdf` documents to GitHub by the deadline, **Tuesday, September 30 at 5:00pm**. There is no Gradescope submission.
 
 ## Project proposal
 
@@ -94,3 +94,58 @@ The project proposal should include the following:
 4. A description of how your data will be used to answer your research question
 5. A description of your planned analysis (what is the outcome variable, relevant predictors, regression technique, e.g. multiple linear regression for continuous outcome vs logistic regression for a binary outcome). We will cover logistic regression in the coming weeks but you can read ahead about it [here](https://en.wikipedia.org/wiki/Logistic_regression).
 
+**Turn-in:** submit a pdf proposal to Gradescope by the deadline.
+
+## Exploratory Data Analysis (EDA)
+
+The purpose of this milestone is to explore the data early and get  feedback on your data and analyses. You will submit a draft of the beginning of your report that includes the introduction and exploratory data analysis, with an emphasis on the EDA. It will also help you prepare for the presentation of the exploratory data analysis results.
+
+Below is a brief description of the sections to include in this step:
+
+### Introduction
+
+This section includes an introduction to the project motivation, background, data, and research question.
+
+### Exploratory Data Analysis 
+
+This section includes the following:
+
+- Description of the data set and key variables.
+
+- Exploratory data analysis of the response variable and key predictor variables. This includes visualizations, summary statistics, and narrative. Include:
+        
+  - Univariate EDA of the response and key predictor variables.
+  - Bivariate EDA of the response and key predictor variables
+  - Potential interaction effects
+  
+**Turn-in:** Write your draft introduction and exploratory data analysis in the `report.qmd` file in your team’s GitHub repo. Push the `qmd` and rendered pdf documents to GitHub by the deadline.
+
+Because this question is often asked: how long should this section of the report be? Usually, the anticipated length of the EDA section, including all graphs, tables, narrative, etc. with code, warnings, and messages **suppressed** is about 3-5 pages. If you exceed the limit, format your figures to be smaller. 
+
+## Presentations
+
+Your team will do an in-person presentation that summarizes and showcases the work you’ve done on the project thus far. Because the presentations will take place while you’re still working on the project, it will also be an opportunity to receive feedback and suggestions as well as provide feedback to other teams. The presentation will focus on introducing the subject matter and research question, showcase key results from the exploratory data analysis, and discuss primary modeling strategies and/or results. The presentation should be supported by slides that serve as a brief visual addition to the presentation. The presentation and slides will be graded for content and clarity.
+
+You can create your slides with any software you like (e.g., Keynote, PowerPoint, Google Slides, etc.). You can also use Quarto to make your slides! While we won’t be covering making slides with Quarto in the class, we would be happy to help you with it in office hours. It’s no different than writing other documents with Quarto, so the learning curve will not be steep!
+
+The presentation is expected to be between 5 to 6 minutes. It may not exceed 6 minutes.
+
+Every team member is expected to speak in the presentation. Part of the grade will be whether every team member had a meaningful speaking role in the presentation.
+
+Suggested template:
+
+Slides
+
+The slide deck should have no more than 5 content slides + 1 title slide to ensure you have enough time to discuss each slide. Here is a suggested outline as you think through the slides; you do not have to use this exact format for the 6 slides.
+
+- Title Slide
+
+- Slide 1: Introduce the subject, motivation, and research question
+
+- Slide 2: Introduce the data set
+
+- Slide 3 - 4: Highlights from the EDA (be sure to include EDA for the response variable!)
+
+- Slide 5: Initial modeling strategies / results (if applicable) / next steps and anything you'd like feedback on
+
+**Turn-in:** Put a PDF of the slides in a folder entitled "presentation" in your team's GitHub repo. Push the slides before your lab section on the presentation day.
