@@ -184,9 +184,15 @@ $$
 
 where $R^2_j$ is the proportion of variation in $x_j$ that is explained by a linear combination of all the other predictors
 
--   When the response and predictors are scaled in a particular way, $C_{jj} = VIF_{j}$. 
+-   When the response and predictors are scaled in a particular way, $C_{jj} = VIF_{j}$. [Click here](/notes/variance-inflation-factors.html) to see how.
 
-<!-- [Click here](variance-inflation-factors.html) to see how. -->
+## Relationship with variance 
+
+Recall that $Var(\hat{\beta}) = \sigma^2 (X^TX)^{-1}$. If we call the matrix $(X^TX)^{-1}$ "C" then the variance of $\hat{\beta}_j$ is $\sigma^2 C_{jj}$. Specifically, 
+
+$$
+C_{jj} = VIF \times \frac{1}{\sum (X_{ij} - \bar{X_j})^2}
+$$
 
 ## Detecting multicollinearity
 
@@ -241,14 +247,6 @@ r23 <- glance(x2_model)$r.squared
 
 ```
 
-
-## Relationship with variance 
-
-Recall that $Var(\hat{\beta}) = \sigma^2 (X^TX)^{-1}$. If we call the matrix $(X^TX)^{-1}$ "C" then the variance of $\hat{\beta}_j$ is $\sigma^2 C_{jj}$. Specifically, 
-
-$$
-C_{jj} = VIF \times \frac{1}{\sum (X_{ij} - \bar{X_j})^2}
-$$
 
 ## How multicollinearity impacts model
 
@@ -317,4 +315,39 @@ sum(residuals3^2)
     -   How to detect it
 
     -   What to do about it
+
+
+**End of class notes** 
+
+```{r}
+#| code-summary: "end of class notes"
+#| eval: false
+library(tidyverse)
+library(tidymodels)
+
+rail_trail <- read_csv("https://sta221-fa25.github.io/data/rail_trail.csv")
+
+model1 <- lm(hightemp ~ avgtemp + precip, data = rail_trail)
+1 / (1 - glance(model1)$r.squared)
+
+set.seed(221)
+rt_split = initial_split(rail_trail, prop = 3/4)
+rt_train = training(rt_split)
+rt_test = testing(rt_split)
+
+model_full <- lm(volume ~ hightemp + avgtemp + precip, data = rt_train)
+model_minus_temp <- lm(volume ~ avgtemp + precip, data = rt_train)
+
+residual_full <- rt_test$volume - predict(model_full, newdata = rt_test)
+residual_minus_temp <- rt_test$volume -
+  predict(model_minus_temp, newdata = rt_test)
+
+## Compare root mean squared error (RMSE)
+sqrt(sum(residual_full^2))
+sqrt(sum(residual_minus_temp^2))
+
+## Examine coefficients for each model
+model_full
+model_minus_temp
+```
 

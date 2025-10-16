@@ -1880,7 +1880,7 @@
     "href": "notes/lec13.html#variance-inflation-factor",
     "title": "Multicollinearity",
     "section": "Variance inflation factor",
-    "text": "Variance inflation factor\n\nThe variance inflation factor (VIF) measures how much the linear dependencies impact the variance of the predictors\n\n\\[\nVIF_{j} = \\frac{1}{1 - R^2_j}\n\\]\nwhere \\(R^2_j\\) is the proportion of variation in \\(x_j\\) that is explained by a linear combination of all the other predictors\n\nWhen the response and predictors are scaled in a particular way, \\(C_{jj} = VIF_{j}\\)."
+    "text": "Variance inflation factor\n\nThe variance inflation factor (VIF) measures how much the linear dependencies impact the variance of the predictors\n\n\\[\nVIF_{j} = \\frac{1}{1 - R^2_j}\n\\]\nwhere \\(R^2_j\\) is the proportion of variation in \\(x_j\\) that is explained by a linear combination of all the other predictors\n\nWhen the response and predictors are scaled in a particular way, \\(C_{jj} = VIF_{j}\\). Click here to see how."
   },
   {
     "objectID": "notes/lec13.html#detecting-multicollinearity-1",
@@ -1908,7 +1908,7 @@
     "href": "notes/lec13.html#recap",
     "title": "Multicollinearity",
     "section": "Recap",
-    "text": "Recap\n\nIntroduced multicollinearity\n\nDefinition\nHow it impacts the model\nHow to detect it\nWhat to do about it"
+    "text": "Recap\n\nIntroduced multicollinearity\n\nDefinition\nHow it impacts the model\nHow to detect it\nWhat to do about it\n\n\nEnd of class notes\n\nlibrary(tidyverse)\nlibrary(tidymodels)\n\nrail_trail &lt;- read_csv(\"https://sta221-fa25.github.io/data/rail_trail.csv\")\n\nmodel1 &lt;- lm(hightemp ~ avgtemp + precip, data = rail_trail)\n1 / (1 - glance(model1)$r.squared)\n\nset.seed(221)\nrt_split = initial_split(rail_trail, prop = 3/4)\nrt_train = training(rt_split)\nrt_test = testing(rt_split)\n\nmodel_full &lt;- lm(volume ~ hightemp + avgtemp + precip, data = rt_train)\nmodel_minus_temp &lt;- lm(volume ~ avgtemp + precip, data = rt_train)\n\nresidual_full &lt;- rt_test$volume - predict(model_full, newdata = rt_test)\nresidual_minus_temp &lt;- rt_test$volume -\n  predict(model_minus_temp, newdata = rt_test)\n\n## Compare root mean squared error (RMSE)\nsqrt(sum(residual_full^2))\nsqrt(sum(residual_minus_temp^2))\n\n## Examine coefficients for each model\nmodel_full\nmodel_minus_temp"
   },
   {
     "objectID": "notes/lec13.html#relationship-with-variance",
@@ -1916,5 +1916,26 @@
     "title": "Multicollinearity",
     "section": "Relationship with variance",
     "text": "Relationship with variance\nRecall that \\(Var(\\hat{\\beta}) = \\sigma^2 (X^TX)^{-1}\\). If we call the matrix \\((X^TX)^{-1}\\) “C” then the variance of \\(\\hat{\\beta}_j\\) is \\(\\sigma^2 C_{jj}\\). Specifically,\n\\[\nC_{jj} = VIF \\times \\frac{1}{\\sum (X_{ij} - \\bar{X_j})^2}\n\\]"
+  },
+  {
+    "objectID": "notes/variance-inflation-factors.html",
+    "href": "notes/variance-inflation-factors.html",
+    "title": "Variance Inflation Factors",
+    "section": "",
+    "text": "These notes come from Prof. Maria Tackett’s course notes for STA221.\n# load packages\nlibrary(tidyverse)  \nlibrary(tidymodels)  \nlibrary(knitr)       \n\nrail_trail &lt;- \n  read_csv(\"https://sta221-fa25.github.io/data/rail_trail.csv\")\nHere we explain the connection between the Variance Inflation Factor (VIF) and \\(\\mathbf{C} = (\\mathbf{X}^\\mathsf{T}\\mathbf{X})^{-1}\\). This explanation is motivated by Chapter 3 of Montgomery, Peck, and Vining (2021)."
+  },
+  {
+    "objectID": "notes/variance-inflation-factors.html#unit-length-scaling",
+    "href": "notes/variance-inflation-factors.html#unit-length-scaling",
+    "title": "Variance Inflation Factors",
+    "section": "Unit length scaling",
+    "text": "Unit length scaling\nWe have talked about standardizing predictors, such that\n\\[x_{ij_{std}} = \\frac{x_{ij} - \\bar{x_j}}{s_{x_{j}}}\\] such that \\(\\bar{x}_j\\) is the mean and \\(s_{x_{j}}\\) is the standard deviation of the predictor \\(x_j\\).\nThe standardized predictors have a mean of 0 and variance of 1.\nAnother common type of scaling is unit length scaling. We will denote these scaled predictors as \\(w_j\\). We apply this scaling on both the predictor and response variable in the following way.\n\\[w_{ij} = \\frac{x_{ij} - \\bar{x_j}}{\\sqrt{s_{jj}}}\\] where \\(s_{jj} = \\sum_{i = 1}^{n}(x_{ij} - \\bar{x}_j)^2\\)\nThe scaled response variable, denoted \\(y^0\\) is\n\\[y_i^0 = \\frac{y_i - \\bar{y}}{\\sqrt{SST}}\\]\nwhere \\(SST\\) is the sum of squares total, \\(\\sum_{i=1}^n(y_i - \\bar{y})^2\\)\nWe will use the scaled predictor and response variable to show the relationship between \\(\\mathbf{C} = (\\mathbf{X}^\\mathsf{T}\\mathbf{X})^{-1}\\) and the formula for VIF. More specifically, that\n\\[\nC_{jj} = VIF_{j} = \\frac{1}{1 - R^2_j}\n\\]\nWhen we use the scaled predictors and response."
+  },
+  {
+    "objectID": "notes/variance-inflation-factors.html#variance-inflation-factor",
+    "href": "notes/variance-inflation-factors.html#variance-inflation-factor",
+    "title": "Variance Inflation Factors",
+    "section": "Variance inflation factor",
+    "text": "Variance inflation factor\nWe will use the rail_trail data from the notes to illustrate this connection. We will focus on the predictors hightemp, avgtemp, and precip.\nWe begin by creating unit length scaled versions of the variables.\n\nhightemp_norm &lt;- sum((rail_trail$hightemp - mean(rail_trail$hightemp))^2)\navgtemp_norm &lt;- sum((rail_trail$avgtemp - mean(rail_trail$avgtemp))^2)\nprecip_norm &lt;- sum((rail_trail$precip - mean(rail_trail$precip))^2)\nvolume_norm &lt;- sum((rail_trail$volume - mean(rail_trail$volume))^2)\n\nrail_trail &lt;- rail_trail |&gt;\n  mutate(hightemp_scaled = (hightemp - mean(hightemp)) / hightemp_norm^.5,\n         avgtemp_scaled = (avgtemp - mean(avgtemp)) / avgtemp_norm^.5, \n         precip_scaled = (precip - mean(precip)) / precip_norm^.5,\n         volume_scaled = (volume - mean(volume)) / volume_norm^.5\n         )\n\nThe matrix \\(\\mathbf{W}^\\mathsf{T}\\mathbf{W}\\) is equivalent to the correlation matrix for these predictors.\n\n# use -1 to remove the intercept for the correlation matrix\nW &lt;- model.matrix(volume_scaled ~ hightemp_scaled + avgtemp_scaled + precip_scaled - 1, data = rail_trail)\n\nt(W)%*%W\n\n                hightemp_scaled avgtemp_scaled precip_scaled\nhightemp_scaled       1.0000000      0.9196439     0.1343172\navgtemp_scaled        0.9196439      1.0000000     0.2725832\nprecip_scaled         0.1343172      0.2725832     1.0000000\n\n\nWhen we fit a model using the unit length scaling for the response and predictor variables, we would expect \\(Var(\\hat{\\beta}_j) / \\hat{\\sigma}^2_{\\epsilon} \\approx 1\\). As we see below, however, these values are greater than 1.\n\ntrail_model_scaled &lt;- lm(volume_scaled ~ hightemp_scaled + avgtemp_scaled + precip_scaled , data = rail_trail)\n\nbeta_se &lt;- tidy(trail_model_scaled)$std.error\nsigma &lt;- glance(trail_model_scaled)$sigma\n\nbeta_se^2 / sigma^2\n\n[1] 0.01111111 7.16188175 7.59715405 1.19343051\n\n\n(You can ignore the first element, which represents the intercept).\nThese values show how much the standard errors of the coefficients are inflated given the correlation between the predictors (the off diagonal elements of \\(\\mathbf{W}^\\mathsf{T}\\mathbf{W}\\)). The amount by which the standard errors are inflated are called the variance inflation factors (VIF).\nUnder this model using the unit-length-scaled predictors and response, we see these variance inflation factors are equal to the diagonal elements of \\(\\mathbf{C} = (\\mathbf{W}^\\mathsf{T}\\mathbf{W})^{1}\\).\n\nC &lt;- solve(t(W) %*% W)\ndiag(C)\n\nhightemp_scaled  avgtemp_scaled   precip_scaled \n       7.161882        7.597154        1.193431 \n\n\nThus,\n\\[C_{jj} = VIF_{j} = \\frac{1}{1 - R^2_j}\\]"
   }
 ]
