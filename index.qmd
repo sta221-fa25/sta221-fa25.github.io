@@ -103,7 +103,7 @@ schedule %>%
 
 ::: heatMap
 | Week | Date | Topic | Prepare | Notes | Assignment | Project |
-|:---|:---|:---|:--:|:--:|:--:|:--:|
+|:----------|:----------|:----------|:---------:|:---------:|:---------:|:---------:|
 | 1 | Tue Aug 26 | welcome |  | [💻](/notes/slides/lec01-welcome.html) |  |  |
 |  | Wed Aug 27 | lab: hello git and R |  | [💻](/labs/slides/lab0-slides.html) | [lab 0](/labs/lab00.html) |  |
 |  | Thu Aug 28 | correlation | [📖](/prepare/prepare-lec02.html) | [🗒](/notes/lec02-correlation.html) |  |  |
@@ -129,7 +129,7 @@ schedule %>%
 |  | Wed Oct 15 | lab: project workday |  |  |  | project proposal due |
 |  | Thu Oct 16 | multicollinearity |  | [🗒](/notes/lec13.html) |  |  |
 | 9 | Tue Oct 21 | likelihoods |  |  |  |  |
-|  | Wed Oct 22 |  |  |  |  |  |
+|  | Wed Oct 22 | lab: variable transformations and interpretation |  |  | [lab 5](/labs/lab05.html) |  |
 |  | Thu Oct 23 | model selection (AIC) |  |  |  |  |
 | 10 | Tue Oct 28 |  |  |  |  |  |
 |  | Wed Oct 29 |  |  |  |  |  |

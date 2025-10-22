@@ -445,7 +445,7 @@
     "href": "index.html",
     "title": "Regression Analysis: Theory and Applications",
     "section": "",
-    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\nProject\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n💻\n\n\n\n\n\nWed Aug 27\nlab: hello git and R\n\n💻\nlab 0\n\n\n\n\nThu Aug 28\ncorrelation\n📖\n🗒\n\n\n\n\n2\nTue Sep 02\nsimple linear regression\n\n🗒\n\n\n\n\n\nWed Sep 03\nlab: computing and linear algebra review\n\n\nlab 1\n\n\n\n\nThu Sep 04\nmodel assessment\n📖\n🗒\n\n\n\n\n3\nTue Sep 09\nmatrix representation\n📖\n🗒 📝\nhw 1\n\n\n\n\nWed Sep 10\nlab: linear regression\n\n\nlab 2\n\n\n\n\nThu Sep 11\nmultiple linear regression\n\n🗒 📝\n\n\n\n\n4\nTue Sep 16\nintro to inference\n📖\n🗒\n\n\n\n\n\nWed Sep 17\nlab: multiple linear regression\n\n\nlab 3\n\n\n\n\nThu Sep 18\ninference continued\n\n🗒\nhw 2\n\n\n\n5\nTue Sep 23\nthe normal assumption\n\n🗒\n\n\n\n\n\nWed Sep 24\nlab: project workday\n\n\nproject 1\n\n\n\n\nThu Sep 25\nhypothesis tests\n\n🗒\n\n\n\n\n6\nTue Sep 30\nconfidence intervals\n\n🗒📝\n\nresearch topics due\n\n\n\nWed Oct 01\nlab: interaction effects and exam practice\n\n💻\nlab 4\n\n\n\n\nThu Oct 02\nexam review\n\n\n\n\n\n\n7\nTue Oct 07\nexam 1\n\n\n\n\n\n\n\nWed Oct 08\nNO LAB (exam)\n\n\n\n\n\n\n\nThu Oct 09\nchecking assumptions\n\n🗒\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\n\nWed Oct 15\nlab: project workday\n\n\n\nproject proposal due\n\n\n\nThu Oct 16\nmulticollinearity\n\n🗒\n\n\n\n\n9\nTue Oct 21\nlikelihoods\n\n\n\n\n\n\n\nWed Oct 22\n\n\n\n\n\n\n\n\nThu Oct 23\nmodel selection (AIC)\n\n\n\n\n\n\n10\nTue Oct 28\n\n\n\n\n\n\n\n\nWed Oct 29\n\n\n\n\n\n\n\n\nThu Oct 30\n\n\n\n\n\n\n\n11\nTue Nov 04\n\n\n\n\nEDA due\n\n\n\nWed Nov 05\n\n\n\n\n\n\n\n\nThu Nov 06\n\n\n\n\n\n\n\n12\nTue Nov 11\n\n\n\n\n\n\n\n\nWed Nov 12\nlab: project presentations\n\n\n\npresentation\n\n\n\nThu Nov 13\n\n\n\n\n\n\n\n13\nTue Nov 18\n\n\n\n\ndraft report due\n\n\n\nWed Nov 19\nlab: peer review\n\n\n\npeer review\n\n\n\nThu Nov 20\n\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n\n15\nTue Dec 02\nexam review\n\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\n\nThu Dec 04\nexam 2\n\n\n\n\n\n\nFinal day\nFri Dec 12\nproject due\n\n\n\nfinal report & repo due"
+    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\nProject\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n💻\n\n\n\n\n\nWed Aug 27\nlab: hello git and R\n\n💻\nlab 0\n\n\n\n\nThu Aug 28\ncorrelation\n📖\n🗒\n\n\n\n\n2\nTue Sep 02\nsimple linear regression\n\n🗒\n\n\n\n\n\nWed Sep 03\nlab: computing and linear algebra review\n\n\nlab 1\n\n\n\n\nThu Sep 04\nmodel assessment\n📖\n🗒\n\n\n\n\n3\nTue Sep 09\nmatrix representation\n📖\n🗒 📝\nhw 1\n\n\n\n\nWed Sep 10\nlab: linear regression\n\n\nlab 2\n\n\n\n\nThu Sep 11\nmultiple linear regression\n\n🗒 📝\n\n\n\n\n4\nTue Sep 16\nintro to inference\n📖\n🗒\n\n\n\n\n\nWed Sep 17\nlab: multiple linear regression\n\n\nlab 3\n\n\n\n\nThu Sep 18\ninference continued\n\n🗒\nhw 2\n\n\n\n5\nTue Sep 23\nthe normal assumption\n\n🗒\n\n\n\n\n\nWed Sep 24\nlab: project workday\n\n\nproject 1\n\n\n\n\nThu Sep 25\nhypothesis tests\n\n🗒\n\n\n\n\n6\nTue Sep 30\nconfidence intervals\n\n🗒📝\n\nresearch topics due\n\n\n\nWed Oct 01\nlab: interaction effects and exam practice\n\n💻\nlab 4\n\n\n\n\nThu Oct 02\nexam review\n\n\n\n\n\n\n7\nTue Oct 07\nexam 1\n\n\n\n\n\n\n\nWed Oct 08\nNO LAB (exam)\n\n\n\n\n\n\n\nThu Oct 09\nchecking assumptions\n\n🗒\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\n\nWed Oct 15\nlab: project workday\n\n\n\nproject proposal due\n\n\n\nThu Oct 16\nmulticollinearity\n\n🗒\n\n\n\n\n9\nTue Oct 21\nlikelihoods\n\n\n\n\n\n\n\nWed Oct 22\nlab: variable transformations and interpretation\n\n\nlab 5\n\n\n\n\nThu Oct 23\nmodel selection (AIC)\n\n\n\n\n\n\n10\nTue Oct 28\n\n\n\n\n\n\n\n\nWed Oct 29\n\n\n\n\n\n\n\n\nThu Oct 30\n\n\n\n\n\n\n\n11\nTue Nov 04\n\n\n\n\nEDA due\n\n\n\nWed Nov 05\n\n\n\n\n\n\n\n\nThu Nov 06\n\n\n\n\n\n\n\n12\nTue Nov 11\n\n\n\n\n\n\n\n\nWed Nov 12\nlab: project presentations\n\n\n\npresentation\n\n\n\nThu Nov 13\n\n\n\n\n\n\n\n13\nTue Nov 18\n\n\n\n\ndraft report due\n\n\n\nWed Nov 19\nlab: peer review\n\n\n\npeer review\n\n\n\nThu Nov 20\n\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n\n15\nTue Dec 02\nexam review\n\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\n\nThu Dec 04\nexam 2\n\n\n\n\n\n\nFinal day\nFri Dec 12\nproject due\n\n\n\nfinal report & repo due"
   },
   {
     "objectID": "hw/hw01.html",
@@ -1951,5 +1951,82 @@
     "title": "Final project",
     "section": "Presentations",
     "text": "Presentations\nYour team will do an in-person presentation that summarizes and showcases the work you’ve done on the project thus far. Because the presentations will take place while you’re still working on the project, it will also be an opportunity to receive feedback and suggestions as well as provide feedback to other teams. The presentation will focus on introducing the subject matter and research question, showcase key results from the exploratory data analysis, and discuss primary modeling strategies and/or results. The presentation should be supported by slides that serve as a brief visual addition to the presentation. The presentation and slides will be graded for content and clarity.\nYou can create your slides with any software you like (e.g., Keynote, PowerPoint, Google Slides, etc.). You can also use Quarto to make your slides! While we won’t be covering making slides with Quarto in the class, we would be happy to help you with it in office hours. It’s no different than writing other documents with Quarto, so the learning curve will not be steep!\nThe presentation is expected to be between 5 to 6 minutes. It may not exceed 6 minutes.\nEvery team member is expected to speak in the presentation. Part of the grade will be whether every team member had a meaningful speaking role in the presentation.\nSuggested template:\nSlides\nThe slide deck should have no more than 5 content slides + 1 title slide to ensure you have enough time to discuss each slide. Here is a suggested outline as you think through the slides; you do not have to use this exact format for the 6 slides.\n\nTitle Slide\nSlide 1: Introduce the subject, motivation, and research question\nSlide 2: Introduce the data set\nSlide 3 - 4: Highlights from the EDA (be sure to include EDA for the response variable!)\nSlide 5: Initial modeling strategies / results (if applicable) / next steps and anything you’d like feedback on\n\nTurn-in: Put a PDF of the slides in a folder titled “presentation” in your team’s GitHub repo. Push the slides before your lab section on the presentation day."
+  },
+  {
+    "objectID": "labs/lab05.html",
+    "href": "labs/lab05.html",
+    "title": "Lab 05: Expanding Multiple Linear Regression",
+    "section": "",
+    "text": "Due date\n\n\n\nThis lab is due on Tuesday, October 28 at 5:00pm to Gradescope."
+  },
+  {
+    "objectID": "labs/lab05.html#exercise-1",
+    "href": "labs/lab05.html#exercise-1",
+    "title": "Lab 05: Expanding Multiple Linear Regression",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nWe’ll begin by rescaling the response and some of the predictor variables.\n\nRescale the response variable total_rev_menwomen and the primary predictor variable total_exp_menwomen, so that they are in terms of $100K (100 thousand dollars). Name the new variables rev100k and exp100k, respectively.\nRescale the predictor variable ef_total_count , so it is in terms of thousands of students. Name the new variable students_1k.\nBriefly explain why we might we rescale these variables instead of using them in the original units."
+  },
+  {
+    "objectID": "labs/lab05.html#exercise-2",
+    "href": "labs/lab05.html#exercise-2",
+    "title": "Lab 05: Expanding Multiple Linear Regression",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nBefore modeling, let’s do some exploratory data analysis.\n\nMake a visualization of the relationship between revenue and expenditures. Use the plot to describe the relationship between the two variables.\nHigher values of both expenditures and revenues are associated with greater variability. Transform both variables using a log transformation, to deal with the potential violation of an assumption of linear regression. Name the variables log_exp and log_rev, respectively.\nLarger values of expenditures and revenues seem to follow a slightly different trend and are associated with two sports - football and basketball. Create an indicator variable that takes value 1 if the sport is basketball or football and 0 otherwise. Name the variable bball_football."
+  },
+  {
+    "objectID": "labs/lab05.html#exercise-3",
+    "href": "labs/lab05.html#exercise-3",
+    "title": "Lab 05: Expanding Multiple Linear Regression",
+    "section": "Exercise 3",
+    "text": "Exercise 3\n\nVisualize the relationship between log_rev and log_exp.\nFrom the visualization, you may notice a lot of observations form a straight diagonal line, indicating a perfect one-to-one relationship between expenses and revenues. Provide a possible interpretation of this phenomenon.\nDo you think it is reasonable to include observations displaying this exact relationship? Briefly explain.\nCreate a new data frame filtering out the observations for which expenditures and revenues are exactly equal. Call the new data frame sports_nolinear.\n\nYou will use sports_nolinear for the remainder of the assignment."
+  },
+  {
+    "objectID": "labs/lab05.html#exercise-4",
+    "href": "labs/lab05.html#exercise-4",
+    "title": "Lab 05: Expanding Multiple Linear Regression",
+    "section": "Exercise 4",
+    "text": "Exercise 4\nUse sports_nolinear to fit a regression model with the log-transformed revenue as the response variable and the following predictors: log-transformed expenditures, student enrollment, institution type, sports type, participation in athletics for men, participation in athletics for women, the basketball/football indicator you created in a previous exercise, and the interaction between the log-transformed expenditures and the basketball/football indicator.\nNeatly display the model using 3 digits."
+  },
+  {
+    "objectID": "labs/lab05.html#exercise-5",
+    "href": "labs/lab05.html#exercise-5",
+    "title": "Lab 05: Expanding Multiple Linear Regression",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nConsider the regression model from the previous exercise.\n\nWhat type of institution and sport correspond to the intercept?\nYou’ll notice that one coefficient has a missing value. Why is the coefficient missing? What is the technical name of this phenomenon?"
+  },
+  {
+    "objectID": "labs/lab05.html#exercise-6",
+    "href": "labs/lab05.html#exercise-6",
+    "title": "Lab 05: Expanding Multiple Linear Regression",
+    "section": "Exercise 6",
+    "text": "Exercise 6\nFor the sake of interpretability, it is useful to have a regression model in which no coefficients are missing, and the coefficients for each sport indicator represent the baseline level for such sport. To address this issue, use the code below to fit another regression model that uses the same predictors as before, making sure to drop the unnecessary variables and the intercept (by the the -1 in the formula) to achieve this.\n\nsports_fit_2 &lt;- lm(log_rev ~ -1 + sports + students_1k + sector_name +\n             sum_partic_men + sum_partic_women + log_exp + \n             log_exp*bball_football - bball_football,\n          data = sports_nolinear)\n\n\nWhy is there only one coefficient for institution type, even after the intercept was removed?\nWhich type of institution was chosen to be the baseline in this model?"
+  },
+  {
+    "objectID": "labs/lab05.html#exercise-7",
+    "href": "labs/lab05.html#exercise-7",
+    "title": "Lab 05: Expanding Multiple Linear Regression",
+    "section": "Exercise 7",
+    "text": "Exercise 7\nNow that we have an interpretable model, let us assess the model fit and perform diagnostics to verify whether our linear regression assumptions are reasonable for this data.\nAs a first step, provide some overall measures of model fit and comment on whether it seems to have an acceptable predictive power on the response of interest."
+  },
+  {
+    "objectID": "labs/lab05.html#exercise-8",
+    "href": "labs/lab05.html#exercise-8",
+    "title": "Lab 05: Expanding Multiple Linear Regression",
+    "section": "Exercise 8",
+    "text": "Exercise 8\nNext, let’s take a look at the residuals for the model.\nBecause there are multiple sports at every institution, we may be concerned the residuals within an institution are correlated with each other (thus violating the independence assumption).\nDue to the large number of institutions, we will look at randomly selected subset of 20 institutions to evaluate this.\n\nTake a random sample of 20 institutions. Use set.seed(221) to make your results reproducible.\nPlot the residuals versus fitted values, faceted by institution.\nBased on the faceted plot, do the errors appear to be correlated within institutions? Briefly explain your response.\n\n\n\n\n\n\n\nTip\n\n\n\nClick here for more detail, code, and examples of faceting in ggplot2.\nYou may need to change the size of the figure so that the faceted lot is fully visible. You can do so using the options #| fig-width and #| fig-height in the code chunk."
+  },
+  {
+    "objectID": "labs/lab05.html#exercise-9",
+    "href": "labs/lab05.html#exercise-9",
+    "title": "Lab 05: Expanding Multiple Linear Regression",
+    "section": "Exercise 9",
+    "text": "Exercise 9\nAfter an examination of all the residuals, we notice a few things:\n\nThere seems to be two groups of observations.\nInstitutions with larger fitted values correspond to lower variance in the residuals compared to the others.\nThere are institutions with lower fitted values that have large negative residuals, potentially indicating outliers and/or influential points.\n\nWe are concerned that these observations may indicate some model misspecification (i.e., the model does not accurately reflect the trends in the data). Therefore, we take a look at the residuals a different way. We plot the standardized residual versus the fitted values, color the points based Cook’s distance, and use shape to indicate whether the sport is basketball or football.\n\nDescribe what you observe from the plot and how your observations compare to the list above.\nDo you think this model is an appropriate fit for the data or is the model misspecified? Briefly explain."
+  },
+  {
+    "objectID": "labs/lab05.html#exercise-10",
+    "href": "labs/lab05.html#exercise-10",
+    "title": "Lab 05: Expanding Multiple Linear Regression",
+    "section": "Exercise 10",
+    "text": "Exercise 10\n\nBased on this model (regardless of your answer to the previous exercise), which variables seem to be useful in explaining the variability in the revenue from collegiate sports?\nInterpret the coefficient for one useful quantitative predictor in terms of the log-transformed revenue.\nInterpret the coefficient for one useful categorical predictor in terms of the log-transformed revenue."
   }
 ]
