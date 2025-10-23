@@ -124,11 +124,11 @@ schedule %>%
 |  | Thu Oct 02 | exam review |  |  |  |  |
 | 7 | Tue Oct 07 | exam 1 |  |  |  |  |
 |  | Wed Oct 08 | NO LAB (exam) |  |  |  |  |
-|  | Thu Oct 09 | checking assumptions |  | [🗒](/notes/lec12-check-assumptions.html) |  |  |
+|  | Thu Oct 09 | checking assumptions |  | [📝](/notes/lec12-check-assumptions.html) |  |  |
 | 8 | Tue Oct 14 | NO CLASS |  |  |  |  |
 |  | Wed Oct 15 | lab: project workday |  |  |  | project proposal due |
 |  | Thu Oct 16 | multicollinearity |  | [🗒](/notes/lec13.html) |  |  |
-| 9 | Tue Oct 21 | likelihoods |  |  |  |  |
+| 9 | Tue Oct 21 | likelihoods |  | [📝](/notes/introLikelihoods.pdf) |  |  |
 |  | Wed Oct 22 | lab: variable transformations and interpretation |  |  | [lab 5](/labs/lab05.html) |  |
 |  | Thu Oct 23 | model selection (AIC) |  | [🗒](/notes/lec15.html) |  |  |
 | 10 | Tue Oct 28 | ridge regression |  |  | hw 3 |  |
