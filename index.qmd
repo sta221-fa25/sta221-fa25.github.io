@@ -130,11 +130,11 @@ schedule %>%
 |  | Thu Oct 16 | multicollinearity |  | [🗒](/notes/lec13.html) |  |  |
 | 9 | Tue Oct 21 | likelihoods |  |  |  |  |
 |  | Wed Oct 22 | lab: variable transformations and interpretation |  |  | [lab 5](/labs/lab05.html) |  |
-|  | Thu Oct 23 | model selection (AIC) |  |  |  |  |
-| 10 | Tue Oct 28 |  |  |  |  |  |
-|  | Wed Oct 29 |  |  |  |  |  |
+|  | Thu Oct 23 | model selection (AIC) |  | [🗒](/notes/lec15.html) |  |  |
+| 10 | Tue Oct 28 | ridge regression |  |  | hw 3 |  |
+|  | Wed Oct 29 | lab: project workday |  |  |  |  |
 |  | Thu Oct 30 |  |  |  |  |  |
-| 11 | Tue Nov 04 |  |  |  |  | EDA due |
+| 11 | Tue Nov 04 |  |  |  | hw 4 | EDA due |
 |  | Wed Nov 05 |  |  |  |  |  |
 |  | Thu Nov 06 |  |  |  |  |  |
 | 12 | Tue Nov 11 |  |  |  |  |  |

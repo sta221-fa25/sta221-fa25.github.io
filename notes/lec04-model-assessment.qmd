@@ -10,7 +10,7 @@ bibliography: references.bib
 #| code-fold: true
 #| code-summary: "View libraries and data sets used in these notes"
 #| warning: false
-#| messge: false
+#| message: false
 library(tidyverse) # data wrangling and visualization
 library(DT) # shows the data table
 library(patchwork) # arranging plots
@@ -354,7 +354,8 @@ ggplot(data = life_exp, aes(x = income_inequality, y = life_exp)) +
   geom_hline(yintercept = mean_y, color = "#407E99") +
   labs(x = "Income inequality (Gini coefficient)",
        y = "Life expectancy (years )") +
-  annotate("text", x = 45, y = 73, label = latex2exp::TeX("$\\bar{y}$"), color = "#407E99", size = 6) +
+  annotate("text", x = 45, y = 73,  label = "bar(y)", color = "#407E99",
+           parse = TRUE, size = 6) +
   theme_bw()
 ```
 
@@ -371,7 +372,7 @@ ggplot(data = life_exp, aes(x = income_inequality, y = life_exp)) +
   labs(x = "Income inequality (Gini coefficient)",
        y = "Life expectancy (years )") +
    geom_segment(aes(x=income_inequality, xend=income_inequality, y=life_exp, yend=mean_y), color = "#407E99", linewidth = 1) +
-  annotate("text", x = 45, y = 73, label = latex2exp::TeX("$\\bar{y}$"), color = "#407E99", size = 6) +
+  annotate("text", x = 45, y = 73, label = "bar(y)", parse = TRUE, color = "#407E99", size = 6) +
   theme_bw()
 ```
 
@@ -393,8 +394,8 @@ ggplot(data = life_exp, aes(x = income_inequality, y = life_exp)) +
   geom_segment(aes(x=income_inequality, xend=income_inequality, y=mean_y, yend=predict(model_ii)), color = "darkred", size = 1) +
   labs(x = "Income inequality (Gini coefficient)",
        y = "Life expectancy (years )") +
-  annotate("text", x = 45, y = 73, label = latex2exp::TeX("$\\bar{y}$"), color = "#407E99", size = 6)  + 
-  annotate("text", x = 45, y = 53, label = latex2exp::TeX("$\\hat{\\mu}_y$"), color = "darkred", size = 6) +
+  annotate("text", x = 45, y = 73, label = "bar(y)", parse = TRUE, color = "#407E99", size = 6)  + 
+  annotate("text", x = 45, y = 53, label = "hat(mu)[y]", parse = TRUE, color = "darkred", size = 6) +
   theme_bw()
 
 
@@ -418,8 +419,8 @@ ggplot(data = life_exp, aes(x = income_inequality, y = life_exp)) +
   geom_segment(aes(x=income_inequality, xend=income_inequality, y = life_exp, yend=predict(model_ii)), color = "gray") +
   labs(x = "Income inequality (Gini coefficient)",
        y = "Life expectancy (years )") +
-  annotate("text", x = 45, y = 73, label = latex2exp::TeX("$\\bar{y}$"), color = "#407E99", size = 6)  + 
-  annotate("text", x = 45, y = 53, label = latex2exp::TeX("$\\hat{\\mu}_y$"), color = "darkred", size = 6) +
+  annotate("text", x = 45, y = 73, label = "bar(y)", parse = TRUE, color = "#407E99", size = 6)  + 
+  annotate("text", x = 45, y = 53, label = "hat(mu)[y]", parse = TRUE, color = "darkred", size = 6) +
   theme_bw()
 ```
 

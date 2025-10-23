@@ -4,6 +4,25 @@ author: "Dr. Alexander Fisher"
 format: html
 ---
 
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data used in these notes"
+#| warning: false
+#| message: false
+library(tidyverse)
+library(GGally)
+library(corrplot)
+library(tidymodels)
+nba_salaries <- read_csv("~/Downloads/nba_salaries_23.csv") %>%
+  mutate(Salary = Salary / 1E6) %>% # salary in millions
+  select(`Player Name`, Salary, Position, Age, GP, MP, GS, 
+         FG, `FG%`, `2PA`, `2P%`, AST, `AST%`) %>%
+  filter(Position %in% c("SG", "C", "SF", "PF", "PG" )) %>%
+  drop_na()
+```
+
+
 ## Topics
 
 - Properties of MLEs
@@ -133,14 +152,7 @@ We'll look at a subset of the data below.
 ```{r}
 #| warning: false
 #| message: false
-library(tidyverse)
-library(GGally)
-library(corrplot)
-nba_salaries <- read_csv("~/Downloads/nba_salaries_23.csv") %>%
-  mutate(Salary = Salary / 1E6) %>% # salary in millions
-  select(`Player Name`, Salary, Position, Age, GP, MP, GS, 
-         FG, `FG%`, `2PA`, `2P%`, AST, `AST%`) %>%
-  filter(Position %in% c("SG", "C", "SF", "PF", "PG" )) 
+
 glimpse(nba_salaries)
 ```
 
@@ -152,7 +164,12 @@ glimpse(nba_salaries)
 - `GP`: total number of games played in the season
 - `MP`: average minutes played per game
 - `GS`: number of games the player is put in at the start of the game
-- 
+- `FG`: average number of shots made
+- `FG%`: percentage of shots made
+- `2PA`: average number of 2 point shots attempted
+- `2P%`: average number of 2 point shots made
+- `AST`: average number of assists per game
+- `AST%`: average percentage of teammate field goals a player assisted on while they were on the floor
 
 #### EDA
 
@@ -175,40 +192,107 @@ corrplot(correlations, method = "number")
 
 
 ```{r}
+#| echo: false
+#| eval: false
 nba_salaries_augmented = nba_salaries %>%
   mutate(isPGSG = (Position %in% c("PG-SG", "SG-PG")))
 nba_salaries_augmented %>%
   count(Position)
 ```
 
-
-
 ```{r}
-# nba_salaries %>%
-#   select(-c(`Player Name`, Position)) %>%
-#   ggpairs()
+#| warning: false
+#| message: false
+nba_salaries = nba_salaries %>%
+  mutate(isPG = Position == "PG")
+
+nba_salaries %>%
+  ggplot(aes(x = Age, y = Salary, color = isPG)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_bw() +
+  labs(title = "Salary by age and position")
 ```
+
 
 
 #### Fitting models 
 
 ```{r}
 nba_salaries_mp = nba_salaries[,-1]
-lm(Salary ~ ., data = nba_salaries_mp) %>%
+model1 = lm(Salary ~ ., data = nba_salaries_mp)
+
+model1 %>%
   summary()
 ```
 
 ```{r}
-nba_salaries_mp = nba_salaries_mp %>%
-  mutate(isPG = Position == "PG")
-lm(Salary ~ isPG + Age + GS  , data = nba_salaries_mp) %>%
+model2 = lm(Salary ~ isPG * Age + FG + `2PA` + AST, data = nba_salaries_mp)
+
+model2 %>%
   summary()
 ```
 
 
+  <!-- mutate(TwoPointMade = round(`2PA` * `2P%`)) %>% -->
+  <!-- mutate(ThreePointMade = FG - TwoPointMade) %>% -->
+
 #### Comparing models
 
+- We want a fitted model that has a larger likelihood
+- We want to penalize the existence of more explanatory variables 
 
+Information criterion has the form:
 
+$$
+- 2 \log_e(L(\hat{\theta}_{MLE})) +  (p \times c)
+$$
+where $L(\hat{\theta}_{MLE})$ is the log-likelihood of the observed data evaluated at the maximum likelihood estimate of the parameters, $p$ is the number of predictors in the model and $c$ is a constant specific to the information criterion.
 
+- The first term decreases as $p$ increases
+- The second term increases as $p$ increases
+- Lower *IC is better.
 
+### Akaike information criterion (AIC)
+
+```{r}
+glance(model1)$AIC
+glance(model2)$AIC
+```
+
+- For AIC, $c = 2$
+
+### Bayesian information criterion
+
+```{r}
+glance(model1)$BIC
+glance(model2)$BIC
+```
+
+- For BIC, $c = \log_e(n)$, $n$ is the number of observations.
+- The penalty for BIC grows with the sample size.
+- The penalty for BIC is larger than thatfor the AIC when $n \geq $ ___.
+
+What about penalizing the existence of additional predictors with $R^2$?
+
+### Adjusted $R^2$
+
+```{r}
+glance(model1)$adj.r.squared
+glance(model2)$adj.r.squared
+```
+
+- less generalizable (see logistic regression soon)
+- less commonly used
+
+$$
+R^2_{adj} = 1 - \frac{SSR/(n-p-1)}{SST/(n-1)}
+$$
+
+Reminder: $SST = \sum_{i=1}^n (y_i - \bar{y})^2$.
+
+::: panel-tabset
+## Exercise
+
+Compute AIC, BIC and $R^2_{adj}$ 'manually' for `model1` above in R.
+:::

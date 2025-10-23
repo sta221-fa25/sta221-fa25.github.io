@@ -38,6 +38,10 @@ website:
             text: "lab 2"
           - href: labs/lab03.qmd
             text: "lab 3"
+          - href: labs/lab04.qmd
+            text: "lab 4"
+          - href: labs/lab05.qmd
+            text: "lab 5"
             # - href: notes/exam-notes.qmd
       #   text: distributions
       # - href: chapterSummaries.qmd

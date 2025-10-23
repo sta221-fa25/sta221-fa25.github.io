@@ -200,6 +200,14 @@ window.Quarto = {
     <a class="dropdown-item" href="../labs/lab03.html">
  <span class="dropdown-text">lab 3</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab04.html">
+ <span class="dropdown-text">lab 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab05.html">
+ <span class="dropdown-text">lab 5</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -237,6 +245,9 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
   <li><a href="#codebook" id="toc-codebook" class="nav-link" data-scroll-target="#codebook">Codebook</a></li>
+  <li><a href="#akaike-information-criterion-aic" id="toc-akaike-information-criterion-aic" class="nav-link" data-scroll-target="#akaike-information-criterion-aic">Akaike information criterion (AIC)</a></li>
+  <li><a href="#bayesian-information-criterion" id="toc-bayesian-information-criterion" class="nav-link" data-scroll-target="#bayesian-information-criterion">Bayesian information criterion</a></li>
+  <li><a href="#adjusted-r2" id="toc-adjusted-r2" class="nav-link" data-scroll-target="#adjusted-r2">Adjusted <span class="math inline">\(R^2\)</span></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -269,6 +280,21 @@ window.Quarto = {
 </header>
 
 
+<div class="cell">
+<details class="code-fold">
+<summary>View libraries and data used in these notes</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>nba_salaries <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/Downloads/nba_salaries_23.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Salary =</span> Salary <span class="sc">/</span> <span class="fl">1E6</span>) <span class="sc">%&gt;%</span> <span class="co"># salary in millions</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">Player Name</span><span class="st">`</span>, Salary, Position, Age, GP, MP, GS, </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>         FG, <span class="st">`</span><span class="at">FG%</span><span class="st">`</span>, <span class="st">`</span><span class="at">2PA</span><span class="st">`</span>, <span class="st">`</span><span class="at">2P%</span><span class="st">`</span>, AST, <span class="st">`</span><span class="at">AST%</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Position <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"SG"</span>, <span class="st">"C"</span>, <span class="st">"SF"</span>, <span class="st">"PF"</span>, <span class="st">"PG"</span> )) <span class="sc">%&gt;%</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <section id="topics" class="level2">
 <h2 class="anchored" data-anchor-id="topics">Topics</h2>
 <ul>
@@ -387,17 +413,9 @@ Definition: efficient
 <p>Data on NBA player salaries and metrics for the 2022-2023 season. Data sourced from <a href="https://www.kaggle.com/datasets/jamiewelsh2/nba-player-salaries-2022-23-season/data">kaggle</a> but originally scraped from “Hoopshype” and “Basketball Reference”.</p>
 <p>We’ll look at a subset of the data below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>nba_salaries <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/Downloads/nba_salaries_23.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Salary =</span> Salary <span class="sc">/</span> <span class="fl">1E6</span>) <span class="sc">%&gt;%</span> <span class="co"># salary in millions</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">Player Name</span><span class="st">`</span>, Salary, Position, Age, GP, MP, GS, </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>         FG, <span class="st">`</span><span class="at">FG%</span><span class="st">`</span>, <span class="st">`</span><span class="at">2PA</span><span class="st">`</span>, <span class="st">`</span><span class="at">2P%</span><span class="st">`</span>, AST, <span class="st">`</span><span class="at">AST%</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Position <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"SG"</span>, <span class="st">"C"</span>, <span class="st">"SF"</span>, <span class="st">"PF"</span>, <span class="st">"PG"</span> )) </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(nba_salaries)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(nba_salaries)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 460
+<pre><code>Rows: 456
 Columns: 13
 $ `Player Name` &lt;chr&gt; "Stephen Curry", "John Wall", "Russell Westbrook", "LeBr…
 $ Salary        &lt;dbl&gt; 48.07001, 47.34576, 47.08018, 44.47499, 44.11984, 43.279…
@@ -424,15 +442,20 @@ $ `AST%`        &lt;dbl&gt; 30.0, 35.3, 38.6, 33.5, 24.5, 26.6, 19.6, 24.2, 33.2
 <li><code>GP</code>: total number of games played in the season</li>
 <li><code>MP</code>: average minutes played per game</li>
 <li><code>GS</code>: number of games the player is put in at the start of the game</li>
-<li></li>
+<li><code>FG</code>: average number of shots made</li>
+<li><code>FG%</code>: percentage of shots made</li>
+<li><code>2PA</code>: average number of 2 point shots attempted</li>
+<li><code>2P%</code>: average number of 2 point shots made</li>
+<li><code>AST</code>: average number of assists per game</li>
+<li><code>AST%</code>: average percentage of teammate field goals a player assisted on while they were on the floor</li>
 </ul>
 <section id="eda" class="level4">
 <h4 class="anchored" data-anchor-id="eda">EDA</h4>
 <p>Do salaries fluctuate by position?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>nba_salaries <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Position, <span class="at">y =</span> Salary)) <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nba_salaries <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Position, <span class="at">y =</span> Salary)) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -443,11 +466,11 @@ $ `AST%`        &lt;dbl&gt; 30.0, 35.3, 38.6, 33.5, 24.5, 26.6, 19.6, 24.2, 33.2
 </div>
 <p>Similar median, but different spread.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>correlations <span class="ot">=</span> nba_salaries <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(correlations, <span class="at">method =</span> <span class="st">"number"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>correlations <span class="ot">=</span> nba_salaries <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(correlations, <span class="at">method =</span> <span class="st">"number"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -457,138 +480,15 @@ $ `AST%`        &lt;dbl&gt; 30.0, 35.3, 38.6, 33.5, 24.5, 26.6, 19.6, 24.2, 33.2
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>nba_salaries_augmented <span class="ot">=</span> nba_salaries <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">isPGSG =</span> (Position <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"PG-SG"</span>, <span class="st">"SG-PG"</span>)))</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>nba_salaries_augmented <span class="sc">%&gt;%</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Position)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 2
-  Position     n
-  &lt;chr&gt;    &lt;int&gt;
-1 C           91
-2 PF          86
-3 PG          77
-4 SF          91
-5 SG         115</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nba_salaries <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">`</span><span class="at">Player Name</span><span class="st">`</span>, Position)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggpairs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removing 1 row that contained a missing value</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing missing values</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removing 1 row that contained a missing value</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing missing values</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removing 1 row that contained a missing value</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing missing values</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removing 1 row that contained a missing value</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing missing values</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removing 1 row that contained a missing value</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing missing values</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removing 1 row that contained a missing value</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing missing values</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
-(`geom_point()`).
-Removed 1 row containing missing values or values outside the scale range
-(`geom_point()`).
-Removed 1 row containing missing values or values outside the scale range
-(`geom_point()`).
-Removed 1 row containing missing values or values outside the scale range
-(`geom_point()`).
-Removed 1 row containing missing values or values outside the scale range
-(`geom_point()`).
-Removed 1 row containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1 row containing non-finite outside the scale range
-(`stat_density()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removing 1 row that contained a missing value</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing missing values</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removing 1 row that contained a missing value
-Removing 1 row that contained a missing value</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing missing values</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing missing values or values outside the scale range
-(`geom_point()`).
-Removed 4 rows containing missing values or values outside the scale range
-(`geom_point()`).
-Removed 4 rows containing missing values or values outside the scale range
-(`geom_point()`).
-Removed 4 rows containing missing values or values outside the scale range
-(`geom_point()`).
-Removed 4 rows containing missing values or values outside the scale range
-(`geom_point()`).
-Removed 4 rows containing missing values or values outside the scale range
-(`geom_point()`).
-Removed 4 rows containing missing values or values outside the scale range
-(`geom_point()`).
-Removed 4 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing non-finite outside the scale range
-(`stat_density()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing missing values
-Removed 4 rows containing missing values</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 4 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nba_salaries <span class="ot">=</span> nba_salaries <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">isPG =</span> Position <span class="sc">==</span> <span class="st">"PG"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>nba_salaries <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Age, <span class="at">y =</span> Salary, <span class="at">color =</span> isPG)) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Salary by age and position"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -601,9 +501,11 @@ Removed 4 rows containing missing values</code></pre>
 <section id="fitting-models" class="level4">
 <h4 class="anchored" data-anchor-id="fitting-models">Fitting models</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>nba_salaries_mp <span class="ot">=</span> nba_salaries[,<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Salary <span class="sc">~</span> ., <span class="at">data =</span> nba_salaries_mp) <span class="sc">%&gt;%</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nba_salaries_mp <span class="ot">=</span> nba_salaries[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">=</span> <span class="fu">lm</span>(Salary <span class="sc">~</span> ., <span class="at">data =</span> nba_salaries_mp)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>model1 <span class="sc">%&gt;%</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -613,7 +515,7 @@ Residuals:
      Min       1Q   Median       3Q      Max 
 -17.6096  -3.6025  -0.2372   2.7579  30.6123 
 
-Coefficients:
+Coefficients: (1 not defined because of singularities)
               Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept) -20.088201   3.076332  -6.530 1.81e-10 ***
 PositionPF   -0.414340   1.031869  -0.402  0.68822    
@@ -630,49 +532,130 @@ FG            2.526342   0.537229   4.703 3.44e-06 ***
 `2P%`        -2.583581   3.635532  -0.711  0.47768    
 AST           0.627065   0.577601   1.086  0.27823    
 `AST%`       -0.079180   0.104619  -0.757  0.44955    
+isPGTRUE            NA         NA      NA       NA    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 6.326 on 441 degrees of freedom
-  (4 observations deleted due to missingness)
 Multiple R-squared:  0.6599,    Adjusted R-squared:  0.6491 
 F-statistic: 61.11 on 14 and 441 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>nba_salaries_mp <span class="ot">=</span> nba_salaries_mp <span class="sc">%&gt;%</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">isPG =</span> Position <span class="sc">==</span> <span class="st">"PG"</span>)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Salary <span class="sc">~</span> isPG <span class="sc">+</span> Age <span class="sc">+</span> GS  , <span class="at">data =</span> nba_salaries_mp) <span class="sc">%&gt;%</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">=</span> <span class="fu">lm</span>(Salary <span class="sc">~</span> isPG <span class="sc">*</span> Age <span class="sc">+</span> FG <span class="sc">+</span> <span class="st">`</span><span class="at">2PA</span><span class="st">`</span> <span class="sc">+</span> AST, <span class="at">data =</span> nba_salaries_mp)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>model2 <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = Salary ~ isPG + Age + GS, data = nba_salaries_mp)
+lm(formula = Salary ~ isPG * Age + FG + `2PA` + AST, data = nba_salaries_mp)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--16.734  -4.741  -0.812   2.966  35.163 
+     Min       1Q   Median       3Q      Max 
+-18.5090  -3.7531  -0.1026   3.1225  25.0844 
 
 Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -20.48687    2.16693  -9.454  &lt; 2e-16 ***
-isPGTRUE      3.03712    0.94431   3.216  0.00139 ** 
-Age           0.90513    0.08327  10.870  &lt; 2e-16 ***
-GS            0.22298    0.01318  16.914  &lt; 2e-16 ***
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -22.14837    2.02466 -10.939  &lt; 2e-16 ***
+isPGTRUE     -18.08177    4.85227  -3.726 0.000219 ***
+Age            0.79272    0.07741  10.241  &lt; 2e-16 ***
+FG             2.09741    0.40881   5.131 4.31e-07 ***
+`2PA`          0.60736    0.26694   2.275 0.023362 *  
+AST            0.04536    0.27523   0.165 0.869183    
+isPGTRUE:Age   0.75687    0.18459   4.100 4.90e-05 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 7.552 on 456 degrees of freedom
-Multiple R-squared:  0.5013,    Adjusted R-squared:  0.498 
-F-statistic: 152.8 on 3 and 456 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 6.282 on 449 degrees of freedom
+Multiple R-squared:  0.6584,    Adjusted R-squared:  0.6539 
+F-statistic: 144.2 on 6 and 449 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
+<p><!-- mutate(TwoPointMade = round(`2PA` * `2P%`)) %>% --> <!-- mutate(ThreePointMade = FG - TwoPointMade) %>% --></p>
 </section>
 <section id="comparing-models" class="level4">
 <h4 class="anchored" data-anchor-id="comparing-models">Comparing models</h4>
-
-
+<ul>
+<li>We want a fitted model that has a larger likelihood</li>
+<li>We want to penalize the existence of more explanatory variables</li>
+</ul>
+<p>Information criterion has the form:</p>
+<p><span class="math display">\[
+- 2 \log_e(L(\hat{\theta}_{MLE})) +  (p \times c)
+\]</span> where <span class="math inline">\(L(\hat{\theta}_{MLE})\)</span> is the log-likelihood of the observed data evaluated at the maximum likelihood estimate of the parameters, <span class="math inline">\(p\)</span> is the number of predictors in the model and <span class="math inline">\(c\)</span> is a constant specific to the information criterion.</p>
+<ul>
+<li>The first term decreases as <span class="math inline">\(p\)</span> increases</li>
+<li>The second term increases as <span class="math inline">\(p\)</span> increases</li>
+<li>Lower *IC is better.</li>
+</ul>
 </section>
+</section>
+<section id="akaike-information-criterion-aic" class="level3">
+<h3 class="anchored" data-anchor-id="akaike-information-criterion-aic">Akaike information criterion (AIC)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model1)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2993.091</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model2)<span class="sc">$</span>AIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2979.036</code></pre>
+</div>
+</div>
+<ul>
+<li>For AIC, <span class="math inline">\(c = 2\)</span></li>
+</ul>
+</section>
+<section id="bayesian-information-criterion" class="level3">
+<h3 class="anchored" data-anchor-id="bayesian-information-criterion">Bayesian information criterion</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model1)<span class="sc">$</span>BIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3059.051</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model2)<span class="sc">$</span>BIC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3012.016</code></pre>
+</div>
+</div>
+<ul>
+<li>For BIC, <span class="math inline">\(c = \log_e(n)\)</span>, <span class="math inline">\(n\)</span> is the number of observations.</li>
+<li>The penalty for BIC grows with the sample size.</li>
+<li>The penalty for BIC is larger than thatfor the AIC when $n $ ___.</li>
+</ul>
+<p>What about penalizing the existence of additional predictors with <span class="math inline">\(R^2\)</span>?</p>
+</section>
+<section id="adjusted-r2" class="level3">
+<h3 class="anchored" data-anchor-id="adjusted-r2">Adjusted <span class="math inline">\(R^2\)</span></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model1)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6490785</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model2)<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6538581</code></pre>
+</div>
+</div>
+<ul>
+<li>less generalizable (see logistic regression soon)</li>
+<li>less commonly used</li>
+</ul>
+<p><span class="math display">\[
+R^2_{adj} = 1 - \frac{SSR/(n-p-1)}{SST/(n-1)}
+\]</span></p>
+<p>Reminder: <span class="math inline">\(SST = \sum_{i=1}^n (y_i - \bar{y})^2\)</span>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Exercise</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>Compute AIC, BIC and <span class="math inline">\(R^2_{adj}\)</span> ‘manually’ for <code>model1</code> above in R.</p>
+</div>
+</div>
+</div>
+
+
 </section>
 </section>
 
