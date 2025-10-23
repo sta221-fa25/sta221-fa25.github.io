@@ -128,7 +128,7 @@ schedule %>%
 | 8 | Tue Oct 14 | NO CLASS |  |  |  |  |
 |  | Wed Oct 15 | lab: project workday |  |  |  | project proposal due |
 |  | Thu Oct 16 | multicollinearity |  | [🗒](/notes/lec13.html) |  |  |
-| 9 | Tue Oct 21 | likelihoods |  | [📝](/notes/introLikelihoods.pdf) |  |  |
+| 9 | Tue Oct 21 | likelihoods |  | [📝](/notes/introLikelihoods.pdf) [R](/scripts/10-21-2025-mle.R) |  |  |
 |  | Wed Oct 22 | lab: variable transformations and interpretation |  |  | [lab 5](/labs/lab05.html) |  |
 |  | Thu Oct 23 | model selection (AIC) |  | [🗒](/notes/lec15.html) |  |  |
 | 10 | Tue Oct 28 | ridge regression |  |  | hw 3 |  |
