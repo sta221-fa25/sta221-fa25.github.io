@@ -14,7 +14,8 @@ library(tidyverse)
 library(GGally)
 library(corrplot)
 library(tidymodels)
-nba_salaries <- read_csv("~/Downloads/nba_salaries_23.csv") %>%
+nba_salaries <- 
+  read_csv("https://sta221-fa25.github.io/data/nba_salaries_23.csv") %>%
   mutate(Salary = Salary / 1E6) %>% # salary in millions
   select(`Player Name`, Salary, Position, Age, GP, MP, GS, 
          FG, `FG%`, `2PA`, `2P%`, AST, `AST%`) %>%

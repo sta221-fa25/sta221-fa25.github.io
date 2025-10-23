@@ -2034,7 +2034,7 @@
     "href": "notes/lec15.html",
     "title": "MLEs and Model Comparison",
     "section": "",
-    "text": "View libraries and data used in these notes\nlibrary(tidyverse)\nlibrary(GGally)\nlibrary(corrplot)\nlibrary(tidymodels)\nnba_salaries &lt;- read_csv(\"~/Downloads/nba_salaries_23.csv\") %&gt;%\n  mutate(Salary = Salary / 1E6) %&gt;% # salary in millions\n  select(`Player Name`, Salary, Position, Age, GP, MP, GS, \n         FG, `FG%`, `2PA`, `2P%`, AST, `AST%`) %&gt;%\n  filter(Position %in% c(\"SG\", \"C\", \"SF\", \"PF\", \"PG\" )) %&gt;%\n  drop_na()"
+    "text": "View libraries and data used in these notes\nlibrary(tidyverse)\nlibrary(GGally)\nlibrary(corrplot)\nlibrary(tidymodels)\nnba_salaries &lt;- \n  read_csv(\"https://sta221-fa25.github.io/data/nba_salaries_23.csv\") %&gt;%\n  mutate(Salary = Salary / 1E6) %&gt;% # salary in millions\n  select(`Player Name`, Salary, Position, Age, GP, MP, GS, \n         FG, `FG%`, `2PA`, `2P%`, AST, `AST%`) %&gt;%\n  filter(Position %in% c(\"SG\", \"C\", \"SF\", \"PF\", \"PG\" )) %&gt;%\n  drop_na()"
   },
   {
     "objectID": "notes/lec15.html#recap",
