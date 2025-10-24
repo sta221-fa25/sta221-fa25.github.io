@@ -1,0 +1,23 @@
+---
+title: "logistic-ridge"
+---
+
+```{r}
+library(plsgenomics)
+data(Colon)
+
+# Colon$X is 62 x 2000 matrix, Colon$Y is outcome
+dim(Colon$X)  # 62 samples, 2000 genes
+length(Colon$Y)
+
+# Make tidy tibble
+colon_df <- as_tibble(Colon$X) %>%
+  mutate(
+    sample_id = row_number(),
+    outcome   = factor(Colon$Y, labels = c("Normal", "Tumor"))
+  ) %>%
+  relocate(sample_id, outcome)
+
+colon_df
+```
+

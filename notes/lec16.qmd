@@ -1,0 +1,96 @@
+---
+title: "MLEs and Model Comparison"
+author: "Dr. Alexander Fisher"
+format: html
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| eval: false
+library(tidyverse)
+# make sure eyedata is loaded
+library(flare)
+data("eyedata")   # creates objects x and y in your environment
+
+# convert into tidy tibble
+eyedata_df <- as_tibble(x) %>%
+  mutate(
+    sample_id = row_number(),
+    outcome   = y
+  ) %>%
+  relocate(sample_id, outcome)
+
+eyedata_df
+# write_csv(eyedata_df, "../data/eyedata_df.csv")
+```
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data used in these notes"
+#| warning: false
+#| message: false
+library(tidyverse)
+library(DT)
+library(GGally)
+library(corrplot)
+library(tidymodels)
+```
+
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+\newcommand{\bzero}{\boldsymbol{0}}
+\newcommand{\identity}{\boldsymbol{I}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+
+```{r}
+
+```
+
+
+The eye data come from a gene expression study by Scheetz et al. (2006, Genome Biology, 7:R62), which examined gene regulation in mammalian eye tissue. In this dataset, we have measurements from 120 rats, each with expression levels recorded for 200 genes. These 200 genes serve as our predictor variables. The outcome of interest is the expression level of a specific gene called TRIM32, which plays a role in retinal development. Thus, each observation corresponds to one rat, with TRIM32 expression as the continuous response and 200 other gene expression levels as predictors. This setting, with many more predictors than samples, makes the data a classic example for demonstrating ridge regression and other penalized regression methods.
+
+
+```{r}
+library(palmerpenguins)
+X = model.matrix(body_mass_g ~ 0 + bill_length_mm + bill_depth_mm + sex + 
+  flipper_length_mm, data = penguins)
+
+n <- nrow(X)
+
+# Center & standardize to unit variance
+Z <- scale(X, center = TRUE, scale = TRUE)
+
+# Sample correlation matrix:
+R <- t(Z) %*% Z / (n - 1)   
+
+# View
+R
+
+```
+
+
+::: panel-tabset
+
+## fit
+```{r}
+#| eval: false
+fit <- lm(outcome ~ ., data = eyedata_df %>% select(-sample_id))
+summary(fit)  # will fail if p>n, but fine for ridge/lasso
+```
+
+## what went wrong?
+
+```{r}
+#| echo: false
+#| error: true
+fit <- lm(outcome ~ ., data = eyedata_df %>% select(-sample_id))
+summary(fit)  # will fail if p>n, but fine for ridge/lasso
+```
+:::
