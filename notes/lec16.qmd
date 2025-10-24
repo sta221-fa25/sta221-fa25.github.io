@@ -36,6 +36,8 @@ library(DT)
 library(GGally)
 library(corrplot)
 library(tidymodels)
+
+eyedata_df <- read_csv("../data/eyedata_df.csv")
 ```
 
 \newcommand{\by}{\boldsymbol{y}}
@@ -50,11 +52,14 @@ library(tidymodels)
 \newcommand{\bmu}{\boldsymbol{\mu}}
 
 ```{r}
-
+datatable(eyedata_df, rownames = FALSE, options = list(pageLength = 5),
+           caption = "Gene expression data")
 ```
 
 
-The eye data come from a gene expression study by Scheetz et al. (2006, Genome Biology, 7:R62), which examined gene regulation in mammalian eye tissue. In this dataset, we have measurements from 120 rats, each with expression levels recorded for 200 genes. These 200 genes serve as our predictor variables. The outcome of interest is the expression level of a specific gene called TRIM32, which plays a role in retinal development. Thus, each observation corresponds to one rat, with TRIM32 expression as the continuous response and 200 other gene expression levels as predictors. This setting, with many more predictors than samples, makes the data a classic example for demonstrating ridge regression and other penalized regression methods.
+The eye data come from a gene expression study by Scheetz et al. (2006, Genome Biology, 7:R62), which examined gene regulation in mammalian eye tissue. 
+
+In this data set, we have measurements from 120 rats, each with expression levels recorded for 200 genes. These 200 genes serve as our predictor variables. The outcome of interest is the expression level of a specific gene called TRIM32, which plays a role in retinal development. Thus, each observation corresponds to one rat, with TRIM32 expression as a continuous response variable and 200 other gene expression levels as predictors.
 
 
 ```{r}
