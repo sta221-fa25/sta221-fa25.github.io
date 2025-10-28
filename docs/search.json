@@ -445,7 +445,7 @@
     "href": "index.html",
     "title": "Regression Analysis: Theory and Applications",
     "section": "",
-    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\nProject\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n💻\n\n\n\n\n\nWed Aug 27\nlab: hello git and R\n\n💻\nlab 0\n\n\n\n\nThu Aug 28\ncorrelation\n📖\n🗒\n\n\n\n\n2\nTue Sep 02\nsimple linear regression\n\n🗒\n\n\n\n\n\nWed Sep 03\nlab: computing and linear algebra review\n\n\nlab 1\n\n\n\n\nThu Sep 04\nmodel assessment\n📖\n🗒\n\n\n\n\n3\nTue Sep 09\nmatrix representation\n📖\n🗒 📝\nhw 1\n\n\n\n\nWed Sep 10\nlab: linear regression\n\n\nlab 2\n\n\n\n\nThu Sep 11\nmultiple linear regression\n\n🗒 📝\n\n\n\n\n4\nTue Sep 16\nintro to inference\n📖\n🗒\n\n\n\n\n\nWed Sep 17\nlab: multiple linear regression\n\n\nlab 3\n\n\n\n\nThu Sep 18\ninference continued\n\n🗒\nhw 2\n\n\n\n5\nTue Sep 23\nthe normal assumption\n\n🗒\n\n\n\n\n\nWed Sep 24\nlab: project workday\n\n\nproject 1\n\n\n\n\nThu Sep 25\nhypothesis tests\n\n🗒\n\n\n\n\n6\nTue Sep 30\nconfidence intervals\n\n🗒📝\n\nresearch topics due\n\n\n\nWed Oct 01\nlab: interaction effects and exam practice\n\n💻\nlab 4\n\n\n\n\nThu Oct 02\nexam review\n\n\n\n\n\n\n7\nTue Oct 07\nexam 1\n\n\n\n\n\n\n\nWed Oct 08\nNO LAB (exam)\n\n\n\n\n\n\n\nThu Oct 09\nchecking assumptions\n\n📝\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\n\nWed Oct 15\nlab: project workday\n\n\n\nproject proposal due\n\n\n\nThu Oct 16\nmulticollinearity\n\n🗒\n\n\n\n\n9\nTue Oct 21\nlikelihoods\n\n📝 R\n\n\n\n\n\nWed Oct 22\nlab: variable transformations and interpretation\n\n\nlab 5\n\n\n\n\nThu Oct 23\nmodel selection (AIC)\n\n🗒\n\n\n\n\n10\nTue Oct 28\nridge regression\n\n🗒\nhw 3\n\n\n\n\nWed Oct 29\nlab: project workday\n\n\n\n\n\n\n\nThu Oct 30\n\n\n\n\n\n\n\n11\nTue Nov 04\n\n\n\nhw 4\nEDA due\n\n\n\nWed Nov 05\n\n\n\n\n\n\n\n\nThu Nov 06\n\n\n\n\n\n\n\n12\nTue Nov 11\n\n\n\n\n\n\n\n\nWed Nov 12\nlab: project presentations\n\n\n\npresentation\n\n\n\nThu Nov 13\n\n\n\n\n\n\n\n13\nTue Nov 18\n\n\n\n\ndraft report due\n\n\n\nWed Nov 19\nlab: peer review\n\n\n\npeer review\n\n\n\nThu Nov 20\n\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n\n15\nTue Dec 02\nexam review\n\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\n\nThu Dec 04\nexam 2\n\n\n\n\n\n\nFinal day\nFri Dec 12\nproject due\n\n\n\nfinal report & repo due"
+    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\nProject\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n💻\n\n\n\n\n\nWed Aug 27\nlab: hello git and R\n\n💻\nlab 0\n\n\n\n\nThu Aug 28\ncorrelation\n📖\n🗒\n\n\n\n\n2\nTue Sep 02\nsimple linear regression\n\n🗒\n\n\n\n\n\nWed Sep 03\nlab: computing and linear algebra review\n\n\nlab 1\n\n\n\n\nThu Sep 04\nmodel assessment\n📖\n🗒\n\n\n\n\n3\nTue Sep 09\nmatrix representation\n📖\n🗒 📝\nhw 1\n\n\n\n\nWed Sep 10\nlab: linear regression\n\n\nlab 2\n\n\n\n\nThu Sep 11\nmultiple linear regression\n\n🗒 📝\n\n\n\n\n4\nTue Sep 16\nintro to inference\n📖\n🗒\n\n\n\n\n\nWed Sep 17\nlab: multiple linear regression\n\n\nlab 3\n\n\n\n\nThu Sep 18\ninference continued\n\n🗒\nhw 2\n\n\n\n5\nTue Sep 23\nthe normal assumption\n\n🗒\n\n\n\n\n\nWed Sep 24\nlab: project workday\n\n\nproject 1\n\n\n\n\nThu Sep 25\nhypothesis tests\n\n🗒\n\n\n\n\n6\nTue Sep 30\nconfidence intervals\n\n🗒📝\n\nresearch topics due\n\n\n\nWed Oct 01\nlab: interaction effects and exam practice\n\n💻\nlab 4\n\n\n\n\nThu Oct 02\nexam review\n\n\n\n\n\n\n7\nTue Oct 07\nexam 1\n\n\n\n\n\n\n\nWed Oct 08\nNO LAB (exam)\n\n\n\n\n\n\n\nThu Oct 09\nchecking assumptions\n\n📝\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\n\nWed Oct 15\nlab: project workday\n\n\n\nproject proposal due\n\n\n\nThu Oct 16\nmulticollinearity\n\n🗒\n\n\n\n\n9\nTue Oct 21\nlikelihoods\n\n📝 R\n\n\n\n\n\nWed Oct 22\nlab: variable transformations and interpretation\n\n\nlab 5\n\n\n\n\nThu Oct 23\nmodel selection (AIC)\n\n🗒\n\n\n\n\n10\nTue Oct 28\nridge regression\n\n🗒\nhw 3\n\n\n\n\nWed Oct 29\nlab: project workday\n\n\n\n\n\n\n\nThu Oct 30\n\n\n\n\n\n\n\n11\nTue Nov 04\n\n\n\n\nEDA due\n\n\n\nWed Nov 05\n\n\n\n\n\n\n\n\nThu Nov 06\n\n\n\nhw 4\n\n\n\n12\nTue Nov 11\n\n\n\n\n\n\n\n\nWed Nov 12\nlab: project presentations\n\n\n\npresentation\n\n\n\nThu Nov 13\n\n\n\n\n\n\n\n13\nTue Nov 18\n\n\n\n\ndraft report due\n\n\n\nWed Nov 19\nlab: peer review\n\n\n\npeer review\n\n\n\nThu Nov 20\n\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n\n15\nTue Dec 02\nexam review\n\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\n\nThu Dec 04\nexam 2\n\n\n\n\n\n\nFinal day\nFri Dec 12\nproject due\n\n\n\nfinal report & repo due"
   },
   {
     "objectID": "hw/hw01.html",
@@ -2147,5 +2147,103 @@
     "title": "Ridge regression",
     "section": "Ridge plots (how to choose \\(\\lambda\\)?)",
     "text": "Ridge plots (how to choose \\(\\lambda\\)?)\n\n## 1. Fit for a sequence of lambdas \nlambdas = seq(0, 5, length = 100)\nridge_fit = MASS::lm.ridge(y ~ 0 + ., data = trim32, lambda = lambdas)\n\n# 2. Plot ridge trace\nplot(ridge_fit, main = \"Ridge Trace Plot\")\n\n\n\n\n\n\n\nMASS::select(ridge_fit) # find lambda that minimizes GCV\n\nmodified HKB estimator is -1.460229e-27 \nmodified L-W estimator is -2.215401e-28 \nsmallest value of GCV  at 0.2525253 \n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized cross validation (GCV) is an approximation to leave 1 out cross-validation, but does not require re-computing the model \\(n\\) times for each \\(\\lambda\\).\n\n\nWhat is GCV and why does it work?\nIn ridge regression the fitted values can be written as\n\\[\n\\hat{y} = H_\\lambda y,\n\\]\nwhere \\(H_\\lambda\\) is the hat matrix depending on \\(\\lambda\\).\nIn order to compute the average leave-one-out cross-validation error for a given \\(\\lambda\\) requires computing the residual for each observation \\(i\\) when the model is refit without that point:\n\\[\n\\text{CV}(\\lambda) = \\frac{1}{n}\\sum_{i=1}^n\n\\left( \\frac{y_i - \\hat{y}_i}{1 - h_{ii}(\\lambda)} \\right)^2,\n\\]\nwhere \\(h_{ii}\\) is the \\(i\\)th diagonal element of \\(H_\\lambda\\).\nGeneralized cross-validation (GCV) replaces the individual \\(h_{ii}\\) values with their average \\(\\mathrm{tr}(H_\\lambda)/n\\):\n\\[\n\\text{GCV}(\\lambda) =\n\\frac{\\tfrac{1}{n}\\sum_{i=1}^n (y_i - \\hat{y}_i)^2}\n{\\left(1 - \\tfrac{\\mathrm{tr}(H_\\lambda)}{n}\\right)^2}.\n\\]"
+  },
+  {
+    "objectID": "hw/hw03.html",
+    "href": "hw/hw03.html",
+    "title": "Homework 03: Ridge regression and variable transformations",
+    "section": "",
+    "text": "The conceptual exercises are focused on explaining concepts and showing results mathematically. Show your work for each question.\nYou may write the answers and associated work for conceptual exercises by hand or type them in a Quarto document.\nIn all exercises below, you may assume \\(y \\sim N_n(X\\beta, \\sigma^2 I)\\)\n\n\n\n\nThe singular value decomposition of an \\(n \\times p\\) matrix \\(A\\), is a factorization of the form \\(A = U\\Sigma V^T\\) where\n\n\\(U\\) is an \\(n \\times n\\) orthogonal matrix,\n\\(\\Sigma\\) is an \\(n \\times p\\) diagonal matrix,\n\\(V\\) is a \\(p \\times p\\) orthogonal matrix.1\n\nRecall that if a matrix \\(B\\) is orthogonal, \\(B^T B = I\\).\nFacts about SVD:\n\nthe diagonal entries of \\(\\Sigma\\), \\(\\sigma_{ii}\\) are called “singular values”. The number of non-zero singular values is equal to the rank of \\(A\\).\nthe SVD is not unique, however you can always choose a decomposition such that the singular values are ordered in descending order, i.e. \\(\\sigma_{11} &gt; \\sigma_{22} &gt; \\ldots \\geq 0\\). In this case, \\(\\Sigma\\) is unique but \\(U\\) and \\(V\\) are not.\nat least one of the singular values is zero iff the matrix is non-invertible\nthe SVD can always be computed for any2 matrix \\(A\\).\n\n\n\n\n\nThe goal of this exercise is to re-write known quantities in terms of the SVD.\nSuppose we decompose \\(X\\) according to the singular value decomposition:\n\\[\nX = U\\Sigma V^T\n\\]\n\nWrite \\(\\hat{\\beta}_{OLS}\\) in terms of the SVD. Simplify as much as possible.\nCompute \\(Var[\\hat{\\beta}_{OLS}]\\) in terms of the SVD. Simplify as much as possible.\n\n\n\n\nRidge regression: show that even if \\(X^TX\\) is singular (not invertible), the matrix \\(A = (X^TX + \\lambda I)\\) is invertible using the singular value decomposition. Hint: \\(I = VV^T\\).\n\n\n\nRidge regression: show that when \\(X^TX\\) is of full rank, \\(Var(\\hat{\\beta}_{ridge}) \\leq Var(\\hat{\\beta}_{OLS})\\) using the SVD. Hint: it suffices to show that the matrix difference \\(Var(\\hat{\\beta}_{OLS}) - Var(\\hat{\\beta}_{ridge})\\) is positive semi-definite.\n\n\n\nExplain, in your own words, why it may be problematic to not standardize each predictor variable before performing ridge regression.\n\n\n\nExplain in words, math, or a combination of both why the row sums of the hat matrix formed from X1 (as defined below) are guaranteed to sum to 1 while the rows of the hat matrix formed by X2 are not. Additionally, validate this empirically using the matrices provided by the code below.\n\nset.seed(221)\nn = 10\nintercept = rep(1, n)\nx1 = runif(n)\nx2 = runif(n)\nX1 = cbind(intercept, x1, x2)\nX2 = cbind(x1, x2)"
+  },
+  {
+    "objectID": "hw/hw03.html#exercise-1",
+    "href": "hw/hw03.html#exercise-1",
+    "title": "Homework 03: Ridge regression and variable transformations",
+    "section": "",
+    "text": "The goal of this exercise is to re-write known quantities in terms of the SVD.\nSuppose we decompose \\(X\\) according to the singular value decomposition:\n\\[\nX = U\\Sigma V^T\n\\]\n\nWrite \\(\\hat{\\beta}_{OLS}\\) in terms of the SVD. Simplify as much as possible.\nCompute \\(Var[\\hat{\\beta}_{OLS}]\\) in terms of the SVD. Simplify as much as possible."
+  },
+  {
+    "objectID": "hw/hw03.html#footnotes",
+    "href": "hw/hw03.html#footnotes",
+    "title": "Homework 03: Ridge regression and variable transformations",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nfinite dimensional, real or complex↩︎\nfinite dimensional, real or complex↩︎"
+  },
+  {
+    "objectID": "hw/hw03.html#preliminary-linear-algebra-background",
+    "href": "hw/hw03.html#preliminary-linear-algebra-background",
+    "title": "Homework 03: Ridge regression and variable transformations",
+    "section": "",
+    "text": "The singular value decomposition of an \\(n \\times p\\) matrix \\(A\\), is a factorization of the form \\(A = U\\Sigma V^T\\) where\n\n\\(U\\) is an \\(n \\times n\\) orthogonal matrix,\n\\(\\Sigma\\) is an \\(n \\times p\\) diagonal matrix,\n\\(V\\) is a \\(p \\times p\\) orthogonal matrix.1\n\nRecall that if a matrix \\(B\\) is orthogonal, \\(B^T B = I\\).\nFacts about SVD:\n\nthe diagonal entries of \\(\\Sigma\\), \\(\\sigma_{ii}\\) are called “singular values”. The number of non-zero singular values is equal to the rank of \\(A\\).\nthe SVD is not unique, however you can always choose a decomposition such that the singular values are ordered in descending order, i.e. \\(\\sigma_{11} &gt; \\sigma_{22} &gt; \\ldots \\geq 0\\). In this case, \\(\\Sigma\\) is unique but \\(U\\) and \\(V\\) are not.\nat least one of the singular values is zero iff the matrix is non-invertible\nthe SVD can always be computed for any2 matrix \\(A\\)."
+  },
+  {
+    "objectID": "hw/hw03.html#exercise-2",
+    "href": "hw/hw03.html#exercise-2",
+    "title": "Homework 03: Ridge regression and variable transformations",
+    "section": "",
+    "text": "Ridge regression: show that even if \\(X^TX\\) is singular (not invertible), the matrix \\(A = (X^TX + \\lambda I)\\) is invertible using the singular value decomposition. Hint: \\(I = VV^T\\)."
+  },
+  {
+    "objectID": "hw/hw03.html#exercise-3",
+    "href": "hw/hw03.html#exercise-3",
+    "title": "Homework 03: Ridge regression and variable transformations",
+    "section": "",
+    "text": "Ridge regression: show that when \\(X^TX\\) is of full rank, \\(Var(\\hat{\\beta}_{ridge}) \\leq Var(\\hat{\\beta}_{OLS})\\) using the SVD. Hint: it suffices to show that the matrix difference \\(Var(\\hat{\\beta}_{OLS}) - Var(\\hat{\\beta}_{ridge})\\) is positive semi-definite."
+  },
+  {
+    "objectID": "hw/hw03.html#exercise-4",
+    "href": "hw/hw03.html#exercise-4",
+    "title": "Homework 03: Ridge regression and variable transformations",
+    "section": "",
+    "text": "Explain, in your own words, why it may be problematic to not standardize each predictor variable before performing ridge regression."
+  },
+  {
+    "objectID": "hw/hw03.html#exercise-5",
+    "href": "hw/hw03.html#exercise-5",
+    "title": "Homework 03: Ridge regression and variable transformations",
+    "section": "",
+    "text": "Explain in words, math, or a combination of both why the row sums of the hat matrix formed from X1 (as defined below) are guaranteed to sum to 1 while the rows of the hat matrix formed by X2 are not. Additionally, validate this empirically using the matrices provided by the code below.\n\nset.seed(221)\nn = 10\nintercept = rep(1, n)\nx1 = runif(n)\nx2 = runif(n)\nX1 = cbind(intercept, x1, x2)\nX2 = cbind(x1, x2)"
+  },
+  {
+    "objectID": "hw/hw03.html#exercise-6",
+    "href": "hw/hw03.html#exercise-6",
+    "title": "Homework 03: Ridge regression and variable transformations",
+    "section": "Exercise 6",
+    "text": "Exercise 6\nUse the hat matrix formed by X1 in exercise 5. Verify that the hat matrix \\(H = UU^T\\) as in exercise 1(c). Hint: use all.equal(H, U %*% t(U)) to avoid floating point rounding issues. Verify empirically that the columns of \\(U\\) are indeed orthonormal."
+  },
+  {
+    "objectID": "hw/hw03.html#data-2000-u.s.-presidential-election2",
+    "href": "hw/hw03.html#data-2000-u.s.-presidential-election2",
+    "title": "Homework 03",
+    "section": "Data: 2000 U.S. Presidential Election3",
+    "text": "Data: 2000 U.S. Presidential Election3\n\nWe will examine data about the 2000 U.S. presidential election between George W. Bush and Al Gore. It was one of the closest elections in history that ultimately came down to the state of Florida. One county in particular, Palm Beach County, was at the center of the controversy due to the design of their ballots - the infamous butterfly ballots. It is believed that many people who intended to vote for Al Gore accidentally voted for Pat Buchanan due to how the spots to mark the candidate were arranged next to the names.\nThe variables in the data are\n\nCounty: County name\nBush2000: Number of votes for George W. Bush\nBuchanan2000: Number of votes for Pat Buchanan\n\nThe data are available in the file florida-votes-2000.csv in the data folder of your repo."
+  },
+  {
+    "objectID": "hw/hw03.html#exercise-7",
+    "href": "hw/hw03.html#exercise-7",
+    "title": "Homework 03: Ridge regression and variable transformations",
+    "section": "Exercise 7",
+    "text": "Exercise 7\nThe goal is to fit a model that uses the number of votes for Bush to predict the number of votes for Buchanan. Using this model, we’ll investigate whether the data support the claim that votes for Gore may have accidentally gone to Buchanan.\n\nVisualize the relationship between the number of votes for Buchanan versus the number of votes for Bush. Describe what you observe in the visualization, including a description of the relationship between the votes for Buchanan and votes for Bush.\nWhat is the county with the extreme outlier number of votes for Buchanan? Create a new data frame that doesn’t include the outlying county. You will use this updated data frame for the remainder of this exercise and Exercise 8."
+  },
+  {
+    "objectID": "hw/hw03.html#exercise-8",
+    "href": "hw/hw03.html#exercise-8",
+    "title": "Homework 03: Ridge regression and variable transformations",
+    "section": "Exercise 8",
+    "text": "Exercise 8\nNow let’s consider potential models with transformations on the response and/or predictor variables. The four candidate models are the following:\n\n\n\nModel\nResponse variable\nPredictor variable\n\n\n\n\n1\nBuchanan2000\nBush2000\n\n\n2\nlog(Buchanan2000)\nBush2000\n\n\n3\nBuchanan2000\nlog(Bush2000)\n\n\n4\nlog(Buchanan2000)\nlog(Bush2000)\n\n\n\nWhich model best fits the data? Briefly explain, showing any work and output used to determine the response. (Note: Use the data set without the outlying county to find the candidate models.)"
+  },
+  {
+    "objectID": "hw/hw03.html#exercise-9",
+    "href": "hw/hw03.html#exercise-9",
+    "title": "Homework 03: Ridge regression and variable transformations",
+    "section": "Exercise 9",
+    "text": "Exercise 9\nNow we will use the model to predict the expected number of Buchanan votes for the outlier county.\nSuppose the observed value of the predictor for this county (a new observation) is \\(x_0\\). We define \\(\\mathbf{x}_0^\\mathsf{T} = [1, x_0]\\)\nThen the predicted response is\n\\[\n\\hat{y}_0 = \\mathbf{x}_0^\\mathsf{T}\\hat{\\boldsymbol{\\beta}}\n\\]\nWhere \\(\\hat{\\boldsymbol{\\beta}}\\) is the vector of estimated model coefficients.\nJust as there is uncertainty in our model coefficients, there is uncertainty in our predictions as well. We use a confidence interval to quantify the uncertainty for a model coefficient, and we can use a prediction interval to quantify the uncertainty in the prediction for a new observation.\nThe \\(C\\%\\) prediction interval for the new observation is\n\\[\n\\hat{y}_0 \\pm t^*_{n - p - 1}\\sqrt{\\hat{\\sigma}^2_\\epsilon(1 + \\mathbf{x}_0^\\mathsf{T}(\\mathbf{X}^\\mathsf{T}\\mathbf{X})^{-1}\\mathbf{x}_0)}\n\\]\nwhere \\(t^*_{n-p-1}\\) is the critical value obtained from the \\(t\\) distribution with \\(n - p - 1\\) degrees of freedom, \\(\\mathbf{X}\\) is the design matrix for the model, and \\(\\hat{\\sigma}^2_\\epsilon\\) is the estimated variability about the regression line.\n\nUse the model you chose in the previous exercise to compute the predicted number of votes for Buchanan in the outlying county identified in Exercise 7. If you selected a model with a transformation, be sure to report your answer in terms of votes, not log(votes).\nUse the formula above to “manually” compute the 95% prediction interval for this county (do not obtain the interval using the predict function) . If you selected a model with a transformation, be sure to report your answer in terms of votes, not log(votes).\nIt is assumed that some of the votes for Buchanan in that county were actually intended to be for Gore. Based on your results in the previous question, does your model support this claim?\n\nIf no, briefly explain.\nIf yes, about how many votes were possibly intended for Gore? Show any calculations and output used to determine your answer. If you selected a model with a transformation, be sure to report your answer in terms of votes, not log(votes)."
+  },
+  {
+    "objectID": "hw/hw03.html#data-2000-u.s.-presidential-election",
+    "href": "hw/hw03.html#data-2000-u.s.-presidential-election",
+    "title": "Homework 03: Ridge regression and variable transformations",
+    "section": "Data: 2000 U.S. Presidential Election",
+    "text": "Data: 2000 U.S. Presidential Election\nWe will examine data about the 2000 U.S. presidential election between George W. Bush and Al Gore. It was one of the closest elections in history that ultimately came down to the state of Florida. One county in particular, Palm Beach County, was at the center of the controversy due to the design of their ballots - the infamous butterfly ballots. It is believed that many people who intended to vote for Al Gore accidentally voted for Pat Buchanan due to how the spots to mark the candidate were arranged next to the names.\nThe variables in the data are\n\nCounty: County name\nBush2000: Number of votes for George W. Bush\nBuchanan2000: Number of votes for Pat Buchanan\n\nThe data are available in the file florida-votes-2000.csv in the data folder of your repo."
   }
 ]

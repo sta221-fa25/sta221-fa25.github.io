@@ -1,0 +1,198 @@
+---
+title: "Homework 03: Ridge regression and variable transformations"
+subtitle: "Due Thursday November 6 at 5:00pm"
+format: html
+bibliography: references.bib
+embed-resources: true
+---
+
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+\newcommand{\bA}{\boldsymbol{A}}
+\newcommand{\bzero}{\boldsymbol{0}}
+\newcommand{\identity}{\boldsymbol{I}}
+\newcommand{\hatMatrix}{\boldsymbol{H}}
+
+# Conceptual exercises
+
+The conceptual exercises are focused on explaining concepts and showing results mathematically. Show your work for each question.
+
+You may write the answers and associated work for conceptual exercises by hand or type them in a Quarto document.
+
+In all exercises below, you may assume $y \sim N_n(X\beta, \sigma^2 I)$
+
+## Preliminary (linear algebra background)
+
+### The singular value decomposition (SVD)
+
+The singular value decomposition of an $n \times p$ matrix $A$, is a factorization of the form $A = U\Sigma V^T$ where 
+
+- $U$ is an $n \times n$ orthogonal matrix,
+- $\Sigma$ is an $n \times p$ diagonal matrix,
+- $V$ is a $p \times p$ orthogonal matrix.[^1]
+
+Recall that if a matrix $B$ is orthogonal, $B^T B = I$.
+
+**Facts about SVD**:
+
+- the diagonal entries of $\Sigma$, $\sigma_{ii}$ are called "singular values". The number of non-zero singular values is equal to the rank of $A$.
+
+- the SVD is not unique, however you can always choose a decomposition such that the singular values are ordered in descending order, i.e. $\sigma_{11} > \sigma_{22} > \ldots \geq 0$. In this case, $\Sigma$ is unique but $U$ and $V$ are not. 
+
+- at least one of the singular values is zero iff the matrix is non-invertible
+
+- the SVD can always be computed for any[^1] matrix $A$.
+
+[^1]: finite dimensional, real or complex
+
+
+## Exercise 1
+
+The goal of this exercise is to re-write known quantities in terms of the SVD.
+
+Suppose we decompose $X$ according to the singular value decomposition: 
+
+$$
+X = U\Sigma V^T
+$$
+
+(a) Write $\hat{\beta}_{OLS}$ in terms of the SVD. Simplify as much as possible.
+
+(b) Compute $Var[\hat{\beta}_{OLS}]$ in terms of the SVD. Simplify as much as possible. 
+
+## Exercise 2
+
+Ridge regression: show that even if $X^TX$ is singular (not invertible), the matrix $A = (X^TX + \lambda I)$ is invertible using the singular value decomposition. Hint: $I = VV^T$.
+
+## Exercise 3
+
+Ridge regression: show that when $X^TX$ is of full rank, $Var(\hat{\beta}_{ridge}) \leq Var(\hat{\beta}_{OLS})$ using the SVD. Hint: it suffices to show that the matrix difference $Var(\hat{\beta}_{OLS}) - Var(\hat{\beta}_{ridge})$ is positive semi-definite.
+
+## Exercise 4 
+
+Explain, in your own words, why it may be problematic to *not* standardize each predictor variable before performing ridge regression.
+
+## Exercise 5 
+
+Explain in words, math, or a combination of both why the row sums of the hat matrix formed from `X1` (as defined below) are guaranteed to sum to 1 while the rows of the hat matrix formed by `X2` are not. Additionally, validate this empirically using the matrices provided by the code below.
+
+```{r}
+set.seed(221)
+n = 10
+intercept = rep(1, n)
+x1 = runif(n)
+x2 = runif(n)
+X1 = cbind(intercept, x1, x2)
+X2 = cbind(x1, x2)
+```
+
+# Applied problems
+
+The applied exercises are focused on applying the concepts to analyze data.
+
+**All work for the applied exercises must be typed in your Quarto document following a reproducible workflow.**
+
+Write all narrative using complete sentences and include informative axis labels / titles on visualizations.
+
+## Exercise 6
+
+Use the hat matrix formed by `X1` in exercise 5. Verify that the hat matrix $H = UU^T$ as in exercise 1(c). Hint: use `all.equal(H, U %*% t(U))` to avoid floating point rounding issues. Verify empirically that the columns of $U$ are indeed orthonormal.
+
+## Data: 2000 U.S. Presidential Election
+
+We will examine data about the [2000 U.S. presidential election](https://en.wikipedia.org/wiki/2000_United_States_presidential_election) between George W. Bush and Al Gore. It was one of the closest elections in history that ultimately came down to the state of Florida. One county in particular, Palm Beach County, was at the center of the controversy due to the design of their ballots - the infamous [butterfly ballots](http://news.bbc.co.uk/2/hi/in_depth/americas/2000/us_elections/glossary/a-b/1037172.stm). It is believed that many people who intended to vote for Al Gore accidentally voted for Pat Buchanan due to how the spots to mark the candidate were arranged next to the names.
+
+The variables in the data are
+
+-   `County`: County name
+
+-   `Bush2000`: Number of votes for George W. Bush
+
+-   `Buchanan2000`: Number of votes for Pat Buchanan
+
+The data are available in the file `florida-votes-2000.csv` in the `data` folder of your repo.
+
+## Exercise 7
+
+The goal is to fit a model that uses the number of votes for Bush to predict the number of votes for Buchanan. Using this model, we’ll investigate whether the data support the claim that votes for Gore may have accidentally gone to Buchanan.
+
+a.  Visualize the relationship between the number of votes for Buchanan versus the number of votes for Bush. Describe what you observe in the visualization, including a description of the relationship between the votes for Buchanan and votes for Bush.
+b.  What is the county with the extreme outlier number of votes for Buchanan? Create a new data frame that doesn’t include the outlying county. **You will use this updated data frame for the remainder of this exercise and Exercise 8.**
+
+## Exercise 8
+
+Now let's consider potential models with transformations on the response and/or predictor variables. The four candidate models are the following:
+
+| Model | Response variable | Predictor variable |
+|-------|-------------------|--------------------|
+| 1     | Buchanan2000      | Bush2000           |
+| 2     | log(Buchanan2000) | Bush2000           |
+| 3     | Buchanan2000      | log(Bush2000)      |
+| 4     | log(Buchanan2000) | log(Bush2000)      |
+
+Which model best fits the data? Briefly explain, showing any work and output used to determine the response. **(Note: Use the data set without the outlying county to find the candidate models.)**
+
+## Exercise 9
+
+Now we will use the model to predict the expected number of Buchanan votes for the outlier county.
+
+Suppose the observed value of the predictor for this county (a new observation) is $x_0$. We define $\mathbf{x}_0^\mathsf{T} = [1, x_0]$
+
+Then the predicted response is
+
+$$
+\hat{y}_0 = \mathbf{x}_0^\mathsf{T}\hat{\boldsymbol{\beta}}
+$$
+
+Where $\hat{\boldsymbol{\beta}}$ is the vector of estimated model coefficients.
+
+Just as there is uncertainty in our model coefficients, there is uncertainty in our predictions as well. We use a confidence interval to quantify the uncertainty for a model coefficient, and we can use a **prediction interval** to quantify the uncertainty in the prediction for a new observation.
+
+The $C\%$ prediction interval for the new observation is
+
+$$
+\hat{y}_0 \pm t^*_{n - p - 1}\sqrt{\hat{\sigma}^2_\epsilon(1 + \mathbf{x}_0^\mathsf{T}(\mathbf{X}^\mathsf{T}\mathbf{X})^{-1}\mathbf{x}_0)}
+$$
+
+where $t^*_{n-p-1}$ is the critical value obtained from the $t$ distribution with $n - p - 1$ degrees of freedom, $\mathbf{X}$ is the design matrix for the model, and $\hat{\sigma}^2_\epsilon$ is the estimated variability about the regression line.
+
+a.  Use the model you chose in the previous exercise to compute the predicted number of votes for Buchanan in the outlying county identified in Exercise 7. If you selected a model with a transformation, be sure to report your answer in terms of votes, not log(votes).
+
+b.  Use the formula above to "manually" compute the 95% prediction interval for this county (do not obtain the interval using the `predict` function) . If you selected a model with a transformation, be sure to report your answer in terms of votes, not log(votes).
+
+c.  It is assumed that some of the votes for Buchanan in that county were actually intended to be for Gore. Based on your results in the previous question, does your model support this claim?
+
+    -   If no, briefly explain.
+
+    -   If yes, about how many votes were possibly intended for Gore? Show any calculations and output used to determine your answer. If you selected a model with a transformation, be sure to report your answer in terms of votes, not log(votes).
+
+
+# Submission
+
+::: callout-warning
+Remember -- you must turn in a PDF file to the Gradescope page before the submission deadline for full credit.
+
+If you write your responses to conceptual exercises by hand, you will need to combine your written work to the completed PDF for the applied exercises before submitting on Gradescope.
+
+Instructions to combine PDFs:
+
+-   Preview (Mac): [support.apple.com/guide/preview/combine-pdfs-prvw43696/mac](https://support.apple.com/guide/preview/combine-pdfs-prvw43696/mac)
+
+-   Adobe (Mac or PC): [helpx.adobe.com/acrobat/using/merging-files-single-pdf.html](https://helpx.adobe.com/acrobat/using/merging-files-single-pdf.html)
+
+    -   Get free access to Adobe Acrobat as a Duke student: [oit.duke.edu/help/articles/kb0030141/](https://oit.duke.edu/help/articles/kb0030141/)
+:::
+
+To submit your assignment:
+
+-   Access Gradescope through the menu on the Canvas website.
+
+-   Click on the assignment, and you'll be prompted to submit it.
+
+-   Mark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be "checked").
