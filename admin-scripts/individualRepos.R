@@ -8,7 +8,7 @@ usernames = sort(usernames)
 # u2 = usernames[-(1:n)]
 
 ## edit this:
-assignment_template_repo = "lab-04"
+assignment_template_repo = "hw-02"
 
 ghclass::org_create_assignment(
   org = org,
