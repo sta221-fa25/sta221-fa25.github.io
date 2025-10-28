@@ -3,6 +3,7 @@ title: "logistic-ridge"
 ---
 
 ```{r}
+#| eval: false
 library(plsgenomics)
 data(Colon)
 

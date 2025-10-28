@@ -1,5 +1,5 @@
 ---
-title: "MLEs and Model Comparison"
+title: "Ridge regression"
 author: "Dr. Alexander Fisher"
 format: html
 ---
@@ -9,9 +9,8 @@ format: html
 #| warning: false
 #| eval: false
 library(tidyverse)
-# make sure eyedata is loaded
-library(flare)
-data("eyedata")   # creates objects x and y in your environment
+library(flare) # eye data
+data("eyedata") # creates objects x and y in your environment
 
 # convert into tidy tibble
 eyedata_df <- as_tibble(x) %>%
@@ -36,8 +35,10 @@ library(DT)
 library(GGally)
 library(corrplot)
 library(tidymodels)
+library(glmnet) # ridge regression
 
-eyedata_df <- read_csv("../data/eyedata_df.csv")
+# eyedata_df <- read_csv("https://sta221-fa25.github.io/data/eyedata_df.csv")
+eyedata_df = read_csv("../data/trim32.csv")
 ```
 
 \newcommand{\by}{\boldsymbol{y}}
@@ -51,18 +52,28 @@ eyedata_df <- read_csv("../data/eyedata_df.csv")
 \newcommand{\identity}{\boldsymbol{I}}
 \newcommand{\bmu}{\boldsymbol{\mu}}
 
+## Data
+
 ```{r}
+dim(eyedata_df)
+```
+
+
+```{r}
+#| echo: false
 datatable(eyedata_df, rownames = FALSE, options = list(pageLength = 5),
            caption = "Gene expression data")
 ```
 
 
-The eye data come from a gene expression study by Scheetz et al. (2006, Genome Biology, 7:R62), which examined gene regulation in mammalian eye tissue. 
+The data come from a gene expression study by Scheetz et al. (2006, Genome Biology, 7:R62), which examined gene regulation in rat eye tissue. 
 
 In this data set, we have measurements from 120 rats, each with expression levels recorded for 200 genes. These 200 genes serve as our predictor variables. The outcome of interest is the expression level of a specific gene called TRIM32, which plays a role in retinal development. Thus, each observation corresponds to one rat, with TRIM32 expression as a continuous response variable and 200 other gene expression levels as predictors.
 
 
 ```{r}
+#| echo: false
+#| eval: false
 library(palmerpenguins)
 X = model.matrix(body_mass_g ~ 0 + bill_length_mm + bill_depth_mm + sex + 
   flipper_length_mm, data = penguins)
@@ -80,14 +91,15 @@ R
 
 ```
 
+## Naive fit: which genes matter?
 
 ::: panel-tabset
 
 ## fit
 ```{r}
 #| eval: false
-fit <- lm(outcome ~ ., data = eyedata_df %>% select(-sample_id))
-summary(fit)  # will fail if p>n, but fine for ridge/lasso
+fit = lm(y ~ 0 + ., data = eyedata_df)
+summary(fit)
 ```
 
 ## what went wrong?
@@ -95,7 +107,290 @@ summary(fit)  # will fail if p>n, but fine for ridge/lasso
 ```{r}
 #| echo: false
 #| error: true
-fit <- lm(outcome ~ ., data = eyedata_df %>% select(-sample_id))
-summary(fit)  # will fail if p>n, but fine for ridge/lasso
+fit = lm(y ~ 0 + ., data = eyedata_df)
+summary(fit)
+```
+
+## simpler example
+
+```{r}
+small_subset = eyedata_df %>%
+  select(y,`1397932_at`, `1394095_at`,`1393803_at`) %>%
+  .[1:2,]
+
+small_subset
+
+small_subset %>%
+  lm(y ~ 0 + `1397932_at` + `1394095_at` + `1393803_at`, data = .) %>%
+  summary()
+```
+
+$$
+y_1 = \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3\\
+y_2 = \beta_1 x_1 + \beta2 x_2 + \beta_3 x_3
+$$
+- $p > n$ $\implies$ linearly dependent columns $\implies$ infinitely many solutions!
+
+- Put another way, the rank of $X^TX$ is a $p \times p$ matrix of rank $n < p$, which means we cannot invert it and find a unique least-squares solution.
+
+:::
+
+**Question**: What would be nice to do, to fix this, intuitively?
+
+**Question**: What would be nice to do, to fix this, mathematically?
+
+## Fix the model
+
+### Re-formulating the optimization problem
+
+Intuitively, we have too many predictors, and we want *fewer*. We could enforce this by *shrinking* some of the elements of $\beta$ towards zero. Practically, this would reduce the size of the $\beta$ vector. We can do this by modifying our objective function: 
+
+$$
+\hat{\beta}_{ridge} = \underset{\beta}{\operatorname{argmin}} \underbrace{(\by - \bX \beta)^T (\by - \bX \beta)}_{\text{RSS}} + \lambda \underbrace{\beta^T\beta}_{\text{penalty}}
+$$
+where $\lambda > 0$ is a parameter that we, as the statistician, must specify. What does this parameter do? What happens at the boundaries $\lambda \rightarrow 0$ and $\lambda \rightarrow \infty$?
+
+### The picture: what's happening?
+
+```{r}
+#| echo: false 
+set.seed(221)
+N = 50
+x0 = rep(1, N)
+x1 = runif(N)
+y = x0 + x1 + rnorm(N, mean = 0, sd = .5)
+
+X = model.matrix(y ~ x1)
+XTX = t(X) %*% X
+
+betahat = lm(y ~ x1)$coefficients %>%
+  as.numeric()
+
+theta <- seq(0, 2*pi, length.out = 500)
+circle <- tibble(
+  x = .83*cos(theta),
+  y = .83*sin(theta)
+)
+
+# Ellipse matrix V and constant c
+V <- XTX
+c_val <- 4
+
+grid <- expand.grid(
+  x = seq(-5, 5, length.out = 400),
+  y = seq(-5, 5, length.out = 400)
+) %>%
+  as_tibble() %>%
+  mutate(q = V[1,1]*(x - betahat[1])^2 + 2*V[1,2]*(x-betahat[1])*(y-betahat[2]) + V[2,2]*((y-betahat[2])^2))
+
+
+# data.frame(beta0 = -1:2, beta1 = -1:2)
+  circle %>%
+  ggplot(aes(x = x, y = y)) +
+  theme_bw() +
+  geom_path(linewidth = 1, color = "firebrick", data = circle) +
+  coord_fixed(xlim = c(-2, 4), ylim = c(-2, 4)) +
+  annotate(x = betahat[1], y = betahat[2], geom = "point", col = "steelblue") +
+  geom_contour(data = grid, aes(x, y, z = q),
+               breaks = c(4), color = "steelblue", linewidth = 1) +
+      geom_contour(data = grid, aes(x, y, z = q),
+               breaks = c(1), color = "steelblue", linewidth = 1) +
+      geom_contour(data = grid, aes(x, y, z = q),
+               breaks = c(16), color = "steelblue", linewidth = 1) +
+      geom_contour(data = grid, aes(x, y, z = q),
+               breaks = c(24), color = "steelblue", linewidth = 1) +
+    labs(x = expression(beta[0]), y = expression(beta[1]),
+         title = "Ridge regression", caption = "Ridge regression viewed as level curves of the likelihood (or equivalently RSS function) intersecting ball centered at origin")
+```
+
+For any given $\lambda$, the set of solutions is constrained to the ball $||\beta||_2^2 \leq c^2$, for some constant $c$. Note: $||\beta||_2 = \sqrt{\sum_{i=1}^p \beta_i^2}$.
+
+- What happens if $c^2 \geq ||\hat{\beta}_{OLS}||_2^2$?
+- What is the "level curve" of a function?
+- Why do the level curves look like an ellipse?
+- Consider: what if predictors are on very different scales, i.e. $x_1 >> x_2$?
+
+## What is the ridge regression solution?
+
+::: panel-tabset
+## Exercise
+
+Derive the ridge-regression solution. 
+
+## Solution
+
+$$
+\hat{\beta}_{ridge} = (\bX^T\bX) + \lambda \identity)^{-1} \bX^T \by
+$$
+:::
+
+- Algebraically, we have "fixed" the troublesome singular matrix $(\bX ^T \bX)$ by adding a positive constant $\lambda$ to its diagonal.
+- What is $E[\hat{\beta}_{ridge}]$? Is it a biased or unbiased estimator of $\beta$? 
+
+### Computing manually 
+
+::: panel-tabset
+## Code
+
+<!-- yD =  sum((y - mean(y))^2) / nrow(X) -->
+<!-- y = y / yD -->
+
+```{r}
+# get X matrix (no intercept)
+X = model.matrix(y ~ 0 + ., data = eyedata_df)
+Xscale = sqrt(colMeans(X^2)) # create root mean squared
+Xs = sweep(X, 2, Xscale, "/") # divide by root mean squared
+
+XTX = t(Xs) %*% Xs
+y = eyedata_df$y %>%
+  as.matrix(ncol = 1)
+
+p = nrow(XTX)
+lambda = 1
+
+betahat_ridge = solve(XTX + diag(lambda, nrow = p)) %*% t(Xs) %*% y 
+```
+
+## Output
+
+```{r}
+betahat_ridge %>%
+  as.data.frame() %>%
+  arrange(desc(abs(V1))) %>%
+  head(n = 5)
 ```
 :::
+
+### Using a package 
+
+`lm.ridge()` within the `MASS` package
+
+::: callout-warning
+`MASS` has a function `select()` that will cause issues with `dplyr`'s `select`. For this reason it is preferable to not load both libraries simultaneously.
+:::
+
+<!-- coef_vec = as.matrix(coef(ridge_fit)) -->
+<!-- coef_df = data.frame( -->
+<!--   term = rownames(coef_vec), -->
+<!--   estimate = as.numeric(coef_vec) -->
+<!-- ) -->
+
+<!-- coef_df %>% -->
+<!--   arrange(desc(abs(estimate))) %>% -->
+<!--   head(n = 5) -->
+
+```{r}
+#| echo: true
+ridge_fit = MASS::lm.ridge(y ~ 0 + ., data = eyedata_df, lambda = 1)
+
+beta_scaled_lmridge = ridge_fit$coef # scaled space coefficients
+beta_unscaled_lmridge = coef(ridge_fit) # original scale coefficients 
+# (different than computed above)
+
+beta_scaled_lmridge[1:5]
+betahat_ridge[1:5,]
+```
+
+::: callout-warning
+`coef(ridge_fit)` and `ridge_fit$coef` return unscaled and scaled coefficients respectively. 
+:::
+
+
+
+<!-- X2 = eyedata_df[,-1] %>% -->
+<!--   as.matrix() -->
+
+<!-- y2 = eyedata_df[,1] %>% -->
+<!--   as.matrix(ncol = 1) -->
+
+<!-- ridge_fit = glmnet(X2, y2, alpha = 0, lambda = 1 / nrow(X), -->
+<!--                    intercept = FALSE) -->
+
+<!-- coef_vec = as.matrix(ridge_fit$beta[, 1]) -->
+<!-- coef_df = data.frame( -->
+<!--   term = rownames(coef_vec), -->
+<!--   estimate = as.numeric(coef_vec) -->
+<!-- ) -->
+
+<!-- coef_df %>% -->
+<!--   arrange(desc(abs(estimate))) %>% -->
+<!--   head(n = 5) -->
+
+
+
+<!-- ## Pseudo-inverse -->
+
+
+
+## Ridge plots (how to choose $\lambda$?)
+
+```{r}
+## 1. Fit for a sequence of lambdas 
+lambdas = seq(0, 5, length = 100)
+ridge_fit = MASS::lm.ridge(y ~ 0 + ., data = eyedata_df, lambda = lambdas)
+
+# 2. Plot ridge trace
+plot(ridge_fit, main = "Ridge Trace Plot")
+MASS::select(ridge_fit) # find lambda that minimizes GCV
+```
+
+```{r}
+#| echo: false
+# Plot GCV curve
+
+## Tidying things
+coef_df = as.data.frame(ridge_fit$coef)
+coef_df$lambda = ridge_fit$lambda
+coef_long = coef_df %>%
+  pivot_longer(-lambda, names_to = "variable", values_to = "coefficient")
+
+## Plotting
+gcv_df = data.frame(lambda = ridge_fit$lambda, GCV = ridge_fit$GCV)
+
+ggplot(gcv_df, aes(x = lambda, y = GCV)) +
+  geom_line(color = "steelblue", linewidth = 1) +
+  geom_point(color = "steelblue") +
+  theme_minimal() +
+  labs(title = "GCV Curve for Ridge Regression",
+       x = expression(lambda), y = "GCV")
+```
+
+- Generalized cross validation (GCV) is an approximation to leave 1 out cross-validation, but does not require re-computing the model $n$ times for each $\lambda$.
+
+### What is GCV and why does it work?
+
+In ridge regression the fitted values can be written as
+
+$$
+\hat{y} = H_\lambda y,
+$$
+
+where $H_\lambda$ is the *hat matrix* depending on $\lambda$.
+
+In order to compute the average leave-one-out cross-validation error for a given $\lambda$ requires computing the residual for each observation $i$ when the model is refit without that point:
+
+$$
+\text{CV}(\lambda) = \frac{1}{n}\sum_{i=1}^n 
+\left( \frac{y_i - \hat{y}_i}{1 - h_{ii}(\lambda)} \right)^2,
+$$
+
+where $h_{ii}$ is the $i$th diagonal element of $H_\lambda$.
+
+Generalized cross-validation (GCV) replaces the individual $h_{ii}$ values with their average $\mathrm{tr}(H_\lambda)/n$:
+
+$$
+\text{GCV}(\lambda) = 
+\frac{\tfrac{1}{n}\sum_{i=1}^n (y_i - \hat{y}_i)^2}
+{\left(1 - \tfrac{\mathrm{tr}(H_\lambda)}{n}\right)^2}.
+$$
+
+<!-- GCV approximates leave-one-out cross-validation using the effective degrees of freedom $\mathrm{tr}(H_\lambda)$ in place of observation-specific leverage values. -->
+
+## Vocabulary and further reading
+
+- Broadly ridge regression is a form of "penalized regression" and is often called "regularization". The other two most common forms of regularization are "lasso regularization" and best subset selection. These correspond to an L-1 and L-0 penalty respectively.
+
+- Since the expected value of the ridge regression estimator is not equal to $\beta$, it is sometimes referred to as a method of *biased estimation*. Often, we trade a small amount of bias for reduced variability in the estimator. This trade-off is called the bias-variance trade-off.
+
+- The seminal ridge regression paper: [Hoerl and Kennard 1970](https://homepages.math.uic.edu/~lreyzin/papers/ridge.pdf) and a [better format](https://www.jstor.org/stable/1271436?seq=6).
+
