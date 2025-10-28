@@ -131,7 +131,7 @@ schedule %>%
 | 9 | Tue Oct 21 | likelihoods |  | [📝](/notes/introLikelihoods.pdf) [R](/scripts/10-21-2025-mle.R) |  |  |
 |  | Wed Oct 22 | lab: variable transformations and interpretation |  |  | [lab 5](/labs/lab05.html) |  |
 |  | Thu Oct 23 | model selection (AIC) |  | [🗒](/notes/lec15.html) |  |  |
-| 10 | Tue Oct 28 | ridge regression |  |  | hw 3 |  |
+| 10 | Tue Oct 28 | ridge regression |  | [🗒](/notes/lec16.html) | hw 3 |  |
 |  | Wed Oct 29 | lab: project workday |  |  |  |  |
 |  | Thu Oct 30 |  |  |  |  |  |
 | 11 | Tue Nov 04 |  |  |  | hw 4 | EDA due |

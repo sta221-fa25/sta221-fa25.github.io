@@ -13,15 +13,15 @@ library(flare) # eye data
 data("eyedata") # creates objects x and y in your environment
 
 # convert into tidy tibble
-eyedata_df <- as_tibble(x) %>%
+trim32 <- as_tibble(x) %>%
   mutate(
     sample_id = row_number(),
     outcome   = y
   ) %>%
   relocate(sample_id, outcome)
 
-eyedata_df
-# write_csv(eyedata_df, "../data/eyedata_df.csv")
+trim32
+# write_csv(trim32, "../data/trim32.csv")
 ```
 
 ```{r}
@@ -37,8 +37,7 @@ library(corrplot)
 library(tidymodels)
 library(glmnet) # ridge regression
 
-# eyedata_df <- read_csv("https://sta221-fa25.github.io/data/eyedata_df.csv")
-eyedata_df = read_csv("../data/trim32.csv")
+trim32 = read_csv("https://sta221-fa25.github.io/data/trim32.csv")
 ```
 
 \newcommand{\by}{\boldsymbol{y}}
@@ -55,20 +54,20 @@ eyedata_df = read_csv("../data/trim32.csv")
 ## Data
 
 ```{r}
-dim(eyedata_df)
+dim(trim32)
 ```
 
 
 ```{r}
 #| echo: false
-datatable(eyedata_df, rownames = FALSE, options = list(pageLength = 5),
+datatable(trim32, rownames = FALSE, options = list(pageLength = 5),
            caption = "Gene expression data")
 ```
 
 
 The data come from a gene expression study by Scheetz et al. (2006, Genome Biology, 7:R62), which examined gene regulation in rat eye tissue. 
 
-In this data set, we have measurements from 120 rats, each with expression levels recorded for 200 genes. These 200 genes serve as our predictor variables. The outcome of interest is the expression level of a specific gene called TRIM32, which plays a role in retinal development. Thus, each observation corresponds to one rat, with TRIM32 expression as a continuous response variable and 200 other gene expression levels as predictors.
+In this data set, we have measurements from 120 rats, each with expression levels recorded for 200 genes. These 200 genes serve as our predictor variables. The outcome of interest is the expression level of a specific gene called TRIM32, which plays a role in retinal development. Moreover, TRIM32 is known to be linked with a genetic disorder called Bardet-Biedl Syndrome (BBS): the mutation (P130S) in Trim32 gives rise to BBS. Thus, each observation corresponds to one rat, with TRIM32 expression as a continuous response variable and 200 other gene expression levels as predictors.
 
 
 ```{r}
@@ -98,7 +97,7 @@ R
 ## fit
 ```{r}
 #| eval: false
-fit = lm(y ~ 0 + ., data = eyedata_df)
+fit = lm(y ~ 0 + ., data = trim32)
 summary(fit)
 ```
 
@@ -107,14 +106,14 @@ summary(fit)
 ```{r}
 #| echo: false
 #| error: true
-fit = lm(y ~ 0 + ., data = eyedata_df)
+fit = lm(y ~ 0 + ., data = trim32)
 summary(fit)
 ```
 
 ## simpler example
 
 ```{r}
-small_subset = eyedata_df %>%
+small_subset = trim32 %>%
   select(y,`1397932_at`, `1394095_at`,`1393803_at`) %>%
   .[1:2,]
 
@@ -237,12 +236,13 @@ $$
 
 ```{r}
 # get X matrix (no intercept)
-X = model.matrix(y ~ 0 + ., data = eyedata_df)
+X = model.matrix(y ~ 0 + ., data = trim32)
 Xscale = sqrt(colMeans(X^2)) # create root mean squared
-Xs = sweep(X, 2, Xscale, "/") # divide by root mean squared
+Xs1 = sweep(X, 2, colMeans(X), "-")
+Xs = sweep(Xs1, 2, Xscale, "/") # divide by root mean squared
 
 XTX = t(Xs) %*% Xs
-y = eyedata_df$y %>%
+y = trim32$y %>%
   as.matrix(ncol = 1)
 
 p = nrow(XTX)
@@ -281,26 +281,62 @@ betahat_ridge %>%
 
 ```{r}
 #| echo: true
-ridge_fit = MASS::lm.ridge(y ~ 0 + ., data = eyedata_df, lambda = 1)
+ridge_fit = MASS::lm.ridge(y ~ 0 + ., data = trim32, lambda = 1)
 
 beta_scaled_lmridge = ridge_fit$coef # scaled space coefficients
 beta_unscaled_lmridge = coef(ridge_fit) # original scale coefficients 
 # (different than computed above)
 
-beta_scaled_lmridge[1:5]
-betahat_ridge[1:5,]
+beta_unscaled_lmridge[1:4]
+beta_scaled_lmridge[1:4]
+betahat_ridge[1:4,]
 ```
 
 ::: callout-warning
 `coef(ridge_fit)` and `ridge_fit$coef` return unscaled and scaled coefficients respectively. 
 :::
 
+### Using a different package 
+
+Alternatively, could use `glmnet()` within the `glmnet` package. The function `glmnet` is not just for ridge regression but can perform other forms of penalized regression. Setting `alpha = 0` maps the objective to a ridge regression problem. 
+
+::: callout-warning
+The argument $\lambda$ in `glmnet()` is different. Specifically, the objective function used in `glmnet` is 
+
+$$
+\arg \min_{\beta} ~\frac{1}{n} RSS + \lambda \beta^T\beta
+$$
+
+So, $\lambda \times n$ where $n$ is the number of observations, `nrow(X)`, will match the same objective function.
+
+:::
 
 
-<!-- X2 = eyedata_df[,-1] %>% -->
+```{r}
+X = scale(model.matrix(y ~ 0 + ., data = trim32))
+
+XTX = t(X) %*% X
+y = trim32$y %>%
+  as.matrix(ncol = 1) %>%
+  scale()
+
+p = nrow(XTX)
+lambda = 100
+
+betahat_ridge = solve(XTX + diag(lambda * nrow(X), nrow = p)) %*% t(X) %*% y 
+betahat_ridge[1:4,]
+
+fit = glmnet::glmnet(X, y, alpha = 0, # alpha = 0 defines ridge reg.
+                     lambda = lambda, 
+                     intercept = FALSE) 
+fit$beta[1:4,]
+```
+
+
+<!-- X2 = trim32[,-1] %>% -->
 <!--   as.matrix() -->
 
-<!-- y2 = eyedata_df[,1] %>% -->
+<!-- y2 = trim32[,1] %>% -->
 <!--   as.matrix(ncol = 1) -->
 
 <!-- ridge_fit = glmnet(X2, y2, alpha = 0, lambda = 1 / nrow(X), -->
@@ -327,7 +363,7 @@ betahat_ridge[1:5,]
 ```{r}
 ## 1. Fit for a sequence of lambdas 
 lambdas = seq(0, 5, length = 100)
-ridge_fit = MASS::lm.ridge(y ~ 0 + ., data = eyedata_df, lambda = lambdas)
+ridge_fit = MASS::lm.ridge(y ~ 0 + ., data = trim32, lambda = lambdas)
 
 # 2. Plot ridge trace
 plot(ridge_fit, main = "Ridge Trace Plot")
