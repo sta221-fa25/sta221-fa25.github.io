@@ -67,7 +67,7 @@ datatable(trim32, rownames = FALSE, options = list(pageLength = 5),
 
 The data come from a gene expression study by Scheetz et al. (2006, Genome Biology, 7:R62), which examined gene regulation in rat eye tissue. 
 
-In this data set, we have measurements from 120 rats, each with expression levels recorded for 200 genes. These 200 genes serve as our predictor variables. The outcome of interest is the expression level of a specific gene called TRIM32, which plays a role in retinal development. Moreover, TRIM32 is known to be linked with a genetic disorder called Bardet-Biedl Syndrome (BBS): the mutation (P130S) in Trim32 gives rise to BBS. Thus, each observation corresponds to one rat, with TRIM32 expression as a continuous response variable and 200 other gene expression levels as predictors.
+In this data set, we have measurements from 120 rats, each with expression levels recorded for 500 genes. These 500 genes serve as our predictor variables. The outcome of interest is the expression level of a specific gene called TRIM32, which plays a role in retinal development. Moreover, TRIM32 is known to be linked with a genetic disorder called Bardet-Biedl Syndrome (BBS): the mutation (P130S) in Trim32 gives rise to BBS. Thus, each observation corresponds to one rat, with TRIM32 expression as a continuous response variable and 500 other gene expression levels as predictors.
 
 
 ```{r}
@@ -125,8 +125,10 @@ small_subset %>%
 ```
 
 $$
-y_1 = \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3\\
-y_2 = \beta_1 x_1 + \beta2 x_2 + \beta_3 x_3
+\begin{aligned}
+y_1 &= \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3\\
+y_2 &= \beta_1 x_1 + \beta2 x_2 + \beta_3 x_3
+\end{aligned}
 $$
 - $p > n$ $\implies$ linearly dependent columns $\implies$ infinitely many solutions!
 
