@@ -68,7 +68,7 @@ $$
 
 ## Exercise 2
 
-Ridge regression: show that even if $X^TX$ is singular (not invertible), the matrix $A = (X^TX + \lambda I)$ is invertible using the singular value decomposition. Hint: $I = VV^T$.
+Ridge regression: show that even if $X^TX$ is singular (not invertible), the matrix $A = (X^TX + \lambda I)$, where $\lambda > 0$, is invertible using the singular value decomposition. Hint: $I = VV^T$.
 
 ## Exercise 3
 
@@ -102,7 +102,7 @@ Write all narrative using complete sentences and include informative axis labels
 
 ## Exercise 6
 
-Use the hat matrix formed by `X1` in exercise 5. Verify that the hat matrix $H = UU^T$ as in exercise 1(c). Hint: use `all.equal(H, U %*% t(U))` to avoid floating point rounding issues. Verify empirically that the columns of $U$ are indeed orthonormal.
+Use the hat matrix formed by `X1` in exercise 5. Verify that the hat matrix $H = UU^T$ as in exercise 1(c). Hint: use `all.equal(H, U %*% t(U))` to avoid floating point rounding issues. Verify empirically that the columns of $U$ are indeed orthonormal. The function `svd()` will compute the SVD in R. Use `?svd` to read more.
 
 ## Data: 2000 U.S. Presidential Election
 

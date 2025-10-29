@@ -5087,7 +5087,7 @@ X = U\Sigma V^T
 </section>
 <section id="exercise-2" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
-<p>Ridge regression: show that even if <span class="math inline">\(X^TX\)</span> is singular (not invertible), the matrix <span class="math inline">\(A = (X^TX + \lambda I)\)</span> is invertible using the singular value decomposition. Hint: <span class="math inline">\(I = VV^T\)</span>.</p>
+<p>Ridge regression: show that even if <span class="math inline">\(X^TX\)</span> is singular (not invertible), the matrix <span class="math inline">\(A = (X^TX + \lambda I)\)</span>, where <span class="math inline">\(\lambda &gt; 0\)</span>, is invertible using the singular value decomposition. Hint: <span class="math inline">\(I = VV^T\)</span>.</p>
 </section>
 <section id="exercise-3" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
@@ -5118,7 +5118,7 @@ X = U\Sigma V^T
 <p>Write all narrative using complete sentences and include informative axis labels / titles on visualizations.</p>
 <section id="exercise-6" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-6">Exercise 6</h2>
-<p>Use the hat matrix formed by <code>X1</code> in exercise 5. Verify that the hat matrix <span class="math inline">\(H = UU^T\)</span> as in exercise 1(c). Hint: use <code>all.equal(H, U %*% t(U))</code> to avoid floating point rounding issues. Verify empirically that the columns of <span class="math inline">\(U\)</span> are indeed orthonormal.</p>
+<p>Use the hat matrix formed by <code>X1</code> in exercise 5. Verify that the hat matrix <span class="math inline">\(H = UU^T\)</span> as in exercise 1(c). Hint: use <code>all.equal(H, U %*% t(U))</code> to avoid floating point rounding issues. Verify empirically that the columns of <span class="math inline">\(U\)</span> are indeed orthonormal. The function <code>svd()</code> will compute the SVD in R. Use <code>?svd</code> to read more.</p>
 </section>
 <section id="data-2000-u.s.-presidential-election" class="level2">
 <h2 class="anchored" data-anchor-id="data-2000-u.s.-presidential-election">Data: 2000 U.S. Presidential Election</h2>
