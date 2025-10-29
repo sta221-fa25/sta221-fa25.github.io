@@ -62,7 +62,7 @@ $$
 X = U\Sigma V^T
 $$
 
-(a) Write $\hat{\beta}_{OLS}$ in terms of the SVD. Simplify as much as possible.
+(a) Write $\hat{\beta}_{OLS}$ in terms of the SVD. Hint: to write $(X^TX)^{-1}$ implies $n \geq p$. Simplify as much as possible.
 
 (b) Compute $Var[\hat{\beta}_{OLS}]$ in terms of the SVD. Simplify as much as possible. 
 
