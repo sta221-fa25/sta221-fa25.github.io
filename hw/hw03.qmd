@@ -35,7 +35,7 @@ The singular value decomposition of an $n \times p$ matrix $A$, is a factorizati
 
 - $U$ is an $n \times n$ orthogonal matrix,
 - $\Sigma$ is an $n \times p$ diagonal matrix,
-- $V$ is a $p \times p$ orthogonal matrix.[^1]
+- $V$ is a $p \times p$ orthogonal matrix.
 
 Recall that if a matrix $B$ is orthogonal, $B^T B = I$.
 
