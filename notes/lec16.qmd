@@ -236,12 +236,17 @@ $$
 <!-- yD =  sum((y - mean(y))^2) / nrow(X) -->
 <!-- y = y / yD -->
 
+<!-- # Xs1 = sweep(X, 2, colMeans(X), "-") -->
+
+<!-- Xs1 = sweep(X, 2, colMeans(X), "-") -->
+<!-- Xscale = sqrt(colMeans(Xs1^2)) # create root mean squared -->
+<!-- Xs = sweep(X, 2, Xscale, "/") # divide by root mean squared -->
+
+
 ```{r}
 # get X matrix (no intercept)
 X = model.matrix(y ~ 0 + ., data = trim32)
-Xscale = sqrt(colMeans(X^2)) # create root mean squared
-Xs1 = sweep(X, 2, colMeans(X), "-")
-Xs = sweep(Xs1, 2, Xscale, "/") # divide by root mean squared
+Xs = scale(X)
 
 XTX = t(Xs) %*% Xs
 y = trim32$y %>%
@@ -283,11 +288,13 @@ betahat_ridge %>%
 
 ```{r}
 #| echo: true
-ridge_fit = MASS::lm.ridge(y ~ 0 + ., data = trim32, lambda = 1)
+# pass standardized data in: 
+ridge_fit = MASS::lm.ridge(y ~ 0 + ., data = data.frame(y, Xs),
+                           lambda = 1)
 
 beta_scaled_lmridge = ridge_fit$coef # scaled space coefficients
 beta_unscaled_lmridge = coef(ridge_fit) # original scale coefficients 
-# (different than computed above)
+# (different than computed above if y and X are not standardized inputs)
 
 beta_unscaled_lmridge[1:4]
 beta_scaled_lmridge[1:4]

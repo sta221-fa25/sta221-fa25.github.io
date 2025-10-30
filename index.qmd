@@ -133,7 +133,7 @@ schedule %>%
 |  | Thu Oct 23 | model selection (AIC) |  | [🗒](/notes/lec15.html) |  |  |
 | 10 | Tue Oct 28 | ridge regression |  | [🗒](/notes/lec16.html) | [hw 3](/hw/hw03.html) |  |
 |  | Wed Oct 29 | lab: project workday |  |  |  |  |
-|  | Thu Oct 30 |  |  |  |  |  |
+|  | Thu Oct 30 | generalized least squares |  |  |  |  |
 | 11 | Tue Nov 04 |  |  |  |  | EDA due |
 |  | Wed Nov 05 |  |  |  |  |  |
 |  | Thu Nov 06 |  |  |  | hw 4 |  |
