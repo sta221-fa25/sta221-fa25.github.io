@@ -199,8 +199,8 @@ To submit your assignment:
 | Ex 4                  | 3      |
 | Ex 5                  | 5      |
 | Ex 6                  | 5      |
-| Ex 7                  | 4      |
-| Ex 8                  | 5      |
+| Ex 7                  | 5      |
+| Ex 8                  | 4      |
 | Ex 9                  | 4      |
 | Ex 10                 | 2      |
 | Workflow & formatting | 4      |
