@@ -134,15 +134,15 @@ schedule %>%
 | 10 | Tue Oct 28 | ridge regression |  | [🗒](/notes/lec16.html) | [hw 3](/hw/hw03.html) |  |
 |  | Wed Oct 29 | lab: project workday |  |  |  |  |
 |  | Thu Oct 30 | generalized least squares |  |  |  |  |
-| 11 | Tue Nov 04 |  |  |  |  | EDA due |
-|  | Wed Nov 05 |  |  |  |  |  |
-|  | Thu Nov 06 |  |  |  | hw 4 |  |
-| 12 | Tue Nov 11 |  |  |  |  |  |
+| 11 | Tue Nov 04 | GLS example |  |  |  | EDA due |
+|  | Wed Nov 05 | lab: MLE |  |  | [lab 6](/labs/lab06.html) |  |
+|  | Thu Nov 06 | intro to logistic reg. |  |  | hw 4 |  |
+| 12 | Tue Nov 11 | logistic reg. prediction |  |  |  |  |
 |  | Wed Nov 12 | lab: project presentations |  |  |  | presentation |
-|  | Thu Nov 13 |  |  |  |  |  |
-| 13 | Tue Nov 18 |  |  |  |  | draft report due |
+|  | Thu Nov 13 | logistic reg. model selection |  |  |  |  |
+| 13 | Tue Nov 18 | logistic reg. example |  |  |  | draft report due |
 |  | Wed Nov 19 | lab: peer review |  |  |  | peer review |
-|  | Thu Nov 20 |  |  |  |  |  |
+|  | Thu Nov 20 | ethics |  |  |  |  |
 | 14 | Tue Nov 25 |  |  |  |  |  |
 |  | Wed Nov 26 | NO CLASS |  |  |  |  |
 |  | Thu Nov 27 | NO CLASS |  |  |  |  |

@@ -1,0 +1,274 @@
+---
+title: "Generalized Least Squares: R example"
+author: "Dr. Alexander Fisher"
+format: html
+---
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data used in these notes"
+#| warning: false
+#| message: false
+library(tidyverse)
+library(tidymodels)
+library(nlme) # package for GLS, AR1 model
+library(mvtnorm) # for density of a multivariate normal
+
+load(url("https://sta221-fa25.github.io/data/VostokIce"))
+```
+
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+\newcommand{\bzero}{\boldsymbol{0}}
+\newcommand{\identity}{\boldsymbol{I}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+
+## Data
+
+Vostok station is a Russian research station founded by the Soviet Union in 1957. The station is near the South Pole in Antarctica and has recorded the lowest reliably measured natural temperature on Earth (-89.2 C or -128.6 F). The station sits on an ice sheet. The ice-core project had researchers drill over 3500 meters in below the surface of the ice sheet to retrieve "ice cores". The ice cores provide us with a few pieces of data.
+
+-   `year`: scientists estimate "years before present" at which ice was frozen by counting layers of ice (by assuming some constants, such as regularity of snow, etc.)
+
+-   `co2`: atmospheric $CO_2$ concentration (ppm), preserved in the ice within trapped air bubbles.
+
+-   `tmp`: a measure of past temperature, recorded as a difference from current and constructed from based on the isotopes of $CO_2$ found. The key idea being that colder temperatures result in fewer heavy isotopes during snowfall.
+
+```{r}
+glimpse(VostokIce)
+```
+
+### Motivating question
+
+*Can temperature be explained by* $CO_2$ concentration in the atmosphere?
+
+## EDA
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+VostokIce %>%
+  ggplot(aes(x = co2, y = tmp)) + 
+  theme_bw() +
+  geom_point() +
+  geom_smooth(method = 'lm', se = FALSE, color = "steelblue") +
+  labs(x = expression(CO[2]), y = "Temperature", title = "Temperature vs carbon dioxide concentration")
+```
+
+::: panel-tabset
+## Plot
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+VostokIce %>%
+  mutate(tmpStd = ((tmp - mean(tmp)) / sd(tmp))) %>%
+  mutate(co2Std = (co2 - mean(co2)) / sd(co2)) %>%
+  ggplot(aes(x = year, y = tmpStd)) + 
+  theme_bw() +
+  geom_line(aes(col = "temp")) +
+  geom_line(aes(x = year, y = co2Std, col = "CO2"),) +
+  labs(x = "Year", y = "Standardized measurement", title = "Measurement vs year")
+```
+
+## Code
+
+```{r}
+#| eval: false
+VostokIce %>%
+  mutate(tmpStd = ((tmp - mean(tmp)) / sd(tmp))) %>%
+  mutate(co2Std = (co2 - mean(co2)) / sd(co2)) %>%
+  ggplot(aes(x = year, y = tmpStd)) + 
+  theme_bw() +
+  geom_line(aes(col = "temp")) +
+  geom_line(aes(x = year, y = co2Std, col = "CO2"),) +
+  labs(x = "Year", y = "Standardized measurement", title = "Measurement vs year")
+```
+:::
+
+### Fit model
+
+```{r}
+fit = lm(tmp ~ co2, data = VostokIce)
+summary(fit) %>%
+  tidy()
+```
+
+### Check assumptions
+
+```{r}
+fit_aug = augment(fit)
+
+ggplot(data = fit_aug, aes(x = .fitted, y = .resid)) +
+  geom_point() + 
+  geom_hline(yintercept = 0, linetype = 2, color = "red") + 
+  labs(x = "Fitted values", 
+       y = "Residuals", 
+       title = "Residuals vs. Fitted Values") +
+  theme_bw()
+```
+
+```{r}
+ggplot(fit_aug, aes(sample = .std.resid)) +
+  stat_qq() +
+  stat_qq_line() +
+  labs(title = "Normal Q-Q Plot of Standardized Residuals",
+       x = "Theoretical Quantiles",
+       y = "Standardized Residuals") +
+  theme_minimal()
+```
+
+A Q–Q (quantile–quantile) plot compares the quantiles of your residuals to those of a theoretical distribution (in this case a normal). If the points fall roughly along a straight line, the residuals follows a normal distribution closely.
+
+### Checking residuals in time
+
+```{r}
+#| echo: false
+fit_aug %>%
+  mutate(year = VostokIce$year) %>%
+ggplot( aes(x = year, y = .resid)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  labs(
+    x = "Year",
+    y = "Residuals",
+    title = "Residuals vs Year"
+  ) +
+  theme_bw()
+```
+
+```{r}
+fit_aug %>%
+  mutate(year = VostokIce$year) %>%
+ggplot( aes(x = year, y = .resid)) +
+  geom_point() +
+  geom_line() +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  labs(
+    x = "Year",
+    y = "Residuals",
+    title = "Residuals vs Year"
+  ) +
+  theme_bw()
+```
+
+### Evidence of lag-1 correlation
+
+::: panel-tabset
+
+## Quick look
+
+```{r}
+auto_correlation = acf(fit$residuals)
+auto_correlation$acf[2] # lag-1 (first entry = lag-0)
+```
+
+## Manual look
+
+```{r}
+res_t1 = fit$res[-1] # residuals minus the first.
+res_t0 = fit$res[-length(fit$res)] # residuals minus the last
+resid_matrix = cbind(res_t0 , res_t1 ) # combine the two
+resid_matrix[1:4,]
+cor(resid_matrix) # correlation between residuals
+```
+
+:::
+
+## Generalized least squares
+
+### Using `nlme` package
+
+Before fitting with an AR1 model, we sort the data frame by `year`.
+
+```{r}
+
+# Step (1): sort by time
+# This matters since we don't explicitly give the "year 
+# variable" a place in the AR1 model below
+VostokIce = VostokIce %>%
+  arrange(year)
+
+# Auto-regressive lag-1 model:
+fit_gls_ar1 = gls(
+  tmp ~ co2,
+  data = VostokIce,
+  correlation = corAR1(form = ~ 1)
+)
+summary(fit_gls_ar1)
+
+```
+
+
+### Manual fit 
+
+::: panel-tabset 
+## Direct formula
+
+```{r}
+n = nrow(VostokIce)
+rho = 0.8470009 # from gls output above
+Sigma = rho ^ abs(outer(1:n, 1:n, "-")) # construct Sigma
+X = model.matrix(~ co2, data = VostokIce)
+y = VostokIce$tmp
+beta_hat = solve(t(X) %*% solve(Sigma) %*% X) %*% t(X) %*% solve(Sigma) %*% y
+beta_hat
+```
+
+
+## Using `lm`
+
+```{r}
+#| eval: false
+E = eigen(Sigma, symmetric = TRUE)
+V = E$vectors
+
+Sigma_invhalf = V %*% diag(1 / sqrt(vals)) %*% t(V) # Sigma^{-1/2}
+
+ystar = Sigma_invhalf %*% y
+Xstar = Sigma_invhalf %*% X
+
+# Note: X already contains intercept, so lm(y ~ 0 + X)
+fit_gls = lm(ystar ~ 0 + Xstar)
+summary(fit_gls)
+
+```
+:::
+
+### Computing log-likelihood manually
+
+```{r}
+s2 = sigma(fit_gls_ar1)^2
+beta_hat
+X = model.matrix(tmp ~ co2, data = VostokIce)
+logLikelihood = dmvnorm(y, mean = X %*% beta_hat, s2 * Sigma, log = TRUE)
+logLikelihood
+fit_gls_ar1$logLik
+```
+
+
+### Computing AIC manually
+```{r}
+# Compute AIC directly:
+c = 2 
+-2 * fit_gls_ar1$logLik + (4 * c)
+
+AIC(fit_gls_ar1)
+```
+
+::: panel-tabset
+## Exercise
+
+Why is `p = 4` used for the AIC calculation?
+
+## Solution
+
+$\beta_0, \beta_1, \sigma^2, \rho$ are all unknown parameters in the likelihood.
+:::

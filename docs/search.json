@@ -445,7 +445,7 @@
     "href": "index.html",
     "title": "Regression Analysis: Theory and Applications",
     "section": "",
-    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\nProject\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n💻\n\n\n\n\n\nWed Aug 27\nlab: hello git and R\n\n💻\nlab 0\n\n\n\n\nThu Aug 28\ncorrelation\n📖\n🗒\n\n\n\n\n2\nTue Sep 02\nsimple linear regression\n\n🗒\n\n\n\n\n\nWed Sep 03\nlab: computing and linear algebra review\n\n\nlab 1\n\n\n\n\nThu Sep 04\nmodel assessment\n📖\n🗒\n\n\n\n\n3\nTue Sep 09\nmatrix representation\n📖\n🗒 📝\nhw 1\n\n\n\n\nWed Sep 10\nlab: linear regression\n\n\nlab 2\n\n\n\n\nThu Sep 11\nmultiple linear regression\n\n🗒 📝\n\n\n\n\n4\nTue Sep 16\nintro to inference\n📖\n🗒\n\n\n\n\n\nWed Sep 17\nlab: multiple linear regression\n\n\nlab 3\n\n\n\n\nThu Sep 18\ninference continued\n\n🗒\nhw 2\n\n\n\n5\nTue Sep 23\nthe normal assumption\n\n🗒\n\n\n\n\n\nWed Sep 24\nlab: project workday\n\n\nproject 1\n\n\n\n\nThu Sep 25\nhypothesis tests\n\n🗒\n\n\n\n\n6\nTue Sep 30\nconfidence intervals\n\n🗒📝\n\nresearch topics due\n\n\n\nWed Oct 01\nlab: interaction effects and exam practice\n\n💻\nlab 4\n\n\n\n\nThu Oct 02\nexam review\n\n\n\n\n\n\n7\nTue Oct 07\nexam 1\n\n\n\n\n\n\n\nWed Oct 08\nNO LAB (exam)\n\n\n\n\n\n\n\nThu Oct 09\nchecking assumptions\n\n📝\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\n\nWed Oct 15\nlab: project workday\n\n\n\nproject proposal due\n\n\n\nThu Oct 16\nmulticollinearity\n\n🗒\n\n\n\n\n9\nTue Oct 21\nlikelihoods\n\n📝 R\n\n\n\n\n\nWed Oct 22\nlab: variable transformations and interpretation\n\n\nlab 5\n\n\n\n\nThu Oct 23\nmodel selection (AIC)\n\n🗒\n\n\n\n\n10\nTue Oct 28\nridge regression\n\n🗒\nhw 3\n\n\n\n\nWed Oct 29\nlab: project workday\n\n\n\n\n\n\n\nThu Oct 30\ngeneralized least squares\n\n\n\n\n\n\n11\nTue Nov 04\n\n\n\n\nEDA due\n\n\n\nWed Nov 05\n\n\n\n\n\n\n\n\nThu Nov 06\n\n\n\nhw 4\n\n\n\n12\nTue Nov 11\n\n\n\n\n\n\n\n\nWed Nov 12\nlab: project presentations\n\n\n\npresentation\n\n\n\nThu Nov 13\n\n\n\n\n\n\n\n13\nTue Nov 18\n\n\n\n\ndraft report due\n\n\n\nWed Nov 19\nlab: peer review\n\n\n\npeer review\n\n\n\nThu Nov 20\n\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n\n15\nTue Dec 02\nexam review\n\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\n\nThu Dec 04\nexam 2\n\n\n\n\n\n\nFinal day\nFri Dec 12\nproject due\n\n\n\nfinal report & repo due"
+    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\nProject\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n💻\n\n\n\n\n\nWed Aug 27\nlab: hello git and R\n\n💻\nlab 0\n\n\n\n\nThu Aug 28\ncorrelation\n📖\n🗒\n\n\n\n\n2\nTue Sep 02\nsimple linear regression\n\n🗒\n\n\n\n\n\nWed Sep 03\nlab: computing and linear algebra review\n\n\nlab 1\n\n\n\n\nThu Sep 04\nmodel assessment\n📖\n🗒\n\n\n\n\n3\nTue Sep 09\nmatrix representation\n📖\n🗒 📝\nhw 1\n\n\n\n\nWed Sep 10\nlab: linear regression\n\n\nlab 2\n\n\n\n\nThu Sep 11\nmultiple linear regression\n\n🗒 📝\n\n\n\n\n4\nTue Sep 16\nintro to inference\n📖\n🗒\n\n\n\n\n\nWed Sep 17\nlab: multiple linear regression\n\n\nlab 3\n\n\n\n\nThu Sep 18\ninference continued\n\n🗒\nhw 2\n\n\n\n5\nTue Sep 23\nthe normal assumption\n\n🗒\n\n\n\n\n\nWed Sep 24\nlab: project workday\n\n\nproject 1\n\n\n\n\nThu Sep 25\nhypothesis tests\n\n🗒\n\n\n\n\n6\nTue Sep 30\nconfidence intervals\n\n🗒📝\n\nresearch topics due\n\n\n\nWed Oct 01\nlab: interaction effects and exam practice\n\n💻\nlab 4\n\n\n\n\nThu Oct 02\nexam review\n\n\n\n\n\n\n7\nTue Oct 07\nexam 1\n\n\n\n\n\n\n\nWed Oct 08\nNO LAB (exam)\n\n\n\n\n\n\n\nThu Oct 09\nchecking assumptions\n\n📝\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\n\nWed Oct 15\nlab: project workday\n\n\n\nproject proposal due\n\n\n\nThu Oct 16\nmulticollinearity\n\n🗒\n\n\n\n\n9\nTue Oct 21\nlikelihoods\n\n📝 R\n\n\n\n\n\nWed Oct 22\nlab: variable transformations and interpretation\n\n\nlab 5\n\n\n\n\nThu Oct 23\nmodel selection (AIC)\n\n🗒\n\n\n\n\n10\nTue Oct 28\nridge regression\n\n🗒\nhw 3\n\n\n\n\nWed Oct 29\nlab: project workday\n\n\n\n\n\n\n\nThu Oct 30\ngeneralized least squares\n\n\n\n\n\n\n11\nTue Nov 04\nGLS example\n\n\n\nEDA due\n\n\n\nWed Nov 05\nlab: MLE\n\n\nlab 6\n\n\n\n\nThu Nov 06\nintro to logistic reg.\n\n\nhw 4\n\n\n\n12\nTue Nov 11\nlogistic reg. prediction\n\n\n\n\n\n\n\nWed Nov 12\nlab: project presentations\n\n\n\npresentation\n\n\n\nThu Nov 13\nlogistic reg. model selection\n\n\n\n\n\n\n13\nTue Nov 18\nlogistic reg. example\n\n\n\ndraft report due\n\n\n\nWed Nov 19\nlab: peer review\n\n\n\npeer review\n\n\n\nThu Nov 20\nethics\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n\n15\nTue Dec 02\nexam review\n\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\n\nThu Dec 04\nexam 2\n\n\n\n\n\n\nFinal day\nFri Dec 12\nproject due\n\n\n\nfinal report & repo due"
   },
   {
     "objectID": "hw/hw01.html",
@@ -2245,5 +2245,117 @@
     "title": "Homework 03: Ridge regression and variable transformations",
     "section": "Data: 2000 U.S. Presidential Election",
     "text": "Data: 2000 U.S. Presidential Election\nWe will examine data about the 2000 U.S. presidential election between George W. Bush and Al Gore. It was one of the closest elections in history that ultimately came down to the state of Florida. One county in particular, Palm Beach County, was at the center of the controversy due to the design of their ballots - the infamous butterfly ballots. It is believed that many people who intended to vote for Al Gore accidentally voted for Pat Buchanan due to how the spots to mark the candidate were arranged next to the names.\nThe variables in the data are\n\nCounty: County name\nBush2000: Number of votes for George W. Bush\nBuchanan2000: Number of votes for Pat Buchanan\n\nThe data are available in the file florida-votes-2000.csv in the data folder of your repo."
+  },
+  {
+    "objectID": "notes/lec17.html",
+    "href": "notes/lec17.html",
+    "title": "Generalized Least Squares: R example",
+    "section": "",
+    "text": "View libraries and data used in these notes\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(nlme) # package for GLS, AR1 model\nlibrary(mvtnorm) # for density of a multivariate normal\n\nload(url(\"https://sta221-fa25.github.io/data/VostokIce\"))"
+  },
+  {
+    "objectID": "notes/lec17.html#data",
+    "href": "notes/lec17.html#data",
+    "title": "Generalized Least Squares: R example",
+    "section": "Data",
+    "text": "Data\nVostok station is a Russian research station founded by the Soviet Union in 1957. The station is near the South Pole in Antarctica and has recorded the lowest reliably measured natural temperature on Earth (-89.2 C or -128.6 F). The station sits on an ice sheet. The ice-core project had researchers drill over 3500 meters in below the surface of the ice sheet to retrieve “ice cores”. The ice cores provide us with a few pieces of data.\n\nyear: scientists estimate “years before present” at which ice was frozen by counting layers of ice (by assuming some constants, such as regularity of snow, etc.)\nco2: atmospheric \\(CO_2\\) concentration (ppm), preserved in the ice within trapped air bubbles.\ntmp: a measure of past temperature, recorded as a difference from current and constructed from based on the isotopes of \\(CO_2\\) found. The key idea being that colder temperatures result in fewer heavy isotopes during snowfall.\n\n\nglimpse(VostokIce)\n\nRows: 200\nColumns: 3\n$ year &lt;dbl&gt; -419095, -416872, -414692, -413062, -410979, -408485, -406441, -4…\n$ co2  &lt;dbl&gt; 277.6, 286.9, 285.5, 285.5, 281.2, 281.2, 279.7, 279.7, 278.0, 27…\n$ tmp  &lt;dbl&gt; 0.94, 1.36, 1.07, 1.08, 1.27, 0.94, 0.31, -0.37, -1.26, -1.58, -1…\n\n\n\nMotivating question\nCan temperature be explained by \\(CO_2\\) concentration in the atmosphere?"
+  },
+  {
+    "objectID": "notes/lec17.html#eda",
+    "href": "notes/lec17.html#eda",
+    "title": "Generalized Least Squares: R example",
+    "section": "EDA",
+    "text": "EDA\n\n\n\n\n\n\n\n\n\n\nPlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVostokIce %&gt;%\n  mutate(tmpStd = ((tmp - mean(tmp)) / sd(tmp))) %&gt;%\n  mutate(co2Std = (co2 - mean(co2)) / sd(co2)) %&gt;%\n  ggplot(aes(x = year, y = tmpStd)) + \n  theme_bw() +\n  geom_line(aes(col = \"temp\")) +\n  geom_line(aes(x = year, y = co2Std, col = \"CO2\"),) +\n  labs(x = \"Year\", y = \"Standardized measurement\", title = \"Measurement vs year\")\n\n\n\n\n\nFit model\n\nfit = lm(tmp ~ co2, data = VostokIce)\nsummary(fit) %&gt;%\n  tidy()\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept) -23.0      0.880       -26.2 3.27e-66\n2 co2           0.0799   0.00383      20.8 8.77e-52\n\n\n\n\nCheck assumptions\n\nfit_aug = augment(fit)\n\nggplot(data = fit_aug, aes(x = .fitted, y = .resid)) +\n  geom_point() + \n  geom_hline(yintercept = 0, linetype = 2, color = \"red\") + \n  labs(x = \"Fitted values\", \n       y = \"Residuals\", \n       title = \"Residuals vs. Fitted Values\") +\n  theme_bw()\n\n\n\n\n\n\n\n\n\nggplot(fit_aug, aes(sample = .std.resid)) +\n  stat_qq() +\n  stat_qq_line() +\n  labs(title = \"Normal Q-Q Plot of Standardized Residuals\",\n       x = \"Theoretical Quantiles\",\n       y = \"Standardized Residuals\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\nA Q–Q (quantile–quantile) plot compares the quantiles of your residuals to those of a theoretical distribution (in this case a normal). If the points fall roughly along a straight line, the residuals follows a normal distribution closely.\n\n\nChecking residuals in time\n\n\n\n\n\n\n\n\n\n\nfit_aug %&gt;%\n  mutate(year = VostokIce$year) %&gt;%\nggplot( aes(x = year, y = .resid)) +\n  geom_point() +\n  geom_line() +\n  geom_hline(yintercept = 0, linetype = \"dashed\", color = \"red\") +\n  labs(\n    x = \"Year\",\n    y = \"Residuals\",\n    title = \"Residuals vs Year\"\n  ) +\n  theme_bw()\n\n\n\n\n\n\n\n\n\n\nEvidence of lag-1 correlation\n\nQuick lookManual look\n\n\n\nauto_correlation = acf(fit$residuals)\n\n\n\n\n\n\n\nauto_correlation$acf[2] # lag-1 (first entry = lag-0)\n\n[1] 0.5165516\n\n\n\n\n\nres_t1 = fit$res[-1] # residuals minus the first.\nres_t0 = fit$res[-length(fit$res)] # residuals minus the last\nresid_matrix = cbind(res_t0 , res_t1 ) # combine the two\nresid_matrix[1:4,]\n\n    res_t0   res_t1\n1 1.796974 1.474342\n2 1.474342 1.296136\n3 1.296136 1.306136\n4 1.306136 1.839503\n\ncor(resid_matrix) # correlation between residuals\n\n          res_t0    res_t1\nres_t0 1.0000000 0.5183877\nres_t1 0.5183877 1.0000000"
+  },
+  {
+    "objectID": "notes/lec17.html#generalized-least-squares",
+    "href": "notes/lec17.html#generalized-least-squares",
+    "title": "Generalized Least Squares: R example",
+    "section": "Generalized least squares",
+    "text": "Generalized least squares\n\nUsing nlme package\nBefore fitting with an AR1 model, we sort the data frame by year.\n\n# Step (1): sort by time\n# This matters since we don't explicitly give the \"year \n# variable\" a place in the AR1 model below\nVostokIce = VostokIce %&gt;%\n  arrange(year)\n\n# Auto-regressive lag-1 model:\nfit_gls_ar1 = gls(\n  tmp ~ co2,\n  data = VostokIce,\n  correlation = corAR1(form = ~ 1)\n)\nsummary(fit_gls_ar1)\n\nGeneralized least squares fit by REML\n  Model: tmp ~ co2 \n  Data: VostokIce \n       AIC      BIC    logLik\n  664.8527 678.0058 -328.4264\n\nCorrelation Structure: AR(1)\n Formula: ~1 \n Parameter estimate(s):\n      Phi \n0.8470009 \n\nCoefficients:\n                 Value Std.Error   t-value p-value\n(Intercept) -10.355955 1.7231321 -6.009960   0e+00\nco2           0.025119 0.0070807  3.547493   5e-04\n\n Correlation: \n    (Intr)\nco2 -0.947\n\nStandardized residuals:\n       Min         Q1        Med         Q3        Max \n-1.7007966 -0.7472771 -0.3278727  0.4786885  2.7789435 \n\nResidual standard error: 2.312641 \nDegrees of freedom: 200 total; 198 residual\n\n\n\n\nManual fit\n\nDirect formulaUsing lm\n\n\n\nn = nrow(VostokIce)\nrho = 0.8470009 # from gls output above\nSigma = rho ^ abs(outer(1:n, 1:n, \"-\")) # construct Sigma\nX = model.matrix(~ co2, data = VostokIce)\ny = VostokIce$tmp\nbeta_hat = solve(t(X) %*% solve(Sigma) %*% X) %*% t(X) %*% solve(Sigma) %*% y\nbeta_hat\n\n                   [,1]\n(Intercept) -10.3559555\nco2           0.0251189\n\n\n\n\n\nE = eigen(Sigma, symmetric = TRUE)\nV = E$vectors\n\nSigma_invhalf = V %*% diag(1 / sqrt(vals)) %*% t(V) # Sigma^{-1/2}\n\nystar = Sigma_invhalf %*% y\nXstar = Sigma_invhalf %*% X\n\n# Note: X already contains intercept, so lm(y ~ 0 + X)\nfit_gls = lm(ystar ~ 0 + Xstar)\nsummary(fit_gls)\n\n\n\n\n\n\nComputing log-likelihood manually\n\ns2 = sigma(fit_gls_ar1)^2\nbeta_hat\n\n                   [,1]\n(Intercept) -10.3559555\nco2           0.0251189\n\nX = model.matrix(tmp ~ co2, data = VostokIce)\nlogLikelihood = dmvnorm(y, mean = X %*% beta_hat, s2 * Sigma, log = TRUE)\nlogLikelihood\n\n[1] -324.7216\n\nfit_gls_ar1$logLik\n\n[1] -328.4264\n\n\n\n\nComputing AIC manually\n\n# Compute AIC directly:\nc = 2 \n-2 * fit_gls_ar1$logLik + (4 * c)\n\n[1] 664.8527\n\nAIC(fit_gls_ar1)\n\n[1] 664.8527\n\n\n\nExerciseSolution\n\n\nWhy is p = 4 used for the AIC calculation?\n\n\n\\(\\beta_0, \\beta_1, \\sigma^2, \\rho\\) are all unknown parameters in the likelihood."
+  },
+  {
+    "objectID": "notes/lec17.html#aic",
+    "href": "notes/lec17.html#aic",
+    "title": "Generalized Least Squares",
+    "section": "AIC",
+    "text": "AIC\n\nIdea\n\n\nFrom package\n\n\nComputing manually\n\nA = Sigma\n\n# Eigen decomposition\n\nE = eigen(A)\n\nV = E$vectors\n\nD = diag(E$values)\n\n# Matrix square root\n\nA_half = V %*% sqrt(D) %*% t(V)\n\n# Negative square root\n\nA_half_neg = -A_half\n\nA_invhalf = V %*% diag(1 / sqrt(E$values)) %*% t(V)\n\nystar = A_invhalf %*% y\n\nXstar = A_invhalf %*% X\n\nlm(y ~ 0 + Xstar) %&gt;%\n\n  summary()\n\n\nCall:\nlm(formula = y ~ 0 + Xstar)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-6.4411 -1.9672 -0.6589  1.3087  9.0346 \n\nCoefficients:\n                   Estimate Std. Error t value Pr(&gt;|t|)    \nXstar(Intercept) -29.815965   1.932424 -15.429  &lt; 2e-16 ***\nXstarco2           0.060066   0.007941   7.564 1.43e-12 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.594 on 198 degrees of freedom\nMultiple R-squared:  0.7844,    Adjusted R-squared:  0.7822 \nF-statistic: 360.2 on 2 and 198 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "labs/lab06.html",
+    "href": "labs/lab06.html",
+    "title": "Lab 06: Maximum likelihood estimation",
+    "section": "",
+    "text": "Due date\n\n\n\nThis lab is due on Tuesday, November 11 at 5:00pm to Gradescope."
+  },
+  {
+    "objectID": "labs/lab06.html#exercise-1",
+    "href": "labs/lab06.html#exercise-1",
+    "title": "Lab 06: Maximum likelihood estimation",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nWe’ll start with exploratory data analysis focused on the relationship between the response and predictor variables.\n\nVisualize the relationship between the response variable bill_depth_mm and predictor bill_length_mm .\nNow, visualize the relationship between bill_depth_mm and bill_length_mm by species. Use geom_smooth(method = \"lm\", se = FALSE) to add lines and more clearly visualize the relationship for each species.\nBased on these visualizations, why is it important to include species when in the model of the relationship between bill depth and length? Briefly explain.\nBased on these visualizations, would you include an interaction term between the two predictors? Briefly explain?"
+  },
+  {
+    "objectID": "labs/lab06.html#exercise-2",
+    "href": "labs/lab06.html#exercise-2",
+    "title": "Lab 06: Maximum likelihood estimation",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nWe will fit the main effects model using bill length and species to understand variability in the bill depth.\n\nWrite the form of the statistical (population-level) model in matrix form.\nWrite the dimensions for \\(\\mathbf{y}, \\mathbf{X}, \\boldsymbol{\\beta}, \\boldsymbol{\\epsilon}\\) specific for this problem."
+  },
+  {
+    "objectID": "labs/lab06.html#exercise-3",
+    "href": "labs/lab06.html#exercise-3",
+    "title": "Lab 06: Maximum likelihood estimation",
+    "section": "Exercise 3",
+    "text": "Exercise 3\nConsider the regression model described in Exercise 2.\n\nWrite the likelihood function \\(L(\\boldsymbol{\\beta}, \\sigma^2 | \\mathbf{y}, \\mathbf{X})\\) in matrix form.\nDescribe how each of the three typical model assumptions is necessary for the form of the likelihood function."
+  },
+  {
+    "objectID": "labs/lab06.html#exercise-4",
+    "href": "labs/lab06.html#exercise-4",
+    "title": "Lab 06: Maximum likelihood estimation",
+    "section": "Exercise 4",
+    "text": "Exercise 4\nBriefly explain how the process of finding the maximum likelihood estimators for the likelihood function in Exercise 3 is related to the process of finding the least-squares estimators for the model in Exercise 2."
+  },
+  {
+    "objectID": "labs/lab06.html#exercise-5",
+    "href": "labs/lab06.html#exercise-5",
+    "title": "Lab 06: Maximum likelihood estimation",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nFor the next few exercises, we will compare the results of the maximum likelihood and least-squares procedures.\n\nFit the least-squares regression model described in Exercise 2. Neatly display the results using three digits.\nDescribe the estimated effect of bill length on bill depth in the context of the data.\nDescribe the estimated effect of species on bill depth in the context of the data. Include discussion about whether there is statistical evidence of a difference between species."
+  },
+  {
+    "objectID": "labs/lab06.html#exercise-6",
+    "href": "labs/lab06.html#exercise-6",
+    "title": "Lab 06: Maximum likelihood estimation",
+    "section": "Exercise 6",
+    "text": "Exercise 6\n\nUse matrix/vector operations to compute the maximum likelihood estimators \\(\\tilde{\\beta}\\) for the model in Exercise 2.\nHow do these estimators compare to the least-squares estimators in the previous exercise?"
+  },
+  {
+    "objectID": "labs/lab06.html#exercise-7",
+    "href": "labs/lab06.html#exercise-7",
+    "title": "Lab 06: Maximum likelihood estimation",
+    "section": "Exercise 7",
+    "text": "Exercise 7\n\nShow that the maximum likelihood estimator for hte variance is\n\n\\[\n\\tilde{\\sigma}^2_{MLE} = \\frac{1}{n} \\boldsymbol{\\hat{\\varepsilon}^\\mathsf{T}\\hat{\\varepsilon}}\n\\]\nWe know that the maximum likelihood estimator \\(\\tilde{\\sigma}^2_{MLE}\\) and the least-squares estimator for \\(\\hat{sigma}^2_{OLS}\\) are not equal. However they are similar.\n\\[\\hat\\sigma^2_{OLS} = c \\cdot \\tilde\\sigma^2_{MLE}\\]\n\nWhat is \\(c\\) (generally)? What is \\(c\\) specifically in this problem?\nWhich one is unbiased?"
+  },
+  {
+    "objectID": "labs/lab06.html#exercise-8",
+    "href": "labs/lab06.html#exercise-8",
+    "title": "Lab 06: Maximum likelihood estimation",
+    "section": "Exercise 8",
+    "text": "Exercise 8\nNow we will look into the last property of the maximum likelihood estimator for \\(\\boldsymbol{\\beta}\\), and thus of least-squares estimator - asymptotic normality.\nIn words, this property says that, when the number of samples \\(n\\) is large compared to the number of predictors \\(p\\), the maximum likelihood estimator \\(\\tilde{\\boldsymbol\\beta}\\) follows a (multivariate) normal distribution \\(N\\big(\\boldsymbol\\beta, \\sigma^2 (\\mathbf{X}^\\mathsf{T}\\mathbf{X})^{-1}\\big)\\). Let’s use this to construct an approximate confidence interval for \\(\\beta_j\\), the coefficient for speciesChinstrap.\n\nUse \\(\\tilde{\\sigma}^2_{\\epsilon}\\), the maximum likelihood estimator, to compute the approximate confidence interval for \\(\\beta_j\\) . The approximate 95% confidence interval may be computed as\n\n\\[\n\\tilde{\\beta}_j\\pm 2 \\times SE(\\tilde{\\beta}_j)\n\\]\n\nThen interpret this interval in the context of the data."
+  },
+  {
+    "objectID": "labs/lab06.html#exercise-9",
+    "href": "labs/lab06.html#exercise-9",
+    "title": "Lab 06: Maximum likelihood estimation",
+    "section": "Exercise 9",
+    "text": "Exercise 9\n\nCompute the exact (based on the \\(t\\)-distribution) confidence interval for \\(\\beta_j\\), the coefficient of speciesChinstrap.\nCompare the center and width of the this exact interval with the one you computed in Exercise 8. Do they differ? By how much? Which one is wider, indicating more uncertainty?"
+  },
+  {
+    "objectID": "labs/lab06.html#exercise-10",
+    "href": "labs/lab06.html#exercise-10",
+    "title": "Lab 06: Maximum likelihood estimation",
+    "section": "Exercise 10",
+    "text": "Exercise 10\nTo wrap up, we have seen that both the OLS and the maximum likelihood procedures for linear regression produce the same coefficient estimates, but lead to different estimators for the variance \\(\\sigma^2\\) and allow for different types of uncertainty quantification.\nBased on the work in this lab, do you think performing inference based on either method would have changed your conclusion about the the relationship between bill depth and Chinstrap species?"
   }
 ]
