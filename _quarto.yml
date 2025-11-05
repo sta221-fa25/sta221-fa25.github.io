@@ -28,6 +28,8 @@ website:
             text: "hw 1"
           - href: hw/hw02.qmd
             text: "hw 2"
+          - href: hw/hw03.qmd
+            text: "hw 3"
       - text: "labs"
         menu:
           - href: labs/lab00.qmd
@@ -42,6 +44,8 @@ website:
             text: "lab 4"
           - href: labs/lab05.qmd
             text: "lab 5"
+          - href: labs/lab06.qmd
+            text: "lab 6"
             # - href: notes/exam-notes.qmd
       #   text: distributions
       # - href: chapterSummaries.qmd
