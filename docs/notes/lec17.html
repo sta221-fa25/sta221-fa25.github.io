@@ -177,6 +177,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../hw/hw02.html">
  <span class="dropdown-text">hw 2</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../hw/hw03.html">
+ <span class="dropdown-text">hw 3</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -207,6 +211,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../labs/lab05.html">
  <span class="dropdown-text">lab 5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab06.html">
+ <span class="dropdown-text">lab 6</span></a>
   </li>  
     </ul>
   </li>
@@ -500,36 +508,37 @@ res_t1 0.5183877 1.0000000</code></pre>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>fit_gls_ar1 <span class="ot">=</span> <span class="fu">gls</span>(</span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  tmp <span class="sc">~</span> co2,</span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> VostokIce,</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">correlation =</span> <span class="fu">corAR1</span>(<span class="at">form =</span> <span class="sc">~</span> <span class="dv">1</span>)</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_gls_ar1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">correlation =</span> <span class="fu">corAR1</span>(<span class="at">form =</span> <span class="sc">~</span> <span class="dv">1</span>), </span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"ML"</span> <span class="co"># maximum likelihood</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_gls_ar1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Generalized least squares fit by REML
+<pre><code>Generalized least squares fit by maximum likelihood
   Model: tmp ~ co2 
   Data: VostokIce 
        AIC      BIC    logLik
-  664.8527 678.0058 -328.4264
+  657.3112 670.5045 -324.6556
 
 Correlation Structure: AR(1)
  Formula: ~1 
  Parameter estimate(s):
       Phi 
-0.8470009 
+0.8284176 
 
 Coefficients:
                  Value Std.Error   t-value p-value
-(Intercept) -10.355955 1.7231321 -6.009960   0e+00
-co2           0.025119 0.0070807  3.547493   5e-04
+(Intercept) -10.860283 1.6908246 -6.423069   0e+00
+co2           0.027201 0.0070254  3.871772   1e-04
 
  Correlation: 
     (Intr)
-co2 -0.947
+co2 -0.956
 
 Standardized residuals:
        Min         Q1        Med         Q3        Max 
--1.7007966 -0.7472771 -0.3278727  0.4786885  2.7789435 
+-1.7849930 -0.7876546 -0.3111786  0.5258292  2.9192183 
 
-Residual standard error: 2.312641 
+Residual standard error: 2.18379 
 Degrees of freedom: 200 total; 198 residual</code></pre>
 </div>
 </div>
@@ -537,30 +546,49 @@ Degrees of freedom: 200 total; 198 residual</code></pre>
 <section id="manual-fit" class="level3">
 <h3 class="anchored" data-anchor-id="manual-fit">Manual fit</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Direct formula</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Using <code>lm</code></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Direct formula</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Using <code>lm</code></a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">nrow</span>(VostokIce)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>rho <span class="ot">=</span> <span class="fl">0.8470009</span> <span class="co"># from gls output above</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>rho <span class="ot">=</span> <span class="fu">coef</span>(fit_gls_ar1<span class="sc">$</span>modelStruct<span class="sc">$</span>corStruct, <span class="at">unconstrained =</span> <span class="cn">FALSE</span>) </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>Sigma <span class="ot">=</span> rho <span class="sc">^</span> <span class="fu">abs</span>(<span class="fu">outer</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="dv">1</span><span class="sc">:</span>n, <span class="st">"-"</span>)) <span class="co"># construct Sigma</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> co2, <span class="at">data =</span> VostokIce)</span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> VostokIce<span class="sc">$</span>tmp</span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>beta_hat <span class="ot">=</span> <span class="fu">solve</span>(<span class="fu">t</span>(X) <span class="sc">%*%</span> <span class="fu">solve</span>(Sigma) <span class="sc">%*%</span> X) <span class="sc">%*%</span> <span class="fu">t</span>(X) <span class="sc">%*%</span> <span class="fu">solve</span>(Sigma) <span class="sc">%*%</span> y</span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>beta_hat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                   [,1]
-(Intercept) -10.3559555
-co2           0.0251189</code></pre>
+<pre><code>                    [,1]
+(Intercept) -10.86028298
+co2           0.02720076</code></pre>
 </div>
 </div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Solution</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p>Do we need to know <span class="math inline">\(\sigma^2\)</span> the scalar multiple of our covariance matrix to compute <span class="math inline">\(\hat{\beta}_{GLS}\)</span>?</p>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p>No, let <span class="math inline">\(\Sigma = \sigma^2 A\)</span> to see this:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat{\beta}_{GLS} &amp;= (X^T \Sigma^{-1} X)^{-1} X^T \Sigma^{-1}y\\
+&amp;= (X^T (\sigma^2 A)^{-1} X)^{-1} X^T (\sigma^2 A)^{-1} y\\
+&amp;= \sigma^2(X^T A^{-1}X)^{-1} X^T \frac{1}{\sigma^2} A^{-1}y\\
+&amp;= (X^T A^{-1}X)^{-1} X^T A^{-1}y
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>E <span class="ot">=</span> <span class="fu">eigen</span>(Sigma, <span class="at">symmetric =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>V <span class="ot">=</span> E<span class="sc">$</span>vectors</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>Sigma_invhalf <span class="ot">=</span> V <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(vals)) <span class="sc">%*%</span> <span class="fu">t</span>(V) <span class="co"># Sigma^{-1/2}</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>Sigma_invhalf <span class="ot">=</span> V <span class="sc">%*%</span> <span class="fu">diag</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(E<span class="sc">$</span>values)) <span class="sc">%*%</span> <span class="fu">t</span>(V) <span class="co"># Sigma^{-1/2}</span></span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>ystar <span class="ot">=</span> Sigma_invhalf <span class="sc">%*%</span> y</span>
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>Xstar <span class="ot">=</span> Sigma_invhalf <span class="sc">%*%</span> X</span>
@@ -568,6 +596,26 @@ co2           0.0251189</code></pre>
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: X already contains intercept, so lm(y ~ 0 + X)</span></span>
 <span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>fit_gls <span class="ot">=</span> <span class="fu">lm</span>(ystar <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> Xstar)</span>
 <span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_gls)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = ystar ~ 0 + Xstar)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5.9697 -1.5481 -0.2285  1.3725  9.4874 
+
+Coefficients:
+                   Estimate Std. Error t value Pr(&gt;|t|)    
+Xstar(Intercept) -10.860283   1.690825  -6.423 9.71e-10 ***
+Xstarco2           0.027201   0.007025   3.872 0.000147 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.195 on 198 degrees of freedom
+Multiple R-squared:  0.3387,    Adjusted R-squared:  0.3321 
+F-statistic: 50.71 on 2 and 198 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -576,46 +624,40 @@ co2           0.0251189</code></pre>
 <section id="computing-log-likelihood-manually" class="level3">
 <h3 class="anchored" data-anchor-id="computing-log-likelihood-manually">Computing log-likelihood manually</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">=</span> <span class="fu">sigma</span>(fit_gls_ar1)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>beta_hat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">=</span> <span class="fu">sigma</span>(fit_gls_ar1)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">model.matrix</span>(tmp <span class="sc">~</span> co2, <span class="at">data =</span> VostokIce)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>logLikelihood <span class="ot">=</span> <span class="fu">dmvnorm</span>(y, <span class="at">mean =</span> X <span class="sc">%*%</span> beta_hat, s2 <span class="sc">*</span> Sigma, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>logLikelihood</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                   [,1]
-(Intercept) -10.3559555
-co2           0.0251189</code></pre>
+<pre><code>[1] -324.6556</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">model.matrix</span>(tmp <span class="sc">~</span> co2, <span class="at">data =</span> VostokIce)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>logLikelihood <span class="ot">=</span> <span class="fu">dmvnorm</span>(y, <span class="at">mean =</span> X <span class="sc">%*%</span> beta_hat, s2 <span class="sc">*</span> Sigma, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>logLikelihood</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fit_gls_ar1<span class="sc">$</span>logLik</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -324.7216</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>fit_gls_ar1<span class="sc">$</span>logLik</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -328.4264</code></pre>
+<pre><code>[1] -324.6556</code></pre>
 </div>
 </div>
 </section>
 <section id="computing-aic-manually" class="level3">
 <h3 class="anchored" data-anchor-id="computing-aic-manually">Computing AIC manually</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute AIC directly:</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>c <span class="ot">=</span> <span class="dv">2</span> </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">2</span> <span class="sc">*</span> fit_gls_ar1<span class="sc">$</span>logLik <span class="sc">+</span> (<span class="dv">4</span> <span class="sc">*</span> c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute AIC directly:</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>c <span class="ot">=</span> <span class="dv">2</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">2</span> <span class="sc">*</span> fit_gls_ar1<span class="sc">$</span>logLik <span class="sc">+</span> (<span class="dv">4</span> <span class="sc">*</span> c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 664.8527</code></pre>
+<pre><code>[1] 657.3112</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(fit_gls_ar1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(fit_gls_ar1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 664.8527</code></pre>
+<pre><code>[1] 657.3112</code></pre>
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Solution</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Solution</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <p>Why is <code>p = 4</code> used for the AIC calculation?</p>
 </div>
-<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
 <p><span class="math inline">\(\beta_0, \beta_1, \sigma^2, \rho\)</span> are all unknown parameters in the likelihood.</p>
 </div>
 </div>

@@ -200,7 +200,8 @@ VostokIce = VostokIce %>%
 fit_gls_ar1 = gls(
   tmp ~ co2,
   data = VostokIce,
-  correlation = corAR1(form = ~ 1)
+  correlation = corAR1(form = ~ 1), 
+  method = "ML" # maximum likelihood
 )
 summary(fit_gls_ar1)
 
@@ -214,7 +215,7 @@ summary(fit_gls_ar1)
 
 ```{r}
 n = nrow(VostokIce)
-rho = 0.8470009 # from gls output above
+rho = coef(fit_gls_ar1$modelStruct$corStruct, unconstrained = FALSE) 
 Sigma = rho ^ abs(outer(1:n, 1:n, "-")) # construct Sigma
 X = model.matrix(~ co2, data = VostokIce)
 y = VostokIce$tmp
@@ -222,15 +223,34 @@ beta_hat = solve(t(X) %*% solve(Sigma) %*% X) %*% t(X) %*% solve(Sigma) %*% y
 beta_hat
 ```
 
+::: panel-tabset
+## Exercise
+
+Do we need to know $\sigma^2$ the scalar multiple of our covariance matrix to compute $\hat{\beta}_{GLS}$?
+
+## Solution
+
+No, let $\Sigma = \sigma^2 A$ to see this:
+
+$$
+\begin{aligned}
+\hat{\beta}_{GLS} &= (X^T \Sigma^{-1} X)^{-1} X^T \Sigma^{-1}y\\
+&= (X^T (\sigma^2 A)^{-1} X)^{-1} X^T (\sigma^2 A)^{-1} y\\
+&= \sigma^2(X^T A^{-1}X)^{-1} X^T \frac{1}{\sigma^2} A^{-1}y\\
+&= (X^T A^{-1}X)^{-1} X^T A^{-1}y
+\end{aligned}
+$$
+
+:::
+
 
 ## Using `lm`
 
 ```{r}
-#| eval: false
 E = eigen(Sigma, symmetric = TRUE)
 V = E$vectors
 
-Sigma_invhalf = V %*% diag(1 / sqrt(vals)) %*% t(V) # Sigma^{-1/2}
+Sigma_invhalf = V %*% diag(1 / sqrt(E$values)) %*% t(V) # Sigma^{-1/2}
 
 ystar = Sigma_invhalf %*% y
 Xstar = Sigma_invhalf %*% X
@@ -246,7 +266,6 @@ summary(fit_gls)
 
 ```{r}
 s2 = sigma(fit_gls_ar1)^2
-beta_hat
 X = model.matrix(tmp ~ co2, data = VostokIce)
 logLikelihood = dmvnorm(y, mean = X %*% beta_hat, s2 * Sigma, log = TRUE)
 logLikelihood
