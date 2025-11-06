@@ -240,6 +240,8 @@ window.Quarto = {
   <ul>
   <li><a href="#data-o-ring-example" id="toc-data-o-ring-example" class="nav-link active" data-scroll-target="#data-o-ring-example">Data: O-ring example</a></li>
   <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics">Descriptive statistics</a></li>
+  <li><a href="#binary-outcome-model" id="toc-binary-outcome-model" class="nav-link" data-scroll-target="#binary-outcome-model">Binary outcome model</a></li>
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
   <li><a href="#modeling-the-conditional-expectation" id="toc-modeling-the-conditional-expectation" class="nav-link" data-scroll-target="#modeling-the-conditional-expectation">Modeling the conditional expectation</a></li>
   <li><a href="#the-likelihood" id="toc-the-likelihood" class="nav-link" data-scroll-target="#the-likelihood">The likelihood</a></li>
   <li><a href="#finding-the-mle" id="toc-finding-the-mle" class="nav-link" data-scroll-target="#finding-the-mle">Finding the MLE</a></li>
@@ -290,13 +292,26 @@ window.Quarto = {
 </div>
 <section id="data-o-ring-example" class="level2">
 <h2 class="anchored" data-anchor-id="data-o-ring-example">Data: O-ring example</h2>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Space_Shuttle_Challenger_%2804-04-1983%29.JPEG/300px-Space_Shuttle_Challenger_%2804-04-1983%29.JPEG" class="img-fluid"></p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Challenger_flight_51-l_crew.jpg/300px-Challenger_flight_51-l_crew.jpg" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-4216711321.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2000"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-89923247.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3992187016.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="600"></p>
+</figure>
+</div>
 <ul>
 <li><p>In January 1986, the space shuttle Challenger exploded 73 seconds after launch.</p></li>
 <li><p>The culprit is the O-ring seals in the rocket boosters. At lower temperatures, rubber becomes more brittle and is a less effective sealant. At the time of the launch, the temperature was 31°F.</p></li>
 <li><p>Could the failure of the O-rings have been predicted?</p></li>
-<li><p>Data: 23 previous shuttle missions. Each shuttle had 2 boosters, each with 3 O-rings. We know whether or not at least one of the orings was damaged and the launch temperature.</p></li>
+<li><p>Data: 23 previous shuttle missions. Each shuttle had 2 boosters, each with 3 O-rings. We know whether or not at least one of the O-rings was damaged and the launch temperature.</p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>orings <span class="sc">%&gt;%</span></span>
@@ -350,7 +365,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Question</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Does this make sense?</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Binary outcome model</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Solution</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Question</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Does this make sense?</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <ul>
@@ -375,7 +390,11 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+</div>
+</div>
+</section>
+<section id="binary-outcome-model" class="level2">
+<h2 class="anchored" data-anchor-id="binary-outcome-model">Binary outcome model</h2>
 <ul>
 <li>We model each outcome <span class="math inline">\(Y_i\)</span> as a binary random variable. The probability <span class="math inline">\(Y_i\)</span> takes the value 1 is <span class="math inline">\(p\)</span>.</li>
 </ul>
@@ -386,8 +405,9 @@ Prob(Y_i = 0) &amp;= (1-p)
 \end{aligned}
 \]</span> ::: panel-tabset ## Exercise</p>
 <p>What is <span class="math inline">\(E[Y_i|p]\)</span>?</p>
-</div>
-<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+</section>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
 <p><span class="math display">\[
 \begin{aligned}
 E[Y_i|p] &amp;= \sum_{Y_i = 0}^1 Y_i \cdot prob(Y_i)\\
@@ -395,10 +415,7 @@ E[Y_i|p] &amp;= \sum_{Y_i = 0}^1 Y_i \cdot prob(Y_i)\\
 &amp;= 0 \cdot (1-p) + 1 \cdot p\\
 &amp;= p
 \end{aligned}
-\]</span></p>
-</div>
-</div>
-</div>
+\]</span> :::</p>
 <ul>
 <li><p>In linear regression, we are concerned with modeling the conditional expectation of the outcome variable. (Previously: <span class="math inline">\(E[y|X] = X\beta\)</span>).</p></li>
 <li><p>Here, the conditional expectation <span class="math inline">\(E[Y_i | p] = p\)</span>.</p></li>
@@ -513,7 +530,7 @@ E[Y_i | X] = p_i = \frac{1}{e^{-x_i^T\beta}+ 1}
 <section id="logistic-regression-in-r" class="level2">
 <h2 class="anchored" data-anchor-id="logistic-regression-in-r">Logistic regression in R</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>orings_fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(damage <span class="sc">~</span> temp, </span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>orings_fit <span class="ot">=</span> <span class="fu">glm</span>(damage <span class="sc">~</span> temp, </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data  =</span> orings, </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -539,32 +556,58 @@ AIC: 24.315
 Number of Fisher Scoring iterations: 5</code></pre>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>orings_aug <span class="ot">=</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(orings_fit) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="prediction" class="level2">
 <h2 class="anchored" data-anchor-id="prediction">Prediction</h2>
 <p>Now we can predict the failure probability. The failure probability at 31F is nearly 1.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>test_31F <span class="ot">=</span> <span class="fu">tibble</span>(<span class="at">temp     =</span> <span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">85</span>, <span class="fl">0.1</span>), </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">predprob =</span> <span class="fu">predict</span>(orings_fit, <span class="at">newdata =</span> <span class="fu">tibble</span>(<span class="at">temp =</span> temp), <span class="at">type =</span> <span class="st">"response"</span>))</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>test_31F <span class="sc">%&gt;%</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> temp, <span class="at">y =</span> predprob)) <span class="sc">+</span> </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">31</span>) <span class="sc">+</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temperature (F)"</span>, <span class="at">y =</span> <span class="st">"Predicted failure probability"</span>) <span class="sc">+</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>test_31F <span class="ot">=</span> <span class="fu">tibble</span>(<span class="at">temp     =</span> <span class="fu">seq</span>(<span class="dv">25</span>, <span class="dv">85</span>, <span class="fl">0.1</span>), </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">predprob =</span> <span class="fu">predict</span>(orings_fit, <span class="at">newdata =</span> <span class="fu">tibble</span>(<span class="at">temp =</span> temp), <span class="at">type =</span> <span class="st">"response"</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>test_31F <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> temp, <span class="at">y =</span> predprob)) <span class="sc">+</span> </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">31</span>) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temperature (F)"</span>, <span class="at">y =</span> <span class="st">"Predicted failure probability"</span>) <span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec18_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lec18_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make augmented model fit</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>orings_aug <span class="ot">=</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>(orings_fit)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add to the augmented model fit a column for </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># predicted probability</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>orings_aug<span class="sc">$</span>predicted_prob <span class="ot">=</span> </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict.glm</span>(orings_fit, orings, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>orings_aug <span class="sc">%&gt;%</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y =</span> damage) <span class="sc">%&gt;%</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(predicted_prob, .fitted, y) <span class="sc">%&gt;%</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  predicted_prob .fitted     y
+           &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+1          0.939   2.74      1
+2          0.859   1.81      1
+3          0.829   1.58      1
+4          0.603   0.417     1
+5          0.430  -0.280     0</code></pre>
+</div>
+</div>
+<ul>
+<li><code>predicted_prob</code>: predicted probability that <span class="math inline">\(Y_i = 1\)</span>, i.e.&nbsp;<span class="math inline">\(\hat{p}_i\)</span></li>
+<li><code>.fitted</code>: predicted <strong>log-odds</strong>, i.e.&nbsp;<span class="math inline">\(\log \left(\frac{\hat{p_i}}{1 - \hat{p}_i}\right)\)</span>.</li>
+<li><code>y</code>: actual outcome</li>
+</ul>
 <section id="acknowledgements" class="level3">
 <h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
 <p>Thanks to <a href="https://ucla-biostat-200c-2020spring.github.io/slides/04-binomial/binomial.html">Prof.&nbsp;Hua Zhou</a> for example.</p>
