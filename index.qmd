@@ -136,7 +136,7 @@ schedule %>%
 |  | Thu Oct 30 | generalized least squares (GLS) |  | [📝](/notes/GLSintro.pdf) |  |  |
 | 11 | Tue Nov 04 | GLS example |  | [🗒](/notes/lec17.html)[📝](/notes/whyGLS.pdf) |  | EDA due |
 |  | Wed Nov 05 | lab: MLE |  |  | [lab 6](/labs/lab06.html) |  |
-|  | Thu Nov 06 | intro to logistic reg. |  |  |  |  |
+|  | Thu Nov 06 | intro to logistic reg. |  | [🗒](/notes/lec18.html) |  |  |
 | 12 | Tue Nov 11 | logistic reg. prediction |  |  | hw 4 |  |
 |  | Wed Nov 12 | lab: project presentations |  |  |  | presentation |
 |  | Thu Nov 13 | logistic reg. model selection |  |  |  |  |

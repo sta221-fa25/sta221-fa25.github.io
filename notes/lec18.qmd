@@ -1,0 +1,270 @@
+---
+title: "Intro to logistic regression"
+author: "Dr. Alexander Fisher"
+format: html
+---
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data used in these notes"
+#| warning: false
+#| message: false
+library(tidyverse)
+library(tidymodels)
+
+orings = read_csv("https://sta221-fa25.github.io/data/orings.csv")
+
+```
+
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+\newcommand{\bzero}{\boldsymbol{0}}
+\newcommand{\identity}{\boldsymbol{I}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+
+## Data: O-ring example
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Space_Shuttle_Challenger_%2804-04-1983%29.JPEG/300px-Space_Shuttle_Challenger_%2804-04-1983%29.JPEG)
+
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Challenger_flight_51-l_crew.jpg/300px-Challenger_flight_51-l_crew.jpg)
+
+
+- In January 1986, the space shuttle Challenger exploded 73 seconds after launch.  
+
+- The culprit is the O-ring seals in the rocket boosters. At lower temperatures, rubber becomes more brittle and is a less effective sealant. At the time of the launch, the temperature was 31°F.  
+
+-  Could the failure of the O-rings have been predicted?  
+
+- Data: 23 previous shuttle missions. Each shuttle had 2 boosters, each with 3 O-rings. We know whether or not at least one of the orings was damaged and the launch temperature.  
+
+```{r}
+orings %>%
+  print(n = Inf)
+```
+
+
+
+
+## Descriptive statistics
+
+Notice any patterns?
+
+```{r}
+orings %>%
+  mutate(failrate = damage) %>%
+  ggplot(mapping = aes(x = temp, y = failrate)) + 
+  geom_point() + 
+  labs(x = "Temperature (F)", y = "Damage to O-rings", title = "O-ring damage data") +
+  theme_bw()
+```
+
+::: panel-tabset
+
+## Question
+- Can we fit a linear model?
+
+## Does this make sense?
+
+```{r}
+#| warning: false
+#| message: false
+orings %>%
+  mutate(failrate = damage) %>%
+  ggplot(mapping = aes(x = temp, y = failrate)) + 
+  geom_point() + 
+  labs(x = "Temperature (F)", y = "Damage to O-rings", title = "O-ring damage data") +
+  theme_bw() +
+  geom_smooth(method = lm, se = FALSE, color = "steelblue")
+```
+
+
+
+## Binary outcome model
+
+- We model each outcome $Y_i$ as a binary random variable. The probability $Y_i$ takes the value 1 is $p$.
+
+$$
+\begin{aligned}
+Prob(Y_i = 1) &= p\\
+Prob(Y_i = 0) &= (1-p)
+\end{aligned}
+$$
+::: panel-tabset
+## Exercise
+
+What is $E[Y_i|p]$?
+
+## Solution
+
+$$
+\begin{aligned}
+E[Y_i|p] &= \sum_{Y_i = 0}^1 Y_i \cdot prob(Y_i)\\
+&= 0 \cdot prob(Y_i = 0) + 1 \cdot prob(Y_i = 1)\\
+&= 0 \cdot (1-p) + 1 \cdot p\\
+&= p
+\end{aligned}
+$$
+:::
+
+- In linear regression,  we are concerned with modeling the conditional expectation of the outcome variable. (Previously: $E[y|X] = X\beta$). 
+
+- Here, the conditional expectation $E[Y_i | p] = p$.
+
+::: panel-tabset
+## Exercise
+
+If $p = 0.5$, what does the statemeny $E[Y_i | p] = p$ say, in terms of the data at hand? Is this assumption realistic?
+
+## Solution
+
+- That the probability of O-ring failure is 0.5 for all observations.
+
+- Not realistic given EDA above. 
+
+- We want to have individual observation probabilities $p_i$ that depends on the covariate temperature.
+
+:::
+
+## Modeling the conditional expectation 
+
+::: panel-tabset
+## Exercise
+
+What's wrong with letting $p_i = x_i \beta$?
+
+## Solution 
+
+$p_i$ is bounded between $[0, 1]$, $x_i \beta$ is not. See figure above again. 
+
+:::
+
+Remedy: let
+
+$$
+\text{logit}(p_i) = x_i^T\beta
+$$
+
+where $\text{logit}(p_i) = \log \frac{p_i}{1-p_i}$. Since the logit function links our conditional expectation to the predictor(s), we call the logit function a *link function*.
+
+::: panel-tabset
+## Exercise
+
+What happens as $p_i \rightarrow 0$?
+
+What happens as $p_i \rightarrow 1$?
+:::
+
+
+- We can solve for $p_i$ directly:
+
+$$
+p_i = \frac{e^{\eta_i}}{1 + e^{\eta_i}} = \frac{1}{e^{-\eta_i}+ 1},
+$$
+
+where the second equality comes from multiplying by 1 in a fancy way: $\frac{e^{-\eta_i}}{e^{-\eta_i}}$ and $\eta_i = x_i^T\beta = \beta_0 + \beta_1 x_1 + \ldots$ is called the **linear predictor** or **systematic component**.
+
+$$
+\eta_i = \beta_0 + \beta_1 x_{i1} + \cdots + \beta_{q} x_{iq} = \mathbf{x}_i^T \boldsymbol{\beta}
+$$
+The function $p_i = \frac{e^{\eta_i}}{1 + e^{\eta_i}}$ has a special name. It is called a "sigmoid" function. Let's take a look at the sigmoid function: 
+
+```{r}
+#| echo: false
+sigmoid = function(x) 1 / (1 + exp(-x))
+plot.function(sigmoid, from = -10, to = 10, n = 101, ylab=expression(p[i]), xlab=expression(eta[i]), main="Sigmoid function", lwd = 3)
+box()
+```
+
+## The likelihood
+
+Here's our model: 
+
+$$
+E[Y_i | X] = p_i = \frac{1}{e^{-x_i^T\beta}+ 1}
+$$
+
+The likelihood of the data is the joint density of the data, viewed as a function of the unknown parameters:
+
+$$
+\begin{aligned}
+\underbrace{p(y_1, \ldots, y_n| X, \beta)}_{\text{joint density of data}} &= \prod_{i=1}^n p(y_i|X, \beta)\\
+&= \prod_{i=1}^np_i^{y_i} (1-p_i)^{1-y_i}
+\end{aligned}
+$$
+
+Practically, we want to examine the log-likelihood for numerical stability. Recall: maximizing the log-likelihood (finding $\hat{\beta}_{MLE}$) will be the same as maximizing the likelihood since $\log()$ is a monotonic function.
+
+$$
+\begin{aligned}
+\log p(y_1, \ldots, y_n | X,\beta) &= \sum_{i=1}^n y_i \log(p_i) + (1-y_i) \log(1 - p_i)
+\end{aligned}
+$$
+Plugging in $p_i$, we view the log-likelihood as a function of the unknown parameter vector $\beta$, and we can simplify:
+
+$$
+\begin{aligned}
+\log L(\beta) &= \sum_{i=1}^n y_i \log \left(\frac{e^{x_i^T\beta}}{1 + e^{x_i^T\beta}}
+\right) + (1-y_i) \log \left(\frac{1}{1 + e^{x_i^T\beta}}
+\right)\\
+&= \sum_{i=1}^n y_i x_i^T \beta - \sum_{i=1}^n \log(1+ \exp\{x_i^T \beta\})
+\end{aligned}
+$$
+
+
+
+## Finding the MLE
+
+-   Taking the derivative:
+
+$$
+\begin{aligned}
+\frac{\partial \log L}{\partial \boldsymbol\beta} =\sum_{i=1}^n y_i x_i^\top
+&- \sum_{i=1}^n \frac{\exp\{x_i^\top \boldsymbol\beta\} x_i^\top}{1+\exp\{x_i^\top \boldsymbol\beta\}}
+\end{aligned}
+$$
+
+-   If we set this to zero, there is no closed form solution.
+
+-   R uses numerical approximation to find the MLE.
+
+
+## Logistic regression in R
+
+```{r}
+orings_fit <- glm(damage ~ temp, 
+                         data  = orings, 
+                         family = "binomial")
+
+summary(orings_fit)
+```
+
+```{r}
+orings_aug = 
+  augment(orings_fit) 
+```
+
+## Prediction
+
+Now we can predict the failure probability. The failure probability at 31F is nearly 1.
+```{r}
+test_31F = tibble(temp     = seq(25, 85, 0.1), 
+       predprob = predict(orings_fit, newdata = tibble(temp = temp), type = "response"))
+
+test_31F %>%
+  ggplot() + 
+  geom_line(mapping = aes(x = temp, y = predprob)) + 
+  geom_vline(xintercept = 31) +
+  labs(x = "Temperature (F)", y = "Predicted failure probability") +
+  theme_bw()
+```
+
+### Acknowledgements 
+
+Thanks to [Prof. Hua Zhou](https://ucla-biostat-200c-2020spring.github.io/slides/04-binomial/binomial.html) for example.
