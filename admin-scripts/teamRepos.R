@@ -40,8 +40,8 @@ roster = all_team
 org_create_assignment(
   org = "sta221-fa25",
   user = roster$github,
-  repo = paste0("lab-06-", roster$team), ## edit this
+  repo = paste0("lab-07-", roster$team), ## edit this
   team = roster$team,
-  source_repo = "sta221-fa25/lab-06", ## edit this
+  source_repo = "sta221-fa25/lab07", ## edit this
   private = TRUE
 )

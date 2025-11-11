@@ -30,6 +30,8 @@ website:
             text: "hw 2"
           - href: hw/hw03.qmd
             text: "hw 3"
+          - href: hw/hw04.qmd
+            text: "hw 4"
       - text: "labs"
         menu:
           - href: labs/lab00.qmd

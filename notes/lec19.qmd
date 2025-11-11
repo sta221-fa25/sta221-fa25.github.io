@@ -74,10 +74,21 @@ tidy(heart_disease_fit, conf.int = TRUE) |>
   kable(digits = 3)
 ```
 
-::: question
--   Interpret `totChol` in terms of the odds of being high risk for heart disease.
+::: panel-tabset
+
+## Exercise 
 
 -   Interpret `currentSmoker1` in terms of the odds of being high risk for heart disease.
+
+-   Interpret `totChol` in terms of the odds of being high risk for heart disease.
+
+
+## Solution
+
+- The odds of being high risk for heart disease for smokers is expected to be $\exp\{\hat{\beta}_{smoker}\} = \exp\{0.457\} =$ `r exp(.457) |> round(3)` times the odds of a non-smoker being high risk for heart disease, holding all else constant. 
+
+- The odds of being high risk for heart disease increases multiplicatively, by a factor of $\exp\{\hat{\beta}_{totChol}\} = \exp\{0.002\} =$ `r exp(0.002) |> round(3)` for each unit increase in total cholestorol. 
+
 :::
 
 ## Prediction and classification
@@ -572,7 +583,6 @@ This data consists of 4601 emails that are classified as `spam` or `non-spam`. T
 
 ```{r load-pokemon, message=F}
 spam = read_csv("https://sta221-fa25.github.io/data/spam.csv")
-glimpse(spam)
 ```
 
 ### Evaluate performance using AUC ROC
@@ -582,10 +592,10 @@ glimpse(spam)
 
 Use your model to classify the email below.
 
-```
-CONGRATULATIONS!!! YOU have been selected as one of our lucky winners to receive a $0.5 Amazon Gift Card.
+```{r}
+newEmailText = "CONGRATULATIONS!!! YOU have been selected as one of our lucky winners to receive a $0.5 Amazon Gift Card.
 
 To claim your reward, simply click the link below and confirm your details.
 
-Claim Your Gift Now
+Claim Your Gift Now"
 ```
