@@ -6,6 +6,13 @@ bibliography: references.bib
 embed-resources: true
 ---
 
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+```
+
+
 \newcommand{\bbeta}{\boldsymbol{\beta}}
 \newcommand{\by}{\boldsymbol{y}}
 \newcommand{\hby}{\hat{\boldsymbol{y}}}
@@ -141,21 +148,36 @@ The applied exercises are focused on applying the concepts to analyze data.
 
 Write all narrative using complete sentences and include informative axis labels / titles on visualizations.
 
-## Exercise 7
+The applied problems will use the data set below. The data were sourced from [kaggle](https://www.kaggle.com/datasets/aavigan/cleveland-clinic-heart-disease-dataset?resource=download) and the original data was collected by Robert Detrano, M.D., Ph.D of the Cleveland Clinic Foundation. See [here](https://www.ahajournals.org/doi/pdf/10.1161/01.CIR.69.3.541) for protocol specifics. 
 
 ```{r}
 heart = read_csv("../data/cleveland_heart.csv")
+# heart = read_csv("https://sta221-fa25.github.io/data/cleveland_heart.csv")
 ```
+The response variable is: `chd`: presence of coronary heart disease (1 for presence, 0 for absence).
 
+The other variables in the data set:
+
+- `age`: age in years
+
+- `sex`: 1 = male, 0 = female
+
+- `chol` — serum cholesterol in mg/dl
+
+- `trestbps` — resting blood pressure
+
+- `fbs` — fasting blood sugar > 120 mg/dl (1 = true; 0 = false)
+
+- `thalach` — maximum heart rate achieved
+
+
+## Exercise 7
 
 ```{r}
-#| echo: false
-#| eval: false
-# heart %>%
-#   mutate(chd = ifelse(num > 0, 1, 0)) %>%
-#   select(chd, age, sex, chol, trestbps, fbs, thalach) %>%
-#   write_csv("../data/cleveland_heart.csv")
+
 ```
+
+
 
 
 # Submission

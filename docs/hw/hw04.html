@@ -20,6 +20,40 @@ width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
 }
 
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+
 div.csl-bib-body { }
 div.csl-entry {
 clear: both;
@@ -4997,12 +5031,16 @@ font-weight: normal;
   <ul>
   <li><a href="#conceptual-exercises" id="toc-conceptual-exercises" class="nav-link active" data-scroll-target="#conceptual-exercises">Conceptual exercises</a>
   <ul class="collapse">
-  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
+  <li><a href="#exercise-11" id="toc-exercise-11" class="nav-link" data-scroll-target="#exercise-11">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
+  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
+  <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
   </ul></li>
   <li><a href="#applied-problems" id="toc-applied-problems" class="nav-link" data-scroll-target="#applied-problems">Applied problems</a>
   <ul class="collapse">
-  <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
+  <li><a href="#exercise-7" id="toc-exercise-7" class="nav-link" data-scroll-target="#exercise-7">Exercise 7</a></li>
   </ul></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul>
@@ -5031,13 +5069,16 @@ font-weight: normal;
 </header>
 
 
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <section id="conceptual-exercises" class="level1">
 <h1>Conceptual exercises</h1>
 <p>The conceptual exercises are focused on explaining concepts and showing results mathematically. Show your work for each question.</p>
 <p>You may write the answers and associated work for conceptual exercises by hand or type them in a Quarto document.</p>
-<section id="exercise-1" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
-<p>Logistic regression <strong>interpretation</strong>. [^1]: Exercise adapted from an exercise in <em>Categorical Data Analysis</em> by Agresti.</p>
+<section id="exercise-11" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-11">Exercise 1<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p><em>Logistic regression interpretation</em></p>
 <!--# from categorical data analysis number 5.29 (pg. 204)-->
 <p><span class="citation" data-cites="berry2001statistician">Berry (<a href="#ref-berry2001statistician" role="doc-biblioref">2001</a>)</span> examined the effect of a player’s draft position among the pool of potential players in a given year to the probability on eventually being named an all star.</p>
 <p>Let <span class="math inline">\(d\)</span> be the draft position <span class="math inline">\((d = 1, 2, 3, \ldots)\)</span> and <span class="math inline">\(\pi\)</span> be the probability of eventually being named an all star. The researcher modeled the relationship between <span class="math inline">\(d\)</span> and <span class="math inline">\(\pi\)</span> using the following model:</p>
@@ -5052,6 +5093,60 @@ font-weight: normal;
 </section>
 <section id="exercise-2" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
+<p><em>Logistic regression with logit link log-likelihood</em></p>
+<p>Show that the <strong>log-likelihood</strong> in a standard logistic regression with a logistic link function can be written</p>
+<p><span class="math display">\[
+\mathcal{l}(\beta) = \sum_{i=1}^n y_i x_i^T \beta  - \sum_{i=1}^n \log (1 + \exp\{x_i^T\beta\})
+\]</span> Include a (brief) explanation of each step in your derivation.</p>
+</section>
+<section id="exercise-3" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
+<p><em>Score function</em></p>
+<p>Show that the score function, i.e. the gradient <span class="math inline">\(\frac{\partial}{\partial{\beta}} \mathcal{l}(\beta)\)</span> can be written in matrix form</p>
+<p><span class="math display">\[
+\boldsymbol{X}^T \boldsymbol{y}- \boldsymbol{X}^T \boldsymbol{p},
+\]</span> where <span class="math inline">\(\boldsymbol{p}= [p_1, \ldots, p_n]^T\)</span>. Note: you can use the gradient of the log-likelihood in class a starting point and just explain why the representation above makes sense.</p>
+</section>
+<section id="exercise-4" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-4">Exercise 4</h2>
+<p><em>Hessian</em></p>
+<p>Show that the Hessian matrix, i.e. the matrix of second derivatives, <span class="math inline">\(\frac{\partial^2}{\partial{\beta} \partial{\beta}^T} \mathcal{l}(\beta)\)</span> can be written as</p>
+<p><span class="math display">\[
+-\boldsymbol{X}^T D \boldsymbol{X}
+\]</span> where <span class="math inline">\(D\)</span> is a diagonal matrix with entries <span class="math inline">\(d_{ii} = p_i(1-p_i)\)</span>.</p>
+</section>
+<section id="exercise-5" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5">Exercise 5</h2>
+<p><em>Maximum likelihood estimator</em></p>
+<p>Show that the maximum likelihood estimator of the logistic regression model with logit link can be written as</p>
+<p><span class="math display">\[
+\hat{\beta}_{MLE} = \left(
+\boldsymbol{X}^T D \boldsymbol{X}
+\right)^{-1}
+\boldsymbol{X}^T D \boldsymbol{y}^*
+\]</span> where</p>
+<p><span class="math display">\[
+\boldsymbol{y}^* = \boldsymbol{X}\hat{\beta}_{MLE} + D^{-1} (\boldsymbol{y}- \boldsymbol{p}).
+\]</span> Hint: multiply out the equation.</p>
+</section>
+<section id="exercise-6" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-6">Exercise 6</h2>
+<p><em>How does <code>glm</code> find the MLE? Answer: iteratively re-weighted least squares (IRLS)</em></p>
+<p>Newton-Raphson is a “root finding” algorithm. This means it finds where a function equals zero. We use it to find <span class="math inline">\(\hat{\beta}_{MLE}\)</span>. This works because the maximum likelihood estimator will be precisely where the score function equals zero.</p>
+<p>The Newton-Raphson algorithm works to find the MLE as follows:</p>
+<pre><code>1. Choose a starting point, beta_0
+2. Let beta_next = beta_old - H^-1(beta_old) * Score(beta_old)
+3. Repeat step 2 until Score(beta_next) is close to 0.</code></pre>
+<p>Above, <code>H^-1(beta_old)</code> denotes the inverse of the Hessian of the log-likelihood evaluated at <code>beta_old</code> and <code>Score(beta_old)</code> denotes the score function evaluated at <code>beta_old</code>.</p>
+<p>In logistic regression with a logit link, the update can be written:</p>
+<p><span class="math display">\[
+\beta_{n+1} = \beta_n + (\boldsymbol{X}^TD\boldsymbol{X})^{-1} \left(\boldsymbol{X}^T \boldsymbol{y}- \boldsymbol{X}^T \boldsymbol{p}\right)
+\]</span></p>
+<p>Note: <span class="math inline">\(D\)</span> is a function of <span class="math inline">\(\boldsymbol{p}\)</span> which is a function of <span class="math inline">\(\beta\)</span>.</p>
+<p>(a). Multiply both sides by the negative of the Hessian matrix.</p>
+<p>(b). Write the update in terms of <span class="math inline">\(\boldsymbol{y}^*\)</span>, where <span class="math inline">\(\boldsymbol{y}^* = \boldsymbol{X}\hat{\beta}_{n} + D^{-1} (\boldsymbol{y}- \boldsymbol{p})\)</span>.</p>
+<p>(c). Solve for <span class="math inline">\(\hat{\beta}_{n+1}\)</span>.</p>
+<p>(d). Explain (in words) how this is an iterative generalized (weighted) least squares problem.</p>
 </section>
 </section>
 <section id="applied-problems" class="level1">
@@ -5059,8 +5154,32 @@ font-weight: normal;
 <p>The applied exercises are focused on applying the concepts to analyze data.</p>
 <p><strong>All work for the applied exercises must be typed in your Quarto document following a reproducible workflow.</strong></p>
 <p>Write all narrative using complete sentences and include informative axis labels / titles on visualizations.</p>
-<section id="exercise-6" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-6">Exercise 6</h2>
+<p>The applied problems will use the data set below. The data were sourced from <a href="https://www.kaggle.com/datasets/aavigan/cleveland-clinic-heart-disease-dataset?resource=download">kaggle</a> and the original data was collected by Robert Detrano, M.D., Ph.D of the Cleveland Clinic Foundation. See <a href="https://www.ahajournals.org/doi/pdf/10.1161/01.CIR.69.3.541">here</a> for protocol specifics.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>heart <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;../data/cleveland_heart.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 303 Columns: 7
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+dbl (7): chd, age, sex, chol, trestbps, fbs, thalach
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># heart = read_csv(&quot;https://sta221-fa25.github.io/data/cleveland_heart.csv&quot;)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The response variable is: <code>chd</code>: presence of coronary heart disease (1 for presence, 0 for absence).</p>
+<p>The other variables in the data set:</p>
+<ul>
+<li><p><code>age</code>: age in years</p></li>
+<li><p><code>sex</code>: 1 = male, 0 = female</p></li>
+<li><p><code>chol</code> — serum cholesterol in mg/dl</p></li>
+<li><p><code>trestbps</code> — resting blood pressure</p></li>
+<li><p><code>fbs</code> — fasting blood sugar &gt; 120 mg/dl (1 = true; 0 = false)</p></li>
+<li><p><code>thalach</code> — maximum heart rate achieved</p></li>
+</ul>
+<section id="exercise-7" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-7">Exercise 7</h2>
 </section>
 </section>
 <section id="submission" class="level1">
@@ -5098,11 +5217,17 @@ Warning
 
 </section>
 
+
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-berry2001statistician" class="csl-entry" role="listitem">
 Berry, Scott M. 2001. <span>“A Statistician Reads the Sports Pages: Luck in Sports.”</span> <em>Chance</em> 14 (1): 52–57.
 </div>
-</div></section></div></main> <!-- /main -->
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Exercise adapted from an exercise in <em>Categorical Data Analysis</em> by Agresti.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
