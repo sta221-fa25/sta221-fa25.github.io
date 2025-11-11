@@ -2427,5 +2427,82 @@
     "title": "Intro to logistic regression",
     "section": "Solution",
     "text": "Solution\n\\[\n\\begin{aligned}\nE[Y_i|p] &= \\sum_{Y_i = 0}^1 Y_i \\cdot prob(Y_i)\\\\\n&= 0 \\cdot prob(Y_i = 0) + 1 \\cdot prob(Y_i = 1)\\\\\n&= 0 \\cdot (1-p) + 1 \\cdot p\\\\\n&= p\n\\end{aligned}\n\\] :::\n\nIn linear regression, we are concerned with modeling the conditional expectation of the outcome variable. (Previously: \\(E[y|X] = X\\beta\\)).\nHere, the conditional expectation \\(E[Y_i | p] = p\\).\n\n\nExerciseSolution\n\n\nIf \\(p = 0.5\\), what does the statemeny \\(E[Y_i | p] = p\\) say, in terms of the data at hand? Is this assumption realistic?\n\n\n\nThat the probability of O-ring failure is 0.5 for all observations.\nNot realistic given EDA above.\nWe want to have individual observation probabilities \\(p_i\\) that depends on the covariate temperature."
+  },
+  {
+    "objectID": "notes/test.html",
+    "href": "notes/test.html",
+    "title": "Untitled",
+    "section": "",
+    "text": "3/.\n\nError: object '.' not found"
+  },
+  {
+    "objectID": "hw/hw04.html",
+    "href": "hw/hw04.html",
+    "title": "Homework 04: logistic regression",
+    "section": "",
+    "text": "The conceptual exercises are focused on explaining concepts and showing results mathematically. Show your work for each question.\nYou may write the answers and associated work for conceptual exercises by hand or type them in a Quarto document.\n\n\nLogistic regression interpretation. [^1]: Exercise adapted from an exercise in Categorical Data Analysis by Agresti.\n\nBerry (2001) examined the effect of a player’s draft position among the pool of potential players in a given year to the probability on eventually being named an all star.\nLet \\(d\\) be the draft position \\((d = 1, 2, 3, \\ldots)\\) and \\(\\pi\\) be the probability of eventually being named an all star. The researcher modeled the relationship between \\(d\\) and \\(\\pi\\) using the following model:\n\\[\n\\log\\Big(\\frac{\\pi_i}{1-\\pi_i}\\Big) = \\beta_0 + \\beta_1 \\log d_i\n\\]\n\nUsing this model, show that the odds of being named an all star are \\(e^{\\beta_0}d^{\\beta_1}\\) . Then, show how to calculate \\(\\pi_i\\) based on this model.\nWhat are the odds of being named an all star for the first draft pick?\nIn the study, Berry reported that for professional basketball \\(\\hat{\\beta}_0 = 2.3\\) and \\(\\hat{\\beta}_1 = -1.1\\), and for professional baseball \\(\\hat{\\beta}_0 = 0.7\\) and \\(\\hat{\\beta}_1 = -0.6\\) . Explain why this suggests that (1) being a first draft pick is more crucial for being an all star in basketball than in baseball and (2) players picked in high draft positions are relatively less likely to be all stars."
+  },
+  {
+    "objectID": "hw/hw04.html#exercise-1",
+    "href": "hw/hw04.html#exercise-1",
+    "title": "Homework 04: logistic regression",
+    "section": "",
+    "text": "Logistic regression interpretation. [^1]: Exercise adapted from an exercise in Categorical Data Analysis by Agresti.\n\nBerry (2001) examined the effect of a player’s draft position among the pool of potential players in a given year to the probability on eventually being named an all star.\nLet \\(d\\) be the draft position \\((d = 1, 2, 3, \\ldots)\\) and \\(\\pi\\) be the probability of eventually being named an all star. The researcher modeled the relationship between \\(d\\) and \\(\\pi\\) using the following model:\n\\[\n\\log\\Big(\\frac{\\pi_i}{1-\\pi_i}\\Big) = \\beta_0 + \\beta_1 \\log d_i\n\\]\n\nUsing this model, show that the odds of being named an all star are \\(e^{\\beta_0}d^{\\beta_1}\\) . Then, show how to calculate \\(\\pi_i\\) based on this model.\nWhat are the odds of being named an all star for the first draft pick?\nIn the study, Berry reported that for professional basketball \\(\\hat{\\beta}_0 = 2.3\\) and \\(\\hat{\\beta}_1 = -1.1\\), and for professional baseball \\(\\hat{\\beta}_0 = 0.7\\) and \\(\\hat{\\beta}_1 = -0.6\\) . Explain why this suggests that (1) being a first draft pick is more crucial for being an all star in basketball than in baseball and (2) players picked in high draft positions are relatively less likely to be all stars."
+  },
+  {
+    "objectID": "hw/hw04.html#exercise-6",
+    "href": "hw/hw04.html#exercise-6",
+    "title": "Homework 04: logistic regression",
+    "section": "Exercise 6",
+    "text": "Exercise 6"
+  },
+  {
+    "objectID": "hw/hw04.html#exercise-11",
+    "href": "hw/hw04.html#exercise-11",
+    "title": "Homework 04: logistic regression",
+    "section": "",
+    "text": "Logistic regression interpretation\n\nBerry (2001) examined the effect of a player’s draft position among the pool of potential players in a given year to the probability on eventually being named an all star.\nLet \\(d\\) be the draft position \\((d = 1, 2, 3, \\ldots)\\) and \\(\\pi\\) be the probability of eventually being named an all star. The researcher modeled the relationship between \\(d\\) and \\(\\pi\\) using the following model:\n\\[\n\\log\\Big(\\frac{\\pi_i}{1-\\pi_i}\\Big) = \\beta_0 + \\beta_1 \\log d_i\n\\]\n\nUsing this model, show that the odds of being named an all star are \\(e^{\\beta_0}d^{\\beta_1}\\) . Then, show how to calculate \\(\\pi_i\\) based on this model.\nWhat are the odds of being named an all star for the first draft pick?\nIn the study, Berry reported that for professional basketball \\(\\hat{\\beta}_0 = 2.3\\) and \\(\\hat{\\beta}_1 = -1.1\\), and for professional baseball \\(\\hat{\\beta}_0 = 0.7\\) and \\(\\hat{\\beta}_1 = -0.6\\) . Explain why this suggests that (1) being a first draft pick is more crucial for being an all star in basketball than in baseball and (2) players picked in high draft positions are relatively less likely to be all stars."
+  },
+  {
+    "objectID": "hw/hw04.html#footnotes",
+    "href": "hw/hw04.html#footnotes",
+    "title": "Homework 04: logistic regression",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nExercise adapted from an exercise in Categorical Data Analysis by Agresti.↩︎"
+  },
+  {
+    "objectID": "hw/hw04.html#exercise-2",
+    "href": "hw/hw04.html#exercise-2",
+    "title": "Homework 04: logistic regression",
+    "section": "",
+    "text": "Logistic regression with logit link log-likelihood\nShow that the log-likelihood in a standard logistic regression with a logistic link function can be written\n\\[\n\\mathcal{l}(\\beta) = \\sum_{i=1}^n y_i x_i^T \\beta  - \\sum_{i=1}^n \\log (1 + \\exp\\{x_i^T\\beta\\})\n\\] Include a (brief) explanation of each step in your derivation."
+  },
+  {
+    "objectID": "hw/hw04.html#exercise-3",
+    "href": "hw/hw04.html#exercise-3",
+    "title": "Homework 04: logistic regression",
+    "section": "",
+    "text": "Score function\nShow that the score function, i.e. the gradient \\(\\frac{\\partial}{\\partial{\\beta}} \\mathcal{l}(\\beta)\\) can be written in matrix form\n\\[\n\\boldsymbol{X}\\boldsymbol{y}- \\boldsymbol{X}^T \\boldsymbol{p},\n\\] where \\(\\boldsymbol{p}= [p_1, \\ldots, p_n]^T\\). Note: you can use the gradient of the log-likelihood in class a starting point and just explain why the representation above makes sense."
+  },
+  {
+    "objectID": "hw/hw04.html#exercise-4",
+    "href": "hw/hw04.html#exercise-4",
+    "title": "Homework 04: logistic regression",
+    "section": "",
+    "text": "Hessian\nShow that the Hessian matrix, i.e. the matrix of second derivatives, \\(\\frac{\\partial^2}{\\partial{\\beta} \\partial{\\beta}^T} \\mathcal{l}(\\beta)\\) can be written as\n\\[\n\\boldsymbol{X}^T D \\boldsymbol{X}\n\\] where \\(D\\) is a diagonal matrix with entries \\(d_{ii} = p_i(1-p_i)\\)."
+  },
+  {
+    "objectID": "hw/hw04.html#exercise-5",
+    "href": "hw/hw04.html#exercise-5",
+    "title": "Homework 04: logistic regression",
+    "section": "",
+    "text": "Maximum likelihood estimator\nShow that the maximum likelihood estimator of the logistic regression model with logit link can be written as\n\\[\n\\hat{\\beta}_{MLE} = \\left(\n\\boldsymbol{X}^T D \\boldsymbol{X}\n\\right)^{-1}\n\\boldsymbol{X}^T D \\boldsymbol{y}^*\n\\] where\n\\[\n\\boldsymbol{y}^* = \\boldsymbol{X}\\hat{\\beta}_{MLE} + D^{-1} (\\boldsymbol{y}- \\boldsymbol{p}).\n\\] Hint: multiply out the equation."
+  },
+  {
+    "objectID": "hw/hw04.html#exercise-6-1",
+    "href": "hw/hw04.html#exercise-6-1",
+    "title": "Homework 04: logistic regression",
+    "section": "Exercise 6",
+    "text": "Exercise 6"
   }
 ]

@@ -103,7 +103,7 @@ schedule %>%
 
 ::: heatMap
 | Week | Date | Topic | Prepare | Notes | Assignment | Project |
-|:----------|:----------|:----------|:---------:|:---------:|:---------:|:---------:|
+|:---|:---|:---|:--:|:--:|:--:|:--:|
 | 1 | Tue Aug 26 | welcome |  | [💻](/notes/slides/lec01-welcome.html) |  |  |
 |  | Wed Aug 27 | lab: hello git and R |  | [💻](/labs/slides/lab0-slides.html) | [lab 0](/labs/lab00.html) |  |
 |  | Thu Aug 28 | correlation | [📖](/prepare/prepare-lec02.html) | [🗒](/notes/lec02-correlation.html) |  |  |
