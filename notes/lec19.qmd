@@ -571,8 +571,21 @@ This data consists of 4601 emails that are classified as `spam` or `non-spam`. T
 - `type` $= 0$ is non-spam
 
 ```{r load-pokemon, message=F}
-spam = read_csv("https://sta221-fa25.github.io/static/appex/data/spam.csv")
+spam = read_csv("https://sta221-fa25.github.io/data/spam.csv")
 glimpse(spam)
 ```
 
+### Evaluate performance using AUC ROC
 
+
+### (New) classification
+
+Use your model to classify the email below.
+
+```
+CONGRATULATIONS!!! YOU have been selected as one of our lucky winners to receive a $0.5 Amazon Gift Card.
+
+To claim your reward, simply click the link below and confirm your details.
+
+Claim Your Gift Now
+```
