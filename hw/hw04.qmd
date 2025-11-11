@@ -150,9 +150,12 @@ Write all narrative using complete sentences and include informative axis labels
 
 The applied problems will use the data set below. The data were sourced from [kaggle](https://www.kaggle.com/datasets/aavigan/cleveland-clinic-heart-disease-dataset?resource=download) and the original data was collected by Robert Detrano, M.D., Ph.D of the Cleveland Clinic Foundation. See [here](https://www.ahajournals.org/doi/pdf/10.1161/01.CIR.69.3.541) for protocol specifics. 
 
+Copy the code chunk below to load the data.
+
 ```{r}
-heart = read_csv("../data/cleveland_heart.csv")
-# heart = read_csv("https://sta221-fa25.github.io/data/cleveland_heart.csv")
+#| warning: false
+#| message: false
+heart = read_csv("https://sta221-fa25.github.io/data/cleveland_heart.csv")
 ```
 The response variable is: `chd`: presence of coronary heart disease (1 for presence, 0 for absence).
 
@@ -173,10 +176,38 @@ The other variables in the data set:
 
 ## Exercise 7
 
-```{r}
+*Exploratory data analysis*
 
+(a) Create a visualization showing the how the prevalence of heart disease varies by sex.
+
+(b) Create a visualization showing how prevalence varies by age categories, "under 45", "under 61 (but over 45)", "over 61". Hint: you can use `case_when` in R to make each category within a `mutate()`. See `?case_when` for an example.
+
+## Exercise 8
+
+*Fit the model in R*
+
+(a) Fit a model to predict coronary heart disease using the predictors `age` and `sex`. Allow for an interaction effect between the variables. (b) Interpret the each variable's effect on the odds of heart disease.
+
+
+```{r}
+#| echo: false
+#| eval: false
+fit = glm(chd ~ ., data = heart, family = "binomial")
+heart$pred_prob <- predict(fit, type = "response")
+summary(fit)
 ```
 
+## Exercise 9
+
+*Receiver operating characteristic*
+
+Now fit a model using all the predictors in the data set (no interaction effects) and compare your model to that from exercise 8 using AUC of ROC. Which do you prefer? Why? 
+
+## Exercise 10 
+
+*Sensitivity and specificity*
+
+Using the "better" model from exercise 9, predict the probability $\hat{p}_i$ that each individual in the data set has heart disease. Next you will choose a threshold $p^*$, such that if $\hat{p}_i \geq p^*$, you predict the individual has heart disease. Choose $p^*$ so that you have an empirical sensitivity of 0.95. Report your $p^*$ and create a table showing the sensitivity and specificity of your logistic classifier.
 
 
 
@@ -203,3 +234,5 @@ To submit your assignment:
 -   Click on the assignment, and you'll be prompted to submit it.
 
 -   Mark the pages associated with each exercise. All of the pages of your lab should be associated with at least one question (i.e., should be "checked").
+
+

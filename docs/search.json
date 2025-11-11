@@ -2510,6 +2510,27 @@
     "href": "hw/hw04.html#exercise-7",
     "title": "Homework 04: logistic regression",
     "section": "Exercise 7",
-    "text": "Exercise 7"
+    "text": "Exercise 7\nExploratory data analysis\n\nCreate a visualization showing the how the prevalence of heart disease varies by sex.\nCreate a visualization showing how prevalence varies by age categories, “under 45”, “under 61 (but over 45)”, “over 61”. Hint: you can use case_when in R to make each category within a mutate(). See ?case_when for an example."
+  },
+  {
+    "objectID": "hw/hw04.html#exercise-8",
+    "href": "hw/hw04.html#exercise-8",
+    "title": "Homework 04: logistic regression",
+    "section": "Exercise 8",
+    "text": "Exercise 8\nFit the model in R\n\nFit a model to predict coronary heart disease using the predictors age and sex. Allow for an interaction effect between the variables. (b) Interpret the each variable’s effect on the odds of heart disease."
+  },
+  {
+    "objectID": "hw/hw04.html#exercise-9",
+    "href": "hw/hw04.html#exercise-9",
+    "title": "Homework 04: logistic regression",
+    "section": "Exercise 9",
+    "text": "Exercise 9\nReceiver operating characteristic\nNow fit a model using all the predictors in the data set (no interaction effects) and compare your model to that from exercise 8 using AUC of ROC. Which do you prefer? Why?"
+  },
+  {
+    "objectID": "hw/hw04.html#exercise-10",
+    "href": "hw/hw04.html#exercise-10",
+    "title": "Homework 04: logistic regression",
+    "section": "Exercise 10",
+    "text": "Exercise 10\nSensitivity and specificity\nUsing the “better” model from exercise 9, predict the probability \\(\\hat{p}_i\\) that each individual in the data set has heart disease. Next you will choose a threshold \\(p^*\\), such that if \\(\\hat{p}_i \\geq p^*\\), you predict the individual has heart disease. Choose \\(p^*\\) so that you have an empirical sensitivity of 0.95. Report your \\(p^*\\) and create a table showing the sensitivity and specificity of your logistic classifier."
   }
 ]

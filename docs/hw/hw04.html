@@ -5041,6 +5041,9 @@ font-weight: normal;
   <li><a href="#applied-problems" id="toc-applied-problems" class="nav-link" data-scroll-target="#applied-problems">Applied problems</a>
   <ul class="collapse">
   <li><a href="#exercise-7" id="toc-exercise-7" class="nav-link" data-scroll-target="#exercise-7">Exercise 7</a></li>
+  <li><a href="#exercise-8" id="toc-exercise-8" class="nav-link" data-scroll-target="#exercise-8">Exercise 8</a></li>
+  <li><a href="#exercise-9" id="toc-exercise-9" class="nav-link" data-scroll-target="#exercise-9">Exercise 9</a></li>
+  <li><a href="#exercise-10" id="toc-exercise-10" class="nav-link" data-scroll-target="#exercise-10">Exercise 10</a></li>
   </ul></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul>
@@ -5155,18 +5158,9 @@ font-weight: normal;
 <p><strong>All work for the applied exercises must be typed in your Quarto document following a reproducible workflow.</strong></p>
 <p>Write all narrative using complete sentences and include informative axis labels / titles on visualizations.</p>
 <p>The applied problems will use the data set below. The data were sourced from <a href="https://www.kaggle.com/datasets/aavigan/cleveland-clinic-heart-disease-dataset?resource=download">kaggle</a> and the original data was collected by Robert Detrano, M.D., Ph.D of the Cleveland Clinic Foundation. See <a href="https://www.ahajournals.org/doi/pdf/10.1161/01.CIR.69.3.541">here</a> for protocol specifics.</p>
+<p>Copy the code chunk below to load the data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>heart <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;../data/cleveland_heart.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 303 Columns: 7
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-dbl (7): chd, age, sex, chol, trestbps, fbs, thalach
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># heart = read_csv(&quot;https://sta221-fa25.github.io/data/cleveland_heart.csv&quot;)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>heart <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://sta221-fa25.github.io/data/cleveland_heart.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The response variable is: <code>chd</code>: presence of coronary heart disease (1 for presence, 0 for absence).</p>
 <p>The other variables in the data set:</p>
@@ -5180,6 +5174,28 @@ dbl (7): chd, age, sex, chol, trestbps, fbs, thalach
 </ul>
 <section id="exercise-7" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-7">Exercise 7</h2>
+<p><em>Exploratory data analysis</em></p>
+<ol type="a">
+<li><p>Create a visualization showing the how the prevalence of heart disease varies by sex.</p></li>
+<li><p>Create a visualization showing how prevalence varies by age categories, “under 45”, “under 61 (but over 45)”, “over 61”. Hint: you can use <code>case_when</code> in R to make each category within a <code>mutate()</code>. See <code>?case_when</code> for an example.</p></li>
+</ol>
+</section>
+<section id="exercise-8" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-8">Exercise 8</h2>
+<p><em>Fit the model in R</em></p>
+<ol type="a">
+<li>Fit a model to predict coronary heart disease using the predictors <code>age</code> and <code>sex</code>. Allow for an interaction effect between the variables. (b) Interpret the each variable’s effect on the odds of heart disease.</li>
+</ol>
+</section>
+<section id="exercise-9" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-9">Exercise 9</h2>
+<p><em>Receiver operating characteristic</em></p>
+<p>Now fit a model using all the predictors in the data set (no interaction effects) and compare your model to that from exercise 8 using AUC of ROC. Which do you prefer? Why?</p>
+</section>
+<section id="exercise-10" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-10">Exercise 10</h2>
+<p><em>Sensitivity and specificity</em></p>
+<p>Using the “better” model from exercise 9, predict the probability <span class="math inline">\(\hat{p}_i\)</span> that each individual in the data set has heart disease. Next you will choose a threshold <span class="math inline">\(p^*\)</span>, such that if <span class="math inline">\(\hat{p}_i \geq p^*\)</span>, you predict the individual has heart disease. Choose <span class="math inline">\(p^*\)</span> so that you have an empirical sensitivity of 0.95. Report your <span class="math inline">\(p^*\)</span> and create a table showing the sensitivity and specificity of your logistic classifier.</p>
 </section>
 </section>
 <section id="submission" class="level1">
