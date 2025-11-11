@@ -1,0 +1,578 @@
+---
+title: "Logistic regression prediction"
+author: "Dr. Alexander Fisher"
+format: html
+---
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data used in these notes"
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(tidymodels)
+library(pROC)       # make ROC curves
+library(knitr)
+library(kableExtra)
+
+## data 
+heart_disease <- read_csv("https://sta221-fa25.github.io/data/framingham.csv") |>
+  select(age, totChol, TenYearCHD, currentSmoker) |>
+  drop_na() |>
+  mutate(high_risk = as_factor(TenYearCHD), 
+         currentSmoker = as_factor(currentSmoker))
+
+# set default theme in ggplot2
+ggplot2::theme_set(ggplot2::theme_bw())
+```
+
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+\newcommand{\bzero}{\boldsymbol{0}}
+\newcommand{\identity}{\boldsymbol{I}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+
+
+## Topics
+
+-   Calculating predicted probabilities from the logistic regression model
+
+-   Using predicted probabilities to classify observations
+
+-   Make decisions and assess model performance using
+
+    -   Confusion matrix
+    -   ROC curve
+
+## Data: Risk of coronary heart disease
+
+This data set is from an ongoing cardiovascular study on residents of the town of Framingham, Massachusetts. We want to examine the relationship between various health characteristics and the risk of having heart disease.
+
+-   `high_risk`: 1 = High risk of having heart disease in next 10 years, 0 = Not high risk of having heart disease in next 10 years
+
+-   `age`: Age at exam time (in years)
+
+-   `totChol`: Total cholesterol (in mg/dL)
+
+-   `currentSmoker`: 0 = nonsmoker; 1 = smoker
+
+
+## Modeling risk of coronary heart disease
+
+```{r}
+heart_disease_fit <- glm(high_risk ~ age + totChol + currentSmoker, 
+              data = heart_disease, family = "binomial")
+
+tidy(heart_disease_fit, conf.int = TRUE) |> 
+  kable(digits = 3)
+```
+
+::: question
+-   Interpret `totChol` in terms of the odds of being high risk for heart disease.
+
+-   Interpret `currentSmoker1` in terms of the odds of being high risk for heart disease.
+:::
+
+## Prediction and classification
+
+::: incremental
+-   We are often interested in using the model to classify observations, i.e., predict whether a given observation will have a 1 or 0 response
+
+-   For each observation
+
+    -   Use the logistic regression model to calculate the predicted log-odds the response for the $i^{th}$ observation is 1
+    -   Use the log-odds to calculate the predicted probability the $i^{th}$ observation is 1
+    -   Then, use the predicted probability to classify the observation as having a 1 or 0 response using some predefined threshold
+:::
+
+### Augmented data frame
+
+```{r}
+#| echo: true
+augment(heart_disease_fit)
+```
+
+###  Predicted log-odds
+
+```{r}
+#| echo: true
+heart_disease_aug <- augment(heart_disease_fit)
+```
+
+
+```{r}
+#| echo: true
+heart_disease_aug |> 
+  select(.fitted) |> 
+  slice(1:5)
+```
+
+
+$$
+\text{predicted log-odds} = \log\Big(\frac{\hat{\pi}}{1- \hat{\pi}}\Big) = -3.06
+$$
+
+###  Predicted odds
+
+```{r}
+heart_disease_aug |> 
+  select(.fitted) |> 
+  slice(1:5) |>
+  exp()
+```
+
+
+
+$$
+\text{predicted odds} =  \frac{\hat{\pi}}{1- \hat{\pi}} = \exp\{-3.06\} = 0.0469
+$$
+
+### Predicted probability
+
+```{r}
+heart_disease_aug |> 
+  select(.fitted) |> 
+  slice(1:5) |>
+  mutate(odds = exp(.fitted)) |>
+  mutate(prob = odds / (1 + odds)) |>
+  select(prob)
+```
+
+
+
+$$
+\text{predicted prob.} = \hat{\pi} = \frac{\hat{\text{odds}}}{1+\hat{\text{odds}}} = \frac{\exp\{-3.06\}}{1 + \exp\{-3.06\}}= 0.045
+$$
+
+
+
+::: question
+Would you classify the first individual as high risk $(\hat{y} = 1)$ or not high risk $(\hat{y} = 0)$?
+:::
+
+### Another individual
+
+```{r}
+heart_disease_aug |> 
+  select(.fitted) |> 
+  slice(1:5) |>
+  mutate(odds = exp(.fitted)) |>
+  mutate(prob = odds / (1 + odds))
+```
+
+
+$$
+\text{predicted prob.} = \hat{\pi} = \frac{\hat{\text{odds}}}{1+\hat{\text{odds}}} = \frac{\exp\{-0.751\}}{1 + \exp\{-0.751\}}= 0.321
+$$
+
+
+
+::: question
+Would you classify this individual as high risk $(\hat{y} = 1)$ or not high risk $(\hat{y} = 0)$?
+:::
+
+## Predicted probabilities in R
+
+We can calculate predicted probabilities using the `predict.glm()` function. Use `type = "response"` to get probabilities.[^1]
+
+[^1]: The default is `type = "link"`, which produces the predicted log-odds.
+
+<br>
+
+
+
+```{r}
+#| eval: false
+#| echo: true
+predict.glm(heart_disease_fit, type = "response")
+```
+
+
+
+**Predicted probabilities for Observations 1 -5**
+
+```{r}
+#| echo: false
+predict.glm(heart_disease_fit, type = "response")[1:5]
+```
+
+## Predictions in R
+
+```{r}
+#| echo: true
+
+pred_prob <- predict.glm(heart_disease_fit, type = "response")
+
+heart_disease_aug <- heart_disease_aug |> 
+  bind_cols(pred_prob = pred_prob)
+```
+
+
+
+```{r}
+#| echo: false
+
+heart_disease_aug  |> 
+  select(high_risk, .fitted, pred_prob) |>
+  slice(1:5)
+```
+
+## Classifying observations
+
+::: question
+You would like to determine a threshold for classifying individuals as high risk or not high risk.
+
+What considerations would you make in determining the threshold?
+:::
+
+## Classify using 0.5 as threshold
+
+We can use a threshold of 0.5 to classify observations.
+
+-   If $\hat{\pi} > 0.5$, classify as 1
+
+-   If $\hat{\pi} \leq 0.5$, classify as 0
+
+
+
+```{r}
+heart_disease_aug <- heart_disease_aug |>
+  mutate(pred_class = factor(if_else(pred_prob > 0.5, 1, 0)))
+```
+
+
+
+```{r}
+#| echo: false
+heart_disease_aug |>
+  select(high_risk, .fitted, pred_prob, pred_class) |>
+  slice(1:5)
+```
+
+## Confusion matrix
+
+A **confusion matrix** is a $2 \times 2$ table that compares the predicted and actual classes. We can produce this matrix using the `conf_mat()` function in the **yardstick** package (part of tidymodels).
+
+<br>
+
+
+
+```{r}
+#| echo: true
+heart_disease_aug |>
+  conf_mat(high_risk, pred_class) 
+```
+
+## Visualize confusion matrix
+
+```{r}
+#| echo: true
+heart_conf_mat <- heart_disease_aug |>
+  conf_mat(high_risk, pred_class)
+
+autoplot(heart_conf_mat, type = "heatmap")
+```
+
+## Using the confusion matrix
+
+::: center
+```{r}
+#| echo: false
+
+heart_disease_aug |>
+  conf_mat(high_risk, pred_class) 
+```
+:::
+
+<br>
+
+
+
+The **accuracy** of this model with a classification threshold of 0.5 is
+
+$$
+\text{accuracy} = \frac{3553 + 0}{3553 + 635 + 2 + 0} = 0.848
+$$
+
+## Using the confusion matrix
+
+::: center
+```{r}
+#| echo: false
+
+heart_disease_aug |>
+  conf_mat(high_risk, pred_class) 
+```
+:::
+
+<br>
+
+
+
+The **misclassification rate** of this model with a threshold of 0.5 is
+
+$$
+\text{misclassification} = \frac{635 + 2}{3553 + 635 + 2 + 0} = 0.152
+$$
+
+## Using the confusion matrix
+
+::: center
+```{r}
+#| echo: false
+
+heart_disease_aug |>
+  conf_mat(high_risk, pred_class) 
+```
+:::
+
+<br>
+
+Accuracy is 0.848 and the misclassification rate is 0.152.
+
+
+
+::: question
+-   What is the limitation of solely relying on accuracy and misclassification to assess the model performance?
+
+-   What is the limitation of using a single confusion matrix to assess the model performance?
+:::
+
+# Sensitivity and specificity
+
+## True/false positive/negative {.midi}
+
+|   | Not high risk $(y_i = 0)$ | High risk $(y_i = 1)$ |
+|----|----|----|
+| **Classified** **not** **high risk** $(\hat{\pi}_i \leq \text{threshold})$ | True negative (TN) | False negative (FN) |
+| **Classified high risk** $(\hat{\pi}_i > \text{threshold})$ | False positive (FP) | True positive (TP) |
+
+<br>
+
+-   $\text{accuracy} = \frac{TN + TP}{TN + TP + FN + FP}$
+
+-   $\text{misclassification} = \frac{FN + FP}{TN+ TP + FN + FP}$
+
+
+- **False negative rate**: Proportion of actual positives that were classified as negatives
+  - Pr(classified not high risk \| high risk) = $\frac{FN}{TP + FN}$
+
+- **False positive rate**: Proportion of actual negatives that were classified as positives
+  -  P(classified high risk \| not high risk) = $\frac{FP}{TN + FP}$
+
+
+- **Sensitivity**: Proportion of actual positives that were correctly classified as positive
+  - Also known as *true positive rate* (TPR) and *recall*
+  - **P(classified high risk \| high risk) = 1 − False negative rate**
+
+- **Specificity**: Proportion of actual negatives that were correctly classified as negative
+  - **P(classified not high risk \| not high risk) = 1 − False positive rate**
+
+## Practice
+
+::: center
+```{r}
+#| echo: false
+
+heart_disease_aug |>
+  conf_mat(high_risk, pred_class) 
+```
+:::
+
+::: question
+Calculate the
+
+-   False negative rate
+-   False positive rate
+-   Sensitivity
+-   Specificity
+:::
+
+## Using metrics to select model and threshold {.midi}
+
++----------------------------------+---------------------------------------------------------------------+
+| Metric                           | Guidance for use                                                    |
++==================================+=====================================================================+
+| Accuracy                         | For balanced data, use only in combination with other metrics.      |
+|                                  |                                                                     |
+|                                  | Avoid using for imbalanced data.                                    |
++----------------------------------+---------------------------------------------------------------------+
+| Sensitivity (true positive rate) | Use when false negatives are more "expensive" than false positives. |
++----------------------------------+---------------------------------------------------------------------+
+| False positive rate              | Use when false positives are more "expensive" than false negatives. |
++----------------------------------+---------------------------------------------------------------------+
+| Precision = $\frac{TP}{TP + FP}$ | Use when it's important for positive predictions to be accurate.    |
++----------------------------------+---------------------------------------------------------------------+
+
+::: small
+This table is a modification of work created and shared by Google in the [Google Machine Learning Crash Course](#0).
+:::
+
+## Choosing a classification threshold
+
+::: question
+A doctor plans to use your model to determine which patients are high risk for heart disease. The doctor will recommend a treatment plan for high risk patients.
+
+-   Would you want sensitivity to be high or low? What about specificity?
+
+-   What are the trade-offs associated with each decision?
+:::
+
+## ROC curve {.midi}
+
+So far the model assessment has depended on the model and selected threshold. The **receiver operating characteristic (ROC) curve** allows us to assess the model performance across a range of thresholds.
+
+
+
+::::: columns
+::: {.column width="65%"}
+```{r}
+#| echo: false
+
+# calculate sensitivity and specificity at each threshold
+roc_curve_data <- heart_disease_aug |>
+  roc_curve(high_risk, pred_prob, 
+            event_level = "second") 
+
+# plot roc curve
+autoplot(roc_curve_data)
+```
+:::
+
+::: {.column width="35%"}
+-   x-axis: 1 - Specificity (False positive rate)
+
+-   y-axis: Sensitivity (True positive rate)
+
+Which corner of the plot indicates the best model performance?
+:::
+:::::
+
+## ROC curve
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| out-width: 100%
+
+heart_disease_aug |>
+  roc_curve(high_risk, .fitted, 
+            event_level = "second")  |>
+  autoplot() +
+  annotate("point", x = 0, y = 1, color = "#5B888C") +
+  annotate("point", x = 0, y = 1, color = "#5B888C", size = 3, shape = "circle open") +
+  annotate(
+    "label", x = 0.02, y = 0.99, label = "All high risk classified as high risk,\nall not high risk classified as not high risk", hjust = 0, color = "#5B888C", fontface = "bold", vjust = 1, fill = "white"
+  ) +
+  annotate("point", x = 1, y = 0, color = "#8F2D56") +
+  annotate("point", x = 1, y = 0, color = "#8F2D56", size = 3, shape = "circle open") +
+  annotate(
+    "label", x = 0.98, y = 0.01, label = "All high risk classified as not high risk,\nall not high risk classified as high risk", hjust = 1, color = "#8F2D56", fontface = "bold", vjust = 0, fill = "white"
+  ) +
+  annotate(
+    "segment", color = "#5b708c", x = 0, y = 0, xend = 1, yend = 1, size = 2, alpha = 0.6
+  ) +
+  annotate(
+    "label", x = 0.58, y = 0.5, label = "True positive rate\n= false positive rate", hjust = 0, color = "#5b708c", fontface = "bold", fill = "white"
+  )
+```
+
+## ROC curve in R {.midi}
+
+```{r}
+#| echo: true
+#| eval: false
+
+
+# calculate sensitivity and specificity at each threshold
+roc_curve_data <- heart_disease_aug |>
+  roc_curve(high_risk, pred_prob, 
+            event_level = "second") 
+# event_level = second binary outcome is "1" outcome
+
+# plot roc curve
+autoplot(roc_curve_data)
+```
+
+## ROC curve in R
+
+::::: columns
+::: {.column width="40%"}
+**Sample from underlying data**
+
+```{r}
+#| echo: false
+
+set.seed(221)
+roc_curve_data |>
+  sample_n(10) |>
+  arrange(.threshold)
+
+```
+:::
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+
+autoplot(roc_curve_data)
+```
+:::
+:::::
+
+## Area under the curve
+
+The **area under the curve (AUC)** can be used to assess how well the logistic model fits the data
+
+-   AUC=0.5: model is a very bad fit (no better than a coin flip)
+
+-   AUC close to 1: model is a good fit
+
+
+
+```{r}
+#| echo: true
+heart_disease_aug |>
+  roc_auc(high_risk, pred_prob,
+    event_level = "second"
+  )
+```
+
+## Recap
+
+-   Calculated predicted probabilities from the logistic regression model
+
+-   Used predicted probabilities to classify observations
+
+-   Made decisions and assessed model performance using
+
+    -   Confusion matrix
+    -   ROC curve
+
+### Acknowledgements
+
+Thanks to [Prof. Maria Tackett](https://sta221-sp25.netlify.app/slides/20-logistic-prediction-notes) for this example.
+
+## Your turn
+
+### Build an email spam filter
+
+This data consists of 4601 emails that are classified as `spam` or `non-spam`. The data was collected at Hewlett-Packard labs and contains 58 variables. The first 48 variables are specific keywords and each observation is the percentage of appearance **(frequency)** of that word in the message. Click [here](https://rdrr.io/cran/kernlab/man/spam.html) to read more. 
+
+- `type` $= 1$ is spam
+- `type` $= 0$ is non-spam
+
+```{r load-pokemon, message=F}
+spam = read_csv("https://sta221-fa25.github.io/static/appex/data/spam.csv")
+glimpse(spam)
+```
+
+

@@ -103,7 +103,7 @@ schedule %>%
 
 ::: heatMap
 | Week | Date | Topic | Prepare | Notes | Assignment | Project |
-|:---|:---|:---|:--:|:--:|:--:|:--:|
+|:----------|:----------|:----------|:---------:|:---------:|:---------:|:---------:|
 | 1 | Tue Aug 26 | welcome |  | [💻](/notes/slides/lec01-welcome.html) |  |  |
 |  | Wed Aug 27 | lab: hello git and R |  | [💻](/labs/slides/lab0-slides.html) | [lab 0](/labs/lab00.html) |  |
 |  | Thu Aug 28 | correlation | [📖](/prepare/prepare-lec02.html) | [🗒](/notes/lec02-correlation.html) |  |  |
@@ -137,7 +137,7 @@ schedule %>%
 | 11 | Tue Nov 04 | GLS example |  | [🗒](/notes/lec17.html)[📝](/notes/whyGLS.pdf) |  | EDA due |
 |  | Wed Nov 05 | lab: MLE |  |  | [lab 6](/labs/lab06.html) |  |
 |  | Thu Nov 06 | intro to logistic reg. |  | [🗒](/notes/lec18.html) |  |  |
-| 12 | Tue Nov 11 | logistic reg. prediction |  |  | hw 4 |  |
+| 12 | Tue Nov 11 | logistic reg. prediction |  | [🗒](/notes/lec19.html) | [hw 4](/hw/hw04.html) |  |
 |  | Wed Nov 12 | lab: project presentations |  |  |  | presentation |
 |  | Thu Nov 13 | logistic reg. model selection |  |  |  |  |
 | 13 | Tue Nov 18 | logistic reg. example |  |  |  | draft report due |
