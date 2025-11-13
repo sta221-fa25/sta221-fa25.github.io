@@ -4972,6 +4972,10 @@ font-weight: normal;
     <a class="dropdown-item" href="../hw/hw03.html">
  <span class="dropdown-text">hw 3</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../hw/hw04.html">
+ <span class="dropdown-text">hw 4</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -5184,18 +5188,34 @@ font-weight: normal;
 <h2 class="anchored" data-anchor-id="exercise-8">Exercise 8</h2>
 <p><em>Fit the model in R</em></p>
 <ol type="a">
-<li>Fit a model to predict coronary heart disease using the predictors <code>age</code> and <code>sex</code>. Allow for an interaction effect between the variables. (b) Interpret the each variable’s effect on the odds of heart disease.</li>
+<li>Fit a model to predict coronary heart disease using the predictors <code>age</code> (numeric) and <code>sex</code>. Allow for an interaction effect between the variables. (b) Interpret each variable’s effect on the odds of heart disease.</li>
 </ol>
 </section>
 <section id="exercise-9" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-9">Exercise 9</h2>
 <p><em>Receiver operating characteristic</em></p>
-<p>Now fit a model using all the predictors in the data set (no interaction effects) and compare your model to that from exercise 8 using AUC of ROC. Which do you prefer? Why?</p>
+<p>Now fit a model using all the predictors in the data set (no interaction effects) and compare your model to that from exercise 8 using AUC of ROC. Plot the ROC curves together on the same graph. You can use the code below as a template.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>roc_curve1 <span class="ot">&lt;-</span> <span class="fu">roc</span>(heart<span class="sc">$</span>chd, prediction_prob_model_1)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>roc_curve2 <span class="ot">&lt;-</span> <span class="fu">roc</span>(heart<span class="sc">$</span>chd, prediction_prob_model_2)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(roc_curve1, <span class="at">main =</span> <span class="st">&quot;ROC Curves Comparison&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(roc_curve2, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Also compare the two by computing AIC scores for each.</p>
+<ul>
+<li><p>Which model do you prefer? Why?</p></li>
+<li><p>Is AUC alone a good metric to use for model selection? Why or why not?</p></li>
+</ul>
 </section>
 <section id="exercise-10" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-10">Exercise 10</h2>
 <p><em>Sensitivity and specificity</em></p>
-<p>Using the “better” model from exercise 9, predict the probability <span class="math inline">\(\hat{p}_i\)</span> that each individual in the data set has heart disease. Next you will choose a threshold <span class="math inline">\(p^*\)</span>, such that if <span class="math inline">\(\hat{p}_i \geq p^*\)</span>, you predict the individual has heart disease. Choose <span class="math inline">\(p^*\)</span> so that you have an empirical sensitivity of 0.95. Report your <span class="math inline">\(p^*\)</span> and create a table showing the sensitivity and specificity of your logistic classifier.</p>
+<p>Using the “better” model from exercise 9, predict the probability <span class="math inline">\(\hat{p}_i\)</span> that each individual in the data set has heart disease. Next you will choose a threshold <span class="math inline">\(p^*\)</span>, such that if <span class="math inline">\(\hat{p}_i \geq p^*\)</span>, you predict the individual has heart disease.</p>
+<ol type="a">
+<li><p>If you want <span class="math inline">\(p^*\)</span> such that you have an empirical sensitivity of at least 0.95, what is the maximum number of False Negatives you can afford for a data set of your size?</p></li>
+<li><p>Report <span class="math inline">\(p^*\)</span> so that you have maximize your specificity while having a sensitivity of at least 0.95.</p></li>
+<li><p>Use your <span class="math inline">\(p^*\)</span> to create a confusion matrix.</p></li>
+</ol>
 </section>
 </section>
 <section id="submission" class="level1">
