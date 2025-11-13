@@ -3064,5 +3064,12 @@
     "title": "Logistic regression model selection",
     "section": "Test a subset of coefficients",
     "text": "Test a subset of coefficients\n\nSuppose there are two models:\n\nReduced Model: includes predictors \\(x_1, \\ldots, x_q\\)\nFull Model: includes predictors \\(x_1, \\ldots, x_q, x_{q+1}, \\ldots, x_p\\)\n\nWe can use a drop-in-deviance test to determine if any of the new predictors are useful\n\n\\[\n\\begin{aligned}\n&H_0: \\beta_{q+1} = \\dots = \\beta_p = 0\\\\\n&H_a: \\beta_j \\neq 0 \\text{ for at least one }j\n\\end{aligned}\n\\]\nThe test statistic (drop-in deviance test) is\n\\[\n\\begin{aligned}\nG = D_{reduced} - D_{full} &= (-2\\log L_{reduced}) - (-2 \\log L_{full}) \\\\\n&= -2(\\log L_{reduced} - \\log L_{full})\n\\end{aligned}\n\\]\nThe p-value is calculated using a \\(\\chi_{\\Delta df}^2\\) distribution, where \\(\\Delta df\\) is the number of parameters being tested (the difference in number of parameters between the full and reduced model)."
+  },
+  {
+    "objectID": "project.html#reproducible-github-repo.",
+    "href": "project.html#reproducible-github-repo.",
+    "title": "Final project",
+    "section": "Reproducible GitHub Repo.",
+    "text": "Reproducible GitHub Repo.\nAll written work (with exception of presentation slides) should be reproducible, and the GitHub repo should be neatly organized.\nThe GitHub repo should have the following structure:\n\nREADME: Project title and team name\n\nShort project summary\n\nreport.qmd & report.pdf: Final written report\nproposal.qmd & proposal.pdf: Project proposal\nresearch-topics.qmd & research-topics.pdf: Proposed research questions\n/data: Folder that contains all data used for the final project.\n\n/data/README.md: Data dictionary and source for data set\n\nproject.Rproj: File specifying the RStudio project\n/presentation: Folder with the presentation slides or link to slides.\n.gitignore: File that lists all files that are in the local RStudio project but not the GitHub repo\n/.github: Folder for peer review issue template\nAny other files should be neatly organized into clearly labeled folders.\n\nUpdate the README of the project repo with your project title and team members’ names.\nPoints for reproducibility + organization will be based on the reproducibility of the written report and the organization of the project GitHub repo. The repo should be neatly organized as described above, there should be no extraneous files, all text in the README should be easily readable."
   }
 ]

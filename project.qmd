@@ -248,6 +248,8 @@ The peer review will be graded on the extent to which each comprehensively and c
 
 <!-- Note that this is optional, so there is <u>no</u> grade penalty for not turning in a Round 1 submission. Due to time constraints at the end of the semester, only high-level feedback will be given for the reports submitted at the final written report deadline on December 12. -->
 
+# Step 4
+
 ## Written report {#written-report}
 
 ::: callout-important
@@ -305,3 +307,38 @@ This is an assessment of the overall presentation and formatting of the written 
 #### Grading criteria 
 
 The report neatly written and organized with clear section headers and appropriately sized figures with informative labels. Numerical results are displayed with a reasonable number of digits, and all visualizations are neatly formatted and labeled. All citations and links are properly formatted. If there is an appendix, it is reasonably organized and easy for the reader to find relevant information. All code, warnings, and messages are suppressed. The main body of the written report (not including the appendix) is no longer than 10 pages.
+
+## Reproducible GitHub Repo.
+
+All written work (with exception of presentation slides) should be reproducible, and the GitHub repo should be neatly organized.
+
+The GitHub repo should have the following structure:
+
+-   `README`: Project title and team name
+
+    -   Short project summary
+
+-   `report.qmd` & `report.pdf`: Final written report
+
+-   `proposal.qmd` & `proposal.pdf`: Project proposal
+
+-   `research-topics.qmd` & `research-topics.pdf`: Proposed research questions
+
+-   `/data`: Folder that contains all data used for the final project.
+
+    -   `/data/README.md`: Data dictionary and source for data set
+
+-   `project.Rproj`: File specifying the RStudio project
+
+-   `/presentation`: Folder with the presentation slides or link to slides.
+
+-   `.gitignore`: File that lists all files that are in the local RStudio project but not the GitHub repo
+
+-   `/.github`: Folder for peer review issue template
+
+-   Any other files should be neatly organized into clearly labeled folders.
+
+Update the README of the project repo with your project title and team members' names.
+
+Points for reproducibility + organization will be based on the reproducibility of the written report and the organization of the project GitHub repo. The repo should be neatly organized as described above, there should be no extraneous files, all text in the `README` should be easily readable.
+
