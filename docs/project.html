@@ -117,6 +117,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./hw/hw03.html">
  <span class="dropdown-text">hw 3</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./hw/hw04.html">
+ <span class="dropdown-text">hw 4</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -186,7 +190,26 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#step-2" id="toc-step-2" class="nav-link" data-scroll-target="#step-2">Step 2</a>
+  <ul class="collapse">
   <li><a href="#presentations" id="toc-presentations" class="nav-link" data-scroll-target="#presentations">Presentations</a></li>
+  </ul></li>
+  <li><a href="#step-3" id="toc-step-3" class="nav-link" data-scroll-target="#step-3">Step 3</a>
+  <ul class="collapse">
+  <li><a href="#draft-report-peer-review" id="toc-draft-report-peer-review" class="nav-link" data-scroll-target="#draft-report-peer-review">Analysis + peer review</a>
+  <ul class="collapse">
+  <li><a href="#draft-report" id="toc-draft-report" class="nav-link" data-scroll-target="#draft-report">Draft report</a></li>
+  <li><a href="#peer-review" id="toc-peer-review" class="nav-link" data-scroll-target="#peer-review">Peer review</a></li>
+  </ul></li>
+  <li><a href="#written-report" id="toc-written-report" class="nav-link" data-scroll-target="#written-report">Written report</a>
+  <ul class="collapse">
+  <li><a href="#introduction-and-data-1" id="toc-introduction-and-data-1" class="nav-link" data-scroll-target="#introduction-and-data-1">Introduction and data</a></li>
+  <li><a href="#methodology-1" id="toc-methodology-1" class="nav-link" data-scroll-target="#methodology-1">Methodology</a></li>
+  <li><a href="#results-1" id="toc-results-1" class="nav-link" data-scroll-target="#results-1">Results</a></li>
+  <li><a href="#discussion-conclusion" id="toc-discussion-conclusion" class="nav-link" data-scroll-target="#discussion-conclusion">Discussion + Conclusion</a></li>
+  <li><a href="#organization-formatting" id="toc-organization-formatting" class="nav-link" data-scroll-target="#organization-formatting">Organization + formatting</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -321,6 +344,9 @@ Important
 <p>Because this question is often asked: how long should this section of the report be? Usually, the anticipated length of the EDA section, including all graphs, tables, narrative, etc. with code, warnings, and messages <strong>suppressed</strong> is about 3-5 pages. If you exceed the limit, format your figures to be smaller.</p>
 </section>
 </section>
+</section>
+<section id="step-2" class="level1">
+<h1>Step 2</h1>
 <section id="presentations" class="level2">
 <h2 class="anchored" data-anchor-id="presentations">Presentations</h2>
 <p>Your team will do an in-person presentation that summarizes and showcases the work you’ve done on the project thus far. Because the presentations will take place while you’re still working on the project, it will also be an opportunity to receive feedback and suggestions as well as provide feedback to other teams. The presentation will focus on introducing the subject matter and research question, showcase key results from the exploratory data analysis, and discuss primary modeling strategies and/or results. The presentation should be supported by slides that serve as a brief visual addition to the presentation. The presentation and slides will be graded for content and clarity.</p>
@@ -338,8 +364,156 @@ Important
 <li><p>Slide 5: Initial modeling strategies / results (if applicable) / next steps and anything you’d like feedback on</p></li>
 </ul>
 <p><strong>Turn-in:</strong> Put a PDF of the slides in a folder titled “presentation” in your team’s GitHub repo. Push the slides before your lab section on the presentation day.</p>
+</section>
+</section>
+<section id="step-3" class="level1">
+<h1>Step 3</h1>
+<section id="draft-report-peer-review" class="level2">
+<h2 class="anchored" data-anchor-id="draft-report-peer-review">Analysis + peer review</h2>
+<p>The purpose of the draft and peer review is to give you an opportunity to get early feedback on your analysis. Therefore, the draft and peer review will focus primarily on the exploratory data analysis, modeling, and initial interpretations.</p>
+<section id="draft-report" class="level3">
+<h3 class="anchored" data-anchor-id="draft-report">Draft report</h3>
+<p>Write the draft in the <code>report.qmd</code> file in your project repo.</p>
+<p>Below is a brief description of the sections to focus on in the draft:</p>
+<section id="introduction-and-data" class="level4">
+<h4 class="anchored" data-anchor-id="introduction-and-data">Introduction and data</h4>
+<p>This section includes an introduction to the project motivation, data, and research question. Describe the data and definitions of key variables. It should also include some exploratory data analysis. All of the EDA won’t fit in the body of the report, so focus on the EDA for the response variable and a few other interesting variables and relationships.</p>
+</section>
+<section id="methodology" class="level4">
+<h4 class="anchored" data-anchor-id="methodology">Methodology</h4>
+<p>This section includes a brief description of your modeling process. Explain the reasoning for the type of model you’re fitting, predictor variables considered for the model including any interactions. Additionally, show how you arrived at the final model by describing the model selection process, any variable transformations (if needed), and any other relevant considerations that were part of the model fitting process.</p>
+</section>
+<section id="results" class="level4">
+<h4 class="anchored" data-anchor-id="results">Results</h4>
+<p>In this section, you will output the final model and include a brief discussion of the model assumptions, diagnostics, and any relevant model fit statistics.</p>
+<p>This section also includes initial interpretations and conclusions drawn from the model.</p>
+</section>
+<section id="grading" class="level4">
+<h4 class="anchored" data-anchor-id="grading">Grading</h4>
+<p>The draft will be graded based on whether there is demonstration of a reasonable attempt at each of the sections described below in the written report file in the GitHub repo by the deadline.</p>
+</section>
+</section>
+<section id="peer-review" class="level3">
+<h3 class="anchored" data-anchor-id="peer-review">Peer review</h3>
+<p><strong>The peer review is due on Friday, November 21 at 11:59pm</strong>.</p>
+<p>Critically reviewing others’ work is a crucial part of the scientific process, and STA 221 is no exception. Each lab team will be assigned two other teams’ projects to review. Each team should push their draft to their GitHub repo by 5 pm the day before lab. The lab that week will be dedicated to the peer review, so your team will have time to review and provide quality feedback to two other teams.</p>
+<p>During the peer review process, you will be provided read-only access to your partner teams’ GitHub repos. Provide your review in the form of GitHub issues to your partner team’s GitHub repo using the issue template provided in the repo.</p>
+<section id="steps-for-peer-review" class="level4">
+<h4 class="anchored" data-anchor-id="steps-for-peer-review">Steps for peer review</h4>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Peer review assignments
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Go to the Canvas announcement to see the teams you’re peer reviewing.You’ll spend about 30 minutes reviewing each project.</p>
+</div>
+</div>
+<ul>
+<li><p>When you get to lab, you should have access to the GitHub repos for the teams you’re reviewing. In GitHub, search the repositories for <code>project</code>, and you should see the repos for the projects you’re reviewing. You will be able to read the files in the repo and post issues, but you cannot push changes to the repo. You will have access to the repo until the deadline for the peer review.</p></li>
+<li><p>You may choose to all work on both peer reviews or have some team members focus on a single peer review. Either way there will be one peer review grade assigned per team.</p></li>
+<li><p>For each team you’re reviewing:</p>
+<ul>
+<li><p>Open that team’s repo, read the project draft, and browse the rest of the repo.</p></li>
+<li><p>Go to the <strong>Issues</strong> tab in that repo, click on <strong>New issue</strong>, and click on <strong>Get started</strong> for the Peer Review issue. Write your responses to the prompts in the issue. You will answer the following questions:</p>
+<ul>
+<li><p>Describe the goal of the project.</p></li>
+<li><p>Describe the data set used in the project. What are the observations in the data? What is the source of the data? How were the data originally collected?</p></li>
+<li><p>Consider the exploratory data analysis (EDA). Describe one aspect of the EDA that is effective in helping you understand the data. Provide constructive feedback on how the team might improve the EDA.</p></li>
+<li><p>Describe the statistical methods, analysis approach, and discussion of model assumptions, diagnostics, model fit.</p></li>
+<li><p>Provide constructive feedback on how the team might improve their analysis. Make sure your feedback includes at least one comment on the statistical modeling aspect of the project, but also feel free to comment on aspects beyond the modeling.</p></li>
+<li><p>Provide constructive feedback on the interpretations and initial conclusion. What is most effective in the presentation of the results? What additional detail can the team provide to make the results and conclusions easier for the reader to understand?</p></li>
+<li><p>What aspect of this project are you most interested in and think would be interesting to highlight in the written report?</p></li>
+<li><p>Provide constructive feedback on any issues with file and/or code organization.</p></li>
+<li><p>(Optional) Any further comments or feedback?</p></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="grading-1" class="level4">
+<h4 class="anchored" data-anchor-id="grading-1">Grading</h4>
+<p>The peer review will be graded on the extent to which each comprehensively and constructively addresses the components on the peer review form. There will be one peer review grade per team.</p>
+<!-- ## Round 1 submission (optional) {#round1-submission} -->
+<!-- ::: callout-important -->
+<!-- The Round 1 submission is due on Sunday, December 8 at 11:59pm. Reports submitted after this date will not receive preliminary feedback. -->
+<!-- ::: -->
+<!-- The Round 1 submission is an opportunity to receive detailed feedback on your analysis and [Written report](#written-report) before the final submission. Therefore, to make the feedback most useful, **you must submit a complete written report to receive feedback.** You will also be notified of the grade you would receive at that point. You will have the option to keep the grade (and thus you don't need to turn in an updated report) or resubmit the written report by the final submission deadline to receive a new grade. -->
+<!-- #### To submit the Round 1 submission: -->
+<!-- 1.  Push the updated `written-report.qmd` and `written-report.pdf` to your GitHub repo. -->
+<!-- 2.  Open an issue with the title "Round 1 Submission". You can use the template issue in the GitHub repo. Make sure I am tagged in the issue (`@matackett`), so I receive an email notification of your Round 1 submission. See [Creating an issue from a repository](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue#creating-an-issue-from-a-repository) for instructions on opening an issue. Please ask a member of the teaching team for assistance if you need help opening the issue. -->
+<!-- Note that this is optional, so there is <u>no</u> grade penalty for not turning in a Round 1 submission. Due to time constraints at the end of the semester, only high-level feedback will be given for the reports submitted at the final written report deadline on December 12. -->
+</section>
+</section>
+</section>
+<section id="written-report" class="level2">
+<h2 class="anchored" data-anchor-id="written-report">Written report</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your written report must be completed in the <code>report.qmd</code> file and must be reproducible. All team members should contribute to the GitHub repository, with regular meaningful commits.</p>
+<p>Before you finalize your write up, make sure the code chunks are not visible and all messages and warnings are suppressed.</p>
+</div>
+</div>
+<ul>
+<li><p>You will submit the PDF of your final report on GitHub.</p></li>
+<li><p>The PDF you submit must match the .qmd in your GitHub repository <em>exactly</em>. The mandatory components of the report are below. You are free to add additional sections as necessary. <strong>The report, including tables and visualizations, must be no more than 10 pages long.</strong> There is no minimum page requirement; however, you should comprehensively address all of the analysis and report.</p></li>
+<li><p>Be selective in what you include in your final write-up. The goal is to write a cohesive narrative that demonstrates a thorough and comprehensive analysis rather than explain every step of the analysis.</p></li>
+<li><p>You are welcome to include an appendix with additional work at the end of the written report document; however, grading will overwhelmingly be based on the content in the main body of the report. You should assume the reader will not see the material in the appendix unless prompted to view it in the main body of the report. The appendix should be neatly formatted and easy for the reader to navigate. It is not included in the 10-page limit.</p></li>
+</ul>
+<section id="introduction-and-data-1" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-and-data-1">Introduction and data</h3>
+<p>This section includes an introduction to the project motivation, data, and research question. Describe the data and definitions of key variables. It should also include some exploratory data analysis. All of the EDA won’t fit in the paper, so focus on the EDA for the response variable and a few other interesting variables and relationships.</p>
+<section id="grading-criteria" class="level4">
+<h4 class="anchored" data-anchor-id="grading-criteria">Grading criteria</h4>
+<p>The research question and motivation are clearly stated in the introduction, including citations for the data source and any external research. The data are clearly described, including a description about how the data were originally collected and a concise definition of the variables relevant to understanding the report. The data cleaning process is clearly described, including any decisions made in the process (e.g., creating new variables, removing observations, etc.) The explanatory data analysis helps the reader better understand the observations in the data along with interesting and relevant relationships between the variables. It incorporates appropriate visualizations and summary statistics.</p>
+</section>
+</section>
+<section id="methodology-1" class="level3">
+<h3 class="anchored" data-anchor-id="methodology-1">Methodology</h3>
+<p>This section includes a brief description of your modeling process. Explain the reasoning for the type of model you’re fitting, predictor variables considered for the model including any interactions. Additionally, show how you arrived at the final model by describing the model selection process, interactions considered, variable transformations (if needed), assessment of conditions and diagnostics, and any other relevant considerations that were part of the model fitting process.</p>
+<section id="grading-criteria-1" class="level4">
+<h4 class="anchored" data-anchor-id="grading-criteria-1">Grading criteria</h4>
+<p>The analysis steps are appropriate for the data and research question. The group used a thorough and careful approach to select the variables in the final model; the approach is clearly described in the report. The model selection process took into account potential interaction effects and addressed any violations in model conditions. If violations of model conditions are still present, there was a reasonable attempt to address the violations based on the course content.</p>
+</section>
+</section>
+<section id="results-1" class="level3">
+<h3 class="anchored" data-anchor-id="results-1">Results</h3>
+<p>This is where you will output and discuss the final model.</p>
+<p>Describe the key results from the model. The goal is not to interpret every single variable in the model but rather to show that you are proficient in using the model output to address the research questions, using the interpretations to support your conclusions. Focus on the variables that help you answer the research question and that provide relevant context for the reader.</p>
+<section id="grading-criteria-2" class="level4">
+<h4 class="anchored" data-anchor-id="grading-criteria-2">Grading criteria</h4>
+<p>The model fit is clearly assessed, and interesting findings from the model are clearly described. The model conditions and diagnostics are thoroughly and accurately assessed for the final model, if not previously discussed in the methodology. Interpretations of model coefficients are used to support the key findings and conclusions, rather than merely listing the interpretation of every model coefficient. If the primary modeling objective is prediction, the model’s predictive power is thoroughly assessed.</p>
+</section>
+</section>
+<section id="discussion-conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="discussion-conclusion">Discussion + Conclusion</h3>
+<p>In this section you’ll include a summary of what you have learned about your research question along with statistical arguments supporting your conclusions. In addition, discuss the limitations of your analysis and provide suggestions on ways the analysis could be improved. Any potential issues pertaining to the reliability and validity of your data and appropriateness of the statistical analysis should also be discussed here. Lastly, this section will include ideas for future work.</p>
+<section id="grading-criteria-3" class="level4">
+<h4 class="anchored" data-anchor-id="grading-criteria-3">Grading criteria</h4>
+<p>Overall conclusions from analysis are clearly described, and the model results are put into the larger context of the subject matter and original research question. There is thoughtful consideration of potential limitations of the data and/or analysis, and ideas for future work are clearly described.</p>
+</section>
+</section>
+<section id="organization-formatting" class="level3">
+<h3 class="anchored" data-anchor-id="organization-formatting">Organization + formatting</h3>
+<p>This is an assessment of the overall presentation and formatting of the written report.</p>
+<section id="grading-criteria-4" class="level4">
+<h4 class="anchored" data-anchor-id="grading-criteria-4">Grading criteria</h4>
+<p>The report neatly written and organized with clear section headers and appropriately sized figures with informative labels. Numerical results are displayed with a reasonable number of digits, and all visualizations are neatly formatted and labeled. All citations and links are properly formatted. If there is an appendix, it is reasonably organized and easy for the reader to find relevant information. All code, warnings, and messages are suppressed. The main body of the written report (not including the appendix) is no longer than 10 pages.</p>
 
 
+</section>
+</section>
 </section>
 </section>
 

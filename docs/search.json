@@ -445,7 +445,7 @@
     "href": "index.html",
     "title": "Regression Analysis: Theory and Applications",
     "section": "",
-    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\nProject\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n💻\n\n\n\n\n\nWed Aug 27\nlab: hello git and R\n\n💻\nlab 0\n\n\n\n\nThu Aug 28\ncorrelation\n📖\n🗒\n\n\n\n\n2\nTue Sep 02\nsimple linear regression\n\n🗒\n\n\n\n\n\nWed Sep 03\nlab: computing and linear algebra review\n\n\nlab 1\n\n\n\n\nThu Sep 04\nmodel assessment\n📖\n🗒\n\n\n\n\n3\nTue Sep 09\nmatrix representation\n📖\n🗒 📝\nhw 1\n\n\n\n\nWed Sep 10\nlab: linear regression\n\n\nlab 2\n\n\n\n\nThu Sep 11\nmultiple linear regression\n\n🗒 📝\n\n\n\n\n4\nTue Sep 16\nintro to inference\n📖\n🗒\n\n\n\n\n\nWed Sep 17\nlab: multiple linear regression\n\n\nlab 3\n\n\n\n\nThu Sep 18\ninference continued\n\n🗒\nhw 2\n\n\n\n5\nTue Sep 23\nthe normal assumption\n\n🗒\n\n\n\n\n\nWed Sep 24\nlab: project workday\n\n\nproject 1\n\n\n\n\nThu Sep 25\nhypothesis tests\n\n🗒\n\n\n\n\n6\nTue Sep 30\nconfidence intervals\n\n🗒📝\n\nresearch topics due\n\n\n\nWed Oct 01\nlab: interaction effects and exam practice\n\n💻\nlab 4\n\n\n\n\nThu Oct 02\nexam review\n\n\n\n\n\n\n7\nTue Oct 07\nexam 1\n\n\n\n\n\n\n\nWed Oct 08\nNO LAB (exam)\n\n\n\n\n\n\n\nThu Oct 09\nchecking assumptions\n\n📝\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\n\nWed Oct 15\nlab: project workday\n\n\n\nproject proposal due\n\n\n\nThu Oct 16\nmulticollinearity\n\n🗒\n\n\n\n\n9\nTue Oct 21\nlikelihoods\n\n📝 R\n\n\n\n\n\nWed Oct 22\nlab: variable transformations and interpretation\n\n\nlab 5\n\n\n\n\nThu Oct 23\nmodel selection (AIC)\n\n🗒\n\n\n\n\n10\nTue Oct 28\nridge regression\n\n🗒\nhw 3\n\n\n\n\nWed Oct 29\nlab: project workday\n\n\n\n\n\n\n\nThu Oct 30\ngeneralized least squares (GLS)\n\n📝\n\n\n\n\n11\nTue Nov 04\nGLS example\n\n🗒📝\n\nEDA due\n\n\n\nWed Nov 05\nlab: MLE\n\n\nlab 6\n\n\n\n\nThu Nov 06\nintro to logistic reg.\n\n🗒\n\n\n\n\n12\nTue Nov 11\nlogistic reg. prediction\n\n🗒\nhw 4\n\n\n\n\nWed Nov 12\nlab: project presentations\n\n\n\npresentation\n\n\n\nThu Nov 13\nlogistic reg. model selection\n\n\n\n\n\n\n13\nTue Nov 18\nlogistic reg. example\n\n\n\ndraft report due\n\n\n\nWed Nov 19\nlab: peer review\n\n\n\npeer review\n\n\n\nThu Nov 20\nethics\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n\n15\nTue Dec 02\nexam review\n\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\n\nThu Dec 04\nexam 2\n\n\n\n\n\n\nFinal day\nFri Dec 12\nproject due\n\n\n\nfinal report & repo due"
+    "text": "Schedule\n\n\n\n\n\n\nWeek\nDate\nTopic\nPrepare\nNotes\nAssignment\nProject\n\n\n\n\n1\nTue Aug 26\nwelcome\n\n💻\n\n\n\n\n\nWed Aug 27\nlab: hello git and R\n\n💻\nlab 0\n\n\n\n\nThu Aug 28\ncorrelation\n📖\n🗒\n\n\n\n\n2\nTue Sep 02\nsimple linear regression\n\n🗒\n\n\n\n\n\nWed Sep 03\nlab: computing and linear algebra review\n\n\nlab 1\n\n\n\n\nThu Sep 04\nmodel assessment\n📖\n🗒\n\n\n\n\n3\nTue Sep 09\nmatrix representation\n📖\n🗒 📝\nhw 1\n\n\n\n\nWed Sep 10\nlab: linear regression\n\n\nlab 2\n\n\n\n\nThu Sep 11\nmultiple linear regression\n\n🗒 📝\n\n\n\n\n4\nTue Sep 16\nintro to inference\n📖\n🗒\n\n\n\n\n\nWed Sep 17\nlab: multiple linear regression\n\n\nlab 3\n\n\n\n\nThu Sep 18\ninference continued\n\n🗒\nhw 2\n\n\n\n5\nTue Sep 23\nthe normal assumption\n\n🗒\n\n\n\n\n\nWed Sep 24\nlab: project workday\n\n\nproject 1\n\n\n\n\nThu Sep 25\nhypothesis tests\n\n🗒\n\n\n\n\n6\nTue Sep 30\nconfidence intervals\n\n🗒📝\n\nresearch topics due\n\n\n\nWed Oct 01\nlab: interaction effects and exam practice\n\n💻\nlab 4\n\n\n\n\nThu Oct 02\nexam review\n\n\n\n\n\n\n7\nTue Oct 07\nexam 1\n\n\n\n\n\n\n\nWed Oct 08\nNO LAB (exam)\n\n\n\n\n\n\n\nThu Oct 09\nchecking assumptions\n\n📝\n\n\n\n\n8\nTue Oct 14\nNO CLASS\n\n\n\n\n\n\n\nWed Oct 15\nlab: project workday\n\n\n\nproject proposal due\n\n\n\nThu Oct 16\nmulticollinearity\n\n🗒\n\n\n\n\n9\nTue Oct 21\nlikelihoods\n\n📝 R\n\n\n\n\n\nWed Oct 22\nlab: variable transformations and interpretation\n\n\nlab 5\n\n\n\n\nThu Oct 23\nmodel selection (AIC)\n\n🗒\n\n\n\n\n10\nTue Oct 28\nridge regression\n\n🗒\nhw 3\n\n\n\n\nWed Oct 29\nlab: project workday\n\n\n\n\n\n\n\nThu Oct 30\ngeneralized least squares (GLS)\n\n📝\n\n\n\n\n11\nTue Nov 04\nGLS example\n\n🗒📝\n\nEDA due\n\n\n\nWed Nov 05\nlab: MLE\n\n\nlab 6\n\n\n\n\nThu Nov 06\nintro to logistic reg.\n\n🗒\n\n\n\n\n12\nTue Nov 11\nlogistic reg. prediction\n\n🗒\nhw 4\n\n\n\n\nWed Nov 12\nlab: project presentations\n\n\n\npresentation\n\n\n\nThu Nov 13\nlogistic reg. model selection\n\n🗒\n\n\n\n\n13\nTue Nov 18\nlogistic reg. example\n\n\n\ndraft report due\n\n\n\nWed Nov 19\nlab: peer review\n\n\n\npeer review\n\n\n\nThu Nov 20\nethics\n\n\n\n\n\n\n14\nTue Nov 25\n\n\n\n\n\n\n\n\nWed Nov 26\nNO CLASS\n\n\n\n\n\n\n\nThu Nov 27\nNO CLASS\n\n\n\n\n\n\n15\nTue Dec 02\nexam review\n\n\n\n\n\n\n\nWed Dec 03\n\n\n\n\n\n\n\n\nThu Dec 04\nexam 2\n\n\n\n\n\n\nFinal day\nFri Dec 12\nproject due\n\n\n\nfinal report & repo due"
   },
   {
     "objectID": "hw/hw01.html",
@@ -2777,5 +2777,292 @@
     "title": "Logistic regression prediction",
     "section": "Your turn",
     "text": "Your turn\n\nBuild an email spam filter\nThis data consists of 4601 emails that are classified as spam or non-spam. The data was collected at Hewlett-Packard labs and contains 58 variables. The first 48 variables are specific keywords and each observation is the percentage of appearance (frequency) of that word in the message. Click here to read more.\n\ntype \\(= 1\\) is spam\ntype \\(= 0\\) is non-spam\n\n\nspam = read_csv(\"https://sta221-fa25.github.io/data/spam.csv\")\n\n\n\nEvaluate performance using AUC ROC\n\n\n(New) classification\nUse your model to classify the email below.\n\nnewEmailText = \"CONGRATULATIONS!!! YOU have been selected as one of our lucky winners to receive a $0.5 Amazon Gift Card.\n\nTo claim your reward, simply click the link below and confirm your details.\n\nClaim Your Gift Now\""
+  },
+  {
+    "objectID": "notes/lec20.html",
+    "href": "notes/lec20.html",
+    "title": "Logistic regression model selection",
+    "section": "",
+    "text": "View libraries and data used in these notes\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(pROC)       # make ROC curves\nlibrary(knitr)\nlibrary(kableExtra)\n\n## data \nheart_disease &lt;- read_csv(\"https://sta221-fa25.github.io/data/framingham.csv\") |&gt;\n  select(age, education, TenYearCHD, totChol, currentSmoker) |&gt;\n  drop_na() |&gt;\n  mutate(\n    high_risk = as_factor(TenYearCHD),\n    education = as_factor(education),\n    currentSmoker = as_factor(currentSmoker)\n  )\n\n# set default theme in ggplot2\nggplot2::theme_set(ggplot2::theme_bw())"
+  },
+  {
+    "objectID": "notes/lec20.html#topics",
+    "href": "notes/lec20.html#topics",
+    "title": "Logistic regression model selection",
+    "section": "Topics",
+    "text": "Topics\n\nComparing models using AIC and BIC\nTest of significance for a subset of predictors"
+  },
+  {
+    "objectID": "notes/lec20.html#computational-setup",
+    "href": "notes/lec20.html#computational-setup",
+    "title": "Logistic regression model selection and inference",
+    "section": "Computational setup",
+    "text": "Computational setup\n\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(pROC)      \nlibrary(knitr)\nlibrary(kableExtra)\n\n# set default theme in ggplot2\nggplot2::theme_set(ggplot2::theme_bw())"
+  },
+  {
+    "objectID": "notes/lec20.html#risk-of-coronary-heart-disease",
+    "href": "notes/lec20.html#risk-of-coronary-heart-disease",
+    "title": "Logistic regression model selection",
+    "section": "Risk of coronary heart disease",
+    "text": "Risk of coronary heart disease\nThis data set is from an ongoing cardiovascular study on residents of the town of Framingham, Massachusetts. We want to examine the relationship between various health characteristics and the risk of having heart disease.\n\nhigh_risk:\n\n1: High risk of having heart disease in next 10 years\n0: Not high risk of having heart disease in next 10 years\n\nage: Age at exam time (in years)\ntotChol: Total cholesterol (in mg/dL)\ncurrentSmoker: 0 = nonsmoker, 1 = smoker\neducation: 1 = Some High School, 2 = High School or GED, 3 = Some College or Vocational School, 4 = College"
+  },
+  {
+    "objectID": "notes/lec20.html#modeling-risk-of-coronary-heart-disease",
+    "href": "notes/lec20.html#modeling-risk-of-coronary-heart-disease",
+    "title": "Logistic regression model selection",
+    "section": "Modeling risk of coronary heart disease",
+    "text": "Modeling risk of coronary heart disease\nUsing age, totChol, and currentSmoker\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n-6.673\n0.378\n-17.647\n0.000\n-7.423\n-5.940\n\n\nage\n0.082\n0.006\n14.344\n0.000\n0.071\n0.094\n\n\ntotChol\n0.002\n0.001\n1.940\n0.052\n0.000\n0.004\n\n\ncurrentSmoker1\n0.443\n0.094\n4.733\n0.000\n0.260\n0.627"
+  },
+  {
+    "objectID": "notes/lec20.html#review-roc-curve-model-fit",
+    "href": "notes/lec20.html#review-roc-curve-model-fit",
+    "title": "Logistic regression model selection",
+    "section": "Review: ROC Curve + Model fit",
+    "text": "Review: ROC Curve + Model fit\n\n\n\n\n\n\n\n\n\n# A tibble: 1 × 3\n  .metric .estimator .estimate\n  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;\n1 roc_auc binary         0.697"
+  },
+  {
+    "objectID": "notes/lec20.html#review-classification",
+    "href": "notes/lec20.html#review-classification",
+    "title": "Logistic regression model selection",
+    "section": "Review: Classification",
+    "text": "Review: Classification\nWe will use a threshold of 0.2 to classify observations"
+  },
+  {
+    "objectID": "notes/lec20.html#review-classification-1",
+    "href": "notes/lec20.html#review-classification-1",
+    "title": "Logistic regression model selection",
+    "section": "Review: Classification",
+    "text": "Review: Classification"
+  },
+  {
+    "objectID": "notes/lec20.html#which-model-do-we-choose",
+    "href": "notes/lec20.html#which-model-do-we-choose",
+    "title": "Logistic regression model selection",
+    "section": "Which model do we choose?",
+    "text": "Which model do we choose?\n\n\n\nModel 1\n\n\n\n\n\n\nterm\nestimate\n\n\n\n\n(Intercept)\n-6.673\n\n\nage\n0.082\n\n\ntotChol\n0.002\n\n\ncurrentSmoker1\n0.443\n\n\n\n\n\n\n\nModel 2\n\n\n\n\n\n\nterm\nestimate\n\n\n\n\n(Intercept)\n-6.456\n\n\nage\n0.080\n\n\ntotChol\n0.002\n\n\ncurrentSmoker1\n0.445\n\n\neducation2\n-0.270\n\n\neducation3\n-0.232\n\n\neducation4\n-0.035"
+  },
+  {
+    "objectID": "notes/lec20.html#log-likelihood",
+    "href": "notes/lec20.html#log-likelihood",
+    "title": "Logistic regression model selection",
+    "section": "Log-Likelihood",
+    "text": "Log-Likelihood\nRecall the log-likelihood function\n\\[\n\\begin{aligned}\n\\log L&(\\boldsymbol{\\beta}|x_1, \\ldots, x_n, y_1, \\dots, y_n) \\\\\n&= \\sum\\limits_{i=1}^n[y_i \\log(\\pi_i) + (1 - y_i)\\log(1 - \\pi_i)]\n\\end{aligned}\n\\]\nwhere \\(\\pi_i = \\frac{\\exp\\{x_i^\\mathsf{T}\\boldsymbol{\\beta}\\}}{1 + \\exp\\{x_i^\\mathsf{T}\\boldsymbol{\\beta}\\}}\\)"
+  },
+  {
+    "objectID": "notes/lec20.html#aic-bic",
+    "href": "notes/lec20.html#aic-bic",
+    "title": "Logistic regression model selection",
+    "section": "AIC & BIC",
+    "text": "AIC & BIC\nEstimators of prediction error and relative quality of models:\nAkaike’s Information Criterion (AIC)1: \\[AIC = -2\\log L + 2 (p)\\]\nSchwarz’s Bayesian Information Criterion (BIC)2: \\[ BIC = -2\\log L + \\log(n)\\times(p)\\]"
+  },
+  {
+    "objectID": "notes/lec20.html#aic-bic-1",
+    "href": "notes/lec20.html#aic-bic-1",
+    "title": "Logistic regression model selection",
+    "section": "AIC & BIC",
+    "text": "AIC & BIC\n\\[\n\\begin{aligned}\n& AIC = \\color{blue}{-2\\log L}  \\color{black}{+ 2(p)} \\\\\n& BIC = \\color{blue}{-2\\log L}  + \\color{black}{\\log(n)\\times(p)}\n\\end{aligned}\n\\]\n\nFirst Term: Decreases as p increases"
+  },
+  {
+    "objectID": "notes/lec20.html#aic-bic-2",
+    "href": "notes/lec20.html#aic-bic-2",
+    "title": "Logistic regression model selection",
+    "section": "AIC & BIC",
+    "text": "AIC & BIC\n\\[\n\\begin{aligned} & AIC = -2\\log L  + \\color{blue}{2(p)} \\\\\n& BIC = -2\\log L + \\color{blue}{\\log(n)\\times (p)}\n\\end{aligned}\n\\]\n\nSecond term: Increases as p increases"
+  },
+  {
+    "objectID": "notes/lec20.html#using-aic-bic",
+    "href": "notes/lec20.html#using-aic-bic",
+    "title": "Logistic regression model selection",
+    "section": "Using AIC & BIC",
+    "text": "Using AIC & BIC\n\\[\n\\begin{aligned} & AIC = -2\\log L  + \\color{red}{2(p)} \\\\\n& BIC = -2 \\log L  + \\color{red}{\\log(n)\\times(p)}\n\\end{aligned}\n\\]\n\nChoose model with the smaller value of AIC or BIC\nIf \\(n \\geq 8\\), the penalty for BIC is larger than that of AIC, so BIC tends to favor more parsimonious models (i.e. models with fewer terms)"
+  },
+  {
+    "objectID": "notes/lec20.html#aic-from-the-glance-function",
+    "href": "notes/lec20.html#aic-from-the-glance-function",
+    "title": "Logistic regression model selection",
+    "section": "AIC from the glance() function",
+    "text": "AIC from the glance() function\nLet’s look at the AIC for the model that includes age, totChol, and currentSmoker\n\nglance(high_risk_fit)$AIC\n\n[1] 3232.812\n\n\n\nCalculating AIC\n\n- 2 * glance(high_risk_fit)$logLik + 2 * (3 + 1)\n\n[1] 3232.812"
+  },
+  {
+    "objectID": "notes/lec20.html#comparing-the-models-using-aic",
+    "href": "notes/lec20.html#comparing-the-models-using-aic",
+    "title": "Logistic regression model selection",
+    "section": "Comparing the models using AIC",
+    "text": "Comparing the models using AIC\nLet’s compare the full and reduced models using AIC.\n\nglance(high_risk_fit_reduced)$AIC\n\n[1] 3232.812\n\nglance(high_risk_fit_full)$AIC\n\n[1] 3231.6\n\n\n\n\nBased on AIC, which model would you choose?"
+  },
+  {
+    "objectID": "notes/lec20.html#comparing-the-models-using-bic",
+    "href": "notes/lec20.html#comparing-the-models-using-bic",
+    "title": "Logistic regression model selection",
+    "section": "Comparing the models using BIC",
+    "text": "Comparing the models using BIC\nLet’s compare the full and reduced models using BIC\n\nglance(high_risk_fit_reduced)$BIC\n\n[1] 3258.074\n\nglance(high_risk_fit_full)$BIC\n\n[1] 3275.807\n\n\n\n\nBased on BIC, which model would you choose?"
+  },
+  {
+    "objectID": "notes/lec20.html#drop-in-deviance-test-1",
+    "href": "notes/lec20.html#drop-in-deviance-test-1",
+    "title": "Logistic regression model selection",
+    "section": "Drop-in-deviance test",
+    "text": "Drop-in-deviance test\nWe will use a drop-in-deviance test (aka Likelihood Ratio Test) to test\n\nthe overall statistical significance of a logistic regression model\nthe statistical significance of a subset of coefficients in the model"
+  },
+  {
+    "objectID": "notes/lec20.html#deviance",
+    "href": "notes/lec20.html#deviance",
+    "title": "Logistic regression model selection",
+    "section": "Deviance",
+    "text": "Deviance\nThe deviance is a measure of the degree to which the predicted values are different from the observed values (compares the current model to a “saturated” model)\nIn logistic regression,\n\\[\nD = -2 \\log L\n\\]\n\n\\(D \\sim \\chi^2_{n - p}\\) ( \\(D\\) follows a Chi-square distribution with \\(n - p\\) degrees of freedom)3\n\nNote: \\(n - p\\) a the degrees of freedom associated with the error in the model (like residuals)"
+  },
+  {
+    "objectID": "notes/lec20.html#chi2-distribution",
+    "href": "notes/lec20.html#chi2-distribution",
+    "title": "Logistic regression model selection",
+    "section": "\\(\\chi^2\\) distribution",
+    "text": "\\(\\chi^2\\) distribution"
+  },
+  {
+    "objectID": "notes/lec20.html#test-for-overall-significance",
+    "href": "notes/lec20.html#test-for-overall-significance",
+    "title": "Logistic regression model selection",
+    "section": "Test for overall significance",
+    "text": "Test for overall significance\nWe can test the overall significance for a logistic regression model, i.e., whether there is at least one predictor with a non-zero coefficient\n\\[\n\\begin{aligned}\n&H_0: \\beta_1 = \\dots = \\beta_p = 0 \\\\\n&H_a: \\beta_j \\neq 0 \\text{ for at least one } j\n\\end{aligned}\n\\]\nThe drop-in-deviance test for overall significance compares the fit of a model with no predictors to the current model."
+  },
+  {
+    "objectID": "notes/lec20.html#drop-in-deviance-test-statistic",
+    "href": "notes/lec20.html#drop-in-deviance-test-statistic",
+    "title": "Logistic regression model selection",
+    "section": "Drop-in-deviance test statistic",
+    "text": "Drop-in-deviance test statistic\nLet \\(L_0\\) and \\(L_a\\) be the likelihood functions of the model under \\(H_0\\) and \\(H_a\\), respectively. The test statistic is\n\\[\n\\begin{aligned}\nG = D_0 - D_a &= (-2\\log L_0) - (-2\\log L_a)\\\\[5pt]\n& = -2(\\log L_0 - \\log L_a) \\\\[5pt]\n&= -2\\sum_{i=1}^n \\Big[ y_i \\log \\Big(\\frac{\\hat{\\pi}^0}{\\hat{\\pi}^a_i}\\Big) + (1 - y_i)\\log \\Big(\\frac{1-\\hat{\\pi}^0}{1-\\hat{\\pi}^a_i}\\Big)\\Big]\n\\end{aligned}\n\\]\nwhere \\(\\hat{\\pi}^0\\) is the predicted probability under \\(H_0\\) and \\(\\hat{\\pi}_i^a = \\frac{\\exp \\{x_i^\\mathsf{T}\\boldsymbol{\\beta}\\}}{1 + \\exp \\{x_i^\\mathsf{T}\\boldsymbol{\\beta}\\}}\\) is the predicted probability under \\(H_a\\) 4"
+  },
+  {
+    "objectID": "notes/lec20.html#drop-in-deviance-test-statistic-1",
+    "href": "notes/lec20.html#drop-in-deviance-test-statistic-1",
+    "title": "Logistic regression model selection",
+    "section": "Drop-in-deviance test statistic",
+    "text": "Drop-in-deviance test statistic\n\\[\nG = -2\\sum_{i=1}^n \\Big[ y_i \\log \\Big(\\frac{\\hat{\\pi}^0}{\\hat{\\pi}^a_i}\\Big) + (1 - y_i)\\log \\Big(\\frac{1-\\hat{\\pi}^0}{1-\\hat{\\pi}^a_i}\\Big)\\Big]\n\\]\n\n\nWhen \\(n\\) is large, \\(G \\sim \\chi^2_p\\), ( \\(G\\) follows a Chi-square distribution with \\(p\\) degrees of freedom)\nThe p-value is calculated as \\(P(\\chi^2 &gt; G)\\)\nLarge values of \\(G\\) (small p-values) indicate at least one \\(\\beta_j\\) is non-zero"
+  },
+  {
+    "objectID": "notes/lec20.html#heart-disease-model-drop-in-deviance-test",
+    "href": "notes/lec20.html#heart-disease-model-drop-in-deviance-test",
+    "title": "Logistic regression model selection",
+    "section": "Heart disease model: drop-in-deviance test",
+    "text": "Heart disease model: drop-in-deviance test\n\\[\n\\begin{aligned}\n&H_0: \\beta_{age} = \\beta_{totChol} = \\beta_{currentSmoker} = 0 \\\\\n&H_a: \\beta_j \\neq 0 \\text{ for at least one }j\n\\end{aligned}\n\\]\nFit the null model (we’ve already fit the alternative model)\n\nnull_model &lt;- glm(high_risk ~ 1, data = heart_disease, family = \"binomial\")\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n-1.72294\n0.0436342\n-39.486\n0"
+  },
+  {
+    "objectID": "notes/lec20.html#heart-disease-model-drop-in-deviance-test-1",
+    "href": "notes/lec20.html#heart-disease-model-drop-in-deviance-test-1",
+    "title": "Logistic regression model selection",
+    "section": "Heart disease model: drop-in-deviance test",
+    "text": "Heart disease model: drop-in-deviance test\nCalculate the log-likelihood for the null and alternative models\n\n(L_0 &lt;- glance(null_model)$logLik)\n\n[1] -1737.735\n\n(L_a &lt;- glance(high_risk_fit)$logLik)\n\n[1] -1612.406\n\n\nCalculate the likelihood ratio test statistic\n\n(G &lt;- -2 * (L_0 - L_a))\n\n[1] 250.6572"
+  },
+  {
+    "objectID": "notes/lec20.html#heart-disease-model-likelihood-ratio-test",
+    "href": "notes/lec20.html#heart-disease-model-likelihood-ratio-test",
+    "title": "Logistic regression model selection",
+    "section": "Heart disease model: likelihood ratio test",
+    "text": "Heart disease model: likelihood ratio test\nCalculate the p-value\n\n(p_value &lt;- pchisq(G, df = 3, lower.tail = FALSE))\n\n[1] 4.717158e-54\n\n\nConclusion\nThe p-value is small, so we reject \\(H_0\\). The data provide evidence that at least one predictor in the model has a non-zero coefficient."
+  },
+  {
+    "objectID": "notes/lec20.html#why-use-overall-test",
+    "href": "notes/lec20.html#why-use-overall-test",
+    "title": "Logistic regression model selection",
+    "section": "Why use overall test?",
+    "text": "Why use overall test?\nWhy do we use a test for overall significance instead of just looking at the test for individual coefficients?5\nSuppose we have a model such that \\(p = 100\\) and \\(H_0: \\beta_1 = \\dots = \\beta_{100} = 0\\) is true\n\n\nAbout 5% of the p-values for individual coefficients will be below 0.05 by chance.\nSo we expect to see 5 small p-values if even no linear association actually exists.\nTherefore, it is very likely we will see at least one small p-value by chance.\nThe overall test of significance does not have this problem. There is only a 5% chance we will get a p-value below 0.05, if a relationship truly does not exist."
+  },
+  {
+    "objectID": "notes/lec20.html#testing-a-subset-of-coefficients",
+    "href": "notes/lec20.html#testing-a-subset-of-coefficients",
+    "title": "Logistic regression model selection",
+    "section": "Testing a subset of coefficients",
+    "text": "Testing a subset of coefficients\n\nSuppose there are two models:\n\nReduced Model: includes predictors \\(x_1, \\ldots, x_q\\)\nFull Model: includes predictors \\(x_1, \\ldots, x_q, x_{q+1}, \\ldots, x_p\\)\n\nWe can use a drop-in-deviance test to determine if any of the new predictors are useful\n\n\\[\n\\begin{aligned}\n&H_0: \\beta_{q+1} = \\dots = \\beta_p = 0\\\\\n&H_a: \\beta_j \\neq 0 \\text{ for at least one }j\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "notes/lec20.html#drop-in-deviance-test-2",
+    "href": "notes/lec20.html#drop-in-deviance-test-2",
+    "title": "Logistic regression model selection",
+    "section": "Drop-in-deviance test",
+    "text": "Drop-in-deviance test\n\\[\n\\begin{aligned}\n&H_0: \\beta_{q+1} = \\dots = \\beta_p = 0\\\\\n&H_a: \\beta_j \\neq 0 \\text{ for at least one }j\n\\end{aligned}\n\\]\nThe test statistic is\n\\[\n\\begin{aligned}\nG = D_{reduced} - D_{full} &= (-2\\log L_{reduced}) - (-2 \\log L_{full}) \\\\\n&= -2(\\log L_{reduced} - \\log L_{full})\n\\end{aligned}\n\\]\nThe p-value is calculated using a \\(\\chi_{\\Delta df}^2\\) distribution, where \\(\\Delta df\\) is the number of parameters being tested (the difference in number of parameters between the full and reduced model)."
+  },
+  {
+    "objectID": "notes/lec20.html#example-include-education",
+    "href": "notes/lec20.html#example-include-education",
+    "title": "Logistic regression model selection",
+    "section": "Example: Include education?",
+    "text": "Example: Include education?\nShould we include education in the model?\n\nReduced model: age, totChol, currentSmoker\nFull model: age, totChol, currentSmoker , education\n\n\\[\n\\begin{aligned}\n&H_0: \\beta_{ed2} = \\beta_{ed3} = \\beta_{ed4} = 0 \\\\\n&H_a: \\beta_j \\neq 0 \\text{ for at least one }j\n\\end{aligned}\n\\]\n\nreduced_model &lt;- glm(high_risk ~ age + totChol + currentSmoker, \n              data = heart_disease, family = \"binomial\")\n\nfull_model &lt;- glm(high_risk ~ age + totChol + currentSmoker + education, \n              data = heart_disease, family = \"binomial\")\n\nCalculate deviances\n\n(deviance_reduced &lt;- -2 * glance(reduced_model)$logLik)\n\n[1] 3224.812\n\n(deviance_full &lt;- -2 * glance(full_model)$logLik)\n\n[1] 3217.6\n\n\nCalculate test statistic\n\n(G &lt;- deviance_reduced - deviance_full)\n\n[1] 7.212113\n\n\nCalculate p-value\n\npchisq(G, df = 3, lower.tail = FALSE)\n\n[1] 0.06543567\n\n\n\nExercise\n\n\nWhat is your conclusion? Would you include education in the model that already has age, totChol, currentSmoker?"
+  },
+  {
+    "objectID": "notes/lec20.html#example-include-education-1",
+    "href": "notes/lec20.html#example-include-education-1",
+    "title": "Logistic regression model selection",
+    "section": "Example: Include education?",
+    "text": "Example: Include education?\n\nreduced_model &lt;- glm(high_risk ~ age + totChol + currentSmoker, \n              data = heart_disease, family = \"binomial\")\n\nfull_model &lt;- glm(high_risk ~ age + totChol + currentSmoker + education, \n              data = heart_disease, family = \"binomial\")\n\nCalculate deviances\n\n(deviance_reduced &lt;- -2 * glance(reduced_model)$logLik)\n\n[1] 3224.812\n\n(deviance_full &lt;- -2 * glance(full_model)$logLik)\n\n[1] 3217.6\n\n\nCalculate test statistic\n\n(G &lt;- deviance_reduced - deviance_full)\n\n[1] 7.212113"
+  },
+  {
+    "objectID": "notes/lec20.html#example-include-education-2",
+    "href": "notes/lec20.html#example-include-education-2",
+    "title": "Logistic regression model selection",
+    "section": "Example: Include education?",
+    "text": "Example: Include education?\nCalculate p-value\n\npchisq(G, df = 3, lower.tail = FALSE)\n\n[1] 0.06543567\n\n\n\n\nWhat is your conclusion? Would you include education in the model that already has age, totChol, currentSmoker?"
+  },
+  {
+    "objectID": "notes/lec20.html#drop-in-deviance-test-in-r",
+    "href": "notes/lec20.html#drop-in-deviance-test-in-r",
+    "title": "Logistic regression model selection",
+    "section": "Drop-in-deviance test in R",
+    "text": "Drop-in-deviance test in R\nConduct the drop-in-deviance test using the anova() function in R with option test = \"Chisq\"\n\nanova(reduced_model, full_model, test = \"Chisq\") |&gt; \n  tidy() |&gt; \n  kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\nterm\ndf.residual\nresidual.deviance\ndf\ndeviance\np.value\n\n\n\n\nhigh_risk ~ age + totChol + currentSmoker\n4082\n3224.812\nNA\nNA\nNA\n\n\nhigh_risk ~ age + totChol + currentSmoker + education\n4079\n3217.600\n3\n7.212\n0.065\n\n\n\n\n\n\nAdd interactions with currentSmoker?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\ndf.residual\nresidual.deviance\ndf\ndeviance\np.value\n\n\n\n\nhigh_risk ~ age + totChol + currentSmoker\n4082\n3224.812\nNA\nNA\nNA\n\n\nhigh_risk ~ age + totChol + currentSmoker + currentSmoker * age + currentSmoker * totChol\n4080\n3222.377\n2\n2.435\n0.296\n\n\n\n\n\n\nAcknowledgements\nThanks to Prof. Maria Tackett for this example."
+  },
+  {
+    "objectID": "notes/lec20.html#add-interactions-with-currentsmoker",
+    "href": "notes/lec20.html#add-interactions-with-currentsmoker",
+    "title": "Logistic regression model selection",
+    "section": "Add interactions with currentSmoker?",
+    "text": "Add interactions with currentSmoker?\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\ndf.residual\nresidual.deviance\ndf\ndeviance\np.value\n\n\n\n\nhigh_risk ~ age + totChol + currentSmoker\n4082\n3224.812\nNA\nNA\nNA\n\n\nhigh_risk ~ age + totChol + currentSmoker + currentSmoker * age + currentSmoker * totChol\n4080\n3222.377\n2\n2.435\n0.296\n\n\n\n\n\n\nAcknowledgements\nThanks to Prof. Maria Tackett for this example."
+  },
+  {
+    "objectID": "notes/lec20.html#questions-from-this-weeks-content",
+    "href": "notes/lec20.html#questions-from-this-weeks-content",
+    "title": "Logistic regression model selection",
+    "section": "Questions from this week’s content?",
+    "text": "Questions from this week’s content?"
+  },
+  {
+    "objectID": "notes/lec20.html#recap",
+    "href": "notes/lec20.html#recap",
+    "title": "Logistic regression model selection",
+    "section": "Recap",
+    "text": "Recap\n\nIntroduced model comparison for logistic regression using\n\nAIC and BIC\nDrop-in-deviance test"
+  },
+  {
+    "objectID": "notes/lec20.html#references",
+    "href": "notes/lec20.html#references",
+    "title": "Logistic regression model selection",
+    "section": "References",
+    "text": "References"
+  },
+  {
+    "objectID": "notes/lec20.html#footnotes",
+    "href": "notes/lec20.html#footnotes",
+    "title": "Logistic regression model selection",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAkaike, Hirotugu. “A new look at the statistical model identification.” IEEE transactions on automatic control 19.6 (1974): 716-723.↩︎\nSchwarz, Gideon. “Estimating the dimension of a model.” The annals of statistics (1978): 461-464.↩︎\nSee @wilks1935likelihood for explanation of why -2 is included.↩︎\nSee @wilks1935likelihood for explanation of why -2 is included.↩︎\nExample from Introduction to Statistical Learning↩︎"
+  },
+  {
+    "objectID": "project.html#draft-report-peer-review",
+    "href": "project.html#draft-report-peer-review",
+    "title": "Final project",
+    "section": "Analysis + peer review",
+    "text": "Analysis + peer review\nThe purpose of the draft and peer review is to give you an opportunity to get early feedback on your analysis. Therefore, the draft and peer review will focus primarily on the exploratory data analysis, modeling, and initial interpretations.\n\nDraft report\nWrite the draft in the report.qmd file in your project repo.\nBelow is a brief description of the sections to focus on in the draft:\n\nIntroduction and data\nThis section includes an introduction to the project motivation, data, and research question. Describe the data and definitions of key variables. It should also include some exploratory data analysis. All of the EDA won’t fit in the body of the report, so focus on the EDA for the response variable and a few other interesting variables and relationships.\n\n\nMethodology\nThis section includes a brief description of your modeling process. Explain the reasoning for the type of model you’re fitting, predictor variables considered for the model including any interactions. Additionally, show how you arrived at the final model by describing the model selection process, any variable transformations (if needed), and any other relevant considerations that were part of the model fitting process.\n\n\nResults\nIn this section, you will output the final model and include a brief discussion of the model assumptions, diagnostics, and any relevant model fit statistics.\nThis section also includes initial interpretations and conclusions drawn from the model.\n\n\nGrading\nThe draft will be graded based on whether there is demonstration of a reasonable attempt at each of the sections described below in the written report file in the GitHub repo by the deadline.\n\n\n\nPeer review\nThe peer review is due on Friday, November 21 at 11:59pm.\nCritically reviewing others’ work is a crucial part of the scientific process, and STA 221 is no exception. Each lab team will be assigned two other teams’ projects to review. Each team should push their draft to their GitHub repo by 5 pm the day before lab. The lab that week will be dedicated to the peer review, so your team will have time to review and provide quality feedback to two other teams.\nDuring the peer review process, you will be provided read-only access to your partner teams’ GitHub repos. Provide your review in the form of GitHub issues to your partner team’s GitHub repo using the issue template provided in the repo.\n\nSteps for peer review\n\n\n\n\n\n\nPeer review assignments\n\n\n\nGo to the Canvas announcement to see the teams you’re peer reviewing.You’ll spend about 30 minutes reviewing each project.\n\n\n\nWhen you get to lab, you should have access to the GitHub repos for the teams you’re reviewing. In GitHub, search the repositories for project, and you should see the repos for the projects you’re reviewing. You will be able to read the files in the repo and post issues, but you cannot push changes to the repo. You will have access to the repo until the deadline for the peer review.\nYou may choose to all work on both peer reviews or have some team members focus on a single peer review. Either way there will be one peer review grade assigned per team.\nFor each team you’re reviewing:\n\nOpen that team’s repo, read the project draft, and browse the rest of the repo.\nGo to the Issues tab in that repo, click on New issue, and click on Get started for the Peer Review issue. Write your responses to the prompts in the issue. You will answer the following questions:\n\nDescribe the goal of the project.\nDescribe the data set used in the project. What are the observations in the data? What is the source of the data? How were the data originally collected?\nConsider the exploratory data analysis (EDA). Describe one aspect of the EDA that is effective in helping you understand the data. Provide constructive feedback on how the team might improve the EDA.\nDescribe the statistical methods, analysis approach, and discussion of model assumptions, diagnostics, model fit.\nProvide constructive feedback on how the team might improve their analysis. Make sure your feedback includes at least one comment on the statistical modeling aspect of the project, but also feel free to comment on aspects beyond the modeling.\nProvide constructive feedback on the interpretations and initial conclusion. What is most effective in the presentation of the results? What additional detail can the team provide to make the results and conclusions easier for the reader to understand?\nWhat aspect of this project are you most interested in and think would be interesting to highlight in the written report?\nProvide constructive feedback on any issues with file and/or code organization.\n(Optional) Any further comments or feedback?\n\n\n\n\n\nGrading\nThe peer review will be graded on the extent to which each comprehensively and constructively addresses the components on the peer review form. There will be one peer review grade per team."
+  },
+  {
+    "objectID": "project.html#written-report",
+    "href": "project.html#written-report",
+    "title": "Final project",
+    "section": "Written report",
+    "text": "Written report\n\n\n\n\n\n\nImportant\n\n\n\nYour written report must be completed in the report.qmd file and must be reproducible. All team members should contribute to the GitHub repository, with regular meaningful commits.\nBefore you finalize your write up, make sure the code chunks are not visible and all messages and warnings are suppressed.\n\n\n\nYou will submit the PDF of your final report on GitHub.\nThe PDF you submit must match the .qmd in your GitHub repository exactly. The mandatory components of the report are below. You are free to add additional sections as necessary. The report, including tables and visualizations, must be no more than 10 pages long. There is no minimum page requirement; however, you should comprehensively address all of the analysis and report.\nBe selective in what you include in your final write-up. The goal is to write a cohesive narrative that demonstrates a thorough and comprehensive analysis rather than explain every step of the analysis.\nYou are welcome to include an appendix with additional work at the end of the written report document; however, grading will overwhelmingly be based on the content in the main body of the report. You should assume the reader will not see the material in the appendix unless prompted to view it in the main body of the report. The appendix should be neatly formatted and easy for the reader to navigate. It is not included in the 10-page limit.\n\n\nIntroduction and data\nThis section includes an introduction to the project motivation, data, and research question. Describe the data and definitions of key variables. It should also include some exploratory data analysis. All of the EDA won’t fit in the paper, so focus on the EDA for the response variable and a few other interesting variables and relationships.\n\nGrading criteria\nThe research question and motivation are clearly stated in the introduction, including citations for the data source and any external research. The data are clearly described, including a description about how the data were originally collected and a concise definition of the variables relevant to understanding the report. The data cleaning process is clearly described, including any decisions made in the process (e.g., creating new variables, removing observations, etc.) The explanatory data analysis helps the reader better understand the observations in the data along with interesting and relevant relationships between the variables. It incorporates appropriate visualizations and summary statistics.\n\n\n\nMethodology\nThis section includes a brief description of your modeling process. Explain the reasoning for the type of model you’re fitting, predictor variables considered for the model including any interactions. Additionally, show how you arrived at the final model by describing the model selection process, interactions considered, variable transformations (if needed), assessment of conditions and diagnostics, and any other relevant considerations that were part of the model fitting process.\n\nGrading criteria\nThe analysis steps are appropriate for the data and research question. The group used a thorough and careful approach to select the variables in the final model; the approach is clearly described in the report. The model selection process took into account potential interaction effects and addressed any violations in model conditions. If violations of model conditions are still present, there was a reasonable attempt to address the violations based on the course content.\n\n\n\nResults\nThis is where you will output and discuss the final model.\nDescribe the key results from the model. The goal is not to interpret every single variable in the model but rather to show that you are proficient in using the model output to address the research questions, using the interpretations to support your conclusions. Focus on the variables that help you answer the research question and that provide relevant context for the reader.\n\nGrading criteria\nThe model fit is clearly assessed, and interesting findings from the model are clearly described. The model conditions and diagnostics are thoroughly and accurately assessed for the final model, if not previously discussed in the methodology. Interpretations of model coefficients are used to support the key findings and conclusions, rather than merely listing the interpretation of every model coefficient. If the primary modeling objective is prediction, the model’s predictive power is thoroughly assessed.\n\n\n\nDiscussion + Conclusion\nIn this section you’ll include a summary of what you have learned about your research question along with statistical arguments supporting your conclusions. In addition, discuss the limitations of your analysis and provide suggestions on ways the analysis could be improved. Any potential issues pertaining to the reliability and validity of your data and appropriateness of the statistical analysis should also be discussed here. Lastly, this section will include ideas for future work.\n\nGrading criteria\nOverall conclusions from analysis are clearly described, and the model results are put into the larger context of the subject matter and original research question. There is thoughtful consideration of potential limitations of the data and/or analysis, and ideas for future work are clearly described.\n\n\n\nOrganization + formatting\nThis is an assessment of the overall presentation and formatting of the written report.\n\nGrading criteria\nThe report neatly written and organized with clear section headers and appropriately sized figures with informative labels. Numerical results are displayed with a reasonable number of digits, and all visualizations are neatly formatted and labeled. All citations and links are properly formatted. If there is an appendix, it is reasonably organized and easy for the reader to find relevant information. All code, warnings, and messages are suppressed. The main body of the written report (not including the appendix) is no longer than 10 pages."
+  },
+  {
+    "objectID": "notes/lec20.html#test-a-subset-of-coefficients",
+    "href": "notes/lec20.html#test-a-subset-of-coefficients",
+    "title": "Logistic regression model selection",
+    "section": "Test a subset of coefficients",
+    "text": "Test a subset of coefficients\n\nSuppose there are two models:\n\nReduced Model: includes predictors \\(x_1, \\ldots, x_q\\)\nFull Model: includes predictors \\(x_1, \\ldots, x_q, x_{q+1}, \\ldots, x_p\\)\n\nWe can use a drop-in-deviance test to determine if any of the new predictors are useful\n\n\\[\n\\begin{aligned}\n&H_0: \\beta_{q+1} = \\dots = \\beta_p = 0\\\\\n&H_a: \\beta_j \\neq 0 \\text{ for at least one }j\n\\end{aligned}\n\\]\nThe test statistic (drop-in deviance test) is\n\\[\n\\begin{aligned}\nG = D_{reduced} - D_{full} &= (-2\\log L_{reduced}) - (-2 \\log L_{full}) \\\\\n&= -2(\\log L_{reduced} - \\log L_{full})\n\\end{aligned}\n\\]\nThe p-value is calculated using a \\(\\chi_{\\Delta df}^2\\) distribution, where \\(\\Delta df\\) is the number of parameters being tested (the difference in number of parameters between the full and reduced model)."
   }
 ]
