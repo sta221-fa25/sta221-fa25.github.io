@@ -134,9 +134,9 @@ Note: $D$ is a function of $\bp$ which is a function of $\beta$.
 
 (a). Multiply both sides by the negative of the Hessian matrix.
 
-(b). Write the update in terms of $\by^*$, where $\by^* = \bX \hat{\beta}_{n} + D^{-1} (\by - \bp)$.
+(b). Write the update in terms of $\by^*$, where $\by^* = \bX \beta_{n} + D^{-1} (\by - \bp)$.
 
-(c). Solve for $\hat{\beta}_{n+1}$. 
+(c). Solve for $\beta_{n+1}$. 
 
 (d). Explain (in words) how this is an iterative generalized (weighted) least squares problem. 
 
