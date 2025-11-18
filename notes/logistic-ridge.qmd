@@ -3,22 +3,60 @@ title: "logistic-ridge"
 ---
 
 ```{r}
-#| eval: false
-library(plsgenomics)
-data(Colon)
+#| warning: false
+#| message: false
+library(tidyverse)
 
-# Colon$X is 62 x 2000 matrix, Colon$Y is outcome
-dim(Colon$X)  # 62 samples, 2000 genes
-length(Colon$Y)
-
-# Make tidy tibble
-colon_df <- as_tibble(Colon$X) %>%
-  mutate(
-    sample_id = row_number(),
-    outcome   = factor(Colon$Y, labels = c("Normal", "Tumor"))
-  ) %>%
-  relocate(sample_id, outcome)
-
-colon_df
+colon = read_csv("../data/colon.csv")
+annotations = read_csv("../data/mapped_annotations.csv")
 ```
+
+
+## Data
+
+The data below come from 
+
+```{r}
+dim(colon)
+
+colon %>%
+  select(1:5) %>%
+  glimpse()
+
+```
+
+- `y`:  identity of the 62 tissues sampled. The numbers correspond to patients, a positive sign to a normal tissue, and a negative sign to a tumor tissue. 
+
+The rest of the columns contains the expression of the 1911 genes with highest minimal gene expression "intensity" across the 62 tissues. Columns are named based on genetic probe IDs. Partial matching information about some of the probe IDs can be found in the file `mapped_annotations.csv`.
+
+```{r}
+annotations %>%
+  glimpse()
+```
+
+## Transform outcome
+
+```{r}
+colon =
+  colon %>%
+  mutate(y = ifelse(y < 0, "tumor", "normal"))
+
+colon %>%
+  count(y)
+```
+
+- What model is appropriate here?
+
+## EDA
+
+
+- EDA here (corplots?)
+
+- Can't fit with glm, why?
+
+- What can we do? Logistic ridge!
+
+
+
+
 
