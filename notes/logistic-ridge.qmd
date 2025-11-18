@@ -1,20 +1,26 @@
 ---
-title: "logistic-ridge"
+title: "Example I"
+author: "Dr. Alexander Fisher"
+format: html
+bibliography: references.bib
 ---
 
 ```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data used in these notes"
 #| warning: false
 #| message: false
 library(tidyverse)
 
-colon = read_csv("../data/colon.csv")
-annotations = read_csv("../data/mapped_annotations.csv")
+colon = read_csv("https://sta221-fa25.github.io/data/colon.csv")
+annotations = read_csv("https://sta221-fa25.github.io/data/mapped_annotations.csv")
 ```
 
 
 ## Data
 
-The data below come from 
+The data below are microarray data from the colons of 62 individuals. The data were curated by @alon1999broad and were analyzed in a regression setting by @liang2013sparse. Microarrays detect the gene expression levels of thousands of biological interactions. Expression levels are detected at targeted DNA probes that adhere directly to the array.
 
 ```{r}
 dim(colon)
@@ -49,14 +55,158 @@ colon %>%
 
 ## EDA
 
+```{r}
+X = colon[,-1] %>%
+  as.matrix() # matrix important for glmnet later
+A = cor(X) - diag(1, nrow = ncol(X))
+max(A)
+```
 
-- EDA here (corplots?)
+```{r}
+colon %>%
+  ggplot(aes(x = y, y = Hsa.36689)) +
+  geom_boxplot() +
+  theme_bw() +
+  labs(x = "Tissue", y = "Expression level", title = "Expression of Hsa.36689 by tissue") 
+```
 
-- Can't fit with glm, why?
 
-- What can we do? Logistic ridge!
+- Any concerns with fitting using glm here? Why?
+
+## Analysis 
+
+### Re-format outcome
+
+We want $y$ to be formatted as 0 or 1. Which should be 0 and which should be 1 if we want to know the effect of a gene on presence of a tumor?
+
+```{r}
+y = colon %>%
+  select(y) %>%
+  mutate(y = ifelse(y == "tumor", 1, 0)) %>%
+  pull()
+
+y
+```
+
+### Fit with `glmnet` 
+
+Instead of hard-coding lambda, the efunction `cv.glmnet` fits the model for a range of lambdas using `nfold` cross-validation. See `?glmnet::cv.glmnet`
+
+- What are important considerations in choosing the number of folds?
+
+```{r}
+set.seed(221)
+cvfit <- glmnet::cv.glmnet(X, y, alpha = 0,
+                           intercept = FALSE,
+                           family = "binomial",
+                           nfold = 10)
+
+cvfit
+```
+
+Binomial deviance is $-2 \log\text{likelihood}$.
+
+- "Min lambda" is the lambda value that gives minimum cross-validated error.
+
+- "1se lambda" is the largest lambda that is within 1 standard error of the minimum. 
+
+`cvfit` contains
+
+- `cvfit$lambda` - all $\lambda$ values fitted
+
+- `cvfit$cvm` - mean CV error at each $\lambda$
+
+- `cvfit$cvsd` - standard error of CV error
+
+- `cvfit$lambda.min` - minimum lambda
+
+- `cvfit$lambda.1se` - 1se lambda
+
+::: panel-tabset
+## Plot
+
+```{r}
+#| echo: false
+#| warning: false
+library(glue)
+
+# Extract data from cv.glmnet object
+df <- data.frame(
+  lambda = cvfit$lambda,
+  cvm    = cvfit$cvm,
+  cvsd   = cvfit$cvsd
+) %>% 
+  mutate(
+    log_lambda = log(lambda)
+  )
+
+lambda_min <- cvfit$lambda.min
+lambda_1se <- cvfit$lambda.1se
+
+ggplot(df, aes(x = log_lambda, y = cvm)) +
+  # SE ribbon
+  geom_ribbon(aes(ymin = cvm - cvsd, ymax = cvm + cvsd),
+              fill = "grey80", alpha = 0.5) +
+  # CV mean curve
+  geom_line(size = 1, color = "steelblue") +
+  geom_point(size = 2, color = "steelblue") +
+
+  # Vertical lines at λ_min and λ_1se
+  geom_vline(xintercept = log(lambda_min), linetype = "dashed", color = "firebrick") +
+  geom_vline(xintercept = log(lambda_1se), linetype = "dotted", color = "steelblue") +
+
+  # Annotate labels
+  annotate("text",
+           x = log(lambda_min),
+           y = min(df$cvm),
+           label = glue("lambda.min = { signif(lambda_min, 3) }"),
+           color = "firebrick", vjust = 1.5, hjust = -0.1) +
+
+  annotate("text",
+           x = log(lambda_1se),
+           y = min(df$cvm),
+           label = glue("lambda.1se = { signif(lambda_1se, 3) }"),
+           color = "steelblue", vjust = -0.5, hjust = -0.1) +
+
+  labs(
+    x = "log(lambda)",
+    y = "Mean cross-validated error",
+    title = "Cross-Validation Curve (glmnet)",
+    subtitle = "Ribbon = ±1 SE"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold")
+  )
+
+```
+
+## Quick plot
+
+```{r}
+plot(cvfit)
+```
 
 
+:::
+
+```{r}
+beta_min = coef(cvfit, s = "lambda.min")
+beta_min_mat = as.matrix(beta_min)
+beta_min_mat %>%
+  as.data.frame() %>%
+  arrange((dplyr::desc(abs(lambda.min)))) %>%
+  mutate(num = 1:nrow(beta_min_mat)) %>%
+  filter(num <= 20) %>%
+  rownames_to_column(var = "ProbeID") %>%
+  left_join(annotations, by = c("ProbeID" = "ProbeID"))
+```
+
+
+- Offline notes. 
+- Reading: @cessie1992ridge
+
+## References
 
 
 
