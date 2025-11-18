@@ -181,6 +181,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../hw/hw03.html">
  <span class="dropdown-text">hw 3</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../hw/hw04.html">
+ <span class="dropdown-text">hw 4</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -241,7 +245,6 @@ window.Quarto = {
   <li><a href="#data-o-ring-example" id="toc-data-o-ring-example" class="nav-link active" data-scroll-target="#data-o-ring-example">Data: O-ring example</a></li>
   <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics">Descriptive statistics</a></li>
   <li><a href="#binary-outcome-model" id="toc-binary-outcome-model" class="nav-link" data-scroll-target="#binary-outcome-model">Binary outcome model</a></li>
-  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
   <li><a href="#modeling-the-conditional-expectation" id="toc-modeling-the-conditional-expectation" class="nav-link" data-scroll-target="#modeling-the-conditional-expectation">Modeling the conditional expectation</a></li>
   <li><a href="#the-likelihood" id="toc-the-likelihood" class="nav-link" data-scroll-target="#the-likelihood">The likelihood</a></li>
   <li><a href="#finding-the-mle" id="toc-finding-the-mle" class="nav-link" data-scroll-target="#finding-the-mle">Finding the MLE</a></li>
@@ -403,11 +406,14 @@ window.Quarto = {
 Prob(Y_i = 1) &amp;= p\\
 Prob(Y_i = 0) &amp;= (1-p)
 \end{aligned}
-\]</span> ::: panel-tabset ## Exercise</p>
+\]</span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Solution</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>What is <span class="math inline">\(E[Y_i|p]\)</span>?</p>
-</section>
-<section id="solution" class="level2">
-<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p><span class="math display">\[
 \begin{aligned}
 E[Y_i|p] &amp;= \sum_{Y_i = 0}^1 Y_i \cdot prob(Y_i)\\
@@ -415,18 +421,21 @@ E[Y_i|p] &amp;= \sum_{Y_i = 0}^1 Y_i \cdot prob(Y_i)\\
 &amp;= 0 \cdot (1-p) + 1 \cdot p\\
 &amp;= p
 \end{aligned}
-\]</span> :::</p>
+\]</span></p>
+</div>
+</div>
+</div>
 <ul>
 <li><p>In linear regression, we are concerned with modeling the conditional expectation of the outcome variable. (Previously: <span class="math inline">\(E[y|X] = X\beta\)</span>).</p></li>
 <li><p>Here, the conditional expectation <span class="math inline">\(E[Y_i | p] = p\)</span>.</p></li>
 </ul>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Solution</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Solution</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <p>If <span class="math inline">\(p = 0.5\)</span>, what does the statemeny <span class="math inline">\(E[Y_i | p] = p\)</span> say, in terms of the data at hand? Is this assumption realistic?</p>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <ul>
 <li><p>That the probability of O-ring failure is 0.5 for all observations.</p></li>
 <li><p>Not realistic given EDA above.</p></li>
@@ -439,12 +448,12 @@ E[Y_i|p] &amp;= \sum_{Y_i = 0}^1 Y_i \cdot prob(Y_i)\\
 <section id="modeling-the-conditional-expectation" class="level2">
 <h2 class="anchored" data-anchor-id="modeling-the-conditional-expectation">Modeling the conditional expectation</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Solution</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Solution</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <p>What’s wrong with letting <span class="math inline">\(p_i = x_i \beta\)</span>?</p>
 </div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <p><span class="math inline">\(p_i\)</span> is bounded between <span class="math inline">\([0, 1]\)</span>, <span class="math inline">\(x_i \beta\)</span> is not. See figure above again.</p>
 </div>
 </div>
@@ -455,9 +464,9 @@ E[Y_i|p] &amp;= \sum_{Y_i = 0}^1 Y_i \cdot prob(Y_i)\\
 \]</span></p>
 <p>where <span class="math inline">\(\text{logit}(p_i) = \log \frac{p_i}{1-p_i}\)</span>. Since the logit function links our conditional expectation to the predictor(s), we call the logit function a <em>link function</em>.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Exercise</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Exercise</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <p>What happens as <span class="math inline">\(p_i \rightarrow 0\)</span>?</p>
 <p>What happens as <span class="math inline">\(p_i \rightarrow 1\)</span>?</p>
 </div>

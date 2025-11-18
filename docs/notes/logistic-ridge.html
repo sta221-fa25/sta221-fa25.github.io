@@ -8,7 +8,7 @@
 
 <meta name="author" content="Dr.&nbsp;Alexander Fisher">
 
-<title>Example I – STA221</title>
+<title>Example: logistic ridge – STA221</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -121,6 +121,16 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="../site_libs/datatables-binding-0.34.0/datatables.js"></script>
+<script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="../site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -265,7 +275,7 @@ window.Quarto = {
   <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data">Data</a></li>
   <li><a href="#transform-outcome" id="toc-transform-outcome" class="nav-link" data-scroll-target="#transform-outcome">Transform outcome</a></li>
   <li><a href="#eda" id="toc-eda" class="nav-link" data-scroll-target="#eda">EDA</a></li>
-  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a>
+  <li><a href="#analysis-ridge-regression" id="toc-analysis-ridge-regression" class="nav-link" data-scroll-target="#analysis-ridge-regression">Analysis: ridge regression</a>
   <ul class="collapse">
   <li><a href="#re-format-outcome" id="toc-re-format-outcome" class="nav-link" data-scroll-target="#re-format-outcome">Re-format outcome</a></li>
   <li><a href="#fit-with-glmnet" id="toc-fit-with-glmnet" class="nav-link" data-scroll-target="#fit-with-glmnet">Fit with <code>glmnet</code></a></li>
@@ -279,7 +289,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Example I</h1>
+<h1 class="title">Example: logistic ridge</h1>
 </div>
 
 
@@ -306,9 +316,11 @@ window.Quarto = {
 <details class="code-fold">
 <summary>View libraries and data used in these notes</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>colon <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"https://sta221-fa25.github.io/data/colon.csv"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>annotations <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"https://sta221-fa25.github.io/data/mapped_annotations.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>colon <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"https://sta221-fa25.github.io/data/colon.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>annotations <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"https://sta221-fa25.github.io/data/mapped_annotations.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(ProbeID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="data" class="level2">
@@ -340,16 +352,16 @@ $ Hsa.541   &lt;dbl&gt; 1997.893, 2015.221, 1166.554, 2002.613, 2181.420, 1810.2
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>annotations <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 2,308
+<pre><code>Rows: 1,911
 Columns: 8
-$ ProbeID         &lt;chr&gt; "Hsa.3004", "Hsa.13491", "Hsa.13491", "Hsa.13491", "Hs…
-$ Accession       &lt;chr&gt; "H55933", "R39465", "R39465", "R39465", "R39465", "R85…
-$ Region          &lt;chr&gt; "3' UTR", "3' UTR", "3' UTR", "3' UTR", "3' UTR", "3' …
-$ Other1          &lt;chr&gt; "1", "2a", "2a", "2a", "2a", "2a", "1", "2a", "2a", "1…
-$ UniGeneID       &lt;dbl&gt; 203417, 23933, 23933, 23933, 23933, 180093, NA, 124094…
+$ ProbeID         &lt;chr&gt; "Hsa.3004", "Hsa.13491", "Hsa.37254", "Hsa.541", "Hsa.…
+$ Accession       &lt;chr&gt; "H55933", "R39465", "R85482", "U14973", "R02593", "T51…
+$ Region          &lt;chr&gt; "3' UTR", "3' UTR", "3' UTR", "gene", "3' UTR", "3' UT…
+$ Other1          &lt;chr&gt; "1", "2a", "2a", "1", "2a", "1", "2a", "1", "1", "1", …
+$ UniGeneID       &lt;dbl&gt; 203417, 23933, 180093, NA, 124094, 71488, 240814, 8163…
 $ GeneDescription &lt;chr&gt; "H.sapiens mRNA for homologue to yeast ribosomal prote…
-$ SYMBOL          &lt;chr&gt; NA, NA, NA, NA, NA, NA, "RPS29", NA, NA, NA, NA, NA, N…
-$ GENENAME        &lt;chr&gt; NA, NA, NA, NA, NA, NA, "ribosomal protein S29", NA, N…</code></pre>
+$ SYMBOL          &lt;chr&gt; NA, NA, NA, "RPS29", NA, NA, NA, NA, NA, NA, NA, "ACTB…
+$ GENENAME        &lt;chr&gt; NA, NA, NA, "ribosomal protein S29", NA, NA, NA, NA, N…</code></pre>
 </div>
 </div>
 </section>
@@ -373,48 +385,89 @@ $ GENENAME        &lt;chr&gt; NA, NA, NA, NA, NA, NA, "ribosomal protein S29", N
 <ul>
 <li>What model is appropriate here?</li>
 </ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Exercise</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<ul>
+<li>Any concerns with simply fitting via glm here? Why?</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
 <section id="eda" class="level2">
 <h2 class="anchored" data-anchor-id="eda">EDA</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> colon[,<span class="sc">-</span><span class="dv">1</span>] <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>() <span class="co"># matrix important for glmnet later</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cor</span>(X) <span class="sc">-</span> <span class="fu">diag</span>(<span class="dv">1</span>, <span class="at">nrow =</span> <span class="fu">ncol</span>(X))</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>colon[,<span class="sc">-</span><span class="dv">1</span>] <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colMeans</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">range</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]   30.94248 7015.78671</code></pre>
+</div>
+</div>
+<p>Notice how different the scale of the predictors is. We need to standardize our predictors for ridge regression.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> colon[,<span class="sc">-</span><span class="dv">1</span>] <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>() <span class="sc">%&gt;%</span> <span class="co"># matrix important for glmnet later</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale</span>() <span class="co"># scaling is important for ridge regression!</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">cor</span>(X) <span class="sc">-</span> <span class="fu">diag</span>(<span class="dv">1</span>, <span class="at">nrow =</span> <span class="fu">ncol</span>(X))</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9865134</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>colon <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> y, <span class="at">y =</span> Hsa<span class="fl">.36689</span>)) <span class="sc">+</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Tissue"</span>, <span class="at">y =</span> <span class="st">"Expression level"</span>, <span class="at">title =</span> <span class="st">"Expression of Hsa.36689 by tissue"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>colon <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> y, <span class="at">y =</span> Hsa<span class="fl">.36689</span>)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Tissue"</span>, <span class="at">y =</span> <span class="st">"Expression level"</span>, <span class="at">title =</span> <span class="st">"Expression of Hsa.36689 by tissue"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="logistic-ridge_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="logistic-ridge_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<ul>
-<li>Any concerns with fitting using glm here? Why?</li>
-</ul>
 </section>
-<section id="analysis" class="level2">
-<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<section id="analysis-ridge-regression" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-ridge-regression">Analysis: ridge regression</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Solution</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>Read the abstract of <span class="citation" data-cites="cessie1992ridge">Cessie and Houwelingen (<a href="#ref-cessie1992ridge" role="doc-biblioref">1992</a>)</span>. Read further and identify the objective function that we optimize to find <span class="math inline">\(\hat{\beta}_{logistic-ridge}\)</span>.</p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p><span class="math display">\[
+\hat{\beta}_{logistic-ridge} =
+\underset{\beta}{\mathrm{argmin}}
+~
+- l(\beta) + \lambda \beta^T \beta
+\]</span> where <span class="math inline">\(l(\beta)\)</span> is the log-likelihood under the logistic regression model.</p>
+<p>Equivalently,</p>
+<p><span class="math display">\[
+\hat{\beta}_{logistic-ridge} =
+\underset{\beta}{\mathrm{argmax}}
+~
+l(\beta) - \lambda \beta^T \beta
+\]</span></p>
+<p>Note, we can also equivalently write <span class="math inline">\(\beta^T \beta = ||\beta||^2\)</span>.</p>
+</div>
+</div>
+</div>
 <section id="re-format-outcome" class="level3">
 <h3 class="anchored" data-anchor-id="re-format-outcome">Re-format outcome</h3>
 <p>We want <span class="math inline">\(y\)</span> to be formatted as 0 or 1. Which should be 0 and which should be 1 if we want to know the effect of a gene on presence of a tumor?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> colon <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(y) <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y =</span> <span class="fu">ifelse</span>(y <span class="sc">==</span> <span class="st">"tumor"</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> colon <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(y) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y =</span> <span class="fu">ifelse</span>(y <span class="sc">==</span> <span class="st">"tumor"</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 [39] 0 1 1 0 0 1 1 1 1 0 1 0 0 1 1 0 0 1 1 1 1 0 1 0</code></pre>
@@ -428,13 +481,13 @@ $ GENENAME        &lt;chr&gt; NA, NA, NA, NA, NA, NA, "ribosomal protein S29", N
 <li>What are important considerations in choosing the number of folds?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">221</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cvfit <span class="ot">&lt;-</span> glmnet<span class="sc">::</span><span class="fu">cv.glmnet</span>(X, y, <span class="at">alpha =</span> <span class="dv">0</span>,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">intercept =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">family =</span> <span class="st">"binomial"</span>,</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">nfold =</span> <span class="dv">10</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>cvfit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">221</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>cvfit <span class="ot">&lt;-</span> glmnet<span class="sc">::</span><span class="fu">cv.glmnet</span>(X, y, <span class="at">alpha =</span> <span class="dv">0</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">intercept =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">family =</span> <span class="st">"binomial"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">nfold =</span> <span class="dv">10</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>cvfit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:  glmnet::cv.glmnet(x = X, y = y, nfolds = 10, alpha = 0, intercept = FALSE,      family = "binomial") 
@@ -442,8 +495,8 @@ Call:  glmnet::cv.glmnet(x = X, y = y, nfolds = 10, alpha = 0, intercept = FALSE
 Measure: Binomial Deviance 
 
     Lambda Index Measure      SE Nonzero
-min  5.046   100  0.8679 0.10824    1911
-1se 20.372    70  0.9754 0.07419    1911</code></pre>
+min  12.20    70   1.138 0.12406    1911
+1se  90.16    27   1.260 0.04199    1911</code></pre>
 </div>
 </div>
 <p>Binomial deviance is <span class="math inline">\(-2 \log\text{likelihood}\)</span>.</p>
@@ -460,26 +513,26 @@ min  5.046   100  0.8679 0.10824    1911
 <li><p><code>cvfit$lambda.1se</code> - 1se lambda</p></li>
 </ul>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Quick plot</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Quick plot</a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="logistic-ridge_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="logistic-ridge_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cvfit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cvfit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="logistic-ridge_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="logistic-ridge_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -487,86 +540,69 @@ min  5.046   100  0.8679 0.10824    1911
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If we did not standardize the predictors, we might expect some monotonic, pathological CV curve plot, such as</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>beta_min <span class="ot">=</span> <span class="fu">coef</span>(cvfit, <span class="at">s =</span> <span class="st">"lambda.min"</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>beta_min_mat <span class="ot">=</span> <span class="fu">as.matrix</span>(beta_min)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>beta_min_mat <span class="sc">%&gt;%</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>((dplyr<span class="sc">::</span><span class="fu">desc</span>(<span class="fu">abs</span>(lambda.min)))) <span class="sc">%&gt;%</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">num =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(beta_min_mat)) <span class="sc">%&gt;%</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(num <span class="sc">&lt;=</span> <span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">"ProbeID"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(annotations, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ProbeID"</span> <span class="ot">=</span> <span class="st">"ProbeID"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     ProbeID    lambda.min num Accession Region Other1 UniGeneID
-1   Hsa.8839 -0.0004173535   1    T40578 3' UTR     2a     60630
-2  Hsa.17213 -0.0003902532   2    R35903 3' UTR     2a    137063
-3  Hsa.21195 -0.0003227416   3    R06601 3' UTR     2a    126458
-4  Hsa.17901 -0.0002572498   4    T89666 3' UTR     2a    116364
-5   Hsa.1454 -0.0002570764   5    M82919   gene      1        NA
-6  Hsa.43331 -0.0002451515   6    H64807 3' UTR     2a    238555
-7   Hsa.1095  0.0002268786   7    U01038   gene      1        NA
-8    Hsa.826 -0.0002248520   8    M55422   gene      1        NA
-9  Hsa.44244 -0.0002103306   9    H78386 3' UTR     2a    233583
-10 Hsa.12241 -0.0002083625  10    T64012 3' UTR     2a     79817
-11 Hsa.24877 -0.0002004979  11    R33481 3' UTR     2a    136322
-12  Hsa.1660  0.0001947283  12    H55916 3' UTR      1    204131
-13  Hsa.1878  0.0001922622  13    M80359   gene      1        NA
-14   Hsa.636  0.0001904497  14    M76558   gene      1        NA
-15    Hsa.56  0.0001898483  15    D00860   gene      1        NA
-16  Hsa.1491  0.0001895450  16    M35531   gene      1        NA
-17  Hsa.2012  0.0001877903  17    M81651   gene      1        NA
-18  Hsa.9683  0.0001864561  18    T49647 3' UTR     2a     67762
-19  Hsa.1079 -0.0001861159  19    M64231   gene      1        NA
-20  Hsa.3026  0.0001842197  20    X83301   gene      1        NA
-                                                                                         GeneDescription
-1                                                                40S RIBOSOMAL PROTEIN S6 (Homo sapiens)
-2                                               INTERLEUKIN-1 RECEPTOR, TYPE II PRECURSOR (Mus musculus)
-3                                                                      METALLOTHIONEIN-II (Homo sapiens)
-4                                             INTERLEUKIN-6 RECEPTOR BETA CHAIN PRECURSOR (Homo sapiens)
-5                     Human gamma amino butyric acid (GABAA) receptor beta-3 subunit mRNA, complete cds.
-6                                                            PLACENTAL FOLATE TRANSPORTER (Homo sapiens)
-7                                                                          Human pLK mRNA, complete cds.
-8                                 Human Krueppel-related zinc finger protein (H-plk) mRNA, complete cds.
-9                                               INTERLEUKIN-1 RECEPTOR, TYPE II PRECURSOR (Homo sapiens)
-10                                ACETYLCHOLINE RECEPTOR PROTEIN, DELTA CHAIN PRECURSOR (Xenopus laevis)
-11                                             TRANSCRIPTION FACTOR ATF-A AND ATF-A-DELTA (Homo sapiens)
-12                                PEPTIDYL-PROLYL CIS-TRANS ISOMERASE, MITOCHONDRIAL PRECURSOR (HUMAN);.
-13              PUTATIVE SERINE/THREONINE-PROTEIN KINASE P78 (HUMAN);contains MSR1 repetitive element ;.
-14 Human neuronal DHP-sensitive, voltage-dependent, calcium channel alpha-1D subunit mRNA, complete cds.
-15                                                        RIBOSE-PHOSPHATE PYROPHOSPHOKINASE I (HUMAN);.
-16                Human GDP-L-fucose:beta-D-galactoside 2-alpha-l-fucosyltransferase mRNA, complete cds.
-17                                                     Human semenogelin II (SEMGII) gene, complete cds.
-18                                          MYRISTOYLATED ALANINE-RICH C-KINASE SUBSTRATE (Homo sapiens)
-19                                                         Human spermidine synthase gene, complete cds.
-20                                                                                  H.sapiens SMA5 mRNA.
-    SYMBOL                                              GENENAME
-1     &lt;NA&gt;                                                  &lt;NA&gt;
-2     &lt;NA&gt;                                                  &lt;NA&gt;
-3     &lt;NA&gt;                                                  &lt;NA&gt;
-4     &lt;NA&gt;                                                  &lt;NA&gt;
-5   GABRB3 gamma-aminobutyric acid type A receptor subunit beta3
-6     &lt;NA&gt;                                                  &lt;NA&gt;
-7     PLK1                                    polo like kinase 1
-8   ZNF117                               zinc finger protein 117
-9     &lt;NA&gt;                                                  &lt;NA&gt;
-10    &lt;NA&gt;                                                  &lt;NA&gt;
-11    &lt;NA&gt;                                                  &lt;NA&gt;
-12    &lt;NA&gt;                                                  &lt;NA&gt;
-13   MARK3              microtubule affinity regulating kinase 3
-14 CACNA1D        calcium voltage-gated channel subunit alpha1 D
-15   PRPS1             phosphoribosyl pyrophosphate synthetase 1
-16    FUT1                  fucosyltransferase 1 (H blood group)
-17    &lt;NA&gt;                                                  &lt;NA&gt;
-18    &lt;NA&gt;                                                  &lt;NA&gt;
-19    &lt;NA&gt;                                                  &lt;NA&gt;
-20 GUSBP15                                    GUSB pseudogene 15</code></pre>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">221</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>X2 <span class="ot">=</span> colon[,<span class="sc">-</span><span class="dv">1</span>] <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>cvfit2 <span class="ot">&lt;-</span> glmnet<span class="sc">::</span><span class="fu">cv.glmnet</span>(X2, y, <span class="at">alpha =</span> <span class="dv">0</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">intercept =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">family =</span> <span class="st">"binomial"</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                           <span class="at">nfold =</span> <span class="dv">10</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cvfit2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="logistic-ridge_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Show coefficients</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <ul>
-<li>Offline notes.</li>
-<li>Reading: <span class="citation" data-cites="cessie1992ridge">Cessie and Houwelingen (<a href="#ref-cessie1992ridge" role="doc-biblioref">1992</a>)</span></li>
+<li>Display top 10 coefficients, by magnitude.</li>
 </ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-d37f9132243abf48b1d9" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d37f9132243abf48b1d9">{"x":{"filter":"none","vertical":false,"caption":"<caption><\/caption>","data":[["Hsa.36689","Hsa.8147","Hsa.37937","Hsa.1832","Hsa.692","Hsa.8125","Hsa.1131","Hsa.2456","Hsa.43279","Hsa.33268"],[-0.011929314404845,-0.01161486045847776,-0.01137589272274796,-0.01071940852952243,-0.01067050781438159,-0.009675248126910702,-0.009256664599340067,-0.008988783657217654,-0.008830305908232795,-0.008755271042475636],[1,2,3,4,5,6,7,8,9,10],["H.sapiens mRNA for GCAP-II/uroguanylin precursor.","Human desmin gene, complete cds.","MYOSIN HEAVY CHAIN, NONMUSCLE (Gallus gallus)","MYOSIN REGULATORY LIGHT CHAIN 2, SMOOTH MUSCLE ISOFORM (HUMAN);contains element TAR1 repetitive element ;.","Human cysteine-rich protein (CRP) gene, exons 5 and 6.","Human (HUMAN);.","TROPOMYOSIN, FIBROBLAST AND EPITHELIAL MUSCLE-TYPE (HUMAN);.","Human MaxiK potassium channel beta subunit mRNA, complete cds.","LEUKOCYTE ANTIGEN CD37 (Homo sapiens)","C4-DICARBOXYLATE TRANSPORT SENSOR PROTEIN DCTB (Rhizobium leguminosarum)"],["GUCA2B",null,null,"MYL9",null,null,null,"KCNMB1",null,null],["guanylate cyclase activator 2B",null,null,"myosin light chain 9",null,null,null,"potassium calcium-activated channel subfamily M regulatory beta subunit 1",null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ProbeID<\/th>\n      <th>betaHat<\/th>\n      <th>num<\/th>\n      <th>GeneDescription<\/th>\n      <th>SYMBOL<\/th>\n      <th>GENENAME<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":[1,2]},{"name":"ProbeID","targets":0},{"name":"betaHat","targets":1},{"name":"num","targets":2},{"name":"GeneDescription","targets":3},{"name":"SYMBOL","targets":4},{"name":"GENENAME","targets":5}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>beta_min <span class="ot">=</span> <span class="fu">coef</span>(cvfit, <span class="at">s =</span> <span class="st">"lambda.min"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>beta_min_mat <span class="ot">=</span> <span class="fu">as.matrix</span>(beta_min)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>beta_min_mat <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>((dplyr<span class="sc">::</span><span class="fu">desc</span>(<span class="fu">abs</span>(lambda.min)))) <span class="sc">%&gt;%</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"betaHat"</span> <span class="ot">=</span> <span class="st">"lambda.min"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">"ProbeID"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">num =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(beta_min_mat)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(num <span class="sc">&lt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(annotations, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ProbeID"</span> <span class="ot">=</span> <span class="st">"ProbeID"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">"Other1"</span>, <span class="st">"UniGeneID"</span>, <span class="st">"Region"</span>, <span class="st">"Accession"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(<span class="at">rownames =</span> <span class="cn">FALSE</span>, <span class="at">options =</span> <span class="fu">list</span>(<span class="at">pageLength =</span> <span class="dv">5</span>),</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">caption =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="references" class="level2">

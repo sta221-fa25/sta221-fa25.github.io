@@ -91,7 +91,10 @@ $$
 Prob(Y_i = 1) &= p\\
 Prob(Y_i = 0) &= (1-p)
 \end{aligned}
-$$ ::: panel-tabset \## Exercise
+$$ 
+
+::: panel-tabset 
+## Exercise
 
 What is $E[Y_i|p]$?
 
@@ -104,7 +107,9 @@ E[Y_i|p] &= \sum_{Y_i = 0}^1 Y_i \cdot prob(Y_i)\\
 &= 0 \cdot (1-p) + 1 \cdot p\\
 &= p
 \end{aligned}
-$$ :::
+$$ 
+
+:::
 
 -   In linear regression, we are concerned with modeling the conditional expectation of the outcome variable. (Previously: $E[y|X] = X\beta$).
 

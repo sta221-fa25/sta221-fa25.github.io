@@ -140,7 +140,7 @@ schedule %>%
 | 12 | Tue Nov 11 | logistic reg. prediction |  | [🗒](/notes/lec19.html) | [hw 4](/hw/hw04.html) |  |
 |  | Wed Nov 12 | lab: project presentations |  |  |  | presentation |
 |  | Thu Nov 13 | logistic reg. model selection |  | [🗒](/notes/lec20.html)[📝](/notes/logisticReg_NR_Deviance.pdf) |  |  |
-| 13 | Tue Nov 18 | logistic reg. example |  | [🗒](/notes/logistic-ridge.html) |  | draft report due |
+| 13 | Tue Nov 18 | logistic ridge example |  | [🗒](/notes/logistic-ridge.html) |  | draft report due |
 |  | Wed Nov 19 | lab: peer review |  |  |  | peer review |
 |  | Thu Nov 20 | ethics |  |  |  |  |
 | 14 | Tue Nov 25 |  |  |  |  |  |
