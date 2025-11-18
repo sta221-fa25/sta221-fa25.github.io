@@ -1,0 +1,388 @@
+---
+title: "Untitled"
+editor: visual
+---
+
+
+```{r}
+library(tidyverse)
+i2000 = data.table::fread("~/Downloads/I2000.data", fill = TRUE)
+i2000_v2 = i2000[1:nrow(i2000) %% 2 == 1,] |>
+  t()
+dim(i2000_v2)
+
+names2000 = data.table::fread("~/Downloads/names.data")
+colnames(i2000_v2)= names2000$V1 ## HERE
+# View(i2000_v2)
+rownames(i2000_v2) = NULL
+
+y62 = data.table::fread("~/Downloads/tissues.data")
+colnames(y62) = "y"
+df = cbind(y62, i2000_v2) |>
+  as.data.frame()
+
+df = df[, !duplicated(colnames(df))]
+
+unique(colnames(df)) |>
+  length()
+
+dim(df)
+```
+
+```{r}
+colon = df %>%
+  mutate(y = ifelse(y < 0, 1, 0))
+
+glimpse(colon)
+```
+
+From  https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-198?
+
+The colon microarray data set in Alon et al. [21] has 2000 genes per sample and 62 samples which consist of 22 normal tissues and 40 cancer tissues. The Colon dataset are available at http://microarray.princeton.edu/oncology.
+
+```{r}
+
+y = colon$y
+X = df[,-1] |>
+  as.matrix() |>
+  scale()
+fit = glmnet::glmnet(X, y, alpha = 0, # alpha = 0 defines ridge reg 
+                     intercept = FALSE,
+                     family = "binomial") 
+
+plot(fit$lambda, fit$dev.ratio, type = "l",
+     xlab = "lambda", ylab = "Proportion deviance explained")
+
+cvfit <- glmnet::cv.glmnet(X, y, alpha = 0,
+                           intercept = FALSE,
+                           family = "binomial")
+
+plot(cvfit)
+
+
+```
+## FIT
+## HERE
+```{r}
+cvfit$lambda.min      # minimizes CV error
+cvfit$lambda.1se      # more regularized
+
+beta_min <- coef(cvfit, s = "lambda.min")
+beta_min_mat <- as.matrix(beta_min)
+beta_min_mat %>%
+  as.data.frame() %>%
+  arrange((dplyr::desc(abs(lambda.min)))) %>%
+  mutate(num = 1:nrow(beta_min_mat)) %>%
+  filter(num <= 20) %>%
+  rownames_to_column(var = "ProbeID") %>%
+  left_join(annot_mapped, by = c("ProbeID" = "ProbeID"))
+```
+
+```{r}
+# using Bioconductor annotation
+library(hgu133plus2.db)  # just as an example; actual platform may differ
+mapped_genes <- select(hgu133plus2.db,
+                        keys = colnames(X),
+                        keytype = "PROBEID",
+                        columns = c("SYMBOL", "ENTREZID"))
+head(mapped_genes)
+
+```
+Original data paper https://www.pnas.org/doi/full/10.1073/pnas.96.12.6745
+
+
+
+```{r}
+# process_expression.R
+# --------------------
+# This script converts a probe-level expression matrix into a gene-level matrix
+# using a probe annotation table. Multiple probes per gene are averaged.
+
+# Load libraries
+library(dplyr)
+library(tidyr)
+
+# --------------------
+# 1. Load expression data
+# --------------------
+# Replace with your file or object
+# X should be samples x probes, colnames = probe IDs
+# Example if loading from CSV:
+# X <- read.csv("expression_matrix.csv", row.names = 1, stringsAsFactors = FALSE)
+
+# For demonstration, let's assume X is already loaded in memory
+# colnames(X) <- probe IDs
+
+# --------------------
+# 2. Load probe annotation
+# --------------------
+annot <- read.table("annotation.txt",
+                    header = FALSE,
+                    sep = "\t",
+                    stringsAsFactors = FALSE)
+
+# Name the columns (adjust if your file differs)
+colnames(annot) <- c("ProbeID", "Accession", "Region", "Other1", "UniGeneID", "GeneDescription")
+
+# --------------------
+# 3. Convert expression to long format
+# --------------------
+X_long <- X %>%
+  as.data.frame() %>%
+  mutate(Sample = rownames(.)) %>%
+  pivot_longer(
+    cols = -Sample,
+    names_to = "ProbeID",
+    values_to = "Expression"
+  )
+
+# --------------------
+# 4. Merge with annotation
+# --------------------
+X_long <- X_long %>%
+  left_join(annot, by = "ProbeID")
+
+# --------------------
+# 5. Collapse multiple probes per gene (average)
+# --------------------
+X_gene <- X_long %>%
+  group_by(Sample, GeneDescription) %>%
+  summarise(Expression = mean(Expression, na.rm = TRUE), .groups = "drop") %>%
+  pivot_wider(
+    names_from = GeneDescription,
+    values_from = Expression
+  )
+
+# --------------------
+# 6. Optional: lookup a specific gene (e.g., GUCA2B)
+# --------------------
+gene_name <- "GUCA2B"
+if (gene_name %in% colnames(X_gene)) {
+  guca2b_expr <- X_gene[, c("Sample", gene_name)]
+  print(head(guca2b_expr))
+} else {
+  message(paste(gene_name, "not found. Check GeneDescription column in annotation."))
+}
+
+# --------------------
+# 7. Save gene-level matrix
+# --------------------
+# write.csv(X_gene, "gene_level_expression.csv", row.names = FALSE)
+
+```
+
+```{r}
+# Colon cancer dataset from rda package
+# install.packages("rda") # if not installed
+library(rda)
+data(colon)        # loads colon.x (expression) and colon.y (labels)
+
+X <- colon.x       # 62 samples x 2000 probes
+write.csv(X, "expression_matrix.csv", row.names = FALSE)
+
+```
+
+```{r}
+# process_expression.R
+# --------------------
+# This script converts a probe-level expression matrix into a gene-level matrix
+# using a probe annotation table. Multiple probes per gene are averaged.
+
+# Load libraries
+library(dplyr)
+library(tidyr)
+
+# --------------------
+# 1. Load expression data
+# --------------------
+# Replace with your file or object
+# X should be samples x probes, colnames = probe IDs
+# Example if loading from CSV:
+# X <- read.csv("expression_matrix.csv", row.names = 1, stringsAsFactors = FALSE)
+
+# For demonstration, let's assume X is already loaded in memory
+# colnames(X) <- probe IDs
+
+# --------------------
+# 2. Load probe annotation
+# --------------------
+# annot <- read.table("annotation.txt",
+#                     header = FALSE,
+#                     sep = "\t",
+#                     stringsAsFactors = FALSE)
+
+annot = names2000
+
+# Name the columns (adjust if your file differs)
+colnames(annot) <- c("ProbeID", "Accession", "Region", "Other1", "UniGeneID", "GeneDescription")
+
+# --------------------
+# 3. Convert expression to long format
+# --------------------
+X_long <- X %>%
+  as.data.frame() %>%
+  mutate(Sample = rownames(.)) %>%
+  pivot_longer(
+    cols = -Sample,
+    names_to = "ProbeID",
+    values_to = "Expression"
+  )
+
+# --------------------
+# 4. Merge with annotation
+# --------------------
+X_long <- X_long %>%
+  left_join(annot, by = "ProbeID")
+
+# --------------------
+# 5. Collapse multiple probes per gene (average)
+# --------------------
+X_gene <- X_long %>%
+  group_by(Sample, GeneDescription) %>%
+  summarise(Expression = mean(Expression, na.rm = TRUE), .groups = "drop") %>%
+  pivot_wider(
+    names_from = GeneDescription,
+    values_from = Expression
+  )
+
+# --------------------
+# 6. Optional: lookup a specific gene (e.g., GUCA2B)
+# --------------------
+gene_name <- "GUCA2B"
+if (gene_name %in% colnames(X_gene)) {
+  guca2b_expr <- X_gene[, c("Sample", gene_name)]
+  print(head(guca2b_expr))
+} else {
+  message(paste(gene_name, "not found. Check GeneDescription column in annotation."))
+}
+
+# --------------------
+# 7. Save gene-level matrix
+# --------------------
+# write.csv(X_gene, "gene_level_expression.csv", row.names = FALSE)
+
+```
+
+
+
+```{r}
+# ======================================
+# Map EST / probe IDs to current gene symbols
+# ======================================
+
+# Install packages if needed
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install(c("org.Hs.eg.db", "AnnotationDbi"))
+
+library(AnnotationDbi)
+library(org.Hs.eg.db)
+library(dplyr)
+
+# --------------------------------------
+# 1. Load your annotation table
+# --------------------------------------
+# annot <- read.table("annotation.txt", header = FALSE, sep = "\t", stringsAsFactors = FALSE)
+annot <- names2000
+colnames(annot) <- c("ProbeID", "Accession", "Region", "Other1", "UniGeneID", "GeneDescription")
+
+# --------------------------------------
+# 2. Map UniGene IDs to current gene symbols
+# --------------------------------------
+# Convert UniGeneID to character
+annot$UniGeneID <- as.character(annot$UniGeneID)
+
+# Use org.Hs.eg.db to map UniGene to SYMBOL
+# Note: this works for human UniGene IDs starting with "Hs."
+# Remove any NA UniGeneIDs
+annot_valid <- annot[!is.na(annot$UniGeneID) & annot$UniGeneID != "", ]
+
+# Map
+mapped <- select(org.Hs.eg.db,
+                 keys = annot_valid$UniGeneID,
+                 keytype = "UNIGENE",
+                 columns = c("SYMBOL", "GENENAME"))
+
+# --------------------------------------
+# 3. Merge back to your annotation
+# --------------------------------------
+annot_mapped <- annot_valid %>%
+    left_join(mapped, by = c("UniGeneID" = "UNIGENE"))
+
+# --------------------------------------
+# 4. Inspect potential GUCA2B probe
+# --------------------------------------
+guca2b_probe <- annot_mapped %>%
+    filter(SYMBOL == "GUCA2B" | grepl("GUCA2B", GENENAME, ignore.case = TRUE))
+
+guca2b_probe
+
+# --------------------------------------
+# 5. Optional: merge with expression matrix
+# --------------------------------------
+# Suppose your expression matrix is X (samples x probes)
+# X_gene <- merge your X columns with annot_mapped$SYMBOL
+
+```
+
+```{r}
+library(AnnotationDbi)
+library(org.Hs.eg.db)
+library(dplyr)
+
+# Subset valid accessions
+annot_valid <- annot[!is.na(annot$Accession) & annot$Accession != "", ]
+
+# Map accession → SYMBOL / GENENAME
+mapped <- select(org.Hs.eg.db,
+                 keys = annot_valid$Accession,
+                 keytype = "ACCNUM",
+                 columns = c("SYMBOL", "GENENAME"))
+
+# Merge back to your annotation
+annot_mapped <- annot_valid %>%
+  left_join(mapped, by = c("Accession" = "ACCNUM"))
+
+# Check GUCA2B
+guca2b_probe <- annot_mapped %>%
+  filter(SYMBOL == "GUCA2B" | grepl("GUCA2B", GENENAME, ignore.case = TRUE))
+
+guca2b_probe
+
+```
+
+```{r}
+annot_mapped |>
+  View()
+```
+
+
+```{r}
+# write_csv(annot_mapped, "../data/mapped_annotations.csv")
+```
+
+```{r}
+#| eval: false
+library(plsgenomics)
+data(Colon)
+
+# Colon$X is 62 x 2000 matrix, Colon$Y is outcome
+dim(Colon$X)  # 62 samples, 2000 genes
+length(Colon$Y)
+
+# Make tidy tibble
+colon_df <- as_tibble(Colon$X) %>%
+  mutate(
+    sample_id = row_number(),
+    outcome   = factor(Colon$Y, labels = c("Normal", "Tumor"))
+  ) %>%
+  relocate(sample_id, outcome)
+
+colon_df
+```
+
+```{r}
+# colon %>%
+#   write_csv("../data/colon.csv")
+```
+
