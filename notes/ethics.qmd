@@ -83,7 +83,11 @@ for (j in 1:N) {
   hackable = 0
   for (i in 1:7) {
     m = get(paste0("model", i))
-    hackable = hackable + sum(tidy(m)$p.value < 0.05)
+    indicator = 0
+    if(sum(tidy(m)$p.value < 0.01) > 0) {
+      indicator = 1
+    }
+    hackable = hackable + indicator 
   }
   total = total + hackable
 }
@@ -93,7 +97,7 @@ total / N
 
 ```{r}
 #| echo: false
-print(0.745)
+print(0.607)
 ```
 
 
