@@ -142,7 +142,7 @@ schedule %>%
 |  | Thu Nov 13 | logistic reg. model selection |  | [🗒](/notes/lec20.html)[📝](/notes/logisticReg_NR_Deviance.pdf) |  |  |
 | 13 | Tue Nov 18 | logistic ridge example |  | [🗒](/notes/logistic-ridge.html) |  | draft report due |
 |  | Wed Nov 19 | lab: peer review |  |  |  | peer review |
-|  | Thu Nov 20 | ethics |  |  |  |  |
+|  | Thu Nov 20 | ethics |  | [🗒](/notes/ethics.html) |  |  |
 | 14 | Tue Nov 25 |  |  |  |  |  |
 |  | Wed Nov 26 | NO CLASS |  |  |  |  |
 |  | Thu Nov 27 | NO CLASS |  |  |  |  |
