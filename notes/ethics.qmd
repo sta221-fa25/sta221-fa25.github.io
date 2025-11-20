@@ -1,0 +1,100 @@
+---
+title: "Regression ethics"
+author: "Dr. Alexander Fisher"
+format: html
+bibliography: references.bib
+---
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data used in these notes"
+#| warning: false
+#| message: false
+library(tidyverse)
+library(tidymodels)
+```
+
+
+## A case study
+
+::: panel-tabset
+## Exercise
+
+Read the following article: @greenwood2020physician
+
+In particular, as you read, try to answer the following: 
+
+- What is the outcome variable? 
+- What are the predictors?
+- How was the data collected?
+- What is the model?
+- What are the results?
+
+```{r}
+#| echo: false
+library(countdown)
+countdown(minutes = 10, font_size = "4em",
+          color_running_background = "#2774AE")
+```
+
+:::
+
+### Further reading
+
+- A [popular news article](https://www.cnn.com/2020/08/18/health/black-babies-mortality-rate-doctors-study-wellness-scli-intl) about the study above.
+- A follow-up study (4 years later): @borjas2024physician
+
+
+## The problem with "statistical significance"
+
+::: panel-tabset
+## Exercise
+Read @simmons2011false from the abstract through "Study 1" and read the results reported in **Table 1**. 
+
+
+:::
+
+::: panel-tabset
+## Exercise 
+
+Read the code below, and figure out what it's doing. Chat with your neighbor. Explain what the result means.
+:::
+
+
+
+```{r}
+#| eval: false
+set.seed(221)
+total = 0
+N = 1000
+for (j in 1:N) {
+  y = rnorm(30)
+  x1 = runif(30)
+  x2 = rnorm(30)
+  model1 = lm(y ~ x1 + x2)
+  model2 = lm(y ~ x1)
+  model3 = lm(y ~ x2)
+  model4 = lm(y ~ x1 * x2)
+  model5 = lm(y ~ 0 + x1)
+  model6 = lm(y ~ 0 + x2)
+  
+  hackable = 0
+  for (i in 1:6) {
+    m = mget(paste0("model", i))[[1]]
+    hackable = hackable + sum(tidy(m)$p.value < 0.05)
+  }
+  total = total + hackable
+}
+
+total / N
+```
+
+```{r}
+#| echo: false
+print(0.707)
+```
+
+
+
+## References
