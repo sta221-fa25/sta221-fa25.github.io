@@ -143,7 +143,7 @@ schedule %>%
 | 13 | Tue Nov 18 | logistic ridge example |  | [🗒](/notes/logistic-ridge.html) |  | draft report due |
 |  | Wed Nov 19 | lab: peer review |  |  |  | peer review |
 |  | Thu Nov 20 | ethics |  | [🗒](/notes/ethics.html) |  |  |
-| 14 | Tue Nov 25 |  |  |  |  |  |
+| 14 | Tue Nov 25 | logistic reg reliability |  | [🗒](/notes/lec21.html)[📝](/notes/logistic_reg_ci.pdf) |  |  |
 |  | Wed Nov 26 | NO CLASS |  |  |  |  |
 |  | Thu Nov 27 | NO CLASS |  |  |  |  |
 | 15 | Tue Dec 02 | exam review |  |  |  |  |

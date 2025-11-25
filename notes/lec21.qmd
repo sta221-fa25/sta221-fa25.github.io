@@ -1,0 +1,166 @@
+---
+title: "Logistic regression confidence intervals"
+author: "Dr. Alexander Fisher"
+format: html
+---
+
+```{r}
+#| label: load-packages
+#| code-fold: true
+#| code-summary: "View libraries and data used in these notes"
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(tidymodels)
+```
+
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\hby}{\hat{\boldsymbol{y}}}
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\be}{\boldsymbol{\varepsilon}}
+\newcommand{\hbe}{\hat{\be}}
+\newcommand{\bzero}{\boldsymbol{0}}
+\newcommand{\identity}{\boldsymbol{I}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+
+## Recall: asymptotic distribution of the MLE
+
+The **maximum likelihood estimator (MLE)** satisfies
+
+$$
+\sqrt{n}\left(\hat\beta - \beta\right)
+\overset{d}{\longrightarrow}
+N\left(0,\, I(\beta)^{-1}\right),
+$$
+
+where $I(\beta)$ is the **Fisher information matrix**, per observation, defined as
+
+$$
+I(\beta)
+= -\,\mathbb{E}\left[\frac{\partial^2 \ell(\beta)}{\partial \beta \partial \beta^\top}\right].
+$$
+Notice that the **asymptotic variance of the MLE** is given by the inverse of the Fisher information.
+
+
+## Variance of $\hat{\beta}_{MLE}$ in logistic regression
+
+Recall the logistic regression model,
+
+$$
+\Pr(Y_i = 1 \mid x_i)
+  = p_i = \frac{\exp(x_i^\top \beta)}{1 + \exp(x_i^\top \beta)}.
+$$
+
+The log-likelihood for $n$ conditionally independent Bernoulli observations is:
+
+$$
+\ell(\beta)
+  = \sum_{i=1}^n \big( y_i \log p_i + (1 - y_i)\log(1 - p_i) \big).
+$$
+
+From homework 4, you showed that the second derivative of $\ell(\beta)$ unwinds:
+
+$$
+\begin{aligned}
+H&= - \bX^\top D \bX,
+\end{aligned}
+$$
+
+which implies 
+
+$$
+I(\beta) = \bX^T D \bX.
+$$
+Here, 
+
+- $X$ is the $n \times p$ model matrix,
+- $D$ is the diagonal matrix  
+  $$ D = \mathrm{diag}(p_i (1 - p_i)). $$
+
+Therefore, under the logistic regression model,
+
+$$
+\operatorname{Var}(\hat\beta) \approx (\bX^\top D \bX)^{-1}.
+$$
+
+
+
+::: panel-tabset
+## Exercise
+
+1. Read about the built-in data set
+
+```{r}
+data("mtcars")
+```
+
+2. Fit the following model:
+
+```{r}
+fit <- glm(am ~ mpg + wt, data = mtcars, family = binomial)
+```
+
+and examine the output.
+
+3. Compute confidence intervals for each beta according to the following formula: 
+
+$$
+\hat{\beta}_j \pm z^* \times SE(\hat{\beta}_j)
+$$
+where $z^*$ is calculated from the $N(0, 1)$ distribution (e.g. for 95% CI, $z^*$ can be found from `qnorm(0.975)`).
+
+4. Interpret the confidence intervals.
+
+## Solution
+
+```{r}
+summary(fit)
+```
+
+```{r}
+int_width = qnorm(0.975) * 0.2395
+lb = -0.3242 - int_width 
+ub = -0.3242 + int_width 
+cat("95% CI: ", lb, ub)
+```
+
+We are 95% confident that for every unit increase in mpg, the odds that the car has a manual transmission multiply by a factor between $e^{-0.79}$ $e^{0.14}$. 
+
+:::
+
+```{r}
+#| echo: false
+#| eval: false
+data("mtcars")
+
+fit <- glm(am ~ mpg + wt, data = mtcars, family = binomial)
+
+summary(fit)
+
+vcov(fit)
+```
+
+
+#### Manual calculation: SE
+
+The standard error information is in the general `summary()` output. But if we want to validate the formula to compute the standard error, we could do so manually below.
+
+We can grab the $Var[\hat{\beta}_{MLE}]$ with `vcov(fit)` or compute it manually:
+
+```{r}
+X = model.matrix(fit)
+p = fit$fitted.values
+D = diag(p * (1-p))
+var_mle = solve(t(X) %*% D %*% X)
+var_mle
+```
+
+and take the square root to get the standard error:
+
+```{r}
+sqrt(diag(var_mle))
+```
+
