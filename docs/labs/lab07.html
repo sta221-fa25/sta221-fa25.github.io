@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dr.&nbsp;Alexander Fisher">
 
-<title>Checking assumptions – STA221</title>
+<title>Lab 07: Review – STA221</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -55,7 +54,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -177,6 +196,14 @@ window.Quarto = {
     <a class="dropdown-item" href="../hw/hw02.html">
  <span class="dropdown-text">hw 2</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../hw/hw03.html">
+ <span class="dropdown-text">hw 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../hw/hw04.html">
+ <span class="dropdown-text">hw 4</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -200,6 +227,22 @@ window.Quarto = {
     <a class="dropdown-item" href="../labs/lab03.html">
  <span class="dropdown-text">lab 3</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab04.html">
+ <span class="dropdown-text">lab 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab05.html">
+ <span class="dropdown-text">lab 5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab06.html">
+ <span class="dropdown-text">lab 6</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../labs/lab07.html">
+ <span class="dropdown-text">lab 7</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -222,34 +265,27 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#computing-set-up" id="toc-computing-set-up" class="nav-link active" data-scroll-target="#computing-set-up">Computing set up</a></li>
-  <li><a href="#topics" id="toc-topics" class="nav-link" data-scroll-target="#topics">Topics</a></li>
-  <li><a href="#data-duke-lemurs" id="toc-data-duke-lemurs" class="nav-link" data-scroll-target="#data-duke-lemurs">Data: Duke lemurs</a></li>
-  <li><a href="#eda" id="toc-eda" class="nav-link" data-scroll-target="#eda">EDA</a></li>
-  <li><a href="#eda-1" id="toc-eda-1" class="nav-link" data-scroll-target="#eda-1">EDA</a></li>
-  <li><a href="#fit-model" id="toc-fit-model" class="nav-link" data-scroll-target="#fit-model">Fit model</a></li>
-  <li><a href="#model-conditions" id="toc-model-conditions" class="nav-link" data-scroll-target="#model-conditions">Model conditions</a>
+  <li><a href="#conceptual-practice" id="toc-conceptual-practice" class="nav-link active" data-scroll-target="#conceptual-practice">Conceptual Practice</a>
   <ul class="collapse">
-  <li><a href="#assumptions-for-regression" id="toc-assumptions-for-regression" class="nav-link" data-scroll-target="#assumptions-for-regression">Assumptions for regression</a></li>
-  <li><a href="#linearity" id="toc-linearity" class="nav-link" data-scroll-target="#linearity">Linearity</a></li>
-  <li><a href="#example-linearity-not-satisfied" id="toc-example-linearity-not-satisfied" class="nav-link" data-scroll-target="#example-linearity-not-satisfied">Example: Linearity not satisfied</a></li>
-  <li><a href="#constant-variance" id="toc-constant-variance" class="nav-link" data-scroll-target="#constant-variance">Constant variance</a></li>
-  <li><a href="#example-constant-variance-not-satisfied" id="toc-example-constant-variance-not-satisfied" class="nav-link" data-scroll-target="#example-constant-variance-not-satisfied">Example: Constant variance not satisfied</a></li>
-  <li><a href="#normality" id="toc-normality" class="nav-link" data-scroll-target="#normality">Normality</a></li>
-  <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence">Independence</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
   </ul></li>
-  <li><a href="#model-diagnostics" id="toc-model-diagnostics" class="nav-link" data-scroll-target="#model-diagnostics">Model diagnostics</a>
+  <li><a href="#additional-applied-practice" id="toc-additional-applied-practice" class="nav-link" data-scroll-target="#additional-applied-practice">Additional applied practice</a>
   <ul class="collapse">
-  <li><a href="#model-diagnostics-1" id="toc-model-diagnostics-1" class="nav-link" data-scroll-target="#model-diagnostics-1">Model diagnostics</a></li>
-  <li><a href="#model-diagnostics-in-r" id="toc-model-diagnostics-in-r" class="nav-link" data-scroll-target="#model-diagnostics-in-r">Model diagnostics in R</a></li>
-  <li><a href="#influential-point" id="toc-influential-point" class="nav-link" data-scroll-target="#influential-point">Influential Point</a></li>
-  <li><a href="#influential-points" id="toc-influential-points" class="nav-link" data-scroll-target="#influential-points">Influential points</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
   </ul></li>
-  <li><a href="#cooks-distance" id="toc-cooks-distance" class="nav-link" data-scroll-target="#cooks-distance">Cook’s Distance</a>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
-  <li><a href="#motivating-cooks-distance" id="toc-motivating-cooks-distance" class="nav-link" data-scroll-target="#motivating-cooks-distance">Motivating Cook’s Distance</a></li>
-  <li><a href="#cooks-distance-1" id="toc-cooks-distance-1" class="nav-link" data-scroll-target="#cooks-distance-1">Cook’s Distance</a></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
+  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
+  <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
+  <li><a href="#exercise-7" id="toc-exercise-7" class="nav-link" data-scroll-target="#exercise-7">Exercise 7</a></li>
+  <li><a href="#exercise-8" id="toc-exercise-8" class="nav-link" data-scroll-target="#exercise-8">Exercise 8</a></li>
+  <li><a href="#exercise-9" id="toc-exercise-9" class="nav-link" data-scroll-target="#exercise-9">Exercise 9</a></li>
   </ul></li>
+  <li><a href="#exercise-10" id="toc-exercise-10" class="nav-link" data-scroll-target="#exercise-10">Exercise 10</a></li>
   </ul>
 </nav>
     </div>
@@ -258,19 +294,13 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Checking assumptions</h1>
+<h1 class="title">Lab 07: Review</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Dr.&nbsp;Alexander Fisher </p>
-          </div>
-  </div>
     
   
     
@@ -281,353 +311,125 @@ window.Quarto = {
 </header>
 
 
-<section id="computing-set-up" class="level2">
-<h2 class="anchored" data-anchor-id="computing-set-up">Computing set up</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Due date
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This lab is not due for grade.</p>
+</div>
+</div>
+<section id="conceptual-practice" class="level2">
+<h2 class="anchored" data-anchor-id="conceptual-practice">Conceptual Practice</h2>
+<section id="exercise" class="level3">
+<h3 class="anchored" data-anchor-id="exercise">Exercise</h3>
+<p>Review <a href="../notes/lec16.html">ridge regression notes</a>, <a href="../notes/GLSintro.pdf">GLS notes</a>, and <a href="../notes/lec18.html">logistic regression notes</a>.</p>
+<p>Summarize the main ideas, including (1) when the idea is appropriate, (2) the mathematical formulation, (3) how to fit the model to data.</p>
+</section>
+</section>
+<section id="additional-applied-practice" class="level2">
+<h2 class="anchored" data-anchor-id="additional-applied-practice">Additional applied practice</h2>
+<p>You will use the following packages in today’s lab. Add other packages as needed.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)  </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)       </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)   </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># set default theme in ggplot2</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pROC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="data" class="level3">
+<h3 class="anchored" data-anchor-id="data">Data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rice <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://sta221-fa25.github.io/labs/data/rice.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The data in this lab contains measures describing the shape and structure of two rice varieties - <em>Cammeo</em> and <em>Osmancik</em>. To curate the data set, researchers used images from over 3,000 grains a rice in these two varieties. They then used automated methods to process the image data and extract 7 morphological features (features related to the structure) from each image. The data were originally presented and analyzed in <span class="citation" data-cites="cinar2019classification">Cinar and Koklu (<a href="#ref-cinar2019classification" role="doc-biblioref">2019</a>)</span> and was obtained from the <a href="https://archive.ics.uci.edu/dataset/545/rice+cammeo+and+osmancik">UCI Machine Learning Repository</a>.</p>
+<p>This analysis will focus on the following variables:</p>
+<ul>
+<li><p><code>Class</code>: Cammeo or Osmancik</p></li>
+<li><p><code>Area</code>: Size of the rice grain measured in pixels</p></li>
+<li><p><code>Eccentricity</code>: A measure of how round the ellipse is, i.e., how close the shape of the grain is to a circle.</p></li>
+</ul>
+<p><a href="https://archive.ics.uci.edu/dataset/545/rice+cammeo+and+osmancik">Click here</a> for the full data dictionary.</p>
+<div class="cell" data-lable="read-data">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rice <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/rice.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="topics" class="level2">
-<h2 class="anchored" data-anchor-id="topics">Topics</h2>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<p><strong>Goal</strong>: The goal of the analysis is to use Area and Eccentricity to identify grains from the Cammeo variety versus those from the Osmancik variety.</p>
+<section id="exercise-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1">Exercise 1</h3>
+<p>We’ll begin by exploring the data. Create a scatterplot of <code>Area</code> versus <code>Eccentricity</code> with the color and shape of the points by <code>Class</code>.</p>
+</section>
+<section id="exercise-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2">Exercise 2</h3>
+<p>Based on the plot from the previous exercise, do you think the two types of rice can be distinguished based on <code>Area</code> and <code>Eccentricity</code>. Briefly explain.</p>
+</section>
+<section id="exercise-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3">Exercise 3</h3>
+<p>With this type of classification problem, it is common to test the performance of a logistic regression model by splitting the data into a <em>training</em> and a <em>test</em> set. This means that we will choose a random subset of the data to estimate the regression coefficient (training), and we will then test the predictions on the remaining observations (test).</p>
 <ul>
-<li><p>Model conditions</p></li>
-<li><p>Influential points</p></li>
-<li><p>Model diagnostics</p>
-<ul>
-<li><p>Leverage</p></li>
-<li><p>Studentized residuals</p></li>
-<li><p>Cook’s Distance</p></li>
-</ul></li>
+<li><p>Randomly select 75% of the rows of the data to create the training set <code>rice_train</code> . Use <code>set.seed(221)</code>.</p></li>
+<li><p>Put the remaining 25% of the observations in the testing set called <code>rice_test</code>.</p></li>
 </ul>
 </section>
-<section id="data-duke-lemurs" class="level2 midi">
-<h2 class="midi anchored" data-anchor-id="data-duke-lemurs">Data: Duke lemurs</h2>
-<p>Today’s data contains a subset of the original Duke Lemur data set available in the <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-08-24/readme.md">TidyTuesday GitHub repo</a>. This data includes information on “young adult” lemurs from the <a href="https://lemur.duke.edu/discover/meet-the-lemurs/coquerels-sifaka/">Coquerel’s sifaka species</a> (PCOQ), the largest species at the Duke Lemur Center. The analysis will focus on the following variables:</p>
+<section id="exercise-4" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4">Exercise 4</h3>
+<p>In a logistic regression model, the <em>log-odds</em> of the response being “1” (or a “success”) is given by <span class="math display">\[\log\Big(\frac{\pi_i}{1-\pi_i}\Big) = \mathbf{x}_i^\mathsf{T} \boldsymbol{\beta}\]</span></p>
+<p>In this analysis a “success” is the Class “Osmancik”.</p>
 <ul>
-<li><p><code>age_at_wt_mo</code>: Age in months: Age of the animal when the weight was taken, in months (((Weight_Date-DOB)/365)*12)</p></li>
-<li><p><code>weight_g</code>: Weight: Animal weight, in grams. Weights under 500g generally to nearest 0.1-1g; Weights &gt;500g generally to the nearest 1-20g.</p></li>
+<li><p>What does each <span class="math inline">\(\pi_i\)</span> represent in the context of this analysis?</p></li>
+<li><p>How is the probability of the response variable being “1” calculated from the log-odds? Show the mathematical steps to go from the log-odds to the probability in your response.</p></li>
 </ul>
-<p><strong>The goal of the analysis is to use the age of the lemurs to understand variability in the weight.</strong></p>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 76 Columns: 54
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (17): taxon, hybrid, sex, name, current_resident, estimated_dob, birth_...
-dbl  (28): dlc_id, stud_book, birth_month, litter_size, expected_gestation, ...
-lgl   (1): age_last_verified_y
-date  (8): dob, estimated_concep, dam_dob, sire_dob, dod, weight_date, conce...
+</section>
+<section id="exercise-5" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-5">Exercise 5</h3>
+<p>Use <code>rice_train</code> to fit the logistic regression model for the response variable <code>Class</code> on the predictors <code>Area</code> and <code>Eccentricity</code> .</p>
+<ul>
+<li>Neatly display the output using 3 digits.</li>
+<li>Does the intercept have any reasonable interpretation? If so, interpret the intercept. Otherwise explain why not.</li>
+</ul>
+</section>
+<section id="exercise-6" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-6">Exercise 6</h3>
+<ul>
+<li>Interpret the coefficients on <code>Area</code> and <code>Eccentricity</code> in the context of the data in terms of the odds and comment on whether they are useful predictors of <code>Class</code> in the model.</li>
+</ul>
+</section>
+<section id="exercise-7" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-7">Exercise 7</h3>
+<ul>
+<li><p>How would you expect the log-odds of the rice grain being of the Osmancik variety to change if the measures eccentricity changes from 0.85 to 0.9?</p></li>
+<li><p>How would you expect the odds of the rice grain being of the Osmancik variety to change if the measures eccentricity changes from 0.85 to 0.9?</p></li>
+</ul>
+</section>
+<section id="exercise-8" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-8">Exercise 8</h3>
+<p>Now let’s test our model on the test set. Use the <code>predict()</code> function to obtain the predicted probabilities of the rice being Osmancik for the observations in <code>rice_test.</code></p>
+</section>
+<section id="exercise-9" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-9">Exercise 9</h3>
+<p>With these estimated probabilities, we can now try to classify the rice in the test set. Choose a threshold for assigning a class to each observation based on the estimated probability. Briefly explain your reasoning for selecting the threshold, including any analysis used to make your decision.</p>
+</section>
+</section>
+<section id="exercise-10" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-10">Exercise 10</h2>
+<p>Compare the estimated class assignments you constructed with the actual classes. Comment on the result and thus the model performance.</p>
 
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-</div>
-</section>
-<section id="eda" class="level2">
-<h2 class="anchored" data-anchor-id="eda">EDA</h2>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lec12_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="eda-1" class="level2">
-<h2 class="anchored" data-anchor-id="eda-1">EDA</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="lec12_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="fit-model" class="level2">
-<h2 class="anchored" data-anchor-id="fit-model">Fit model</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lemurs_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight_g <span class="sc">~</span> age_at_wt_mo, <span class="at">data =</span> lemurs)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lemurs_fit) <span class="sc">|&gt;</span> </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">term</th>
-<th style="text-align: right;">estimate</th>
-<th style="text-align: right;">std.error</th>
-<th style="text-align: right;">statistic</th>
-<th style="text-align: right;">p.value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-12314.360</td>
-<td style="text-align: right;">4252.696</td>
-<td style="text-align: right;">-2.896</td>
-<td style="text-align: right;">0.005</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">age_at_wt_mo</td>
-<td style="text-align: right;">496.591</td>
-<td style="text-align: right;">131.225</td>
-<td style="text-align: right;">3.784</td>
-<td style="text-align: right;">0.000</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="model-conditions" class="level1">
-<h1>Model conditions</h1>
-<section id="assumptions-for-regression" class="level2 midi">
-<h2 class="midi anchored" data-anchor-id="assumptions-for-regression">Assumptions for regression</h2>
-<p><span class="math display">\[
-\mathbf{y}|\mathbf{X} \sim N(\mathbf{X}\boldsymbol{\beta}, \sigma_\epsilon^2\mathbf{I})
-\]</span></p>
-<ol type="1">
-<li><strong>Linearity:</strong> There is a linear relationship between the response and predictor variables.</li>
-<li><strong>Constant Variance:</strong> The variability about the least squares line is generally constant.</li>
-<li><strong>Normality:</strong> The distribution of the errors (residuals) is approximately normal.</li>
-<li><strong>Independence:</strong> The errors (residuals) are independent from one another.</li>
-</ol>
-<p>. . .</p>
-<div class="question">
-<p>How do we know if these assumptions hold in our data?</p>
-</div>
-</section>
-<section id="linearity" class="level2 midi">
-<h2 class="midi anchored" data-anchor-id="linearity">Linearity</h2>
-<ul>
-<li>Look at plot of residuals versus fitted (predicted) values.</li>
-<li>Linearity is satisfied if there is no discernible pattern in the plot (i.e., points randomly scattered around <span class="math inline">\(residuals = 0\)</span></li>
-</ul>
-<p>. . .</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="lec12_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>. . .</p>
-<center>
-<strong>Linearity is</strong> <strong>satisfied</strong>
-</center>
-</section>
-<section id="example-linearity-not-satisfied" class="level2">
-<h2 class="anchored" data-anchor-id="example-linearity-not-satisfied">Example: Linearity not satisfied</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="lec12_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>. . .</p>
-<ul>
-<li>If linearity is not satisfied, examine the plots of residuals versus each predictor.</li>
-<li>Add higher order term(s), as needed.</li>
-</ul>
-</section>
-<section id="constant-variance" class="level2 midi">
-<h2 class="midi anchored" data-anchor-id="constant-variance">Constant variance</h2>
-<ul>
-<li>Look at plot of residuals versus fitted (predicted) values.</li>
-<li>Constant variance is satisfied if the vertical spread of the points is approximately equal for all fitted values</li>
-</ul>
-<p>. . .</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="lec12_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>. . .</p>
-<center>
-<strong>Constant variance is</strong> <strong>satisfied</strong>
-</center>
-</section>
-<section id="example-constant-variance-not-satisfied" class="level2">
-<h2 class="anchored" data-anchor-id="example-constant-variance-not-satisfied">Example: Constant variance not satisfied</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="lec12_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>. . .</p>
-<ul>
-<li><p>Constant variance is critical for reliable inference</p></li>
-<li><p>Address violations by applying transformation on the response</p></li>
-</ul>
-</section>
-<section id="normality" class="level2 midi">
-<h2 class="midi anchored" data-anchor-id="normality">Normality</h2>
-<ul>
-<li>Look at the distribution of the residuals</li>
-<li>Normality is satisfied if the distribution is approximately unimodal and symmetric. Inference robust to violations if <span class="math inline">\(n &gt; 30\)</span></li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-</div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="lec12_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>. . .</p>
-<center>
-Distribution approximately unimodal and symmetric, aside from the outlier. There are 62 observations, so inference robust to departures.
-</center>
-</section>
-<section id="independence" class="level2">
-<h2 class="anchored" data-anchor-id="independence">Independence</h2>
-<ul>
-<li><p>We can often check the independence condition based on the context of the data and how the observations were collected.</p></li>
-<li><p>If the data were collected in a particular order, examine a scatterplot of the residuals versus order in which the data were collected.</p></li>
-<li><p>If data has spatial element, plot residuals on a map to examine potential spatial correlation.</p></li>
-</ul>
-<p>. . .</p>
-<center>
-<strong>The independence condition is</strong> <strong>satisfied</strong>. The lemurs could reasonably be treated as independent.
-</center>
-</section>
-</section>
-<section id="model-diagnostics" class="level1">
-<h1>Model diagnostics</h1>
-<section id="model-diagnostics-1" class="level2">
-<h2 class="anchored" data-anchor-id="model-diagnostics-1">Model diagnostics</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lemurs_aug <span class="ot">&lt;-</span> <span class="fu">augment</span>(lemurs_fit)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>lemurs_aug <span class="sc">|&gt;</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 8
-   weight_g age_at_wt_mo .fitted .resid   .hat .sigma  .cooksd .std.resid
-      &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;
- 1     3400         32.0   3557. -157.  0.0302   494. 0.00164      -0.324
- 2     3620         33.0   4063. -443.  0.0399   491. 0.0176       -0.922
- 3     3720         32.4   3800.  -80.0 0.0163   495. 0.000224     -0.164
- 4     4440         32.6   3850.  590.  0.0177   489. 0.0132        1.21 
- 5     3770         31.8   3457.  313.  0.0458   493. 0.0102        0.652
- 6     3920         31.9   3522.  398.  0.0350   492. 0.0124        0.826
- 7     4520         32.8   3979.  541.  0.0279   490. 0.0180        1.12 
- 8     3700         33.2   4177. -477.  0.0626   491. 0.0337       -1.01 
- 9     3690         31.9   3537.  153.  0.0329   494. 0.00172       0.318
-10     3790         32.8   3949. -159.  0.0247   494. 0.00136      -0.328</code></pre>
-</div>
-</div>
-</section>
-<section id="model-diagnostics-in-r" class="level2 midi">
-<h2 class="midi anchored" data-anchor-id="model-diagnostics-in-r">Model diagnostics in R</h2>
-<p>Use the <code>augment()</code> function in the broom package to output the model diagnostics (along with the predicted values and residuals)</p>
-<ul>
-<li>response and predictor variables in the model</li>
-<li><code>.fitted</code>: predicted values</li>
-<li><code>.se.fit</code>: standard errors of predicted values</li>
-<li><code>.resid</code>: residuals</li>
-<li><code>.hat</code>: leverage</li>
-<li><code>.sigma</code>: estimate of residual standard deviation when the corresponding observation is dropped from model</li>
-<li><code>.cooksd</code>: Cook’s distance</li>
-<li><code>.std.resid</code>: standardized residuals</li>
-</ul>
-</section>
-<section id="influential-point" class="level2">
-<h2 class="anchored" data-anchor-id="influential-point">Influential Point</h2>
-<p>An observation is <strong>influential</strong> if removing has a noticeable impact on the regression coefficients</p>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'
-`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lec12_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="influential-points" class="level2">
-<h2 class="anchored" data-anchor-id="influential-points">Influential points</h2>
-<div class="incremental">
-<ul class="incremental">
-<li>Influential points have a noticeable impact on the coefficients and standard errors used for inference</li>
-<li>These points can sometimes be identified in a scatterplot if there is only one predictor variable
-<ul class="incremental">
-<li>This is often not the case when there are multiple predictors</li>
-</ul></li>
-<li>We will use measures to quantify an individual observation’s influence on the regression model
-<ul class="incremental">
-<li><strong>leverage</strong>, <strong>standardized &amp; studentized residuals</strong>, and <strong>Cook’s distance</strong></li>
-</ul></li>
-</ul>
-</div>
-</section>
-</section>
-<section id="cooks-distance" class="level1">
-<h1>Cook’s Distance</h1>
-<section id="motivating-cooks-distance" class="level2">
-<h2 class="anchored" data-anchor-id="motivating-cooks-distance">Motivating Cook’s Distance</h2>
-<ul>
-<li><p>An observation’s influence on the regression line depends on</p>
-<ul>
-<li><p>How close it lies to the general trend of the data</p></li>
-<li><p>Its leverage</p></li>
-</ul></li>
-<li><p><strong>Cook’s Distance</strong> is a statistic that includes both of these components to measure an observation’s overall impact on the model</p></li>
-</ul>
-</section>
-<section id="cooks-distance-1" class="level2">
-<h2 class="anchored" data-anchor-id="cooks-distance-1">Cook’s Distance</h2>
-<p>Cook’s distance for the <span class="math inline">\(i^{th}\)</span> observation is</p>
-<p><span class="math display">\[
-D_i = \frac{r^2_i}{p + 1}\Big(\frac{h_{ii}}{1 - h_{ii}}\Big)
-\]</span></p>
 
 
 </section>
-</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cinar2019classification" class="csl-entry" role="listitem">
+Cinar, Ilkay, and Murat Koklu. 2019. <span>“Classification of Rice Varieties Using Artificial Intelligence Methods.”</span> <em>International Journal of Intelligent Systems and Applications in Engineering</em> 7 (3): 188–94.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

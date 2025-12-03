@@ -1,0 +1,130 @@
+---
+title: "Lab 07: Review"
+execute:
+  freeze: auto
+  echo: true
+  eval: false
+  warning: false
+  message: false
+format: html
+bibliography: references.bib
+---
+
+::: callout-important
+# Due date
+
+This lab is not due for grade.
+:::
+
+## Conceptual Practice
+
+### Exercise 
+
+Review [ridge regression notes](/notes/lec16.html), [GLS notes](/notes/GLSintro.pdf), and [logistic regression notes](/notes/lec18.html). 
+
+Summarize the main ideas, including (1) when the idea is appropriate, (2) the mathematical formulation, (3) how to fit the model to data.
+
+## Additional applied practice
+
+You will use the following packages in today’s lab. Add other packages as needed.
+
+```{r}
+#| label: load-packages
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(tidymodels)
+library(knitr)
+library(pROC)
+```
+
+### Data
+
+```{r}
+rice <- readr::read_csv("https://sta221-fa25.github.io/labs/data/rice.csv")
+```
+
+
+The data in this lab contains measures describing the shape and structure of two rice varieties - *Cammeo* and *Osmancik*. To curate the data set, researchers used images from over 3,000 grains a rice in these two varieties. They then used automated methods to process the image data and extract 7 morphological features (features related to the structure) from each image. The data were originally presented and analyzed in @cinar2019classification and was obtained from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/545/rice+cammeo+and+osmancik).
+
+This analysis will focus on the following variables:
+
+-   `Class`: Cammeo or Osmancik
+
+-   `Area`: Size of the rice grain measured in pixels
+
+-   `Eccentricity`: A measure of how round the ellipse is, i.e., how close the shape of the grain is to a circle.
+
+[Click here](https://archive.ics.uci.edu/dataset/545/rice+cammeo+and+osmancik) for the full data dictionary.
+
+```{r}
+#| lable: read-data
+rice <- read_csv("data/rice.csv")
+```
+
+## Exercises
+
+**Goal**: The goal of the analysis is to use Area and Eccentricity to identify grains from the Cammeo variety versus those from the Osmancik variety.
+
+### Exercise 1
+
+We'll begin by exploring the data. Create a scatterplot of `Area` versus `Eccentricity` with the color and shape of the points by `Class`.
+
+### Exercise 2
+
+Based on the plot from the previous exercise, do you think the two types of rice can be distinguished based on `Area` and `Eccentricity`. Briefly explain.
+
+### Exercise 3
+
+With this type of classification problem, it is common to test the performance of a logistic regression model by splitting the data into a *training* and a *test* set. This means that we will choose a random subset of the data to estimate the regression coefficient (training), and we will then test the predictions on the remaining observations (test).
+
+-   Randomly select 75% of the rows of the data to create the training set `rice_train` . Use `set.seed(221)`.
+
+-   Put the remaining 25% of the observations in the testing set called `rice_test`.
+
+### Exercise 4
+
+In a logistic regression model, the *log-odds* of the response being "1" (or a "success") is given by $$\log\Big(\frac{\pi_i}{1-\pi_i}\Big) = \mathbf{x}_i^\mathsf{T} \boldsymbol{\beta}$$
+
+In this analysis a "success" is the Class "Osmancik".
+
+-   What does each $\pi_i$ represent in the context of this analysis?
+
+-   How is the probability of the response variable being "1" calculated from the log-odds? Show the mathematical steps to go from the log-odds to the probability in your response.
+
+### Exercise 5
+
+Use `rice_train` to fit the logistic regression model for the response variable `Class` on the predictors `Area` and `Eccentricity` .
+
+-   Neatly display the output using 3 digits.
+-   Does the intercept have any reasonable interpretation? If so, interpret the intercept. Otherwise explain why not.
+
+### Exercise 6
+
+-   Interpret the coefficients on `Area` and `Eccentricity` in the context of the data in terms of the odds and comment on whether they are useful predictors of `Class` in the model.
+
+### Exercise 7
+
+-   How would you expect the log-odds of the rice grain being of the Osmancik variety to change if the measures eccentricity changes from 0.85 to 0.9?
+
+-   How would you expect the odds of the rice grain being of the Osmancik variety to change if the measures eccentricity changes from 0.85 to 0.9?
+
+### Exercise 8
+
+Now let's test our model on the test set. Use the `predict()` function to obtain the predicted probabilities of the rice being Osmancik for the observations in `rice_test.`
+
+### Exercise 9
+
+With these estimated probabilities, we can now try to classify the rice in the test set. Choose a threshold for assigning a class to each observation based on the estimated probability. Briefly explain your reasoning for selecting the threshold, including any analysis used to make your decision.
+
+## Exercise 10
+
+Compare the estimated class assignments you constructed with the actual classes. Comment on the result and thus the model performance.
+
+
+
+
+
+
+

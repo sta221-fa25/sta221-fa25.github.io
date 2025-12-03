@@ -48,6 +48,8 @@ website:
             text: "lab 5"
           - href: labs/lab06.qmd
             text: "lab 6"
+          - href: labs/lab07.qmd
+            text: "lab 7"
             # - href: notes/exam-notes.qmd
       #   text: distributions
       # - href: chapterSummaries.qmd

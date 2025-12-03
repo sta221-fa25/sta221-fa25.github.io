@@ -147,7 +147,7 @@ schedule %>%
 |  | Wed Nov 26 | NO CLASS |  |  |  |  |
 |  | Thu Nov 27 | NO CLASS |  |  |  |  |
 | 15 | Tue Dec 02 | exam review |  |  |  |  |
-|  | Wed Dec 03 |  |  |  |  |  |
+|  | Wed Dec 03 | lab: review |  |  | [lab 7](/labs/lab07.html) |  |
 |  | Thu Dec 04 | exam 2 |  |  |  |  |
 | Final day | Fri Dec 12 | project due |  |  |  | final report & repo due |
 :::
