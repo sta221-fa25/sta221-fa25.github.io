@@ -1524,5 +1524,12 @@
     "title": "Lab 07: Review",
     "section": "Exercise 10",
     "text": "Exercise 10\nCompare the estimated class assignments you constructed with the actual classes. Comment on the result and thus the model performance."
+  },
+  {
+    "objectID": "data.html",
+    "href": "data.html",
+    "title": "STA 221: Data sets",
+    "section": "",
+    "text": "VostokIce\n\n\n11/4/25, 10:24:35 AM\n\n\n\n\n\n\n\n\n\n\n\nbikeshare-2012.csv\n\n\n1/6/25, 1:35:09 PM\n\n\n\n\n\n\n\n\n\n\n\ncleveland_heart.csv\n\n\n11/10/25, 9:37:29 PM\n\n\n\n\n\n\n\n\n\n\n\ncolon.csv\n\n\n11/18/25, 10:05:39 AM\n\n\n\n\n\n\n\n\n\n\n\ncovid-prevention-study.csv\n\n\n4/8/25, 10:07:50 AM\n\n\n\n\n\n\n\n\n\n\n\neyedata_df.csv\n\n\n10/24/25, 10:22:15 AM\n\n\n\n\n\n\n\n\n\n\n\nframingham.csv\n\n\n4/8/25, 10:07:50 AM\n\n\n\n\n\n\n\n\n\n\n\nikea.csv\n\n\n4/8/25, 10:07:50 AM\n\n\n\n\n\n\n\n\n\n\n\nlemurs-pcoq-all-ages.csv\n\n\n4/8/25, 10:07:50 AM\n\n\n\n\n\n\n\n\n\n\n\nlemurs-pcoq.csv\n\n\n4/8/25, 10:07:50 AM\n\n\n\n\n\n\n\n\n\n\n\nlife-expectancy-data.csv\n\n\n9/4/25, 10:05:32 AM\n\n\n\n\n\n\n\n\n\n\n\nlife-expectancy-data.xlsx\n\n\n4/8/25, 10:07:50 AM\n\n\n\n\n\n\n\n\n\n\n\nmapped_annotations.csv\n\n\n11/18/25, 10:05:39 AM\n\n\n\n\n\n\n\n\n\n\n\nmeat.csv\n\n\n4/8/25, 10:07:50 AM\n\n\n\n\n\n\n\n\n\n\n\nnba_salaries_23.csv\n\n\n10/7/23, 3:11:36 PM\n\n\n\n\n\n\n\n\n\n\n\nncaa-football-exp.csv\n\n\n4/8/25, 10:07:50 AM\n\n\n\n\n\n\n\n\n\n\n\norings.csv\n\n\n11/6/25, 10:38:25 AM\n\n\n\n\n\n\n\n\n\n\n\npew-atp-w132.csv\n\n\n4/8/25, 10:07:50 AM\n\n\n\n\n\n\n\n\n\n\n\npokemon_data.csv\n\n\n9/19/25, 9:43:43 AM\n\n\n\n\n\n\n\n\n\n\n\nrail_trail.csv\n\n\n4/8/25, 10:07:50 AM\n\n\n\n\n\n\n\n\n\n\n\nrdu-weather-history-complete.csv\n\n\n8/28/25, 10:31:26 AM\n\n\n\n\n\n\n\n\n\n\n\nrdu-weather-history.csv\n\n\n8/28/25, 10:32:04 AM\n\n\n\n\n\n\n\n\n\n\n\nrdu-weather-history.ods\n\n\n8/28/25, 10:29:00 AM\n\n\n\n\n\n\n\n\n\n\n\nspam.csv\n\n\n11/11/25, 11:26:54 AM\n\n\n\n\n\n\n\n\n\n\n\ntip-data.csv\n\n\n4/8/25, 10:07:50 AM\n\n\n\n\n\n\n\n\n\n\n\ntrim32.csv\n\n\n10/27/25, 10:08:36 PM\n\n\n\n\n\n\nNo matching items"
   }
 ]

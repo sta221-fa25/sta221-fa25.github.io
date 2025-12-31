@@ -1,0 +1,11 @@
+---
+title: "STA 221: Data sets"
+subtitle: "Fall 2025"
+listing:
+  contents:
+    - "/data/*"
+  sort:
+    - "title desc"
+format:
+  html: default
+---
